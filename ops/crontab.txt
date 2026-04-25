@@ -1,0 +1,19 @@
+# Stocks momentum bot — install with: crontab ops/crontab.txt
+# All times America/Los_Angeles (PT). Mini PC's TZ should be set to PT for these to align with ET market hours.
+# 9:25 AM ET = 6:25 AM PT (start trader)
+# 4:05 PM ET = 1:05 PM PT (stop trader, run scanner)
+# 1st of month at 3 AM PT — refresh universe
+
+CRON_TZ=America/Los_Angeles
+
+# Start trader at 6:25 AM PT (Mon–Fri)
+25 6 * * 1-5 /home/lui-tortuya/stocks_monitoring/ops/start_trader.sh >> /home/lui-tortuya/stocks_monitoring/data/logs/cron.log 2>&1
+
+# Stop trader at 1:05 PM PT (Mon–Fri)
+5 13 * * 1-5 /home/lui-tortuya/stocks_monitoring/ops/stop_trader.sh >> /home/lui-tortuya/stocks_monitoring/data/logs/cron.log 2>&1
+
+# Run scanner at 1:10 PM PT (Mon–Fri) — 5 min after stop, lets in-flight closes settle
+10 13 * * 1-5 cd /home/lui-tortuya/stocks_monitoring && .venv/bin/python -m cli.run_scanner >> data/logs/scanner.log 2>&1
+
+# Refresh SP500/NDX universe on the 1st of each month at 3 AM PT
+0 3 1 * * cd /home/lui-tortuya/stocks_monitoring && .venv/bin/python -m cli.refresh_universe >> data/logs/universe.log 2>&1
