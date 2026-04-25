@@ -24,9 +24,10 @@ def _intraday_bars(date_str: str, prices: list[float], volumes: list[int]) -> pd
 def test_backtest_records_simple_winning_trade() -> None:
     fake = FakeAlpaca()
     # signal day = 2026-04-27 (Mon); buy day = 2026-04-28 (Tue)
-    # On 4/28, price breaks signal_high=110 at bar 3, runs to 121 → hits 10% target
+    # On 4/28, price breaks signal_high=110 at bar 3, runs to 122 → hits 10% target.
+    # Target = entry_px*1.10 = (110.02 + slippage 0.01) * 1.10 = 121.033 → need >= 121.04
     intraday = _intraday_bars("2026-04-28",
-        prices =  [105, 108, 110.5, 112, 121, 121],
+        prices =  [105, 108, 110.5, 112, 122, 122],
         volumes = [10_000, 12_000, 30_000, 35_000, 25_000, 25_000],
     )
     fake.set_intraday_bars("WIN", intraday)
