@@ -1,0 +1,18 @@
+[Unit]
+Description=Stocks momentum trader (polling)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/lui-tortuya/stocks_monitoring
+EnvironmentFile=/home/lui-tortuya/.env
+ExecStart=/home/lui-tortuya/stocks_monitoring/.venv/bin/python -m cli.run_trader
+Restart=on-failure
+RestartSec=10
+StandardOutput=append:/home/lui-tortuya/stocks_monitoring/data/logs/trader-systemd.log
+StandardError=inherit
+TimeoutStopSec=30
+
+[Install]
+WantedBy=default.target
