@@ -59,3 +59,28 @@ def test_rvol_eod_excludes_today_from_average() -> None:
     rvol = rvol_eod(series, lookback=20)
     # day 21 vol=21; mean(1..20)=10.5; rvol=21/10.5=2.0
     assert rvol.iloc[20] == pytest.approx(2.0)
+
+
+from bot.indicators import build_intraday_volume_curve, rvol_intraday
+
+
+def test_build_intraday_curve_averages_per_minute() -> None:
+    sessions = [
+        pd.DataFrame({"minute_of_day": [570, 571, 572], "cumulative_volume": [100.0, 250.0, 400.0]}),
+        pd.DataFrame({"minute_of_day": [570, 571, 572], "cumulative_volume": [200.0, 300.0, 500.0]}),
+    ]
+    curve = build_intraday_volume_curve(sessions)
+    assert curve.loc[570] == pytest.approx(150.0)
+    assert curve.loc[571] == pytest.approx(275.0)
+    assert curve.loc[572] == pytest.approx(450.0)
+
+
+def test_rvol_intraday_lookup() -> None:
+    curve = pd.Series({570: 150.0, 571: 275.0, 572: 450.0})
+    assert rvol_intraday(today_cum_volume=550.0, minute_of_day=571, curve=curve) == pytest.approx(2.0)
+
+
+def test_rvol_intraday_unknown_minute_returns_nan() -> None:
+    curve = pd.Series({570: 150.0, 571: 275.0})
+    result = rvol_intraday(today_cum_volume=100.0, minute_of_day=999, curve=curve)
+    assert math.isnan(result)

@@ -40,3 +40,24 @@ def rvol_eod(volume_series: pd.Series, lookback: int = 20) -> pd.Series:
     """Today / mean(prior `lookback` sessions, EXCLUDING today)."""
     avg_prior = volume_series.shift(1).rolling(window=lookback, min_periods=lookback).mean()
     return volume_series / avg_prior
+
+
+def build_intraday_volume_curve(sessions: list[pd.DataFrame]) -> pd.Series:
+    """Per-minute-of-day average cumulative volume across N sessions.
+
+    Each session DataFrame must have columns ['minute_of_day', 'cumulative_volume'].
+    """
+    if not sessions:
+        return pd.Series(dtype=float)
+    combined = pd.concat(sessions, ignore_index=True)
+    return combined.groupby("minute_of_day")["cumulative_volume"].mean()
+
+
+def rvol_intraday(today_cum_volume: float, minute_of_day: int, curve: pd.Series) -> float:
+    """today_cum_volume / expected_cum_volume_at(minute). NaN if minute not in curve."""
+    if minute_of_day not in curve.index:
+        return float("nan")
+    expected = curve.loc[minute_of_day]
+    if expected <= 0:
+        return float("nan")
+    return today_cum_volume / expected
