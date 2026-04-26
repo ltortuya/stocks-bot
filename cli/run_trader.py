@@ -211,6 +211,43 @@ def try_open_new_entries(
     return placed
 
 
+# --- daily drawdown halt ---
+
+_DAILY_START_EQUITY: dict[str, float] = {}
+
+
+def check_drawdown_halt(
+    state: State, executor, settings, now: datetime, log=None, alerts=None,
+) -> bool:
+    """Check today's drawdown vs threshold; trigger state halt if breached.
+
+    Returns True if a halt was triggered THIS call (idempotent: returns False
+    if halt was already set).
+    """
+    if state.is_halted():
+        return False  # already halted
+    today_key = now.astimezone(_ET).date().isoformat()
+    try:
+        equity = executor.get_equity()
+    except Exception as e:
+        if log: log.warning("equity_fetch_failed", extra={"err": str(e)})
+        return False
+    if today_key not in _DAILY_START_EQUITY:
+        _DAILY_START_EQUITY[today_key] = equity
+        return False
+    start_equity = _DAILY_START_EQUITY[today_key]
+    if start_equity <= 0:
+        return False
+    pnl_pct = (equity - start_equity) / start_equity
+    if pnl_pct <= settings.daily_drawdown_halt_pct:
+        reason = f"daily DD {pnl_pct*100:.2f}% <= threshold {settings.daily_drawdown_halt_pct*100:.2f}%"
+        state.set_halt(now.isoformat(), reason)
+        if log: log.warning("drawdown_halt", extra={"pnl_pct": pnl_pct, "reason": reason})
+        if alerts: alerts.send(alerts.format_halt(reason))
+        return True
+    return False
+
+
 # --- main loop ---
 
 class _Halt:
@@ -277,6 +314,12 @@ def main() -> int:
             report = reconcile_positions(state=state, executor=executor, now=cycle_start)
             if report.closed_locally:
                 log.info("reconcile_closed", extra={"symbols": report.closed_locally})
+
+            # 1b. Check daily drawdown halt
+            check_drawdown_halt(
+                state=state, executor=executor, settings=settings,
+                now=cycle_start, log=log, alerts=alerts,
+            )
 
             # 2. Lookup earnings for symbols held + on watchlist
             held = [p.symbol for p in state.open_positions()]

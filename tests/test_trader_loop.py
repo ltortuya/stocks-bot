@@ -99,3 +99,45 @@ def test_manage_open_positions_exits_on_target(tmp_path: Path) -> None:
     )
     assert any(c[0] == "mkt" for c in executor.calls)
     assert s.open_positions() == []
+
+
+def test_check_drawdown_halt_triggers_at_threshold(tmp_path: Path) -> None:
+    from cli.run_trader import check_drawdown_halt, _DAILY_START_EQUITY
+    _DAILY_START_EQUITY.clear()
+    s = _state(tmp_path)
+
+    class _E:
+        def __init__(self, eq: float) -> None:
+            self._eq = eq
+        def get_equity(self) -> float:
+            return self._eq
+
+    class _Settings:
+        daily_drawdown_halt_pct = -0.03
+
+    now = datetime(2026, 4, 28, 19, 0, tzinfo=timezone.utc)
+    # First call seeds start equity at 100k
+    assert check_drawdown_halt(state=s, executor=_E(100_000), settings=_Settings(), now=now) is False
+    # Second call with 96k = -4% → triggers halt
+    triggered = check_drawdown_halt(state=s, executor=_E(96_000), settings=_Settings(), now=now)
+    assert triggered is True
+    assert s.is_halted() is True
+
+
+def test_check_drawdown_halt_no_op_when_already_halted(tmp_path: Path) -> None:
+    from cli.run_trader import check_drawdown_halt
+    s = _state(tmp_path)
+    s.set_halt("2026-04-28T15:00:00+00:00", "manual")
+
+    class _E:
+        def get_equity(self) -> float:
+            return 50_000  # would trigger if checked
+
+    class _Settings:
+        daily_drawdown_halt_pct = -0.03
+
+    triggered = check_drawdown_halt(
+        state=s, executor=_E(), settings=_Settings(),
+        now=datetime(2026, 4, 28, 19, 0, tzinfo=timezone.utc),
+    )
+    assert triggered is False  # already halted, no-op
