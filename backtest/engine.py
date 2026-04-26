@@ -85,7 +85,10 @@ def _walk_one_day(
     for sym in needed:
         try:
             bars[sym] = data.get_intraday_bars(sym, start=start, end=end, timeframe_minutes=5)
-        except Exception:
+            if bars[sym].empty:
+                print(f"  [warn] {day} {sym}: bars empty (no intraday data)", flush=True)
+        except Exception as e:
+            print(f"  [warn] {day} {sym}: bars fetch failed: {e}", flush=True)
             bars[sym] = pd.DataFrame()
 
     # Build a chronological list of (timestamp, symbol)

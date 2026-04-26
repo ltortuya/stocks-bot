@@ -1,6 +1,7 @@
 """Alpaca REST implementation of MarketDataProvider."""
 from __future__ import annotations
 
+import time
 from datetime import datetime, timezone
 from typing import Iterable
 
@@ -8,6 +9,9 @@ import pandas as pd
 import requests
 
 from bot.data.base import Bar, LatestTrade, MarketClock, MarketDataProvider
+
+
+_RETRY_BACKOFFS_SEC = (1, 3, 9, 30)
 
 
 def _parse_iso(s: str) -> datetime:
@@ -33,9 +37,19 @@ class AlpacaMarketData(MarketDataProvider):
         }
 
     def _get(self, url: str, params: dict | None = None) -> dict:
-        resp = requests.get(url, headers=self._headers, params=params, timeout=self.timeout)
-        resp.raise_for_status()
-        return resp.json()
+        """GET with exponential-backoff retry on 429 (rate limit)."""
+        for attempt, delay in enumerate((*_RETRY_BACKOFFS_SEC, None)):
+            resp = requests.get(url, headers=self._headers, params=params, timeout=self.timeout)
+            if resp.status_code == 429 and delay is not None:
+                # Honor Retry-After header if present, otherwise use our backoff.
+                retry_after = resp.headers.get("Retry-After")
+                wait = float(retry_after) if retry_after else delay
+                time.sleep(wait)
+                continue
+            resp.raise_for_status()
+            return resp.json()
+        # Should never reach here — the loop always either returns or raises
+        raise RuntimeError("unreachable: _get retry loop fell through")
 
     def get_clock(self) -> MarketClock:
         d = self._get(f"{self.trading_base_url}/v2/clock")
