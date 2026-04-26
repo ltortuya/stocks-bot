@@ -51,7 +51,7 @@ class Settings:
     gap_skip_pct: float = 0.08
 
     # session timing (ET)
-    no_entry_first_min: int = 5
+    no_entry_first_min: int = 0
     no_new_entry_after: str = "14:30"
     trader_end_time: str = "15:55"
     exchange_tz: str = "America/New_York"

@@ -20,7 +20,7 @@ class EntryDecision:
 def in_entry_time_window(
     now_utc: datetime,
     market_open_et: time = time(9, 30),
-    no_entry_first_min: int = 5,
+    no_entry_first_min: int = 0,
     no_new_entry_after_et: time = time(14, 30),
 ) -> bool:
     """True iff `now_utc` (in ET) is between (open + first_min) and the no-new-entry cutoff (inclusive).

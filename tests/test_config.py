@@ -35,7 +35,7 @@ def test_load_uses_strategy_defaults(env_paper) -> None:
     assert settings.trail_distance_pct == 0.05
     assert settings.time_stop_days == 5
     assert settings.gap_skip_pct == 0.08
-    assert settings.no_entry_first_min == 5
+    assert settings.no_entry_first_min == 0
     assert settings.no_new_entry_after == "14:30"
     assert settings.trader_end_time == "15:55"
     assert settings.exchange_tz == "America/New_York"

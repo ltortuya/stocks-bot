@@ -16,15 +16,26 @@ def _bar(ts: str, vol: int) -> dict:
     return {"timestamp": pd.Timestamp(ts, tz="UTC"), "volume": vol}
 
 
-def test_in_entry_time_window_after_first_5_min_and_before_1430() -> None:
-    # 9:35 ET = 13:35 UTC (Apr — DST)
-    assert in_entry_time_window(datetime(2026, 4, 28, 13, 35, tzinfo=timezone.utc)) is True
-    # 9:34 ET = 13:34 UTC → blocked (within first 5 min)
-    assert in_entry_time_window(datetime(2026, 4, 28, 13, 34, tzinfo=timezone.utc)) is False
+def test_in_entry_time_window_default_allows_market_open() -> None:
+    # Default no_entry_first_min=0 — entries allowed from 9:30 ET
+    # 9:30 ET = 13:30 UTC (Apr — DST)
+    assert in_entry_time_window(datetime(2026, 4, 28, 13, 30, tzinfo=timezone.utc)) is True
+    # 9:29 ET still blocked (before market open)
+    assert in_entry_time_window(datetime(2026, 4, 28, 13, 29, tzinfo=timezone.utc)) is False
     # 14:31 ET = 18:31 UTC → blocked (after 14:30 cutoff)
     assert in_entry_time_window(datetime(2026, 4, 28, 18, 31, tzinfo=timezone.utc)) is False
-    # 14:30 exactly ET = 18:30 UTC → allowed (cutoff is exclusive)
+    # 14:30 exactly ET = 18:30 UTC → allowed (cutoff is inclusive)
     assert in_entry_time_window(datetime(2026, 4, 28, 18, 30, tzinfo=timezone.utc)) is True
+
+
+def test_in_entry_time_window_with_explicit_buffer() -> None:
+    # Explicit buffer still works for callers that want it
+    assert in_entry_time_window(
+        datetime(2026, 4, 28, 13, 35, tzinfo=timezone.utc), no_entry_first_min=5
+    ) is True
+    assert in_entry_time_window(
+        datetime(2026, 4, 28, 13, 34, tzinfo=timezone.utc), no_entry_first_min=5
+    ) is False
 
 
 def test_gap_skip_when_open_too_far_above_signal() -> None:
