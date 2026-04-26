@@ -30,3 +30,15 @@ def test_get_logger_is_idempotent(tmp_path: Path) -> None:
     log2 = get_logger("scanner", log_dir=tmp_path)
     assert log1 is log2
     assert len(log1.handlers) == 1
+
+
+def test_get_logger_timestamp_is_utc_with_z_suffix(tmp_path: Path) -> None:
+    log_path = tmp_path / "tz.jsonl"
+    log = get_logger("ttz", log_dir=tmp_path, filename="tz.jsonl")
+    log.info("ping")
+    for h in log.handlers:
+        h.flush()
+    line = log_path.read_text().strip().splitlines()[-1]
+    record = json.loads(line)
+    assert record["ts"].endswith("Z")
+    assert "T" in record["ts"]
