@@ -28,7 +28,8 @@ fi
 # Default to a model with built-in web browsing. Override via OPENAI_MODEL.
 MODEL="${OPENAI_MODEL:-gpt-4o-search-preview}"
 
-payload="$(python -c "
+PYBIN="$(command -v python3 || command -v python)"
+payload="$("$PYBIN" -c "
 import json, sys
 print(json.dumps({
     'model': sys.argv[1],

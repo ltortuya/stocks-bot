@@ -36,7 +36,8 @@ if [[ -z "${TELEGRAM_TOKEN:-}" || -z "${TELEGRAM_CHAT_ID:-}" ]]; then
   exit 0
 fi
 
-payload="$(python -c "
+PYBIN="$(command -v python3 || command -v python)"
+payload="$("$PYBIN" -c "
 import json, sys
 print(json.dumps({'chat_id': sys.argv[1], 'text': sys.argv[2]}))
 " "$TELEGRAM_CHAT_ID" "$msg")"
