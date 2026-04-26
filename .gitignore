@@ -1,16 +1,27 @@
+# env / secrets
+.env
+
+# python (legacy bot only — kept around in legacy/)
 .venv/
 __pycache__/
 *.pyc
 .pytest_cache/
-data/state.sqlite
-data/state.sqlite-journal
-data/halt.flag
-data/logs/
-data/universe/sp500.csv
-data/universe/ndx.csv
-backtest/results/
-.env
 *.egg-info/
 build/
 dist/
+
+# tooling state
+.playwright-mcp/
+.claude/scheduled_tasks.lock
+
+# legacy bot runtime data
+legacy/python-bot/data/state.sqlite
+legacy/python-bot/data/state.sqlite-journal
+legacy/python-bot/data/halt.flag
+legacy/python-bot/data/logs/
+legacy/python-bot/data/universe/sp500.csv
+legacy/python-bot/data/universe/ndx.csv
+legacy/python-bot/backtest/results/
+
+# OS
 .DS_Store

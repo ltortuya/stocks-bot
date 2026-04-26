@@ -156,17 +156,28 @@ def _walk_one_day(
             if triggered.get(sym):
                 continue
             df = bars.get(sym)
-            if df is None or df.empty or ts not in df.index:
+            if df is None or df.empty:
+                if not triggered.get(sym):
+                    print(f"  [skip] {day} {sym}: no bars", flush=True)
+                    triggered[sym] = True
                 continue
+            if ts not in df.index:
+                continue  # this candidate has no bar at this ts; try next ts
             day_open = float(df["open"].iloc[0])
             if gap_skip(day_open, cand["signal_high"], cfg.gap_skip_pct):
-                triggered[sym] = True  # skip for the day
+                gap_pct = (day_open / cand["signal_high"] - 1) * 100
+                print(f"  [skip] {day} {sym}: gap_skip open={day_open:.2f} sig_hi={cand['signal_high']:.2f} ({gap_pct:+.2f}%)", flush=True)
+                triggered[sym] = True
                 continue
             row = df.loc[ts]
             if float(row["high"]) <= cand["signal_high"]:
+                # No breakout yet at this ts; try next ts (don't set triggered)
                 continue
             history = df.loc[:ts]
             if not volume_confirms(history, lookback_bars=cfg.vol_lookback_bars):
+                cur_vol = float(history["volume"].iloc[-1]) if len(history) else 0
+                prev_vol = float(history["volume"].iloc[-2]) if len(history) >= 2 else None
+                print(f"  [skip] {day} {sym} @ {ts.strftime('%H:%M')}: vol_confirm fail (cur={cur_vol:.0f} prev={prev_vol})", flush=True)
                 continue
 
             entry_px = cand["signal_high"] + 0.02 + cfg.slippage_per_share
@@ -176,8 +187,10 @@ def _walk_one_day(
             qty = position_size(equity=equity, entry=entry_px, stop=stop,
                                 per_trade_risk_pct=cfg.per_trade_risk_pct)
             if qty < 1:
+                print(f"  [skip] {day} {sym}: qty<1 entry={entry_px:.2f} stop={stop:.2f}", flush=True)
                 triggered[sym] = True
                 continue
+            print(f"  [TRADE] {day} {sym} @ {ts.strftime('%H:%M')}: qty={qty} entry={entry_px:.2f} stop={stop:.2f}", flush=True)
 
             earn_str = cand.get("earnings_next")
             earn_date = (date.fromisoformat(earn_str)
