@@ -49,7 +49,11 @@ def _trading_days_between(start: date, end: date) -> int:
 
 
 def time_stop_due(entry_time: datetime, now: datetime, days: int = 5) -> bool:
-    """True at/after 3:50 PM ET on the Nth trading day after entry (entry day = day 1)."""
+    """True at/after 3:50 PM ET on the Nth trading day OF THE TRADE.
+
+    Convention: the entry day counts as day 1. So with `days=5`, a Monday entry
+    triggers the time stop at Friday 3:50 PM ET (Mon=1, Tue=2, Wed=3, Thu=4, Fri=5).
+    """
     entry_d = entry_time.astimezone(_ET).date()
     now_et = now.astimezone(_ET)
     elapsed = _trading_days_between(entry_d, now_et.date())

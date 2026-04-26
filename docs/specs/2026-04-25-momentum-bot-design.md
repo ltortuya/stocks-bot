@@ -107,7 +107,7 @@ After fill, attach managed exits. The bot owns the exit logic — initially a si
 - **Profit target:** sell 100% at `entry × 1.10` (limit order, GTC)
 - **Hard stop:** sell 100% at `max(signal_low, entry × 0.95)` (stop-market, GTC) — i.e. whichever stop is tighter (closer to entry)
 - **Trailing stop activation:** when `unrealized_gain >= 6%`, replace fixed stop with trailing stop. Distance = **5% below `highest_price_since_entry`** (assumption — user spec didn't specify trailing distance, this matches the hard-stop %), updated each polling cycle as `highest_price_since_entry` advances
-- **Time stop:** at 3:50 PM ET on the 5th trading day after entry, sell at market regardless of P&L
+- **Time stop:** at 3:50 PM ET on the 5th trading day of the trade (entry day counts as day 1), sell at market regardless of P&L. Mon entry → Fri 3:50 PM exit.
 - **Earnings rule:** if a position has earnings within next 1 trading day:
   - If `unrealized_gain > 0` → hold through earnings
   - If `unrealized_gain <= 0` → sell at market by 3:55 PM ET on the day before earnings
