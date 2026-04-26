@@ -5,19 +5,30 @@ Run monthly via cron: `python -m cli.refresh_universe`
 from __future__ import annotations
 
 import csv
+import io
 import sys
 from pathlib import Path
 
 import pandas as pd
+import requests
 
 SP500_URL = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
 NDX_URL = "https://en.wikipedia.org/wiki/Nasdaq-100"
 
 OUT_DIR = Path("data/universe")
 
+_UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+
+
+def _fetch_html(url: str) -> str:
+    resp = requests.get(url, headers={"User-Agent": _UA}, timeout=15)
+    resp.raise_for_status()
+    return resp.text
+
 
 def _scrape_sp500() -> list[str]:
-    tables = pd.read_html(SP500_URL)
+    html = _fetch_html(SP500_URL)
+    tables = pd.read_html(io.StringIO(html))
     df = tables[0]
     if "Symbol" not in df.columns:
         raise RuntimeError(f"Unexpected SP500 table columns: {list(df.columns)}")
@@ -25,7 +36,8 @@ def _scrape_sp500() -> list[str]:
 
 
 def _scrape_ndx() -> list[str]:
-    tables = pd.read_html(NDX_URL)
+    html = _fetch_html(NDX_URL)
+    tables = pd.read_html(io.StringIO(html))
     candidate = None
     for t in tables:
         cols = {str(c).strip() for c in t.columns}
