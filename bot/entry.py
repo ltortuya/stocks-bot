@@ -47,12 +47,20 @@ def gap_skip(today_open: float, signal_high: float, gap_pct: float = 0.08) -> bo
 def volume_confirms(
     intraday_5m_bars: pd.DataFrame, lookback_bars: int = 20,
 ) -> bool:
-    """Two-rule confirmation:
+    """Two-rule confirmation when history exists:
     1) current bar volume > prior bar volume
     2) current bar volume > mean of previous `lookback_bars` bars
+
+    Edge cases:
+    - 0 bars: no data → fail (cannot evaluate)
+    - 1 bar: first bar of session, no prior to compare → pass IF the bar has any
+      volume. The rule degrades to "did the bar exist" when its inputs are
+      undefined; the breakout itself is the signal.
     """
-    if len(intraday_5m_bars) < 2:
+    if len(intraday_5m_bars) == 0:
         return False
+    if len(intraday_5m_bars) == 1:
+        return float(intraday_5m_bars["volume"].iloc[-1]) > 0
     cur = float(intraday_5m_bars["volume"].iloc[-1])
     prev = float(intraday_5m_bars["volume"].iloc[-2])
     if cur <= prev:

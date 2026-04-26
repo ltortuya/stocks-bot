@@ -62,6 +62,25 @@ def test_volume_confirms_requires_both_rules() -> None:
     assert volume_confirms(bars2, lookback_bars=3) is True
 
 
+def test_volume_confirms_first_bar_passes_when_volume_positive() -> None:
+    """First bar of session has no prior to compare — pass if volume > 0."""
+    one_bar = pd.DataFrame(
+        [{"timestamp": "2026-04-28T13:30Z", "volume": 50_000}],
+    )
+    one_bar["timestamp"] = pd.to_datetime(one_bar["timestamp"], utc=True)
+    one_bar = one_bar.set_index("timestamp")
+    assert volume_confirms(one_bar, lookback_bars=20) is True
+
+    zero_vol = one_bar.copy()
+    zero_vol.iloc[-1, zero_vol.columns.get_loc("volume")] = 0
+    assert volume_confirms(zero_vol, lookback_bars=20) is False
+
+
+def test_volume_confirms_empty_bars_fails() -> None:
+    empty = pd.DataFrame(columns=["volume"])
+    assert volume_confirms(empty, lookback_bars=20) is False
+
+
 def test_evaluate_entry_full_path_passes() -> None:
     bars = pd.DataFrame({
         "open":   [100, 101, 102, 103, 104],
