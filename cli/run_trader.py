@@ -253,8 +253,20 @@ def main() -> int:
         try:
             clock = data.get_clock()
             if not clock.is_open:
-                log.info("market_closed_exit")
-                break
+                # Compute wait until next open. If less than 30 min, sleep through it.
+                # If more than 30 min, this means market is closed for the day → exit.
+                wait_sec = (clock.next_open - datetime.now(timezone.utc)).total_seconds()
+                if wait_sec <= 0:
+                    # Should not happen, but defensive: poll again immediately
+                    _time.sleep(5)
+                    continue
+                if wait_sec > 1800:  # > 30 min → market closed for the day
+                    log.info("market_closed_exit", extra={"wait_sec": wait_sec})
+                    break
+                # Within 30 min of open → sleep until then, then loop
+                log.info("waiting_for_open", extra={"wait_sec": wait_sec})
+                _time.sleep(wait_sec + 5)
+                continue
 
             today_et = cycle_start.astimezone(_ET).date()
             if daily_count_date != today_et:
