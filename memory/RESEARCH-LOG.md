@@ -69,3 +69,39 @@ TRADE or HOLD (default HOLD if no edge)
 ### Decision
 HOLD. Sunday + FOMC + mega-cap-tech-earnings week = no edge for opening positions today. Patience > activity. Reassess at Monday pre-market and after FOMC Wed.
 
+## 2026-04-27 — Pre-market Research
+
+(Monday open. OPENAI_API_KEY not set in local env; used native WebSearch fallback.)
+
+### Account
+- Equity: $100,000.00
+- Cash: $100,000.00
+- Buying power: $200,000.00
+- Daytrade count: 0
+- Open orders: none (yesterday's stale TSLA 1-share buy is no longer on the book — expired or cleared overnight)
+
+### Market Context
+- WTI / Brent: WTI ~$95–96/bbl (intraday high $96.7), Brent ~$106 (intraday high ~$108) — Strait of Hormuz effectively closed, US-Iran talks stalled
+- S&P 500 futures: ~flat premarket (S&P +0.03%, Dow -0.16%); Iran reportedly offered new Strait-reopen proposal, capping downside; 10Y 4.32%, 2Y 3.79%
+- VIX: 18.71 (normal 15–20 band, well off March 31.05 peak)
+- Today's catalysts: Iran / Strait of Hormuz tape, BMO earnings (VZ/NUE/DPZ/PSA), NVDA strength (+4.5% on next-gen chip demand reports)
+- Earnings before open: VZ, NUE, DPZ, PSA (plus VTR, CINF, ARLP, DEA mid-day)
+- Economic calendar: Tue Consumer Confidence + BoJ; Tue/Wed FOMC (Powell's last meeting, decision Wed); Thu PCE (no GDP this week per updated calendar)
+- Sector momentum YTD: Energy +22% (leader), Real Estate / Consumer Staples at ATH, Industrials strong; Tech -3.8% YTD, Health Care + Cons Disc lagging; equal-weight S&P +7.1% vs cap-weight +0.7% — broad rotation out of mega-cap growth, small-cap value +10.9%
+
+### Trade Ideas
+1. XLE (Energy ETF) — sector leader YTD, but oil spike is geopolitical-binary (Iran headline can swing ±10% intraday). DEFER until post-FOMC Wed; don't enter into stalled-talks tape.
+2. NUE / DPZ / VZ / PSA — earnings BMO. SKIP — earnings binary, no edge, violates 2:1 R:R discipline pre-print.
+3. Mega-cap tech (MSFT/GOOG/META Wed, AAPL/AMZN Thu) — SKIP pre-print. Reassess Thu PM / Fri AM for post-print follow-through entries that meet 2:1 R:R with 10% trail and pass the buy-side gate.
+4. Small-cap value / equal-weight rotation (RSP, IWN) — strong YTD breadth signal, but FOMC + tech-earnings cluster could swing the tape; defer to Thu post-PCE.
+
+### Risk Factors
+- FOMC Wed (Powell's last meeting) — rate-path / dot-plot risk, whole-week vol
+- Mega-cap tech earnings cluster Wed (MSFT/GOOG/META) and Thu (AAPL/AMZN) can move S&P ±2–3% on prints
+- US-Iran: Strait of Hormuz closed; any breakthrough or breakdown is a binary +/- on energy and broad indices
+- PCE Thu — inflation print into FOMC fallout
+- Premarket NVDA strength (+4.5%) on chip-demand headlines is single-stock noise, not a sector-momentum signal yet
+
+### Decision
+HOLD. Three binary catalysts (FOMC Wed, mega-cap earnings Wed/Thu, Iran tape) stacked into a 4-day window with VIX still in normal range = no risk-adjusted edge for opening today. Patience > activity. Reassess Wed afternoon post-FOMC, then Thu/Fri post-earnings for follow-through entries.
+
