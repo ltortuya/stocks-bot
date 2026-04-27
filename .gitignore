@@ -13,6 +13,7 @@ dist/
 # tooling state
 .playwright-mcp/
 .claude/scheduled_tasks.lock
+.worktrees/
 
 # legacy bot runtime data
 legacy/python-bot/data/state.sqlite
