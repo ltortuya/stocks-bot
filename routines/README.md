@@ -1,17 +1,22 @@
 # Cloud Routines
 
-Five Claude Code cloud routines fire on cron. Each is a stateless container:
-clone → read memory → call wrappers → write memory → commit + push → destroy.
+Six routines fire on cron (mini PC `crontab` in production; cloud routine UI is the alternative). Each run is stateless: clone → read memory → call wrappers → write memory → commit + push → destroy.
 
-## Cron schedules (America/Chicago)
+## Cron schedules
 
-| File                        | Cron             | When                |
-|-----------------------------|------------------|---------------------|
-| `pre-market.md`             | `0 6 * * 1-5`    | 6:00 AM weekdays    |
-| `market-open.md`            | `30 8 * * 1-5`   | 8:30 AM weekdays    |
-| `midday.md`                 | `0 12 * * 1-5`   | Noon weekdays       |
-| `daily-summary.md`          | `0 15 * * 1-5`   | 3:00 PM weekdays    |
-| `weekly-review.md`          | `0 16 * * 5`     | 4:00 PM Fridays     |
+Documented in America/Chicago (the original guide's timezone). Mini PC's local crontab uses America/Los_Angeles equivalents (subtract 2 hours).
+
+| File                        | Cron (CT)        | When (CT)            | What                       |
+|-----------------------------|------------------|----------------------|----------------------------|
+| `pre-market.md`             | `0 6 * * 1-5`    | 6:00 AM weekdays     | research + watchlist       |
+| `market-open.md`            | `30 8 * * 1-5`   | 8:30 AM weekdays     | execute new entries        |
+| `intraday-check.md`         | `0 10 * * 1-5`   | 10:00 AM weekdays    | risk mgmt only (no entries)|
+| `midday.md`                 | `0 12 * * 1-5`   | Noon weekdays        | risk mgmt + dashboard      |
+| `intraday-check.md`         | `30 13 * * 1-5`  | 1:30 PM weekdays     | risk mgmt only (no entries)|
+| `daily-summary.md`          | `0 15 * * 1-5`   | 3:00 PM weekdays     | EOD log + dashboard        |
+| `weekly-review.md`          | `0 16 * * 5`     | 4:00 PM Fridays      | weekly reflection          |
+
+`intraday-check.md` runs twice per day as risk-management touchpoints between market-open and midday, and between midday and close. It NEVER opens new positions — only cuts losers, tightens stops, and exits broken theses.
 
 ## Setup checklist (one-time per routine)
 
