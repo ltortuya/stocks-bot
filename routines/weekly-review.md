@@ -5,14 +5,14 @@ DATE=$(date +%Y-%m-%d).
 
 IMPORTANT — ENVIRONMENT VARIABLES:
 - Every API key is ALREADY exported as a process env var: ALPACA_API_KEY,
-  ALPACA_SECRET_KEY, ALPACA_ENDPOINT, ALPACA_DATA_ENDPOINT, OPENAI_API_KEY,
-  OPENAI_MODEL, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID.
+  ALPACA_SECRET_KEY, ALPACA_ENDPOINT, ALPACA_DATA_ENDPOINT, PERPLEXITY_API_KEY,
+  PERPLEXITY_MODEL, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID.
 - There is NO .env file in this repo and you MUST NOT create, write, or
   source one. The wrapper scripts read directly from the process env.
 - If a wrapper prints "KEY not set in environment" -> STOP, send one
   Telegram alert naming the missing var, and exit.
 - Verify env vars BEFORE any wrapper call:
-    for v in ALPACA_API_KEY ALPACA_SECRET_KEY OPENAI_API_KEY \
+    for v in ALPACA_API_KEY ALPACA_SECRET_KEY PERPLEXITY_API_KEY \
              TELEGRAM_TOKEN TELEGRAM_CHAT_ID; do
       [[ -n "${!v:-}" ]] && echo "$v: set" || echo "$v: MISSING"
     done
@@ -36,8 +36,8 @@ STEP 3 — Compute the week's metrics:
 - Ending portfolio (today's equity)
 - Week return ($ and %)
 - S&P 500 week return:
-    bash scripts/openai.sh "S&P 500 weekly performance week ending $DATE"
-  (If openai.sh exits 3, use native WebSearch.)
+    bash scripts/perplexity.sh "S&P 500 weekly performance week ending $DATE"
+  (If perplexity.sh exits 3, use native WebSearch.)
 - Trades taken (W/L/open)
 - Win rate (closed trades only)
 - Best trade, worst trade

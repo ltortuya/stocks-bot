@@ -5,8 +5,8 @@ DATE=$(date +%Y-%m-%d).
 
 IMPORTANT — ENVIRONMENT VARIABLES:
 - Every API key is ALREADY exported as a process env var: ALPACA_API_KEY,
-  ALPACA_SECRET_KEY, ALPACA_ENDPOINT, ALPACA_DATA_ENDPOINT, OPENAI_API_KEY,
-  OPENAI_MODEL, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID.
+  ALPACA_SECRET_KEY, ALPACA_ENDPOINT, ALPACA_DATA_ENDPOINT, PERPLEXITY_API_KEY,
+  PERPLEXITY_MODEL, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID.
 - There is NO .env file in this repo and you MUST NOT create, write, or
   source one. The wrapper scripts read directly from the process env.
 - If a wrapper prints "KEY not set in environment" -> STOP, send one
@@ -44,9 +44,9 @@ STEP 5 — Thesis check. For each remaining position, review price action and
 any midday news. If a thesis broke intraday, cut the position even if not at
 -7% yet. Document reasoning in TRADE-LOG.
 
-STEP 6 — Optional intraday research via openai.sh if something is moving
+STEP 6 — Optional intraday research via perplexity.sh if something is moving
 sharply with no obvious cause. Append afternoon addendum to RESEARCH-LOG.
-If openai.sh exits 3, fall back to native WebSearch.
+If perplexity.sh exits 3, fall back to native WebSearch.
 
 STEP 7 — Notification: ONLY if action was taken.
     bash scripts/telegram.sh "<action summary>"
