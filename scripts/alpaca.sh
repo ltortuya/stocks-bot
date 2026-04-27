@@ -40,6 +40,10 @@ case "$cmd" in
     sym="${1:?usage: quote SYM}"
     curl -fsS --ssl-no-revoke -H "$H_KEY" -H "$H_SEC" "$DATA/stocks/$sym/quotes/latest"
     ;;
+  snapshot)
+    sym="${1:?usage: snapshot SYM}"
+    curl -fsS --ssl-no-revoke -H "$H_KEY" -H "$H_SEC" "$DATA/stocks/$sym/snapshot"
+    ;;
   orders)
     status="${1:-open}"
     curl -fsS --ssl-no-revoke -H "$H_KEY" -H "$H_SEC" "$API/orders?status=$status"
@@ -64,7 +68,7 @@ case "$cmd" in
     curl -fsS --ssl-no-revoke -H "$H_KEY" -H "$H_SEC" -X DELETE "$API/positions"
     ;;
   *)
-    echo "Usage: bash scripts/alpaca.sh <account|positions|position|quote|orders|order|cancel|cancel-all|close|close-all> [args]" >&2
+    echo "Usage: bash scripts/alpaca.sh <account|positions|position|quote|snapshot|orders|order|cancel|cancel-all|close|close-all> [args]" >&2
     exit 1
     ;;
 esac
