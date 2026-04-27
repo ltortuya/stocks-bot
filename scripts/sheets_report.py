@@ -149,3 +149,195 @@ def build_history_row(
         decision,            # 7 — Decision
         headline,            # 8 — Headline
     ]
+
+
+# ---------- Sheets API + entrypoint ----------
+
+import json
+import os
+import subprocess
+import sys
+from datetime import datetime
+from pathlib import Path
+from zoneinfo import ZoneInfo
+
+
+REPO_ROOT = Path(__file__).parent.parent
+SHEET_ID_FILE = REPO_ROOT / "data" / "dashboard-sheet-id.txt"
+RESEARCH_LOG = REPO_ROOT / "memory" / "RESEARCH-LOG.md"
+
+SNAPSHOT_RANGE_CLEAR = "Snapshot!A1:H100"
+SNAPSHOT_RANGE_WRITE = "Snapshot!A1"
+HISTORY_RANGE_APPEND = "History!A1"
+HISTORY_HEADER = [
+    "Timestamp (PT)",
+    "Routine",
+    "Equity",
+    "Cash",
+    "Day P&L",
+    "Day P&L %",
+    "# Positions",
+    "Decision",
+    "Headline",
+]
+
+
+def _alpaca(*args: str) -> Dict[str, Any]:
+    """Call scripts/alpaca.sh with the given args, return parsed JSON."""
+    result = subprocess.run(
+        ["bash", str(REPO_ROOT / "scripts" / "alpaca.sh"), *args],
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    return json.loads(result.stdout)
+
+
+def _build_sheets_service():
+    """Build a Sheets API service using the GOOGLE_SERVICE_ACCOUNT_JSON env var."""
+    raw = os.environ.get("GOOGLE_SERVICE_ACCOUNT_JSON")
+    if not raw:
+        print("GOOGLE_SERVICE_ACCOUNT_JSON not set in environment", file=sys.stderr)
+        sys.exit(4)
+    try:
+        info = json.loads(raw)
+    except json.JSONDecodeError as e:
+        print(f"GOOGLE_SERVICE_ACCOUNT_JSON is not valid JSON: {e}", file=sys.stderr)
+        sys.exit(4)
+
+    from google.oauth2 import service_account
+    from googleapiclient.discovery import build
+
+    creds = service_account.Credentials.from_service_account_info(
+        info, scopes=["https://www.googleapis.com/auth/spreadsheets"]
+    )
+    return build("sheets", "v4", credentials=creds, cache_discovery=False)
+
+
+def _read_sheet_id() -> str:
+    if not SHEET_ID_FILE.exists():
+        print(f"sheet ID file missing: {SHEET_ID_FILE}", file=sys.stderr)
+        sys.exit(5)
+    return SHEET_ID_FILE.read_text(encoding="utf-8").strip()
+
+
+def _ensure_history_header(service, sheet_id: str) -> None:
+    """If History tab is empty, write the header row."""
+    resp = service.spreadsheets().values().get(
+        spreadsheetId=sheet_id, range="History!A1:I1"
+    ).execute()
+    if resp.get("values"):
+        return
+    service.spreadsheets().values().update(
+        spreadsheetId=sheet_id,
+        range="History!A1",
+        valueInputOption="RAW",
+        body={"values": [HISTORY_HEADER]},
+    ).execute()
+
+
+def _retry(fn):
+    """Run fn(); on any exception retry once after 5s, else re-raise."""
+    import time
+    try:
+        return fn()
+    except Exception:
+        time.sleep(5)
+        return fn()
+
+
+def _now_pt_str() -> str:
+    return datetime.now(ZoneInfo("America/Los_Angeles")).strftime("%Y-%m-%d %H:%M %Z")
+
+
+def main() -> int:
+    routine = os.environ.get("ROUTINE_NAME", "unknown")
+
+    # Pull state from Alpaca.
+    account = _alpaca("account")
+    positions_raw = _alpaca("positions")
+    spy_snap = _alpaca("snapshot", "SPY")
+
+    equity = float(account["equity"])
+    last_equity = float(account["last_equity"])
+    cash = float(account["cash"])
+    day_pnl, day_pnl_pct = compute_day_pnl(equity, last_equity)
+    spy_pct = compute_spy_change(spy_snap)
+
+    # Normalize positions for snapshot grid.
+    positions: List[Dict[str, Any]] = []
+    for p in positions_raw:
+        positions.append({
+            "symbol": p.get("symbol", ""),
+            "qty": p.get("qty", ""),
+            "avg_entry_price": p.get("avg_entry_price", 0),
+            "current_price": p.get("current_price", 0),
+            "unrealized_pl": p.get("unrealized_pl", 0),
+            "unrealized_plpc": p.get("unrealized_plpc", 0),
+            "stop_price": "",  # Alpaca position object doesn't carry stop; left blank.
+            "days_held": "",
+        })
+
+    # Research log tail.
+    log_text = RESEARCH_LOG.read_text(encoding="utf-8") if RESEARCH_LOG.exists() else ""
+    decision, headline = parse_research_log(log_text)
+
+    as_of = _now_pt_str()
+    grid = build_snapshot_grid(
+        as_of=as_of,
+        equity=equity,
+        cash=cash,
+        day_pnl=day_pnl,
+        day_pnl_pct=day_pnl_pct,
+        n_positions=len(positions),
+        spy_pct=spy_pct,
+        decision=decision,
+        headline=headline,
+        routine=routine,
+        positions=positions,
+    )
+    history_row = build_history_row(
+        timestamp_pt=as_of,
+        routine=routine,
+        equity=equity,
+        cash=cash,
+        day_pnl=day_pnl,
+        day_pnl_pct=day_pnl_pct,
+        n_positions=len(positions),
+        decision=decision,
+        headline=headline,
+    )
+
+    sheet_id = _read_sheet_id()
+    service = _build_sheets_service()
+
+    try:
+        _retry(lambda: service.spreadsheets().values().clear(
+            spreadsheetId=sheet_id, range=SNAPSHOT_RANGE_CLEAR, body={}
+        ).execute())
+
+        _retry(lambda: service.spreadsheets().values().update(
+            spreadsheetId=sheet_id,
+            range=SNAPSHOT_RANGE_WRITE,
+            valueInputOption="RAW",
+            body={"values": grid},
+        ).execute())
+
+        _ensure_history_header(service, sheet_id)
+        _retry(lambda: service.spreadsheets().values().append(
+            spreadsheetId=sheet_id,
+            range=HISTORY_RANGE_APPEND,
+            valueInputOption="RAW",
+            insertDataOption="INSERT_ROWS",
+            body={"values": [history_row]},
+        ).execute())
+    except Exception as e:
+        print(f"Sheets API failed: {e}", file=sys.stderr)
+        return 6
+
+    print(f"Wrote snapshot ({len(grid)} rows) + history row for routine={routine}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
