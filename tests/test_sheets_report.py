@@ -109,7 +109,7 @@ def test_build_snapshot_grid_empty_positions():
     )
     flat = "\n".join("|".join(str(c) for c in row) for row in grid)
     assert "Equity" in flat
-    assert "100000" in flat
+    assert "100,000" in flat
     assert "No open positions" in flat
 
 

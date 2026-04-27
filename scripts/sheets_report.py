@@ -67,7 +67,7 @@ def compute_spy_change(snapshot: Dict[str, Any]) -> float:
 
 
 def _fmt_money(x: float) -> str:
-    return f"${x:.2f}"
+    return f"${x:,.2f}"
 
 
 def _fmt_pct(x: float) -> str:
