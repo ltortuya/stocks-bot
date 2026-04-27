@@ -23,8 +23,10 @@ clone → read memory → call wrappers → write memory → commit + push → d
    - `ALPACA_SECRET_KEY` (required)
    - `ALPACA_ENDPOINT` (optional; defaults to paper)
    - `ALPACA_DATA_ENDPOINT` (optional)
-   - `OPENAI_API_KEY` (required for research)
-   - `OPENAI_MODEL` (optional; defaults to `gpt-4o-search-preview`)
+   - `PERPLEXITY_API_KEY` (required for research)
+   - `PERPLEXITY_MODEL` (optional; defaults to `sonar-pro`)
+   - `GOOGLE_SERVICE_ACCOUNT_JSON` (required on market-open / midday / daily-summary
+     routines; full service-account JSON, single-line)
    - `TELEGRAM_TOKEN` (required for notifications)
    - `TELEGRAM_CHAT_ID` (required for notifications)
 4. **Paste the routine prompt verbatim** from the corresponding file. Do NOT paraphrase.
@@ -35,3 +37,21 @@ clone → read memory → call wrappers → write memory → commit + push → d
 
 The cloud runner is **stateless**. Git is the memory. If it's not pushed to
 `main`, it didn't happen. Every routine ends with a mandatory commit + push.
+
+## One-time Sheets dashboard setup
+
+1. Create a Google Cloud project (free), enable the Google Sheets API.
+2. Create a service account, generate a JSON key, download it.
+3. Create the sheet titled "Trading Bot Dashboard" with two tabs: `Snapshot` and `History`.
+4. Share the sheet with the service account's email (Editor permission).
+5. Save the sheet ID to `data/dashboard-sheet-id.txt` and commit it.
+6. Set `GOOGLE_SERVICE_ACCOUNT_JSON` (single-line JSON value) on each of the
+   three trading-day routines.
+7. Optional: build a `Charts` tab manually for equity curve / decision history
+   off the History tab. The bot does not touch this tab.
+
+## Local cron parity
+
+If you also run routines on the mini PC via `scripts/run-routine.sh`, set the
+same env vars in your local `.env` (see `env.template`). The `.env` file is
+gitignored and only used locally.

@@ -36,12 +36,15 @@ runs per trading day plus two ad-hoc helpers (portfolio, trade).
 
 ## API Wrappers
 
-Use `bash scripts/alpaca.sh`, `bash scripts/openai.sh`, `bash scripts/telegram.sh`.
+Use `bash scripts/alpaca.sh`, `bash scripts/perplexity.sh`, `bash scripts/sheets.sh`, `bash scripts/telegram.sh`.
 Never curl these APIs directly.
 
 - `alpaca.sh` — trading + account state (paper account by default).
-- `openai.sh` — research via OpenAI's web-search-capable models.
-  Exits 3 if `OPENAI_API_KEY` unset → fall back to native WebSearch.
+- `perplexity.sh` — research via Perplexity's web-grounded sonar-pro model.
+  Exits 3 if `PERPLEXITY_API_KEY` unset → fall back to native WebSearch.
+- `sheets.sh report` — pushes account snapshot + history row to the Trading
+  Bot Dashboard Google Sheet. Called by market-open / midday / daily-summary
+  routines. Failure does NOT block memory commit/push.
 - `telegram.sh` — chat notifications. Falls back to local file if creds missing.
 
 ## Communication Style
