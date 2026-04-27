@@ -55,7 +55,12 @@ Date, ticker, side, shares, entry price, stop level, thesis, target, R:R.
 STEP 7 — Notification: ONLY if a trade was placed.
     bash scripts/telegram.sh "<tickers, shares, fill prices, one-line why>"
 
-STEP 8 — COMMIT AND PUSH (mandatory if any trades executed):
+STEP 8 — Push dashboard snapshot to Google Sheets:
+    ROUTINE_NAME=market-open bash scripts/sheets.sh report
+A failure here sends a Telegram alert and exits non-zero, but it does NOT block
+the commit/push that follows. Continue to the next step regardless.
+
+STEP 9 — COMMIT AND PUSH (mandatory if any trades executed):
     git add memory/TRADE-LOG.md
     git commit -m "market-open trades $DATE"
     git push origin main

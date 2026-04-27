@@ -52,7 +52,12 @@ STEP 5 — Send ONE Telegram message (always, even on no-trade days). <= 15 line
       SYM ±X.X% (stop \$X.XX)
     Tomorrow: <one-line plan>"
 
-STEP 6 — COMMIT AND PUSH (mandatory — tomorrow's Day P&L depends on this):
+STEP 6 — Push dashboard snapshot to Google Sheets:
+    ROUTINE_NAME=daily-summary bash scripts/sheets.sh report
+A failure here sends a Telegram alert and exits non-zero, but it does NOT block
+the commit/push that follows. Continue to the next step regardless.
+
+STEP 7 — COMMIT AND PUSH (mandatory — tomorrow's Day P&L depends on this):
     git add memory/TRADE-LOG.md
     git commit -m "EOD snapshot $DATE"
     git push origin main

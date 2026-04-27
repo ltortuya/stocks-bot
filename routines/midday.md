@@ -51,7 +51,12 @@ If perplexity.sh exits 3, fall back to native WebSearch.
 STEP 7 — Notification: ONLY if action was taken.
     bash scripts/telegram.sh "<action summary>"
 
-STEP 8 — COMMIT AND PUSH (if any memory files changed):
+STEP 8 — Push dashboard snapshot to Google Sheets:
+    ROUTINE_NAME=midday bash scripts/sheets.sh report
+A failure here sends a Telegram alert and exits non-zero, but it does NOT block
+the commit/push that follows. Continue to the next step regardless.
+
+STEP 9 — COMMIT AND PUSH (if any memory files changed):
     git add memory/TRADE-LOG.md memory/RESEARCH-LOG.md
     git commit -m "midday scan $DATE"
     git push origin main
