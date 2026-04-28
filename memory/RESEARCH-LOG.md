@@ -143,3 +143,16 @@ HOLD. Three binary catalysts (FOMC Wed, mega-cap earnings Wed/Thu, Iran tape) st
 ### Decision
 HOLD. Same three binary catalysts as yesterday, now one day closer (FOMC Wed, mega-cap earnings Wed/Thu, Iran tape) plus ADP today as pre-FOMC vol kicker. No risk-adjusted edge for opening into this. Patience > activity. Reassess Wed PM post-FOMC, then Thu/Fri post-earnings for follow-through entries that pass the buy-side gate.
 
+### Intraday Re-scan (mid-morning)
+
+(ALPACA_API_KEY + PERPLEXITY_API_KEY not set in local env; native WebSearch fallback. Account state assumed unchanged from open: $100k cash, no positions, no orders.)
+
+- WTI ~$98.97 (prev close $96.37, +2.7%); Brent $109–111.57 — highest since March 2026, still climbing on Hormuz tape
+- VIX 18.02 (-3.7% vs prior 18.71 print) — calmer, but pre-FOMC complacency risk
+- S&P 500 futures ~flat into ADP (12:15pm ET) and FOMC tomorrow
+- BMO earnings confirmed: SPGI (cons rev $4.1B, +7.6% YoY), UPS (rev $21B exp, EPS $1.06 vs $1.49 prior, -28.9% YoY), KO, NVS, KMB, BRO, ALLE, INCY, AMT, CNC, GLW, SPOT
+- Sector YTD refresh: Energy +20–39% YTD (data-center-power re-rating thesis); Tech / Comm Svcs / Cons Disc declined Q1; quality-value rotation theme intact
+- Iran/Hormuz: Strait still effectively closed since Feb 28; Iran's fresh ceasefire proposal under US review — binary tape
+
+Decision unchanged: **HOLD**. Oil tape is climbing but geopolitical-binary; FOMC and mega-cap tech earnings start tomorrow. No edge for fresh entries today. Reassess post-FOMC Wed PM and post-earnings Thu/Fri.
+
