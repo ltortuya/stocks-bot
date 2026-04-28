@@ -105,3 +105,41 @@ HOLD. Sunday + FOMC + mega-cap-tech-earnings week = no edge for opening position
 ### Decision
 HOLD. Three binary catalysts (FOMC Wed, mega-cap earnings Wed/Thu, Iran tape) stacked into a 4-day window with VIX still in normal range = no risk-adjusted edge for opening today. Patience > activity. Reassess Wed afternoon post-FOMC, then Thu/Fri post-earnings for follow-through entries.
 
+## 2026-04-28 — Pre-market Research
+
+(Tuesday open. FOMC meeting Day 1 today, decision tomorrow Wed.)
+
+### Account
+- Equity: $100,000.00
+- Cash: $100,000.00
+- Buying power: $200,000.00
+- Daytrade count: 0
+- Positions: none
+- Open orders: none
+
+### Market Context
+- WTI / Brent: WTI ~$98–101/bbl, Brent ~$105–110/bbl — Strait of Hormuz tension keeps oil elevated; geopolitical premium intact
+- S&P 500 futures: ESM26 ~7,221.75 (-0.06%); cash S&P closed record 7,173.91 Mon (+0.12%); Dow -0.14%, Nasdaq -0.30% premarket; 10Y context unchanged
+- VIX: 18.71 last print (Apr 24); no fresh tick yet — still in normal 15–20 band
+- Today's catalysts: FOMC Day 1 (decision tomorrow), ADP private payrolls 12:15pm ET, NVDA/TSLA tape strength, Iran/Strait of Hormuz headlines
+- Earnings before open: KO, UPS, SPGI, NVS, KMB, BRO, ALLE, INCY, AMT, CNC, GLW, SPOT — no mega-cap tech BMO today
+- Economic calendar this week: ADP today; FOMC decision Wed (consensus hold 3.50–3.75%); MSFT/GOOG/META earnings Wed; AAPL/AMZN earnings Thu; PCE Thu
+- Sector momentum YTD: Tech leading (AI/semis driving ~29.7% S&P YTD), Energy +22%, Materials +15%; Cons Disc -2%, Real Estate / Utilities / Industrials lagging recently — concentration risk in mega-cap tech remains elevated
+
+### Trade Ideas
+1. XLE (Energy ETF) — sector +22% YTD leader, but oil is geopolitical-binary on Iran/Hormuz tape. DEFER until post-FOMC clarity Wed PM.
+2. XLK / SMH (Tech / Semis) — sector leader on AI demand, but mega-cap earnings cluster Wed/Thu is binary. SKIP pre-print; reassess Thu PM / Fri AM for post-earnings follow-through that meets 2:1 R:R with 10% trail.
+3. KO / UPS / SPGI / NVS / KMB BMO earnings — SKIP, earnings binary, no edge, violates entry checklist.
+4. Equal-weight / small-cap value (RSP, IWN) — broad-rotation thesis intact, but FOMC + tech earnings will dictate breadth this week. Defer to post-PCE Thu.
+
+### Risk Factors
+- FOMC Day 1 today, decision tomorrow Wed (Powell's last meeting per prior context) — rate-path / dot-plot binary
+- ADP 12:15pm ET — pre-FOMC volatility kicker
+- Mega-cap tech earnings cluster Wed (MSFT/GOOG/META) and Thu (AAPL/AMZN) — index-mover concentration
+- PCE Thu — inflation tape into FOMC fallout, with oil-pushed energy CPI hot
+- Iran / Strait of Hormuz: any breakthrough or breakdown is binary on energy + broad indices
+- VIX 18.71 in normal band masks event-stacked tape this week
+
+### Decision
+HOLD. Same three binary catalysts as yesterday, now one day closer (FOMC Wed, mega-cap earnings Wed/Thu, Iran tape) plus ADP today as pre-FOMC vol kicker. No risk-adjusted edge for opening into this. Patience > activity. Reassess Wed PM post-FOMC, then Thu/Fri post-earnings for follow-through entries that pass the buy-side gate.
+
