@@ -143,3 +143,40 @@ HOLD. Three binary catalysts (FOMC Wed, mega-cap earnings Wed/Thu, Iran tape) st
 ### Decision
 HOLD. Same three binary catalysts as yesterday, now one day closer (FOMC Wed, mega-cap earnings Wed/Thu, Iran tape) plus ADP today as pre-FOMC vol kicker. No risk-adjusted edge for opening into this. Patience > activity. Reassess Wed PM post-FOMC, then Thu/Fri post-earnings for follow-through entries that pass the buy-side gate.
 
+## 2026-04-29 — Pre-market Research
+
+(Wednesday — FOMC decision day. MSFT/GOOG/META earnings AMC tonight.)
+
+### Account
+- Equity: $100,000.00
+- Cash: $100,000.00
+- Buying power: $200,000.00
+- Daytrade count: 0
+- Positions: none
+- Open orders: none
+
+### Market Context
+- WTI / Brent: WTI ~$98–102/bbl (Apr 28 close $102.22, +2.95%); Brent spread ~$11 → ~$109–113. Oil remains elevated on Iran/Strait of Hormuz tape.
+- S&P 500 futures: ESM26 modestly green premarket (~+0.10%); ES around 6,657–7,180 range references mixed across sources, but tape is flat-to-slightly-green into FOMC. Cash S&P closed near record 7,173 area Mon.
+- VIX: 18.36 (Apr 28 close), down from 18.71 — still in normal 15–20 band, masking the binary event stack today.
+- Today's catalysts: FOMC statement 2:00pm ET; Powell presser 2:30pm ET (no SEP/dot-plot this meeting); MSFT/GOOG/META earnings AMC; Iran/Hormuz tape ongoing.
+- Earnings before open: none of size for our setup. Major prints AMC tonight: MSFT (FY26 Q3), GOOGL, META.
+- Economic calendar: FOMC today (consensus hold 3.50–3.75%); Thu Apr 30 = Q1 GDP advance + March PCE + Q1 ECI cluster; AAPL/AMZN earnings AMC Thu.
+- Sector momentum: YTD — Energy +22% leader, Materials +15%, Cons Staples +12%, Tech +small, Cons Disc -2%, Industrials +7%. April MTD reversal — Tech +2% MTD only outperformer; Energy -14% MTD as oil round-tripped. Rotation tape unsettled.
+
+### Trade Ideas
+1. XLK / SMH (Tech / Semis) — sector reasserting in April, but MSFT/GOOG/META print AMC tonight. SKIP pre-print. Reassess Thu AM for post-print follow-through that passes 2:1 R:R + 10% trail.
+2. XLE (Energy ETF) — YTD leader but down 14% MTD on oil round-trip + Iran-tape binary. SKIP into FOMC; reassess Thu AM with PCE in hand.
+3. RSP / IWN (equal-weight / small-cap value) — broad-rotation thesis still alive but FOMC + earnings cluster + PCE Thu = 3 binary events in 36 hours. DEFER to Fri AM after the dust clears.
+4. KO / UPS / SPGI / NVS / KMB and others printing today — SKIP, earnings binary, no edge.
+
+### Risk Factors
+- FOMC decision 2pm + Powell 2:30pm ET — language/tone binary; hawkish on sticky core PCE 2.7% vs dovish on Q4 GDP 0.5% softness. No SEP this meeting → every word weighted.
+- MSFT/GOOG/META AMC — Azure capex/AI revenue read-through dictates Thu AM gap on whole tech sector.
+- Thu PCE + Q1 GDP advance + ECI cluster — inflation into FOMC fallout; hot PCE delays cuts.
+- Iran / Strait of Hormuz: still closed; oil round-tripped from $102 to $96 area on talk-restart hopes — binary either way.
+- VIX 18.36 in normal band understates 36-hour event stack.
+
+### Decision
+HOLD. Worst possible 24h to open new positions: FOMC at 2pm + 3 mega-cap earnings AMC + PCE/GDP cluster Thu morning. Three binary catalysts back-to-back-to-back. Patience > activity. Reassess Thu AM after FOMC + tech-print reaction; ideal entry window is Fri AM post-AAPL/AMZN + post-PCE for follow-through trades that pass the full buy-side gate.
+
