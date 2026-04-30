@@ -188,3 +188,49 @@ HOLD. Same three binary catalysts as yesterday, now one day closer (FOMC Wed, me
 ### Decision
 HOLD. Worst possible 24h to open new positions: FOMC at 2pm + 3 mega-cap earnings AMC + PCE/GDP cluster Thu morning. Three binary catalysts back-to-back-to-back. Patience > activity. Reassess Thu AM after FOMC + tech-print reaction; ideal entry window is Fri AM post-AAPL/AMZN + post-PCE for follow-through trades that pass the full buy-side gate.
 
+## 2026-04-30 — Pre-market Research
+
+(Thursday. FOMC done — held 3.50–3.75% with easing bias + 4 dissents. MSFT + GOOGL beat AMC; META -6.4% AH on capex. PCE/GDP/ECI/Jobless Claims at 8:30 ET. AAPL/AMZN print AMC tonight.)
+
+### Account
+- Equity: $100,000.00
+- Cash: $100,000.00
+- Buying power: $200,000.00
+- Daytrade count: 0
+- Positions: none
+- Open orders: none
+
+### Market Context
+- WTI / Brent: WTI ~$108–111/bbl spot (Apr 29 session +3.4% to +6.95%, depending on source); Brent ~$11 spread → ~$119–122. Iran/Strait of Hormuz tape still hot.
+- S&P 500 futures: ESM26 ~6,657 premarket, +0.10% (~+6.5pts). Cautious tone into 8:30 PCE/GDP cluster + after-hours tech-earnings split (MSFT/GOOGL up, META down).
+- VIX: 17.83 (Apr 28 close); intraday Apr 29 high 18.81. Normal 15–20 band but underprices 8:30 binary print.
+- Today's catalysts: 8:30 ET — Q1 GDP advance + March PCE + Q1 ECI + weekly Jobless Claims (4-print cluster, single moment of binary risk); 11:00 ET Trimmed Mean PCE; AAPL/AMZN earnings AMC tonight; FOMC follow-through tape from yesterday's hold.
+- Earnings before open: Hippo Holdings (HIPO) only of note — not a trade candidate. Mega-cap reaction tape from MSFT/GOOGL/META AMC dominates the open.
+- Economic calendar: 8:30 ET print cluster is the day. Tomorrow Fri 5/1 ISM Mfg + post-AAPL/AMZN reaction. Next FOMC June.
+- Sector momentum YTD: Energy +38.3% (oil-driven leader), Materials +9.7%, Utilities +8.3%, Cons Staples +7.7%, Real Estate +2.8%. S&P breadth/level mixed across sources (one shows -4.3% YTD, others show 7,173 record). Tech +17% MTD April per one source — clear April rotation back into AI infra/semis. META capex miss may blunt that today; MSFT/GOOGL cloud beats support it.
+
+### Trade Ideas
+1. **GOOGL** — Cloud +28% YoY, double-beat ($181B rev vs $177B est, $2.78 EPS vs $1.64), +4% AH. Strongest single-name catalyst of the week. SKIP at-the-open execution into 8:30 PCE binary; author as a midday conditional (see below).
+2. **XLK / SMH (AI infra / semis)** — MSFT + GOOGL cloud beats are bullish AI-capex demand. Counter: META -6.4% AH on its own capex is a capex-bears signal. Net: positive but mixed. SKIP at-the-open; conditional on post-PCE follow-through.
+3. **XLE (Energy)** — +38% YTD leader, oil +7% session. Pure geopolitical-binary on Iran/Hormuz tape. Already extended; chasing into open is poor R:R. SKIP today.
+4. **AAPL / AMZN** — print AMC. SKIP pre-print, no edge.
+
+### Conditional Entries (midday-eligible) — up to 3
+1. **GOOGL** — allocation $19,500 (≤19.5% of equity), stop 10% trail, target +25% from entry, R:R 2.5:1
+   Condition: Post-PCE (after 9:00 ET digestion), GOOGL must (a) hold above its AH gap-up level of roughly $200+ (whatever opens as the AH-equivalent print), (b) show a 30-min consolidation above the open print without filling more than 50% of the gap, (c) S&P 500 not red >0.75% on PCE, and (d) VIX not spiking above 22. If all four, midday buys at market with 10% trail GTC attached.
+   Catalyst: Cloud +28% YoY, double-beat earnings ($181B rev vs $177B), +4% AH — best single-name AI-infra read-through of the week.
+2. **SMH (semis ETF)** — allocation $15,000 (15% of equity), stop 10% trail, target +20% from entry, R:R 2:1
+   Condition: SMH must open green and hold a green print through the 8:30 PCE digestion (give it until ~10:00 ET). Require (a) MSFT not red >1% on its post-print follow-through, (b) META not dragging the cap-weight tech complex (XLK net green), (c) PCE core not above 0.4% m/m (hot-print kill switch). All three → midday entry with 10% trail GTC.
+   Catalyst: MSFT + GOOGL cloud/AI capex beats reassert AI-infra demand thesis; tech +17% MTD April rotation already in motion.
+
+### Risk Factors
+- 8:30 ET binary: hot PCE re-prices Fed cuts further out, pressures tech valuations and breaks the rotation thesis. Hot Q1 GDP + hot PCE = stagflation tape.
+- AAPL/AMZN AMC tonight is back-to-back binary; entries today carry overnight earnings exposure on the broad tape regardless of ticker chosen.
+- META's -6.4% AH on capex concerns can spread: if cap-ex bears price-discover the rest of mega-cap tech today, GOOGL/MSFT bounce can fade.
+- Oil at $108–111 with Iran/Hormuz still binary keeps Energy hot but un-chaseable. A breakthrough headline = -10% gap on XLE; a breakdown = +5% gap.
+- Powell's last presser yesterday plus 4 dissents (most since 1992) leaves Fed reaction-function read murky — easing bias intact but 3 dissenters wanted hawkish wording.
+- VIX 17.83 in normal band continues to underprice this stack of binaries.
+
+### Decision
+HOLD at the open. Two conditional midday entries authored (GOOGL, SMH) — both require post-PCE confirmation. Patience > activity. If 8:30 print is benign and tech holds, midday will execute up to 2 entries (~$34.5k notional, ~34.5% deployed). If PCE is hot or META capex contagion spreads, midday holds zero. Either way, no at-the-open buys today.
+
