@@ -17,14 +17,15 @@ Beat the S&P 500 over the challenge window. Stocks only — no options, ever.
 5. Cut losers at -7% manually
 6. Tighten trail: 7% at +15%, 5% at +20%
 7. Never within 3% of current price; never move a stop down
-8. Max 3 new trades per week
+8. Max 6 new trades per week, max 3 per day
 9. Follow sector momentum
 10. Exit a sector after 2 consecutive failed trades
 11. Patience > activity
 
 ## Buy-side Gate (every check must pass)
 - Total positions after this fill ≤ 6
-- Total trades placed this week (including this one) ≤ 3
+- Total trades placed this week (including this one) ≤ 6
+- Total trades placed today (including this one) ≤ 3
 - Position cost ≤ 20% of account equity
 - Position cost ≤ available cash
 - Daytrade count leaves room (PDT: 3/5 rolling business days as a defensive habit)
