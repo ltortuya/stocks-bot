@@ -17,7 +17,8 @@ STEP 2 — Re-validate with live data:
 
 STEP 3 — Hard-check rules BEFORE every order. Skip any trade that fails and log the reason:
 - Total positions after trade ≤ 6
-- Trades this week ≤ 3
+- Trades this week ≤ 6
+- Trades today ≤ 3
 - Position cost ≤ 20% of equity
 - Catalyst documented in today's RESEARCH-LOG
 - daytrade_count leaves room

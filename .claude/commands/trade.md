@@ -9,7 +9,8 @@ Args: `SYMBOL SHARES SIDE` (buy or sell). If missing, ask.
 1. Pull state: account, positions, `quote SYMBOL` (capture ask price P).
 2. For BUY, validate:
    - Total positions after fill ≤ 6
-   - Trades this week + 1 ≤ 3
+   - Trades this week + 1 ≤ 6
+   - Trades today + 1 ≤ 3
    - SHARES * P ≤ 20% of equity
    - SHARES * P ≤ available cash
    - daytrade_count < 3 (defensive)
