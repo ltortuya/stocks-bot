@@ -219,9 +219,11 @@ HOLD. Worst possible 24h to open new positions: FOMC at 2pm + 3 mega-cap earning
 1. **GOOGL** — allocation $19,500 (≤19.5% of equity), stop 10% trail, target +25% from entry, R:R 2.5:1
    Condition: Post-PCE (after 9:00 ET digestion), GOOGL must (a) hold above its AH gap-up level of roughly $200+ (whatever opens as the AH-equivalent print), (b) show a 30-min consolidation above the open print without filling more than 50% of the gap, (c) S&P 500 not red >0.75% on PCE, and (d) VIX not spiking above 22. If all four, midday buys at market with 10% trail GTC attached.
    Catalyst: Cloud +28% YoY, double-beat earnings ($181B rev vs $177B), +4% AH — best single-name AI-infra read-through of the week.
+   → Skipped (12:02 CT): condition (b) failed — session opened $374.52, traded down to $365.87 low (gap fully filled, no 30-min consolidation above open print) before recovering to $378.93. Current quote $378.64/$380. Default-skip on broken intraday shape.
 2. **SMH (semis ETF)** — allocation $15,000 (15% of equity), stop 10% trail, target +20% from entry, R:R 2:1
    Condition: SMH must open green and hold a green print through the 8:30 PCE digestion (give it until ~10:00 ET). Require (a) MSFT not red >1% on its post-print follow-through, (b) META not dragging the cap-weight tech complex (XLK net green), (c) PCE core not above 0.4% m/m (hot-print kill switch). All three → midday entry with 10% trail GTC.
    Catalyst: MSFT + GOOGL cloud/AI capex beats reassert AI-infra demand thesis; tech +17% MTD April rotation already in motion.
+   → Skipped (12:02 CT): gates (a) and (b) failed — MSFT -2.60% from regular open ($410.56→$399.90, kill switch >1%), XLK net red -0.68% ($159.53→$158.45, not net green). SMH itself -0.13% from open, session low $495.34. Post-print follow-through broke down; capex contagion confirmed.
 
 ### Risk Factors
 - 8:30 ET binary: hot PCE re-prices Fed cuts further out, pressures tech valuations and breaks the rotation thesis. Hot Q1 GDP + hot PCE = stagflation tape.
