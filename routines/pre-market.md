@@ -46,10 +46,19 @@ bash scripts/perplexity.sh "<query>" for each:
 If perplexity.sh exits 3 (PERPLEXITY_API_KEY missing), fall back to native WebSearch
 and note the fallback in the log entry.
 
-STEP 4 — Append a dated entry to memory/RESEARCH-LOG.md:
+STEP 4 — Append a dated entry to memory/RESEARCH-LOG.md following the
+format block at the top of that file. Required sections:
 - Account snapshot (equity, cash, buying power, daytrade count)
 - Market context (oil, indices, VIX, today's releases)
 - 2-3 actionable trade ideas WITH catalyst + entry/stop/target
+- Conditional Entries (midday-eligible) — OPTIONAL, up to 3. Default
+  ZERO. Only author a conditional if the setup genuinely benefits from
+  intraday confirmation rather than at-the-open execution. Each entry
+  MUST include: ticker, allocation $ (≤ 20% of equity), stop (default
+  "10% trail" — tighter allowed, looser not), target + R:R (≥ 2:1),
+  free-form Condition prose (what midday should look for), one-line
+  Catalyst. Format example is in the template at the top of
+  RESEARCH-LOG.md.
 - Risk factors for the day
 - Decision: TRADE or HOLD (default HOLD — patience > activity)
 
