@@ -21,7 +21,7 @@ There is no separate Python bot process. **Claude IS the bot.**
 ## Strategy (summary)
 
 Swing trading, stocks only, no options. Max 5–6 positions, 20% per position,
-3 new trades/week. 10% trailing stop on every position as a real GTC order.
+6 new trades/week (max 3/day). 10% trailing stop on every position as a real GTC order.
 Cut losers at -7%. Tighten trail to 7% at +15%, 5% at +20%. Patience > activity.
 
 Full rules in [memory/TRADING-STRATEGY.md](memory/TRADING-STRATEGY.md).

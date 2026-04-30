@@ -25,7 +25,7 @@ runs per trading day plus two ad-hoc helpers (portfolio, trade).
 - NO OPTIONS — ever.
 - Max 5-6 open positions.
 - Max 20% per position.
-- Max 3 new trades per week.
+- Max 6 new trades per week, max 3 per day.
 - 75-85% capital deployed.
 - 10% trailing stop on every position as a real GTC order.
 - Cut losers at -7% manually.
