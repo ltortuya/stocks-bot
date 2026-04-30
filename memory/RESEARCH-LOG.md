@@ -26,6 +26,14 @@ Format each entry:
 1. TICKER — catalyst, entry $X, stop $X, target $X, R:R X:1
 2. ...
 
+### Conditional Entries (midday-eligible) — up to 3
+(Default zero. Only include if the setup needs intraday confirmation
+rather than at-the-open execution. Required field format below.)
+1. **TICKER** — allocation $X, stop 10% trail, target $Y, R:R Z:1
+   Condition: <free-form prose — what midday should look for to confirm>
+   Catalyst: <one line — why this is on the watchlist at all>
+2. ...
+
 ### Risk Factors
 - ...
 
