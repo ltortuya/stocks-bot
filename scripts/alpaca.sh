@@ -45,11 +45,14 @@ case "$cmd" in
     curl -fsS --ssl-no-revoke -H "$H_KEY" -H "$H_SEC" "$DATA/stocks/$sym/snapshot"
     ;;
   bars)
-    sym="${1:?usage: bars SYM [timeframe] [limit]}"
+    sym="${1:?usage: bars SYM [timeframe] [limit] [start_iso_utc]}"
     tf="${2:-5Min}"
     lim="${3:-78}"
+    # Default start = today 00:00 UTC. For 5Min over RTH that comfortably covers
+    # the session even with the free-tier IEX feed.
+    start="${4:-$(date -u +%Y-%m-%dT00:00:00Z)}"
     curl -fsS --ssl-no-revoke -H "$H_KEY" -H "$H_SEC" \
-      "$DATA/stocks/$sym/bars?timeframe=$tf&limit=$lim&adjustment=raw"
+      "$DATA/stocks/$sym/bars?timeframe=$tf&limit=$lim&start=$start&adjustment=raw&feed=iex"
     ;;
   orders)
     status="${1:-open}"
