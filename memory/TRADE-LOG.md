@@ -36,3 +36,11 @@ No positions yet. Bot launches on the next trading session.
 | — | — | — | — | — | — | — |
 
 **Notes:** Fourth consecutive no-trade day. Account remains 100% cash at the $100,000 baseline — zero positions, zero open orders, zero trades today, zero week-to-date (0/6 weekly cap, 0/3 daily cap). Pre-market and midday scans ran but no entries fired. Capital fully idle vs. the 75-85% deployment target for the entire week so far. Tomorrow (Friday) is the weekly review checkpoint — must diagnose why conviction-rated setups are not converting to executed trades and adjust the entry filter or research workflow before next week, otherwise the phase will close with zero compounding.
+
+### May 01 — EOD Snapshot (Day 5, Friday)
+**Portfolio:** $100,000.00 | **Cash:** $100,000.00 (100%) | **Day P&L:** $0.00 (0.00%) | **Phase P&L:** $0.00 (0.00%)
+
+| Ticker | Shares | Entry | Close | Day Chg | Unrealized P&L | Stop |
+| — | — | — | — | — | — | — |
+
+**Notes:** Fifth consecutive no-trade day closes the first week of the challenge with zero positions, zero open orders, zero trades today, and 0/6 trades for the week. Account still flat at the $100,000 baseline — no Day P&L, no Phase P&L, no compounding. Capital remained 100% idle the entire week vs. the 75-85% deployment target. Weekly review (Friday checkpoint) must diagnose the breakdown between research output and market-open execution and adjust the entry filter, conviction threshold, or workflow so next week actually deploys capital — otherwise the strategy continues to lose ground vs. SPY by sitting in cash.
