@@ -236,3 +236,47 @@ HOLD. Worst possible 24h to open new positions: FOMC at 2pm + 3 mega-cap earning
 ### Decision
 HOLD at the open. Two conditional midday entries authored (GOOGL, SMH) — both require post-PCE confirmation. Patience > activity. If 8:30 print is benign and tech holds, midday will execute up to 2 entries (~$34.5k notional, ~34.5% deployed). If PCE is hot or META capex contagion spreads, midday holds zero. Either way, no at-the-open buys today.
 
+
+## 2026-05-01 — Pre-market Research
+
+(Friday. Last trading day of week 1; weekly review checkpoint later. AMZN beat AMC but -1.6 to -3% AH on $44B Q1 capex / $200B FY guide → capex-bear contagion now META + AMZN. AAPL Q2 fiscal print also AMC last night — specific EPS/rev not yet captured by Perplexity, "tariff impacts" flagged in coverage. ISM Manufacturing PMI 10:00 ET.)
+
+### Account
+- Equity: $100,000.00
+- Cash: $100,000.00
+- Buying power: $200,000.00
+- Daytrade count: 0
+- Positions: none
+- Open orders: none
+
+### Market Context
+- WTI / Brent: WTI ~$106/bbl, Brent ~$110/bbl. Off yesterday's $108–111 highs but still elevated on Iran/Hormuz tape.
+- S&P 500 futures: ESM26 ~7,250–7,255, +0.09% premarket. Cash S&P closed Apr 30 at 7,254.19; April MTD +6.78% (very strong month).
+- VIX: 18.68 open, prior close 18.81. Still in normal 15–20 band; underprices ISM print + post-AAPL/AMZN tape.
+- Today's catalysts: ISM Manufacturing PMI 10:00 ET (consensus 52.7, prev 52.7); AAPL/AMZN reaction tape; FOMC follow-through; Iran/Hormuz headlines ongoing.
+- Earnings before open: CVX (Chevron, $372B), FFIV, SFM, RITM, CTS — none compelling for our setup. Major mega-cap reaction is from yesterday AMC (AAPL/AMZN).
+- Economic calendar: ISM Mfg today 10am; next Fed meeting June. Quiet week ahead.
+- Sector momentum: Yesterday's snapshot — Energy +38% YTD leader, Materials +9.7%, Utilities +8.3%, Cons Staples +7.7%. Tech +17% MTD April rotation now under capex-bear pressure (META Wed -6.4% AH, AMZN Thu -1.6 to -3% AH). AMZN's AWS +28% YoY (15-quarter high) is the only clean positive.
+
+### Trade Ideas
+1. **AMZN** — AWS +28% YoY (best in 15 qtrs), $181.5B rev double-beat, $2.78 EPS vs $1.64 est (70% surprise), AI services $15B+ run rate. But -1.6 to -3% AH on $44B Q1 capex / $200B FY guide. Contrarian add against expanding capex-bear theme. SKIP at-the-open execution into ISM 10am print.
+2. **AAPL** — print AMC, no quantified data captured (only "tariff impacts" coverage notes). Cannot author without numbers. SKIP.
+3. **XLK / SMH** — yesterday's SMH conditional was killed by MSFT -2.6% intraday + XLK net red close. AMZN AWS print is bullish AI-infra demand but capex-bear narrative now dominates the tape. Mixed → SKIP today; reassess next week.
+4. **XLE** — sector +38% YTD, oil $106 WTI. Still pure geopolitical-binary on Iran/Hormuz. Already extended; chasing into Friday weekly close + thin afternoon is poor R:R. SKIP.
+5. **CVX** — earnings BMO; SKIP, earnings binary, no edge.
+
+### Conditional Entries (midday-eligible) — up to 3
+(Zero conditionals authored today.)
+
+Reasoning: capex-bear contagion is the dominant intraday theme (META Wed, AMZN Thu) and would break any tech-side conditional's gates the same way SMH was killed yesterday. AMZN itself is a contrarian add against that theme — not a setup that genuinely benefits from intraday confirmation, just one that the market may discount further. Energy is extended into a Friday close. AAPL data is incomplete. No conditional clears the "needs intraday confirmation, not at-the-open execution" bar.
+
+### Risk Factors
+- ISM Mfg PMI 10:00 ET binary; below-50 employment subindex (49.0 fcst) leads broader jobs prints — soft read pressures cyclicals.
+- Capex-bear contagion now 2-of-3 mega-cap tech prints (META, AMZN). AAPL reaction today + MSFT/GOOGL follow-through risk a third leg lower in tech if capex-bear theme spreads.
+- AAPL "tariff impacts" flagged but unquantified; could be a bigger overnight story than picked up here — execution risk if entering tech sympathetically.
+- Friday afternoon thin tape + weekly close positioning amplifies any binary print.
+- Oil $106 WTI still binary on Iran/Hormuz — breakthrough = -10% gap on XLE; breakdown = +5% gap.
+- 5th consecutive no-trade day pressures the deployment narrative — weekly review later today must diagnose whether the entry filter is calibrated correctly or if the workflow needs adjusting (NOT a reason to force a trade today).
+
+### Decision
+HOLD. Zero at-the-open entries, zero midday conditionals. Capex-bear theme + ISM print + incomplete AAPL data + Friday thin tape = no setup that passes the buy-side gate. Patience > activity, even on day 5 of zero deployment. Weekly review this afternoon will document the no-trade week and propose any workflow adjustments for week 2. Reassess Monday with AAPL/AMZN reaction tape fully digested and ISM in hand.
