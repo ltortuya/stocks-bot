@@ -280,3 +280,49 @@ Reasoning: capex-bear contagion is the dominant intraday theme (META Wed, AMZN T
 
 ### Decision
 HOLD. Zero at-the-open entries, zero midday conditionals. Capex-bear theme + ISM print + incomplete AAPL data + Friday thin tape = no setup that passes the buy-side gate. Patience > activity, even on day 5 of zero deployment. Weekly review this afternoon will document the no-trade week and propose any workflow adjustments for week 2. Reassess Monday with AAPL/AMZN reaction tape fully digested and ISM in hand.
+
+
+## 2026-05-04 — Pre-market Research
+
+(Monday — start of week 2. Mega-cap tech earnings done (MSFT/GOOGL beat, META capex-miss, AMZN AWS beat / capex-bear, AAPL closed -1.09% at $257.46 Fri on tariff overhang). FOMC done — held 3.50–3.75% w/ easing bias. ISM Mfg in hand. No FOMC until June. Quiet macro Mon–Thu; only Friday May 8 brings NFP + ISM Services 8:30/10:00 ET. WEEKLY-REVIEW from Friday confirmed week 1 was 0 trades, 100% cash idle.)
+
+### Account
+- Equity: $100,000.00
+- Cash: $100,000.00
+- Buying power: $200,000.00
+- Daytrade count: 0
+- Positions: none
+- Open orders: none (clean book)
+
+### Market Context
+- WTI / Brent: WTI ~$101.50/bbl (range $99.59–108.94 last week), Brent ~$110–116. Off the late-Apr $108–111 highs; "Gulf proposals to stabilize oil" headline moderates the Hormuz binary, but Strait still effectively closed. Symmetrical-triangle compression $90–110.
+- S&P 500 futures: ESM26 ~7,272.25, +0.20% to +0.23% premarket. Cash S&P closed Fri ~7,254 (Apr MTD +6.78%, very strong month). Tape constructive into a quiet macro week.
+- VIX: 16.89 last (Apr; meaningful drop from Fri 18.68 → mid-16s implies the binary stack is largely cleared). Normal-band complacency, but the print is internally consistent with no FOMC, no major earnings, no major macro until Friday.
+- Today's catalysts: structural / rotational only — no event print today. Iran/Hormuz tape ongoing. INTC still strong on government-involvement theme. AI / Nasdaq momentum reasserting per Investors Underground, GME potential EBAY-bid headline (binary, skip).
+- Earnings before open: zero of size (CapyFin/Nasdaq calendars list 0 BMO reports). Notable but non-tradable: CRMT, FOSL, RRGB, PLCE later in day. No tradable earnings catalyst today.
+- Economic calendar: Mon–Thu quiet (JOLTS Tue is the only mid-tier print). Fri May 8 = Apr NFP (cons +62k, unemployment 4.3%) + ISM Services PMI (prev 54). Markets pricing steady rates with potential for one 25bp cut later in 2026. RBA likely +25bp Tue (74% odds), Norges hike — non-USD.
+- Sector momentum YTD: Energy +22.34% (leader), Cons Staples +15.97%, Materials +15.67%, Industrials +11.92%, Real Estate +7.56%, Utilities +6.34%, Health Care +0.97%, Comm Svcs -0.89%, Tech -3.83%, Cons Disc -4.62%, Financials -5.7%. Equal-weight leadership intact; rotation away from mega-cap growth still the dominant 2026 story. April MTD reversed Tech +17% but capex-bear theme (META Wed, AMZN Thu) blunted the bounce.
+
+### Trade Ideas
+1. **XLP (Consumer Staples ETF)** — sector +15.97% YTD (#2), low-vol defensive showing momentum is the cleanest "rotation away from growth" signal of 2026. Entry at market, stop 10% trailing GTC, target +15–20%, R:R ~2:1. Allocation up to 20% ($20k). Catalyst: structural rotation + low-VIX regime favors defensive YTD-leader compounders into a quiet macro week.
+2. **XLB (Materials ETF)** — sector +15.67% YTD (#3), pairs with Energy/Industrials as the cyclical-rotation leg. Entry at market, stop 10% trail, target +20%, R:R 2:1. Allocation up to 20% ($20k). Catalyst: rotation + commodity-tape strength + Industrials momentum cluster.
+3. **XLI (Industrials ETF)** — sector +11.92% YTD, in the leadership cluster. Entry at market, stop 10% trail, target +18%, R:R ~2:1. Allocation up to 15% ($15k). Catalyst: rotation tape + industrial-cycle re-acceleration into low-VIX regime.
+4. **XLE (Energy ETF)** — sector +22.34% YTD leader, but oil $101.50 is mid-triangle ($90–110) and Iran/Hormuz remains pure-binary. Author as a midday CONDITIONAL rather than at-the-open (see below) — the geopolitical sensitivity warrants intraday confirmation.
+5. **AAPL / AMZN / single-name tech** — capex-bear theme is fresh, AAPL tariff overhang unquantified. SKIP today; wait for the tape to digest fully.
+6. **GME (potential EBAY bid headline)** — pure single-name binary, no edge. SKIP.
+
+### Conditional Entries (midday-eligible) — up to 3
+1. **XLE** — allocation $15,000 (15% of equity), stop 10% trail GTC, target +20% from entry, R:R 2:1
+   Condition: By ~12:00 ET, midday must confirm: (a) no Iran/Hormuz breakthrough headline (a breakthrough is -10% gap on XLE — kill switch); (b) WTI holding above $100 spot (round-trip below $100 = sector-momentum break, kill); (c) S&P 500 not red >0.50% (broader-tape risk-off invalidates rotation-leader thesis); (d) VIX not spiking above 20 (regime change). All four → midday entry at market with 10% trail GTC.
+   Catalyst: Sector +22.34% YTD leader; Strait of Hormuz still closed keeps geopolitical premium; "Gulf proposals stabilize oil" headline gives the mid-triangle compression a downside floor without removing upside optionality. Genuinely benefits from intraday confirmation because oil tape is event-driven within the session.
+
+### Risk Factors
+- Iran / Strait of Hormuz still binary — breakthrough = -10% gap on XLE, oil round-trip; breakdown = +5% gap on XLE, oil retest of $110+.
+- Capex-bear contagion (META Wed, AMZN Thu) is fresh, blunts any tech-side bounce; sympathetic tech entries today carry that overhang. Not relevant for our XLP/XLB/XLI/XLE leg but worth flagging if rotation reverses.
+- AAPL "tariff impacts" still unquantified post-print — opaque overnight risk for the mega-cap tape.
+- VIX 16.89 implies low-vol complacency; gap-open risk on any unscheduled headline (Hormuz, tariff, geopolitical).
+- Friday May 8 NFP + ISM Services double-print is the week's binary — entries today should size for ability to hold through that print, or else size lighter and reassess Thu PM.
+- Week 2 deployment pressure is real after week 1's 0/6 trades — the entry filter must remain disciplined; rotation-momentum ideas above are independently justified, not deployment-pressure-driven.
+
+### Decision
+TRADE. Three at-the-open candidates (XLP, XLB, XLI — sector-momentum rotation leaders, low individual-name binary risk, pass entry checklist with structural catalyst + 2:1 R:R + 10% trail) plus one midday XLE conditional. Total notional if fully executed: $20k + $20k + $15k + $15k = $70k (~70% deployed) — within 75-85% target band even allowing for one trade not to fire. Market-open routine should evaluate each against the buy-side gate (max 3/day, max 6/week, ≤20% per position, ≤6 total positions) and execute at market with 10% trailing GTC stops attached. If risk-off tape opens (S&P -0.50%+, VIX 20+), market-open should HOLD on the at-open candidates and let midday handle XLE only.
