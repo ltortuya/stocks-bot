@@ -54,3 +54,14 @@ No positions yet. Bot launches on the next trading session.
 | 2026-05-04 | XLI | BUY | 87 | $172.47 | 10% trail GTC (init $155.12) | Industrials sector +11.92% YTD; in the leadership cluster, industrial-cycle re-acceleration into low-VIX regime. | +18% from entry | ~2:1 |
 
 **Notes:** Week 2 opens with 3 at-the-open buys per today's RESEARCH-LOG decision (TRADE). All three are sector ETFs riding the equal-weight / rotation-leader thesis (no single-name binary risk). Entry checklist passed for each: documented catalyst (sector-momentum YTD leader), 10% trailing GTC stop attached, ≥2:1 R:R target, ≤20% per position. Buy-side gate: 3 new positions (3/6 cap), 3 trades today (at the 3/3 daily cap — XLE midday conditional cannot fire today regardless), 3 trades this week (3/6 cap). Cost basis $54,841 (~54.8% deployed); below 75-85% target band but XLP/XLB sized at full 20% each and XLI at 15% per pre-market plan, with XLE conditional reserved for midday. Daytrade count 0/3 (trail stops are GTC, won't trigger same-day unless market drops 10%). Initial trail-stop hwm/stop set on first quote at order placement; will ratchet upward with price per 10% trail logic. Trail-tighten triggers (7% at +15%, 5% at +20%) apply per strategy.
+
+### May 04 — EOD Snapshot (Day 6, Monday)
+**Portfolio:** $99,804.76 | **Cash:** $45,158.79 (45.25%) | **Day P&L:** -$195.24 (-0.20%) | **Phase P&L:** -$195.24 (-0.20%)
+
+| Ticker | Shares | Entry | Close | Day Chg | Unrealized P&L | Stop |
+| — | — | — | — | — | — | — |
+| XLP | 239 | $83.36 | $83.54 | -0.75% | +$43.71 (+0.22%) | $75.92 (10% trail, hwm $84.35) |
+| XLB | 390 | $51.06 | $50.77 | -1.13% | -$114.05 (-0.57%) | $46.08 (10% trail, hwm $51.20) |
+| XLI | 87 | $172.47 | $171.03 | -1.12% | -$124.90 (-0.83%) | $155.89 (10% trail, hwm $173.21) |
+
+**Notes:** First day of capital deployment after a full week of 100% cash. Opened 3 sector-ETF longs at the open (XLP, XLB, XLI) per pre-market RESEARCH-LOG decision; all three closed modestly red on a soft tape — XLP -0.75%, XLB -1.13%, XLI -1.12% — leaving net unrealized -$195.24 and Day P&L -$195.24 (-0.20%). Phase P&L matches at -0.20% since this is the first non-flat day. Trades today 3/3 (daily cap maxed, blocked the XLE midday conditional from firing as expected); trades this week 3/6. Capital deployed ~54.75% ($54,646 mkt value vs. $99,805 equity), still under the 75-85% target band by design — XLE remains the reserved 4th leg for tomorrow if Energy holds the rotation thesis. All three trailing GTC stops live at 10% with hwms set; no tighten triggers in play (need +15% to tighten to 7%). No stop hits, no manual cuts (none below -7%). Tomorrow: re-run pre-market, evaluate XLE add to push deployment toward 75% band, monitor for any -7% manual-cut triggers.
