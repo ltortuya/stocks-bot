@@ -315,6 +315,7 @@ HOLD. Zero at-the-open entries, zero midday conditionals. Capex-bear theme + ISM
 1. **XLE** — allocation $15,000 (15% of equity), stop 10% trail GTC, target +20% from entry, R:R 2:1
    Condition: By ~12:00 ET, midday must confirm: (a) no Iran/Hormuz breakthrough headline (a breakthrough is -10% gap on XLE — kill switch); (b) WTI holding above $100 spot (round-trip below $100 = sector-momentum break, kill); (c) S&P 500 not red >0.50% (broader-tape risk-off invalidates rotation-leader thesis); (d) VIX not spiking above 20 (regime change). All four → midday entry at market with 10% trail GTC.
    Catalyst: Sector +22.34% YTD leader; Strait of Hormuz still closed keeps geopolitical premium; "Gulf proposals stabilize oil" headline gives the mid-triangle compression a downside floor without removing upside optionality. Genuinely benefits from intraday confirmation because oil tape is event-driven within the session.
+   → Skipped (12:01 CT): gate — trades today already at 3/3 daily cap (XLP/XLB/XLI fired at open). Conditional cannot fire today regardless of confirmation, per pre-market plan.
 
 ### Risk Factors
 - Iran / Strait of Hormuz still binary — breakthrough = -10% gap on XLE, oil round-trip; breakdown = +5% gap on XLE, oil retest of $110+.
