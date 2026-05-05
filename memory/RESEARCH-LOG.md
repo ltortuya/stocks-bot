@@ -327,3 +327,51 @@ HOLD. Zero at-the-open entries, zero midday conditionals. Capex-bear theme + ISM
 
 ### Decision
 TRADE. Three at-the-open candidates (XLP, XLB, XLI — sector-momentum rotation leaders, low individual-name binary risk, pass entry checklist with structural catalyst + 2:1 R:R + 10% trail) plus one midday XLE conditional. Total notional if fully executed: $20k + $20k + $15k + $15k = $70k (~70% deployed) — within 75-85% target band even allowing for one trade not to fire. Market-open routine should evaluate each against the buy-side gate (max 3/day, max 6/week, ≤20% per position, ≤6 total positions) and execute at market with 10% trailing GTC stops attached. If risk-off tape opens (S&P -0.50%+, VIX 20+), market-open should HOLD on the at-open candidates and let midday handle XLE only.
+
+
+## 2026-05-05 — Pre-market Research
+
+(Tuesday — Day 7, week 2 day 2. Hold 3 sector-ETF longs from yesterday (XLP/XLB/XLI), all with 10% trail GTCs live. Cash $45,158.79 (~45.3%). Today's tape: WTI gapped +3.75% to $105 on May 4 close; VIX +8.95% to 18.51 on May 4 (regime-shift yellow flag); ISM Services PMI + JOLTS double-print at 10:00 ET; AMD/PYPL/PFE/SMCI earnings on the day. Daily cap resets to 3/3, weekly cap 3/6 used.)
+
+### Account
+- Equity: $99,814.75
+- Cash: $45,158.79 (45.25%)
+- Buying power: $144,973.54
+- Daytrade count: 0
+- Positions: XLP 239 sh @ $83.36 (mkt $19,980, +$58.05 / +0.29%), XLB 390 sh @ $51.06 (mkt $19,800, -$114.05 / -0.57%), XLI 87 sh @ $172.47 (mkt $14,875, -$129.25 / -0.86%). Cost basis $54,841 (~54.8% deployed).
+- Open orders: 3 trail-stop GTCs — XLP $75.92 stop / hwm $84.35; XLB $46.08 stop / hwm $51.20; XLI $155.89 stop / hwm $173.21. All trail 10%, none within 3% of price, none below cost-basis at -7% trigger.
+
+### Market Context
+- WTI / Brent: WTI ~$105.13 (May 4 close, +3.75%; intraday range $100.36–109.39 — high-vol session). Brent ~$116 (May 1 print). Symmetrical-triangle compression resolved upward intraday yesterday. Iran/Hormuz tape still effectively closed.
+- S&P 500 futures: ESM26 ~7,227 premarket, -0.12% (Nasdaq -0.10%) into the open. Cash S&P closed May 4 at 7,200.75 (-0.41% vs Fri's 7,254). Tape softened on yesterday's oil spike + Apr-MTD profit-taking.
+- VIX: 18.51 (May 4 close, +8.95% from 16.99 on May 1). Still inside 15–20 normal band but the +8.95% jump is the largest single-day move since the FOMC week — regime-shift watch on; not a hold-disqualifier yet.
+- Today's catalysts: ISM Services PMI 10:00 ET (cons 53.7, prev 54.0 — consensus expects soft-but-expansion; Employment subindex flagged at 45.2 = contraction, Prices Paid 70.7 = hot; stagflation-tilt signal pre-NFP); JOLTS 10:00 ET (cons 6.85M vs prev 6.88M); Fed Chair Bowman 10:00 ET (3pm GMT), Fed Barr 12:30 ET (5:30pm GMT); AMD + SMCI report AMC tonight.
+- Earnings before open: PFE, CVS, CMI, DUK, MAR, DD, NRG, PAYC, BNTX, BRBR, DOCN, CIGI — none in our held tickers, no sector-ETF impact of size.
+- Economic calendar: Quiet window through Thu after today's ISM Services / JOLTS. Friday May 8 NFP (cons +62k, unemployment 4.3%) + ISM Services PMI was the prior framing; today's print is the warm-up. RBA decision overnight (74% odds +25bp, non-USD). New Home Sales today (cons 0.652M, +3.0% MoM rebound from -17.6%).
+- Sector momentum YTD (May 1 totalrealreturns total-return, dividends reinvested vs SPY +5.97%): XLE +32.49% (leader, up from +22.34% prior week as oil spike hit), XLK +12.57%, XLI +11.81%, XLU +9.80%, XLP +8.96%, XLB not tabled but prior week ~+15.67% — call it mid-pack rotation leg, XLF -4.72%. Equal-weight rotation theme intact; Energy regaining undisputed leadership on yesterday's $105 oil print. Held XLP/XLB/XLI all sit in the leadership cluster; thesis on each remains intact (no -7% triggers, no thesis-break news).
+
+### Trade Ideas
+1. **XLE (Energy ETF)** — sector +32.49% YTD (re-extended on yesterday's WTI +3.75% spike to $105). Yesterday's deferred 4th leg (was midday conditional, didn't fire because daily cap was at 3/3). Today daily cap resets, capacity available. Author as MIDDAY CONDITIONAL again rather than at-the-open — Iran/Hormuz still pure-binary AND ISM Services + JOLTS print at 10:00 ET adds tape risk that intraday confirmation can clear. Allocation $15,000 (15% of equity), 10% trail GTC, target +20%, R:R 2:1. See conditional below.
+2. **HOLD existing XLP/XLB/XLI** — all three within trail-stop range, none at -7%, all in the YTD-leadership rotation cluster. Trail-tighten triggers (7% at +15%, 5% at +20%) not in play yet. No add to existing names.
+3. **AMD / SMCI** — report AMC; chip-tape binary. SKIP earnings entries per strategy.
+4. **PFE / CVS / CMI / DUK / MAR / DD** — BMO earnings; SKIP, earnings binary, no edge.
+5. **XLU (Utilities ETF)** — sector +9.80% YTD, defensive cousin of XLP that benefits from VIX regime-shift. Potential 5th leg if the next 1–2 sessions confirm regime change (VIX > 20 hold) AND XLP/XLB/XLI hold their trail stops. Not authored today — premature, watch-only.
+6. **XLK / single-name tech** — capex-bear overhang from META Wed / AMZN Thu still fresh; AMD AMC tonight is the next mega-cap chip print. SKIP today regardless of ISM print.
+
+### Conditional Entries (midday-eligible) — up to 3
+1. **XLE** — allocation $15,000 (15% of equity), stop 10% trail GTC, target +20% from entry, R:R 2:1
+   Condition: By ~12:00 ET, midday must confirm ALL of: (a) ISM Services print not a stagflation shock (Employment subindex not below 43, Prices Paid not above 75 simultaneously — that combo kills the rotation tape); (b) WTI holding above $102 spot (round-trip below $102 = giveback of yesterday's spike, momentum break); (c) S&P 500 not red >0.50% intraday (broader-tape risk-off invalidates rotation-leader thesis); (d) VIX not above 21 (regime-shift breach, kill); (e) no Iran/Hormuz breakthrough headline (a breakthrough is -10% gap on XLE, kill switch — preserved from yesterday's gating). All five → midday entry at market with 10% trail GTC.
+   Catalyst: Sector +32.49% YTD undisputed leader; WTI +3.75% spike to $105 yesterday confirms upside resolution of the $90–110 triangle; Strait of Hormuz still closed maintains geopolitical premium. Genuinely benefits from intraday confirmation because the 10:00 ET ISM Services + JOLTS print is event-driven within the session and can re-rate the entire rotation tape in either direction.
+
+### Risk Factors
+- VIX +8.95% pop on May 4 (16.99 → 18.51) is the largest single-day move since FOMC week — yellow flag for regime shift. A break above 20 is the threshold that flips the held-positions disposition from "hold" to "tighten manually."
+- ISM Services 10:00 ET is the binary of the day. Employment subindex consensus 45.2 (contraction) is the pre-NFP read — a print at 43 or below pre-prints next week's NFP miss; Prices Paid 70.7 is the inflation tell — print 73+ alongside soft Employment = stagflation signal that breaks the rotation-leadership thesis.
+- JOLTS 10:00 ET cons 6.85M (prev 6.88M) — small-magnitude print, but a sub-6.5M shock would compound any soft ISM Employment read.
+- Iran / Strait of Hormuz still binary — yesterday's WTI +3.75% spike confirms upside binary remains live; a breakthrough headline = -10% gap on XLE, oil round-trip below $100; a breakdown = +5% gap on XLE.
+- AMD + SMCI report AMC tonight — chip-tape binary into Wed open; no held exposure but rotation-tape risk if mega-cap chip-bear narrative spreads.
+- Held positions are all in unrealized-loss range except XLP (-0.57%, -0.86%, +0.29%); none near -7% triggers, none near trail-stop triggers. No action required from this entry alone.
+- Friday May 8 NFP + ISM Services double-print is the week's binary — sizing on any new entry today must allow a hold through Friday, or else stay on the sidelines.
+- Week 2 deployment pressure: still under 75-85% target band at ~54.8% deployed; XLE conditional would lift to ~70% if filled. Do NOT force an add purely for deployment math.
+
+### Decision
+HOLD at the open. Zero at-the-open buys; existing XLP/XLB/XLI continue under their 10% trail GTCs (no thesis break, no -7% triggers). One midday XLE conditional authored, gated on ISM Services / JOLTS reaction (10:00 ET) plus WTI/VIX/S&P levels and Iran/Hormuz tape. If all five gates clear by ~12:00 ET, market-open / midday routine executes XLE at market with 10% trail GTC, lifting deployment from ~54.8% to ~70% — still inside the 75-85% target band on the upper allowance. If any gate fails, HOLD entirely and let the tape print Friday's NFP before reassessing further legs. Daily cap available 3/3, weekly cap 3/6 → conditional entry has full headroom. Patience > activity.
