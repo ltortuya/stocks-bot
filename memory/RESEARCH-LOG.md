@@ -362,6 +362,7 @@ TRADE. Three at-the-open candidates (XLP, XLB, XLI — sector-momentum rotation 
 1. **XLE** — allocation $15,000 (15% of equity), stop 10% trail GTC, target +20% from entry, R:R 2:1
    Condition: By ~12:00 ET, midday must confirm ALL of: (a) ISM Services print not a stagflation shock (Employment subindex not below 43, Prices Paid not above 75 simultaneously — that combo kills the rotation tape); (b) WTI holding above $102 spot (round-trip below $102 = giveback of yesterday's spike, momentum break); (c) S&P 500 not red >0.50% intraday (broader-tape risk-off invalidates rotation-leader thesis); (d) VIX not above 21 (regime-shift breach, kill); (e) no Iran/Hormuz breakthrough headline (a breakthrough is -10% gap on XLE, kill switch — preserved from yesterday's gating). All five → midday entry at market with 10% trail GTC.
    Catalyst: Sector +32.49% YTD undisputed leader; WTI +3.75% spike to $105 yesterday confirms upside resolution of the $90–110 triangle; Strait of Hormuz still closed maintains geopolitical premium. Genuinely benefits from intraday confirmation because the 10:00 ET ISM Services + JOLTS print is event-driven within the session and can re-rate the entire rotation tape in either direction.
+   → Skipped (13:08 CT): gate (e) — Iran/Hormuz cease-fire / "Strait of Hormuz disruptions ease" headline = breakthrough kill switch; gate (b) WTI round-trip $105→$102 = momentum break. Default-skip on ambiguous, two gates failed/at-threshold.
 
 ### Risk Factors
 - VIX +8.95% pop on May 4 (16.99 → 18.51) is the largest single-day move since FOMC week — yellow flag for regime shift. A break above 20 is the threshold that flips the held-positions disposition from "hold" to "tighten manually."
@@ -375,3 +376,13 @@ TRADE. Three at-the-open candidates (XLP, XLB, XLI — sector-momentum rotation 
 
 ### Decision
 HOLD at the open. Zero at-the-open buys; existing XLP/XLB/XLI continue under their 10% trail GTCs (no thesis break, no -7% triggers). One midday XLE conditional authored, gated on ISM Services / JOLTS reaction (10:00 ET) plus WTI/VIX/S&P levels and Iran/Hormuz tape. If all five gates clear by ~12:00 ET, market-open / midday routine executes XLE at market with 10% trail GTC, lifting deployment from ~54.8% to ~70% — still inside the 75-85% target band on the upper allowance. If any gate fails, HOLD entirely and let the tape print Friday's NFP before reassessing further legs. Daily cap available 3/3, weekly cap 3/6 → conditional entry has full headroom. Patience > activity.
+
+### Afternoon Addendum — Midday Scan (13:08 CT)
+- Held tape: XLP +0.89% / +0.67% day, XLB +1.09% / +1.92% day (turned green), XLI -0.03% / +0.84% day. None at -7%, none at +15% tighten trigger. Held trails: XLP stop $75.92/hwm $84.35; XLB stop $46.61/hwm $51.79 (hwm ratcheted up from $51.20 yesterday); XLI stop $155.89/hwm $173.21. No cuts, no tightens, no thesis breaks — all three sit in YTD-leadership rotation cluster intact.
+- ISM Services PMI Apr: headline 53.6 (cons 53.7, prev 54.0) — soft but expansion, no shock. Employment subindex 45.2 (inline with cons, well above the 43 stagflation threshold). Prices Paid not yet pulled by Perplexity. No stagflation kill.
+- WTI: ~$102 intraday — round-tripped from yesterday's $105.13 close (-2.9% giveback) on Middle East de-escalation. Right at the conditional's $102 floor → momentum break per the conditional's prose.
+- Iran/Hormuz: NEW HEADLINE — "U.S. reports holding cease-fire in Middle East erodes geopolitical risk premium; Strait of Hormuz disruptions ease" (Polymarket / Twelve Data context). This is exactly the (e) breakthrough kill switch the pre-market plan flagged.
+- S&P 500: SPY $724.28 → S&P ~7,242, ~+0.6% intraday vs May 4 close 7,200.75. Tape constructive, not a risk-off (gate (c) clear).
+- VIX: not pulled (Perplexity declined). Tape not behaving like a >21 spike — SPY green and rotation cluster green, suggests VIX likely back inside 18–19 normal band.
+- XLE conditional → SKIPPED (gate (b) momentum break + gate (e) kill switch). Audit line appended above.
+- Deployment unchanged at ~54.8%. Tomorrow's pre-market should reassess: (1) whether the cease-fire is durable (XLE thesis materially weakened if Hormuz reopens), (2) XLU as defensive 5th-leg watch given VIX still elevated vs. last week, (3) AMD/SMCI AMC reaction tape for chip-cluster signal.
