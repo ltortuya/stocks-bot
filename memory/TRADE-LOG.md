@@ -65,3 +65,14 @@ No positions yet. Bot launches on the next trading session.
 | XLI | 87 | $172.47 | $171.03 | -1.12% | -$124.90 (-0.83%) | $155.89 (10% trail, hwm $173.21) |
 
 **Notes:** First day of capital deployment after a full week of 100% cash. Opened 3 sector-ETF longs at the open (XLP, XLB, XLI) per pre-market RESEARCH-LOG decision; all three closed modestly red on a soft tape — XLP -0.75%, XLB -1.13%, XLI -1.12% — leaving net unrealized -$195.24 and Day P&L -$195.24 (-0.20%). Phase P&L matches at -0.20% since this is the first non-flat day. Trades today 3/3 (daily cap maxed, blocked the XLE midday conditional from firing as expected); trades this week 3/6. Capital deployed ~54.75% ($54,646 mkt value vs. $99,805 equity), still under the 75-85% target band by design — XLE remains the reserved 4th leg for tomorrow if Energy holds the rotation thesis. All three trailing GTC stops live at 10% with hwms set; no tighten triggers in play (need +15% to tighten to 7%). No stop hits, no manual cuts (none below -7%). Tomorrow: re-run pre-market, evaluate XLE add to push deployment toward 75% band, monitor for any -7% manual-cut triggers.
+
+### May 05 — EOD Snapshot (Day 7, Tuesday)
+**Portfolio:** $100,341.43 | **Cash:** $45,158.79 (45.00%) | **Day P&L:** +$536.67 (+0.54%) | **Phase P&L:** +$341.43 (+0.34%)
+
+| Ticker | Shares | Entry | Close | Day Chg | Unrealized P&L | Stop |
+| — | — | — | — | — | — | — |
+| XLP | 239 | $83.36 | $84.06 | +0.62% | +$167.99 (+0.84%) | $76.01 (10% trail, hwm $84.46) |
+| XLB | 390 | $51.06 | $51.52 | +1.72% | +$178.45 (+0.90%) | $46.61 (10% trail, hwm $51.79) |
+| XLI | 87 | $172.47 | $172.41 | +0.84% | -$5.01 (-0.03%) | $155.89 (10% trail, hwm $173.21) |
+
+**Notes:** Constructive bounce after Monday's red opening day — all three sector-ETF positions green on the day (XLB +1.72%, XLI +0.84%, XLP +0.62%) flipping the basket from -$195 unrealized at Monday close to +$341 unrealized today. Day P&L +$536.67 (+0.54%) erases Monday's drawdown and pushes Phase P&L into the green at +0.34%. No trades today (0/3 daily cap, still 3/6 weekly cap) — pre-market aborted earlier today on missing env vars per the pre-launch abort log, so no XLE add or new entries fired. Capital deployed unchanged at ~55.0% ($55,182 mkt value vs. $100,341 equity), still under the 75-85% target band; XLE remains the candidate 4th leg pending tomorrow's pre-market. All three trailing stops still 10%, hwms ratcheted modestly with today's strength (XLP $84.35→$84.46, XLB $51.20→$51.79, XLI $173.21 flat). No tighten triggers in play (XLB +0.90% unrealized is best of the three, well below +15% threshold). No stop hits, no -7% manual-cut candidates. Tomorrow: pre-market with proper env, evaluate XLE add to push deployment toward 75% band, monitor XLI which is the laggard.
