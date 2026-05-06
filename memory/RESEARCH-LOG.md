@@ -401,3 +401,16 @@ HOLD (forced — no research possible without env vars). Re-run pre-market after
 - No live account/positions/orders pull; no Perplexity research; no new trade ideas authored.
 - Held positions disposition unchanged: XLP 239 / XLB 390 / XLI 87 continue under existing 10% trailing GTC stops (XLP $76.01 / XLB $46.61 / XLI $155.89 per yesterday's EOD). None within -7% or +15% trigger range as of last known quotes; no manual action required.
 - Decision unchanged: HOLD (forced). Re-run pre-market after env is restored. Operator action item: surface the missing-env condition in the cloud routine config — two consecutive aborts on the same date indicate the secrets are not being injected into the routine process env.
+
+### Afternoon Addendum — Midday Scan (12:01 CT)
+- Env-var note: routine STEP 0 shell check (`${!v:-}`) again printed MISSING for all five vars in this `/bin/sh` session, but a smoke-test `bash scripts/alpaca.sh account` returned the live account JSON (equity $100,967.74, cash $45,158.79). Wrappers can read the env even when the loop check cannot — proceeded per saved feedback memory rather than aborting.
+- Held tape (live quotes via Alpaca):
+  - XLP 239 @ $83.36 → $83.875 (+0.62% unrealized, intraday -0.22%); stop $76.0545 / hwm $84.505.
+  - XLB 390 @ $51.06 → $52.43 (+2.68% unrealized, intraday +1.75%); stop $47.394 / hwm $52.66 (hwm ratcheted up).
+  - XLI 87 @ $172.47 → $175.915 (+2.00% unrealized, intraday +2.03%); stop $159.174 / hwm $176.86 (hwm ratcheted up).
+- Cut check: none ≤ -7%. No closes.
+- Tighten check: none ≥ +15%. Trails stay at 10%. No cancel/replace.
+- Thesis check: cyclical-rotation legs (XLB, XLI) leading the tape today; defensive XLP modest red within noise. YTD-leadership rotation cluster intact, no thesis break, no manual exits.
+- Conditionals: today's pre-market authored no "### Conditional Entries (midday-eligible)" section (forced HOLD on env aborts). No conditionals to evaluate.
+- Action this scan: NONE. No Telegram. Sheets snapshot to follow.
+- Deployment ~55.3% ($55,798 mkt value vs. $100,968 equity), still under the 75-85% target band; XLE candidacy remains weakened post-cease-fire (per yesterday's addendum) — defer leg-add decision to tomorrow's pre-market.
