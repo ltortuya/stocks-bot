@@ -386,3 +386,10 @@ HOLD at the open. Zero at-the-open buys; existing XLP/XLB/XLI continue under the
 - VIX: not pulled (Perplexity declined). Tape not behaving like a >21 spike — SPY green and rotation cluster green, suggests VIX likely back inside 18–19 normal band.
 - XLE conditional → SKIPPED (gate (b) momentum break + gate (e) kill switch). Audit line appended above.
 - Deployment unchanged at ~54.8%. Tomorrow's pre-market should reassess: (1) whether the cease-fire is durable (XLE thesis materially weakened if Hormuz reopens), (2) XLU as defensive 5th-leg watch given VIX still elevated vs. last week, (3) AMD/SMCI AMC reaction tape for chip-cluster signal.
+
+## 2026-05-06 — Pre-market Research
+
+ABORT: env vars missing — ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID. No wrappers run, no live account/positions/orders pull, no Perplexity research. Telegram alert sent via wrapper fallback (creds resolved through wrapper config, not process env). Per routine: STOP and exit on missing env. Held positions per yesterday's EOD (XLP 239 / XLB 390 / XLI 87, all green, all under 10% trail GTCs, none at -7% or +15% triggers) continue under existing GTC trail stops — no new at-the-open action authored today.
+
+### Decision
+HOLD (forced — no research possible without env vars). Re-run pre-market after env is restored.
