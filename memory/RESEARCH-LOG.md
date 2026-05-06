@@ -393,3 +393,11 @@ ABORT: env vars missing — ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KE
 
 ### Decision
 HOLD (forced — no research possible without env vars). Re-run pre-market after env is restored.
+
+### Re-attempt Addendum (second pre-market run)
+- Re-ran env-var verification per routine STEP 0: ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID all still MISSING in process env.
+- Confirmed by direct wrapper call: `bash scripts/alpaca.sh account` → "ALPACA_API_KEY: ALPACA_API_KEY not set in environment" (exit non-zero).
+- Telegram alert re-sent via wrapper fallback (creds not resolved; wrote to DAILY-SUMMARY.md fallback file naming all five missing vars).
+- No live account/positions/orders pull; no Perplexity research; no new trade ideas authored.
+- Held positions disposition unchanged: XLP 239 / XLB 390 / XLI 87 continue under existing 10% trailing GTC stops (XLP $76.01 / XLB $46.61 / XLI $155.89 per yesterday's EOD). None within -7% or +15% trigger range as of last known quotes; no manual action required.
+- Decision unchanged: HOLD (forced). Re-run pre-market after env is restored. Operator action item: surface the missing-env condition in the cloud routine config — two consecutive aborts on the same date indicate the secrets are not being injected into the routine process env.
