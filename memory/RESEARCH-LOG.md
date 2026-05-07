@@ -459,3 +459,16 @@ Reasoning: today is a structurally quiet macro day (no event print, no earnings 
 
 ### Decision
 HOLD at the open. Zero at-the-open buys, zero midday conditionals. Held XLP/XLB/XLI continue under their 10% trailing GTCs (no thesis break, no -7% triggers, no +15% tighten triggers). XLE candidacy materially weakened by Hormuz cease-fire holding — defer rather than chase. XLU watch-only — premature without VIX regime break. Daily cap available 3/3, weekly cap 3/6 — full headroom preserved into tomorrow's potential NFP binary. Patience > activity. Reassess Friday pre-market with macro print in hand.
+
+### Afternoon Addendum — Midday Scan (12:01 CT)
+- Env-var note: routine STEP 0 shell check again printed MISSING for all four vars in this `/bin/sh` session, but smoke-test `bash scripts/alpaca.sh account` returned live JSON (equity $100,537.04, cash $45,158.79). Wrappers have creds — proceeded per saved feedback memory rather than aborting.
+- Held tape (live quotes via Alpaca):
+  - XLP 239 @ $83.357 → $83.80 (+0.53% unrealized, intraday -0.52%); stop $76.0545 / hwm $84.505 (unchanged).
+  - XLB 390 @ $51.062 → $51.715 (+1.28% unrealized, intraday -1.33%); stop $47.493 / hwm $52.77 (hwm ratcheted from $52.665).
+  - XLI 87 @ $172.466 → $174.545 (+1.21% unrealized, intraday -1.32%); stop $159.948 / hwm $177.72 (hwm ratcheted from $177.34).
+- Cut check: none ≤ -7% (worst is XLP +0.53%). No closes.
+- Tighten check: none ≥ +15% (best is XLB +1.28%). Trails stay at 10%. No cancel/replace.
+- Thesis check: all three sector-ETF rotation legs in unison-red intraday on a soft tape (~-1.3% each on XLB/XLI, XLP -0.5%) — no idiosyncratic break, YTD-leadership rotation cluster intact. No manual exits.
+- Conditionals: today's pre-market authored zero "### Conditional Entries (midday-eligible)" entries (deliberate — XLE thesis weakened post-cease-fire, XLU watch-only). No conditionals to evaluate.
+- Action this scan: NONE. No Telegram.
+- Deployment ~55.1% ($55,382 mkt value vs. $100,537 equity); cash reserve preserved into tomorrow's potential NFP binary per pre-market plan. Daily cap 0/3, weekly cap 3/6.
