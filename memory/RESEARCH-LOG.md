@@ -472,3 +472,50 @@ HOLD at the open. Zero at-the-open buys, zero midday conditionals. Held XLP/XLB/
 - Conditionals: today's pre-market authored zero "### Conditional Entries (midday-eligible)" entries (deliberate — XLE thesis weakened post-cease-fire, XLU watch-only). No conditionals to evaluate.
 - Action this scan: NONE. No Telegram.
 - Deployment ~55.1% ($55,382 mkt value vs. $100,537 equity); cash reserve preserved into tomorrow's potential NFP binary per pre-market plan. Daily cap 0/3, weekly cap 3/6.
+
+## 2026-05-08 — Pre-market Research
+
+(Friday — Day 10, week 2 day 5; NFP day. Hold 3 sector-ETF longs (XLP/XLB/XLI), all green and well within trail stops. WTI continues to soften: $107 May 5 → $102.56 May 6 → $97.08 May 7 close → ~$96–97 spot. Hormuz cease-fire holding 3rd consecutive session. Today's binary: April Employment Situation (NFP / Unemployment / Hourly Earnings) at 8:30 ET, ISM Services / JOLTS / ISM Mfg / Construction Spending at 10:00 ET. Daily cap resets to 3/3, weekly cap 3/6 used. Env-var loop check again printed MISSING — wrapper smoke-test confirmed creds work; proceeded per saved feedback memory. Weekly review checkpoint follows market close.)
+
+### Account
+- Equity: $100,475.41
+- Cash: $45,158.79 (44.94%)
+- Buying power: $145,634.20
+- Daytrade count: 0
+- Positions: XLP 239 sh @ $83.357 (mkt $20,080.78, +$158.43 / +0.79%), XLB 390 sh @ $51.062 (mkt $20,139.60, +$225.25 / +1.13%), XLI 87 sh @ $172.466 (mkt $15,096.24, +$91.73 / +0.61%). Cost basis $54,841 (~55.1% deployed at last quote).
+- Open orders: 3 trail-stop GTCs — XLP $76.0545 stop / hwm $84.505; XLB $47.493 stop / hwm $52.77; XLI $159.948 stop / hwm $177.72. All trail 10%, none within 3% of price, none below cost-basis at -7% trigger.
+
+### Market Context
+- WTI / Brent: WTI ~$96–97/bbl spot (May 7 close $97.08, May 8 range $95.50–$99.47). Brent ~$108–110 (typical premium; one source flagging $120 looks stale). Symmetrical-triangle resolved DOWNWARD post-cease-fire — third consecutive session of softening; geopolitical premium unwinding cleanly.
+- S&P 500 futures: ESM26 ~7,362.75 May 7 settle (+0.03%); cash S&P closed May 7 at -0.40%, Nasdaq -0.28%, Dow -0.51% — broad consolidation pre-NFP. Premarket flat-to-slightly-positive; massive E-mini put volume (8M+ contracts) signals options-side hedging into the print.
+- VIX: 17.39 (May 6 close per FRED/YCharts); no fresh print captured. BACK INSIDE the calmer 16–18 band — yesterday's amber regime-shift watch flag has cooled; rotation tape can keep working unless NFP shocks.
+- Today's catalysts: NFP DAY — April Employment Situation 8:30 ET (cons +70k Q2-fwd / unemployment 4.4% steady / hourly earnings +0.3% MoM, +3.7% YoY; March print was +178k, big upside surprise vs +60k cons). ISM Services PMI 10:00 ET. ISM Mfg + JOLTS + Construction Spending 10:00 ET. Triple-print binary day; consolidation in the futures tape reflects the binary.
+- Earnings before open: light day — only ~53 reports vs. 405–566 prior days. No mega-cap of size; no held-ticker overlap. Not tradable for our sector-ETF strategy.
+- Economic calendar: today is THE binary of the week; quiet thereafter through next FOMC. RBA non-USD overnight. CPI not until June 10.
+- Sector momentum YTD (latest snapshot): XLE +28.32% (still #1 but decelerating from +32.63% Wed as oil leaks below $100), XLK +18.25% (capex-bear blunted but rebuilding), XLI +12.49%, XLP +9.06%, XLU +7.82%, SPY +7.91% (benchmark), XLF -4.86% (laggard). Held XLP/XLB/XLI all in or near the leadership cluster; XLP RSI ~80 = overbought signal worth flagging but no thesis break. No held-ticker idiosyncratic news (XLB/XLI sparse coverage; sector-flow story intact).
+
+### Trade Ideas
+1. **HOLD existing XLP/XLB/XLI** — all three +0.61% to +1.13% unrealized, all in YTD-leadership rotation cluster, none at -7% triggers, none at +15% tighten triggers. XLP RSI ~80 overbought is a watch flag, NOT a sell signal — trail GTC handles a momentum unwind. No add to existing names (XLP/XLB at 20% cap by market value; XLI at 15% by design).
+2. **XLE (Energy ETF)** — sector still YTD #1 (+28.32%) but momentum broke down 3rd session running. Cease-fire is now durable (3 sessions); WTI under $100 invalidates the original conditional thesis (geopolitical-binary upside). SKIP. Off the watchlist until oil tape stabilizes or new geopolitical catalyst.
+3. **XLU (Utilities ETF)** — sector +7.82% YTD, defensive cousin of XLP. VIX back in 16–18 band undermines the regime-shift case for adding XLU as a 5th leg. WATCH only; reassess Monday post-NFP if VIX gaps >20 on a shock print.
+4. **AAPL / AMZN / single-name tech** — capex-bear theme dormant; AMD +18% data-center beat is single-name confirmation, not sector-confirming. SKIP, no edge today especially into NFP binary.
+5. **NFP-reaction trades (any ticker)** — explicit SKIP. Strategy is sector-rotation momentum, not macro-print scalping. Let the print clear and reassess Monday.
+
+### Conditional Entries (midday-eligible) — up to 3
+(Zero conditionals authored today.)
+
+Reasoning: today is the macro-binary day of the week (NFP + ISM Services + JOLTS triple-print). Authoring a midday conditional would mean buying INTO the post-print tape with one hour of digestion — that's macro-reaction trading, not the strategy. XLE thesis is broken (cease-fire + WTI sub-$100); XLU watch-only without VIX regime break; held positions need no manual action. Capital reserve is the right disposition; conviction setups belong in Monday's pre-market with the print fully digested over the weekend.
+
+### Risk Factors
+- NFP shock either way: hot print (>+150k, hourly earnings >+0.4% MoM, unemployment <4.3%) = inflation/hawkish-Fed signal, can crater XLP/XLU and broader rotation tape; soft print (<+30k, hourly earnings flat) = stagflation read combined with ISM Services Employment subindex, breaks the rotation-leadership thesis. In-line print (+50–100k, 4.4% steady) = quiet day, held positions hold.
+- Massive E-mini put volume (8M+ contracts) into expiry signals heavy hedging; gap-open risk on either NFP outcome is amplified.
+- ISM Services 10:00 ET is the second leg — Employment subindex still the pre-NFP read concept, Prices Paid the inflation tell. Stagflation-tilt signal would compound a soft NFP.
+- Oil tape: WTI sub-$100 third session means cyclical legs (XLB) carry commodity-tape correlation risk if oil keeps leaking; XLB +1.13% unrealized has limited cushion before approaching stop.
+- XLP RSI ~80 overbought — momentum unwind risk; +0.79% unrealized leaves modest cushion before trail-stop activates ($76.0545 stop = ~9% below entry of $83.357 with hwm $84.505).
+- VIX 17.39 inside normal band but options-tape hedging suggests realized vol could exceed 17.39 after the print prints.
+- Held positions: none near -7% (worst is XLI +0.61%), none near +15% tighten trigger (best is XLB +1.13%); no manual action required from this entry alone.
+- Week-2 deployment ~55.1% vs. 75-85% target; into NFP binary the right disposition is to STAY at 55% rather than force an add. Weekly review later today will diagnose deployment-stagnation if applicable.
+- Friday afternoon thin tape + weekly close positioning amplifies any post-print binary; market-on-close drift can extend the print's reaction.
+
+### Decision
+HOLD at the open. Zero at-the-open buys, zero midday conditionals. Held XLP/XLB/XLI continue under their 10% trailing GTCs. NFP + ISM Services triple-print at 8:30/10:00 ET is the week's macro binary — strategy is sector-rotation momentum, not macro-reaction; capital reserve is the right disposition. XLE candidacy off (cease-fire durable, WTI sub-$100 broke the thesis). XLU watch-only (VIX back in normal band). Daily cap 3/3 available, weekly cap 3/6 — full headroom preserved into Monday's reassessment with NFP fully digested. Weekly review later today will document week-2 results (3 trades, +0.4-something% phase P&L vs. SPY benchmark, deployment-stagnation diagnosis). Patience > activity.
