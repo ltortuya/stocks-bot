@@ -519,3 +519,51 @@ Reasoning: today is the macro-binary day of the week (NFP + ISM Services + JOLTS
 
 ### Decision
 HOLD at the open. Zero at-the-open buys, zero midday conditionals. Held XLP/XLB/XLI continue under their 10% trailing GTCs. NFP + ISM Services triple-print at 8:30/10:00 ET is the week's macro binary — strategy is sector-rotation momentum, not macro-reaction; capital reserve is the right disposition. XLE candidacy off (cease-fire durable, WTI sub-$100 broke the thesis). XLU watch-only (VIX back in normal band). Daily cap 3/3 available, weekly cap 3/6 — full headroom preserved into Monday's reassessment with NFP fully digested. Weekly review later today will document week-2 results (3 trades, +0.4-something% phase P&L vs. SPY benchmark, deployment-stagnation diagnosis). Patience > activity.
+
+## 2026-05-11 — Pre-market Research
+
+(Monday — Day 11, week 3 day 1. Week 2 closed +0.47% phase ($100,466.31). Friday's NFP digested cleanly: SPX cash printed an all-time high at 7,398.51 on Friday May 8 (+0.84% on the week); ES futures premarket today ~7,412.50, -0.09%. WTI continues to soften: $97.08 May 7 → ~$95–97 spot today; Hormuz cease-fire holding 4th consecutive session. Daily cap 3/3 fresh, weekly cap 0/6 fresh. CPI prints Tuesday May 12 at 8:30 ET (cons +3.7% YoY headline, +0.4% MoM / 2.7% YoY core) — the binary of the week. Env-var loop check again printed MISSING for all five vars; wrapper smoke-test confirmed `alpaca.sh account` returns live JSON (per saved feedback memory).)
+
+### Account
+- Equity: $100,470.86
+- Cash: $45,158.79 (44.95%)
+- Buying power: $145,629.65
+- Daytrade count: 0
+- Positions: XLP 239 sh @ $83.357 (mkt $20,121.41, +$199.06 / +0.999%, current $84.19), XLB 390 sh @ $51.062 (mkt $20,124.00, +$209.65 / +1.053%, current $51.60), XLI 87 sh @ $172.466 (mkt $15,066.66, +$62.15 / +0.414%, current $173.18). Cost basis $54,841 / mkt $55,312.07 (~55.05% deployed).
+- Open orders: 3 trail-stop GTCs — XLP $76.32 stop / hwm $84.80; XLB $47.493 stop / hwm $52.77; XLI $159.948 stop / hwm $177.72. All trail 10%, none within 3% of price, none at -7% trigger.
+
+### Market Context
+- WTI / Brent: WTI ~$95.42–$97.41/bbl spot (range tightening on 4th consecutive cease-fire session); Brent ~$103.64–$104.87, premium ~$6–9. Geopolitical premium fully unwound from May 5 $107 peak; oil tape is no longer the rotation-leadership driver.
+- S&P 500 futures: ESM26 ~7,412.50 premarket (-0.09%, vol 75k contracts). SPX cash 7,398.51 May 8 close = ATH on Friday post-NFP relief rally (+0.84% wkly). Futures defending 7,410 support; resistance 7,469–7,585 (Fibonacci) on a break above.
+- VIX: 17.19 May 8 close (Cboe; prev 17.08, intraday open 17.37). Solidly inside 16–18 normal band, regime-shift watch flag is OFF. Realized vol post-NFP was muted.
+- Today's catalysts: STRUCTURALLY QUIET — no major macro print today. Light pre-CPI consolidation expected. AI-capex narrative still dominant in single-name tape (Apple-Intel deal rumor, chipmakers strong).
+- Earnings before open: CEG ($2.54), SPG ($3.01), STE ($2.85), MOS ($0.24), MNDY ($0.93), FOXA ($0.98), B/Barrick ($0.81), TME ($1.37), UAA (-$0.02), PLUG (-$0.10), LULU (this week), BABA AMC. None held, no sector-ETF impact of size (CEG/SPG idiosyncratic, MOS is a single materials name not the ETF).
+- Economic calendar this week: Mon quiet → Tue CPI 8:30 ET (THE binary) → Wed PPI 8:30 ET → Thu Retail Sales + Initial Claims 8:30 ET → Fri quiet. CPI cons headline +3.7% YoY (up from +3.3% prior), core +0.4% MoM / +2.7% YoY. New Fed chair confirmation backdrop amplifies CPI's monetary-policy weight.
+- Sector momentum YTD (May 1/8 snapshots, dividends reinvested vs SPY +8.46%): XLE +25.40% (#1, decelerating from +28.32% last Thu as oil leaks), XLK +22.07% (rebuilding from capex-bear), XLB ~+12% (cross-source estimate, leadership cluster), XLI +11.97% (held, leadership cluster), XLP +8.98% (held, in line with SPY), XLU +5.49%, XLC -0.53%, XLF -5.96 to -8.27% (laggard). Held XLP/XLB/XLI all in leadership/mid-pack rotation cluster; thesis intact, no idiosyncratic news, no -7% triggers, no +15% tighten triggers.
+
+### Trade Ideas
+1. **HOLD existing XLP/XLB/XLI** — all three +0.41% to +1.05% unrealized, all in YTD-leadership rotation cluster, none at -7% triggers, none at +15% tighten triggers. Best leg XLB at +1.053% well below the +15% threshold. Trail-stop GTCs live, hwms ratcheted on Friday's strength (XLP hwm $84.80 vs $84.505 prior). No add to existing names (XLP/XLB at 20% cap by market value; XLI at 15% by design).
+2. **XLE (Energy ETF)** — sector still YTD #1 (+25.40%) but momentum 4th session of deceleration, WTI sub-$100 firmly. Original conditional thesis (geopolitical-binary upside) is fully resolved downward. SKIP. Off the watchlist until oil tape stabilizes above $100 or new geopolitical catalyst emerges.
+3. **XLK (Technology ETF)** — sector +22.07% YTD, capex-bear narrative blunted, AI-tape constructive (AMD +18% data-center beat, Apple-Intel rumor). Not authored today — into CPI binary, adding a high-beta tech leg is event-reaction trading, not the strategy. WATCH for post-CPI reassessment Wednesday if print clears in-line and XLK confirms breakout.
+4. **XLU (Utilities ETF)** — sector +5.49% YTD, defensive cousin of XLP. VIX 17 inside normal band undermines the regime-shift case for adding XLU as a 5th leg. WATCH only; reassess if VIX gaps >20 on CPI shock.
+5. **Single-name earnings (CEG, SPG, LULU, etc.)** — SKIP per strategy. Sector-ETF momentum, not earnings binaries.
+6. **NFP-post / CPI-reaction trades** — explicit SKIP. Wait for the print, reassess Wednesday's pre-market with CPI digested.
+
+### Conditional Entries (midday-eligible) — up to 3
+(Zero conditionals authored today.)
+
+Reasoning: today is a structurally quiet macro day INTO Tuesday's CPI binary. Authoring a midday conditional would mean committing capital one trading session before the week's major macro print — that's the wrong risk-asymmetry vs. waiting for the print to clear. XLE thesis is broken; XLK/XLU are watch-only (need CPI to clear); held positions need no manual action. Capital reserve is the right disposition into CPI; conviction setups belong in Wednesday's pre-market with the print digested.
+
+### Risk Factors
+- CPI Tuesday is the week's binary: hot print (>+3.8% YoY headline, core >+0.5% MoM) = hawkish-Fed re-pricing, can crater XLP/XLU and rate-sensitive cyclicals; soft print (<+3.5% YoY, core <+0.3% MoM) = dovish-tail, lifts equities broadly especially rate-sensitives. In-line print (~+3.7% / +0.4%) = quiet day, SPX consolidates near ATH.
+- SPX at ATH 7,398.51 = elevated-base risk; any CPI shock has more downside asymmetry than upside given valuations. Held positions carry directional beta to a CPI-driven SPX drawdown.
+- Oil tape: WTI sub-$100 4th consecutive session means cyclical legs (XLB) carry commodity-tape correlation risk if oil keeps leaking; XLB +1.053% unrealized has limited cushion before approaching trail.
+- Single-name earnings density today (CEG, SPG, LULU, BABA AMC, etc.) is moderate but idiosyncratic — only sector-flow risk if a cluster of misses tags a thematic sector. Watch CEG (utilities/power) for XLU read-through, MOS (materials) for XLB sympathy (small position weighting in XLB, unlikely to move the ETF materially).
+- New Fed chair confirmation backdrop amplifies CPI's hawkish/dovish tilt — political-monetary crossover risk if confirmation hearings produce dovish/hawkish soundbites.
+- AI-capex narrative is constructive (AMD beat) but two-way; META/AMZN capex-bear ghosts still in tape memory. XLK watch-only, no held tech exposure.
+- Held positions: none near -7% (worst is XLI +0.41%), none near +15% tighten trigger (best is XLB +1.053%); no manual action required from this entry alone.
+- Week 3 deployment ~55% vs. 75-85% target — structural deployment-stagnation persists. Friday's weekly review (commit `3bfd7a2`) flagged this; the disposition into CPI is HOLD reserve, but if CPI clears in-line Wednesday, the bar for adding a 4th leg (XLK or XLU) drops materially.
+- E-mini put volume into Friday was 8M+ contracts (heavy hedging); some of that unwound into Friday's ATH close, but residual hedging tape into CPI can amplify either-way moves.
+
+### Decision
+HOLD at the open. Zero at-the-open buys, zero midday conditionals. Held XLP/XLB/XLI continue under their 10% trailing GTCs (no thesis break, no -7% triggers, no +15% tighten triggers, hwms intact). Tuesday CPI (cons +3.7% YoY / +0.4% MoM core) is the week's macro binary — committing capital into the print one session before is poor risk-asymmetry, especially with SPX at ATH. XLE candidacy off (cease-fire durable 4 sessions, WTI sub-$100); XLK/XLU watch-only into CPI. Daily cap 3/3 available, weekly cap 0/6 fresh — full headroom preserved into Wednesday's post-CPI reassessment. Patience > activity.
