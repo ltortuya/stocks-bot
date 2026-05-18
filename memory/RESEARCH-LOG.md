@@ -823,6 +823,7 @@ HOLD at the open. Zero at-the-open buys. ONE midday conditional authored on XLK 
 1. **XLE** — allocation $14,977 (~15% of equity; ~150-160 sh @ ~$93-100 est. ref, share count to confirm at execution from live quote), stop 10% trail GTC, target +20% from entry, R:R 2:1
    Condition: By ~12:00 ET, ALL FIVE gates must clear for execution at market: (1) **Cross-source confirmation of the Crestwood blockade-extension headline** — at least one additional credible source (Reuters, Bloomberg, WSJ, AP, or a tier-1 oil-trade publication like S&P Platts/Argus) reports the Iran naval blockade extension OR clear escalation language ("extended", "indefinite", "tightened") — if only Crestwood has it and no other source confirms, the print is likely stale/wrong and the trigger doesn't apply; (2) **WTI front-month >$103 intraday OR Brent >$112 intraday** (live CME/ICE quote; this is below Crestwood's $107/$120 but above source A's $101.61 — designed to confirm oil tape is bidding the escalation, not fading it); (3) **ESM26 / SPX cash recovered to flat-on-day or green** (don't chase XLE entry into a -1%+ broad-tape sell-off — XLE has tape-beta and gets dragged down with the market even on bullish oil; wait for the broad bid before adding); (4) **VIX <22** (no broad-market shock event); (5) **XLE itself trading green-on-day** (confirms oil-tape bid translating to sector lift, not faded — protects against "headline true, but XLE faded because tape risk-off dominates"). All five required; any one failing = HOLD entirely. Skip default if no cross-confirmation by 12:00 ET.
    Catalyst: Friday entry retired XLE on Trump-Xi Hormuz-framework thesis; re-author trigger was "Hormuz framework BREAKDOWN headline OR WTI re-acceleration >$105". Crestwood May 2026 "US naval blockade of Iran extended indefinitely" + Brent $120 / WTI $107 would constitute BOTH triggers simultaneously IF cross-confirmed. Single-source data quality bar is the gate — same conviction discipline that retired the XLE conditional last week applies to re-authoring this week. Deployment lift if fires: 54.8% → 69.8% (still below 75% target-band but closes ~75% of the gap; adds the structurally-uncorrelated 4th leg the basket has been missing for 4 weeks).
+   → Skipped (12:00 CT): gate 1 — no tier-1 wire (Reuters/Bloomberg/WSJ/AP/Platts/Argus) cross-confirms the Crestwood blockade-extension headline by deadline. Perplexity surfaced Wikipedia "2026 United States naval blockade of Iran" and militarnyi.com "USA extends maritime blockade of Iranian vessels" — broadly consistent with the thesis but not on the explicit tier-1 source list authored into the gate. Per default-skip-on-ambiguous rule, conditional HOLDs entirely. Note: XLE was acting bullishly intraday (opened $59.24, current ~$60.40, ~+2% intraday, range $58.72-$60.67), so gate 5 would have passed; live WTI/Brent print unavailable through Perplexity (Barchart commentary mentioned "Strait of Hormuz closed" but no live price), gate 2 unverified; SPY $735.98 vs intraday high $741.38 = modestly red, gate 3 ambiguous. Data-quality gate 1 is dispositive — XLE not added; deployment stays ~54.8%; 4th-leg deferral continues into Tue.
 
 (No XLK conditional today — multi-day hawkish-Warsh digestion makes re-authoring premature. No XLU conditional — no regime-shift gate. Max one conditional today; deployment-stagnation acknowledged but conditional bar holds.)
 
@@ -869,3 +870,28 @@ All three 10% trailing GTCs assumed live on the broker (no client-side modificat
 
 ### Decision
 HOLD. No new entries, no conditional entries authored — pre-market workflow cannot complete without account/research wrappers. Market-open routine will inherit this abort and should also halt unless env is restored.
+
+## 2026-05-18 — Midday Scan
+
+### Account (12:00 CT)
+- Equity: $99,926.89 | Cash: $45,158.79 (45.19%) | Buying power: $145,085.68 | Daytrade count: 0
+- Positions (cost basis $54,841.21 / mkt $54,775.70 / ~54.81% deployed):
+  - XLP 239 sh @ $83.357 — current $85.21, intraday +0.67%, unrealized +$442.84 (+2.22%)
+  - XLB 390 sh @ $51.062 — current $50.28, intraday -0.04%, unrealized -$305.15 (-1.53%)
+  - XLI 87 sh @ $172.466 — current $170.13, intraday -0.74%, unrealized -$203.20 (-1.35%)
+- Open orders (3 trailing 10% GTCs):
+  - XLP stop $77.202 / hwm $85.78 — RATCHETED today from $77.022 / $85.58 (new intraday high $85.78)
+  - XLB stop $47.493 / hwm $52.77 — unchanged
+  - XLI stop $159.948 / hwm $177.72 — unchanged
+
+### Actions
+- **Cut losers (-7% rule):** None. Worst leg XLB -1.53%, well above -7% trigger.
+- **Tighten winners:** None. Best leg XLP +2.22%, well below +15% tighten threshold.
+- **Thesis check:** No breaks. XLP +0.67% intraday post-WMT BMO print = constructive digestion of the leg-level binary; defensive-rotation thesis intact. XLB flat / XLI -0.74% = normal noise; sector-momentum leadership cluster (XLP/XLB/XLI all top-4 YTD per pre-market refresh) unchanged.
+- **Conditional XLE: SKIPPED at gate 1.** No tier-1 wire (Reuters/Bloomberg/WSJ/AP/Platts/Argus) cross-confirms the Crestwood blockade-extension headline. Wikipedia + militarnyi.com appear but are not on the explicit gate list — DEFAULT-SKIP on ambiguous per rules. XLE was trading bullishly intraday (open $59.24 → $60.40, ~+2%) so gate 5 would have passed; live oil prints not retrievable so gate 2 unverified; SPY modestly red so gate 3 ambiguous. Data-quality gate 1 is dispositive. Audit line appended under the conditional above.
+
+### Env-check note
+Loop check printed MISSING for all five env vars again; wrapper smoke-test (`alpaca.sh account`) returned live JSON with portfolio_value $99,926.89 — proceeded per saved feedback memory.
+
+### Decision
+NO ACTION. Held basket intact, no cuts, no tightens, no conditional fire. Trades today 0/3, trades this week 0/6, deployment ~54.81% unchanged. 4th-leg add remains deferred — gate 1 data-quality bar held. Daily-summary at EOD will capture final marks; weekly review Friday gets the structural-deployment question again.
