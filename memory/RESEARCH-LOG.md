@@ -842,3 +842,30 @@ HOLD at the open. Zero at-the-open buys. ONE midday conditional authored on XLK 
 
 ### Decision
 HOLD at the open. Zero at-the-open buys. ONE midday conditional authored on XLE (gated on cross-source headline confirmation AND oil tape bid AND broad-tape recovery AND VIX <22 AND XLE green-on-day; all five required by ~12:00 ET, any one failing = HOLD entirely). XLK conditional NOT re-authored — multi-day hawkish-Warsh digestion makes re-authoring premature; require a dovish walkback OR clean AI-tape lift first. The XLE re-author is justified by the Crestwood blockade-extension headline (IF cross-confirmed) which would be both triggers the Fri entry specified for re-engagement; the data-quality gate is intentionally strict to avoid running on a stale single-source print. Held XLP/XLB/XLI continue under their 10% trailing GTCs (no thesis break, no -7% triggers, no +15% tighten triggers, hwms intact; WMT BMO print is the XLP-leg binary — no pre-print action). Daily cap 3/3 available, weekly cap 0/6 fresh — conditional has full headroom. Week 4 begins with the same structural question that has been deferred 3 weekly reviews: 4th-leg add or accept 3-leg basket as the phase configuration. Today's XLE conditional, if it fires, addresses the question; if it skips, the deferral continues into Fri's weekly review. Patience > activity except for the explicit re-engagement trigger on the XLE thesis.
+
+## 2026-05-18 — Pre-market Research — ABORTED
+
+### Status
+ABORT before STEP 2. Wrapper smoke-test (`bash scripts/alpaca.sh account`) returned:
+`scripts/alpaca.sh: line 16: ALPACA_API_KEY: ALPACA_API_KEY not set in environment`
+
+### Missing env vars (per `[[ -n "${!v:-}" ]]` loop AND wrapper confirmation)
+- ALPACA_API_KEY
+- ALPACA_SECRET_KEY
+- PERPLEXITY_API_KEY
+- TELEGRAM_TOKEN
+- TELEGRAM_CHAT_ID
+
+### Action taken
+- Per routines/pre-market.md:13-14, stopped before any further wrapper calls.
+- Telegram alert attempted → fell back to local `memory/DAILY-SUMMARY.md` (TELEGRAM_TOKEN also missing).
+- No `alpaca.sh positions / orders`, no Perplexity queries, no trades.
+
+### Carry-over (held positions, unchanged from 2026-05-15 EOD)
+- XLP 239 sh @ $83.36 — trail $77.022 (hwm $85.58)
+- XLB 390 sh @ $51.06 — trail $47.493 (hwm $52.77)
+- XLI 87 sh @ $172.47 — trail $159.948 (hwm $177.72)
+All three 10% trailing GTCs assumed live on the broker (no client-side modification this session).
+
+### Decision
+HOLD. No new entries, no conditional entries authored — pre-market workflow cannot complete without account/research wrappers. Market-open routine will inherit this abort and should also halt unless env is restored.
