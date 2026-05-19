@@ -949,3 +949,29 @@ NO ACTION. Held basket intact, no cuts, no tightens, no conditional fire. Trades
 
 ### Decision
 HOLD at the open. **Zero at-the-open buys. Zero midday conditionals authored.** First session of week 4 where the structural deployment-gap question is acknowledged in the decision rather than papered over with another doomed conditional: XLE retired (Crestwood falsified), XLK in Warsh-deferral, XLU lacks regime-shift gate, HD-print-reaction trades out-of-strategy. The 4th-leg add framework has produced repeat-skips for 4 consecutive weeks; today's right action is to defer the framework-calibration question to Friday's weekly review and accept that the basket may remain at 55% deployment through the phase if no genuinely cross-confirmed catalyst materializes. Held XLP/XLB/XLI continue under their 10% trailing GTCs (no thesis break, no -7% triggers, no +15% tighten triggers, XLP hwm intact at $85.94 with fractional further ratchet possible if XLP closes near current $86.00). Daily cap 3/3 available, weekly cap 0/6 fresh — full headroom remains if a clean cross-confirmed catalyst materializes intraday, but no conditional pre-authored. Patience > activity. Midday scan will re-check for any kinetic-escalation headline cross-confirmation; daily-summary at EOD captures final marks.
+
+## 2026-05-19 — Midday Scan
+
+### Account (12:01 CT)
+- Equity: $99,766.59 | Cash: $45,158.79 (45.26%) | Buying power: $144,925.38 | Daytrade count: 0
+- Positions (cost basis $54,841.21 / mkt $54,608.56 / ~54.74% deployed):
+  - XLP 239 sh @ $83.357 — current $86.24, intraday +0.40%, unrealized +$689.01 (+3.46%)
+  - XLB 390 sh @ $51.062 — current $49.305, intraday -1.82%, unrealized -$685.40 (-3.44%)
+  - XLI 87 sh @ $172.466 — current $169.75, intraday -0.59%, unrealized -$236.26 (-1.58%)
+- Open orders (3 trailing 10% GTCs):
+  - XLP stop $78.0255 / hwm $86.695 — RATCHETED intraday from $77.346 / $85.94 (new intraday high $86.695)
+  - XLB stop $47.493 / hwm $52.77 — unchanged
+  - XLI stop $159.948 / hwm $177.72 — unchanged
+
+### Actions
+- **Cut losers (-7% rule):** None. Worst leg XLB -3.44% (deepening from pre-market -1.65% on HD-print read-through compressing materials), well above -7% trigger (~3.6 pp cushion of unrealized to trigger; price cushion XLB current $49.305 vs stop $47.493 = ~3.7%).
+- **Tighten winners:** None. Best leg XLP +3.46% (new phase high for the leg), well below +15% tighten threshold.
+- **Thesis check:** No breaks. XLP +0.40% intraday continues post-WMT defensive bid (hwm ratcheted $85.94 → $86.695 by Alpaca GTC, trail $77.346 → $78.0255); XLB -1.82% and XLI -0.59% softness consistent with HD-print indirect read-through on construction-materials chain + mildly red ES tape (ESM26 -0.13% overnight, drifted weaker into noon). No idiosyncratic news identified on any leg; no thesis break.
+- **Conditionals:** None to evaluate — today's pre-market RESEARCH-LOG authored zero conditionals (XLE retired post-Crestwood-falsification, XLK in Warsh-deferral, XLU lacks regime-shift gate, HD-print single-name out-of-strategy). No conditional evaluation work this session.
+- **Intraday research:** None triggered. XLB -1.82% is the move-of-day on the basket but is plausibly HD-print read-through + broad-tape drift, not idiosyncratic; below the "sharply moving with no obvious cause" bar for unscheduled Perplexity spend.
+
+### Env-check note
+Loop check printed MISSING for all five env vars again; wrapper smoke-test (`alpaca.sh account`) returned live JSON with portfolio_value $99,766.59 — proceeded per saved feedback memory.
+
+### Decision
+NO ACTION. Held basket intact, no cuts, no tightens, no conditional fire. Trades today 0/3, trades this week 0/6, deployment ~54.74% unchanged. XLP trail stop auto-ratcheted by Alpaca (broker-side, no client modification needed). Day-of risk is HD-print indirect read-through to XLB; XLB cushion ~3.7% to stop-out from $49.305 — monitorable but not at trigger. Daily-summary at EOD captures final marks; weekly review Friday gets the structural-deployment question again.
