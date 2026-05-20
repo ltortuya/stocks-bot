@@ -975,3 +975,49 @@ Loop check printed MISSING for all five env vars again; wrapper smoke-test (`alp
 
 ### Decision
 NO ACTION. Held basket intact, no cuts, no tightens, no conditional fire. Trades today 0/3, trades this week 0/6, deployment ~54.74% unchanged. XLP trail stop auto-ratcheted by Alpaca (broker-side, no client modification needed). Day-of risk is HD-print indirect read-through to XLB; XLB cushion ~3.7% to stop-out from $49.305 — monitorable but not at trigger. Daily-summary at EOD captures final marks; weekly review Friday gets the structural-deployment question again.
+
+## 2026-05-20 — Pre-market Research
+
+### Account
+- Equity: $99,575.87 (pre-open; XLP marking $86.2389 above lastday $86.09)
+- Cash: $45,158.79
+- Buying power: $144,734.66
+- Daytrade count: 0
+- Open orders: 3 trailing stop sells (XLP $78.0255, XLB $47.493, XLI $159.948) — all live, GTC
+
+### Positions
+| Ticker | Qty | Entry | Cur | Unrealized | Stop | HWM |
+| — | — | — | — | — | — | — |
+| XLP | 239 | $83.36 | $86.2389 | +$688.75 (+3.46%) | $78.0255 | $86.695 |
+| XLB | 390 | $51.06 | $49.04 | -$788.75 (-3.96%) | $47.493 | $52.77 |
+| XLI | 87 | $172.47 | $168.74 | -$324.13 (-2.16%) | $159.948 | $177.72 |
+
+### Market Context
+- WTI / Brent: WTI ~$104, Brent ~$110 — Hormuz blockade tape still active (Kharg Island struck late-Mar, US-Iran kinetic exchanges ongoing, AIS jamming, regional fuel-price caps in South Korea). Geopolitical premium intact.
+- S&P 500 futures: ~6,657, +0.10% (mildly green premarket per Markets Insider). Tape constructive but light.
+- VIX: ~17.26 (recent print; no fresh spike despite Tuesday's risk-off equity move)
+- Today's catalysts: **FOMC Minutes 2:00 PM ET** — dominant macro event. Markets digesting rate-cut path; minutes correspond to late-April meeting and will move on dot-plot dispersion / dissent count / Q&A redactions.
+- Earnings before open: No flagged mega-caps from cross-source scan; nothing market-moving in pre-mkt window above the noise floor for sector-ETF basket
+- Economic calendar: NO fresh CPI / PPI / jobs prints today. FOMC Minutes 2pm ET is the day. Initial Claims + Philly Fed land Thursday 5/21 8:30 ET.
+- Sector momentum YTD (Mar-update-base): Energy #1 (~+26%), Consumer Staples #2 (~+10.7%), Industrials #3 (~+9.6%), Materials in leading quadrant per Investing.com sector rotation. Risk-off Tue compressed XLB / XLI sharply (XLB -2.41% / XLI -1.18%) — characterized as "leaders taking a breather" rather than thesis-break in cross-source check.
+
+### Trade Ideas
+1. **HOLD** all three legs into FOMC Minutes 2pm ET. Minutes are a known binary — no edge betting direction; high-skew Q&A redactions / dissent count are the unpredictable variables.
+2. **XLB stop-watch** — unrealized -3.96% is the worst leg of the phase. Cushion to -7% manual trigger is ~3.04% additional downside ($49.04 → ~$47.49). Trail stop at $47.493 (-10% from hwm $52.77) is the broker-side exit. If FOMC Minutes are hawkish and XLB extends another -2 to -3%, manual-cut decision moves to the front of the queue.
+3. **XLE 4th-leg conditional deferred** — tier-1 wire confirmation of Crestwood-extension headline still absent. Hormuz tape is real (WTI $104, Brent $110, Kharg Island strike, fuel-price caps) but the data-quality gate (Reuters/Bloomberg/WSJ/AP/Platts/Argus cross-source) remains unmet across multiple sessions. No re-author.
+
+### Conditional Entries (midday-eligible) — up to 3
+None. The dominant intraday event is FOMC Minutes 2pm ET; conditional entries before then carry binary-event risk, conditional entries after the print are post-event chase trades that don't benefit from intraday confirmation in a strategy-consistent way. XLE remains data-quality-gated. XLK/XLU have no fresh regime-shift catalyst. Default zero applies cleanly.
+
+### Risk Factors
+- **FOMC Minutes 2pm ET** — direction risk both ways. Hawkish dispersion compresses cyclicals further (XLB/XLI extend Tuesday's slide); dovish surprise lifts the broad tape but XLP defensive premium can compress on rotation.
+- **XLB at -3.96% unrealized** — closer to -7% manual trigger than any leg has been this phase; another -3% intraday move from $49.04 puts it in manual-cut territory before the broker-side trail at $47.493 fires.
+- **Hormuz/oil tape** still elevated — WTI $104 / Brent $110 with active kinetic exchanges and AIS jamming. Held basket has no XLE exposure (neutral on oil) but XLB carries cost-input read-through if WTI gaps higher.
+- **Concentration risk confirmed Tuesday** — 3-leg sector-ETF basket gave back -0.60% in a single risk-off session, similar to May 15 (-0.87%). Basket has now round-tripped from +0.85% phase high (May 12) to -0.47% in 5 sessions. The structural-deployment gap (~55% vs. 75-85% target) means undeployed cash is the only ballast.
+- **17 consecutive sessions ~55% deployment** — Friday weekly review (this Friday 5/22) faces the same question for the 4th consecutive week: commit to a 4th leg or accept the 3-leg basket as final.
+
+### Env-check note
+Loop check again printed MISSING for all five vars; wrapper smoke-test (`alpaca.sh account`) returned live JSON with portfolio_value $99,575.87 — proceeded per saved feedback memory.
+
+### Decision
+**HOLD.** Pre-FOMC-Minutes binary day — no at-the-open entries, no conditionals. Held basket intact (no cuts: worst leg XLB -3.96% above -7% trigger; no tightens: best leg XLP +3.46% below +15% trigger). Trades today 0/3, trades this week 0/6 fresh, deployment ~54.63% unchanged. Day-of monitor: XLB drift toward -7% trigger if Minutes are hawkish; XLP trail-stop auto-ratchet if intraday hwm extends above $86.695. Patience > activity into the print; reassessment is post-2pm-ET event with Minutes digested.
