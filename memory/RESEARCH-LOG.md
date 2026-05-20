@@ -1021,3 +1021,29 @@ Loop check again printed MISSING for all five vars; wrapper smoke-test (`alpaca.
 
 ### Decision
 **HOLD.** Pre-FOMC-Minutes binary day — no at-the-open entries, no conditionals. Held basket intact (no cuts: worst leg XLB -3.96% above -7% trigger; no tightens: best leg XLP +3.46% below +15% trigger). Trades today 0/3, trades this week 0/6 fresh, deployment ~54.63% unchanged. Day-of monitor: XLB drift toward -7% trigger if Minutes are hawkish; XLP trail-stop auto-ratchet if intraday hwm extends above $86.695. Patience > activity into the print; reassessment is post-2pm-ET event with Minutes digested.
+
+## 2026-05-20 — Midday Scan
+
+### Account (12:01 CT)
+- Equity: $99,838.38 | Cash: $45,158.79 (45.23%) | Buying power: $144,997.17 | Daytrade count: 0
+- Positions (cost basis $54,841.21 / mkt $54,670.58 / ~54.76% deployed):
+  - XLP 239 sh @ $83.357 — current $85.75, intraday -0.40%, unrealized +$571.90 (+2.87%)
+  - XLB 390 sh @ $51.062 — current $49.51, intraday +0.96%, unrealized -$605.45 (-3.04%)
+  - XLI 87 sh @ $172.466 — current $170.89, intraday +1.27%, unrealized -$137.08 (-0.91%)
+- Open orders (3 trailing 10% GTCs, all unchanged from pre-market):
+  - XLP stop $78.0255 / hwm $86.695 — no new intraday high (current $85.75 < hwm)
+  - XLB stop $47.493 / hwm $52.77 — unchanged
+  - XLI stop $159.948 / hwm $177.72 — unchanged
+
+### Actions
+- **Cut losers (-7% rule):** None. Worst leg XLB -3.04% (improved from pre-market -3.96% on cyclical bounce-back), well above -7% trigger. Price cushion XLB current $49.51 vs stop $47.493 = ~4.1%; unrealized cushion to -7% = ~3.96 pp.
+- **Tighten winners:** None. Best leg XLP +2.87% (below +15% threshold by ~12 pp).
+- **Thesis check:** No breaks. Basket is digesting Tuesday's risk-off with a constructive pre-FOMC-Minutes bid in cyclicals — XLB +0.96% and XLI +1.27% recovering, XLP -0.40% mild defensive rotation as broad-tape leans slightly risk-on into the 2pm ET print. No idiosyncratic news identified on any leg.
+- **Conditionals:** None to evaluate — today's pre-market RESEARCH-LOG explicitly authored zero conditionals (FOMC-Minutes binary day, XLE data-quality-gated, XLK/XLU no fresh catalyst).
+- **Intraday research:** None triggered. No leg moving sharply without obvious cause; pre-FOMC drift is the dominant tape feature.
+
+### Env-check note
+Loop check printed MISSING for all five env vars again; wrapper smoke-test (`alpaca.sh account`) returned live JSON with portfolio_value $99,838.38 — proceeded per saved feedback memory.
+
+### Decision
+NO ACTION. Held basket intact, no cuts, no tightens, no conditional fire. Trades today 0/3, trades this week 0/6 fresh, deployment ~54.76% unchanged. Cyclical bounce-back (XLB +0.96%, XLI +1.27%) trimmed pre-mkt unrealized losses; XLB pulled back from -3.96% to -3.04%, restoring ~1 pp of cushion to the -7% manual-cut trigger ahead of FOMC Minutes 2pm ET. XLP trail-stop ratchet not triggered (no new hwm). Day-of monitor: FOMC Minutes 2pm ET reaction is the dominant remaining risk; XLB -7% trigger watch persists if Minutes are hawkish and cyclicals reverse. Daily-summary at EOD captures final marks; pre-market Thursday addresses post-Minutes basket positioning.
