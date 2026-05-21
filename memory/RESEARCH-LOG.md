@@ -1102,3 +1102,29 @@ Loop check again printed MISSING for all five env vars; wrapper smoke-test (`alp
 
 ### Decision
 **HOLD.** Zero at-the-open buys. Zero midday conditionals authored. Held XLP/XLB/XLI continue under their 10% trailing GTCs — no thesis break, no -7% triggers (worst XLB -3.06%), no +15% tighten triggers (best XLP +2.60%), no leg within 3% of stop (XLB closest at ~4.0% price cushion). DE earnings BMO is the dominant intraday binary, XLI-direct; strategy is HOLD through the print (no pre-emptive trim) with worst-case math showing XLI cushion intact even on a -2.5% compression. 8:30 ET claims+Philly Fed are low-skew tail-risk binaries; basket holds. XLE 4th-leg gate continues to hold for the 4th consecutive session — Crestwood-falsified, no tier-1 wire kinetic-escalation, no WTI re-acceleration above $105. Daily cap 3/3 fresh, weekly cap 0/6 fresh. Patience > activity into the DE print + 8:30 binaries; midday scan re-checks for any thesis-break or sharp XLI/XLB move from the print; daily-summary at EOD captures final marks. Friday weekly review owes (a) the source-discrepancy reconciliation via State Street primary, (b) the 4-week 4th-leg-skip vs. 55% deployment framework calibration, (c) whether to accept the 3-leg basket as final for the phase or commit to XLE/XLK/XLU even at a relaxed conviction bar.
+
+## 2026-05-21 — Midday Scan
+
+### Account (12:02 CT)
+- Equity: $99,422.29 | Cash: $45,158.79 (45.42%) | Buying power: $144,581.08 | Daytrade count: 0
+- Positions (cost basis $54,841.21 / mkt $54,263.50 / ~54.58% deployed):
+  - XLP 239 sh @ $83.357 — current $84.32, intraday -1.40%, unrealized +$230.13 (+1.16%)
+  - XLB 390 sh @ $51.062 — current $49.695, intraday -0.05%, unrealized -$533.30 (-2.68%)
+  - XLI 87 sh @ $172.466 — current $169.31, intraday -0.83%, unrealized -$274.54 (-1.83%)
+- Open orders (3 trailing 10% GTCs, all unchanged from pre-market):
+  - XLP stop $78.0255 / hwm $86.695 — no new intraday high (current $84.32 well below hwm)
+  - XLB stop $47.493 / hwm $52.77 — unchanged
+  - XLI stop $159.948 / hwm $177.72 — unchanged
+
+### Actions
+- **Cut losers (-7% rule):** None. Worst leg XLB -2.68% (improved from pre-market -3.06% on stable intraday tape), well above -7% trigger. Price cushion XLB current $49.695 vs stop $47.493 = ~4.43%; unrealized cushion to -7% manual trigger = ~4.32 pp. XLI cushion ~5.53% price / ~5.17 pp to trigger.
+- **Tighten winners:** None. Best leg XLP +1.16% (below +15% threshold by ~13.84 pp).
+- **Thesis check:** No breaks. **DE post-print fade** = beat-and-fade pattern, 5-min bars show DE gapped open $537.39 → ripped to $544.31 high in first 5 min → sold off to $521-525 range by 10:25 ET (current mid ~$521 on wide $515/$527 quote). XLI -0.83% intraday is the read-through — exactly within the pre-market worst-case envelope (modeled -1 to -2% on a miss+cautious-guide print), NOT a thesis break. XLP -1.40% intraday is mean-reversion off Monday's WMT-driven rip (still +1.16% unrealized vs. +3.05% Mon peak); pre-market explicitly flagged XLP overbought (forward P/E ~23-24x vs. 5-yr avg ~22.7) so today's pullback is the expected digestion, not a fundamental break. XLB -0.05% intraday essentially flat, holding Wed's bounce-back levels. No idiosyncratic news identified on any leg; 8:30 ET claims+Philly Fed binaries digested without market-moving impulse.
+- **Conditionals:** None to evaluate — today's pre-market RESEARCH-LOG explicitly authored zero conditionals (DE/8:30 binaries are pre-open events that don't benefit from midday confirmation structure; XLE remained data-quality-gated for the 4th consecutive session and was deliberately not re-authored).
+- **Intraday research:** Single Perplexity call on DE Q2 print to gauge XLI thesis read-through — Perplexity did not surface the actual reported EPS/revenue (snippets were all pre-release expectation commentary), so used DE 5-min bars + quote directly to confirm beat-and-fade pattern. No other leg moving sharply without obvious cause.
+
+### Env-check note
+Loop check again printed MISSING for all five env vars; wrapper smoke-test (`alpaca.sh account`) returned live JSON with portfolio_value $99,422.29 — proceeded per saved feedback memory.
+
+### Decision
+NO ACTION. Held basket intact, no cuts, no tightens, no conditional fire. Trades today 0/3, trades this week 0/6 fresh, deployment ~54.58% unchanged (now 19 consecutive sessions at ~55%). DE earnings binary cleared with beat-and-fade pattern compressing XLI -0.83% intraday — within modeled tolerance, no thesis break, no pre-emptive trim. Worst leg XLB -2.68% (improved from pre-market) and XLI -1.83% both with >4% price cushion to trail stops and >4 pp unrealized cushion to -7% manual trigger. Daily-summary at EOD captures final marks; pre-market Friday addresses post-DE basket positioning and weekly-review checkpoint (source-discrepancy reconciliation via State Street primary, 4-week 4th-leg-skip vs. 55% deployment framework calibration, accept-3-leg vs. commit-to-XLE/XLK/XLU disposition).
