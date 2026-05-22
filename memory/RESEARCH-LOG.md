@@ -1179,3 +1179,29 @@ Skipped the loop env-var check per saved feedback memory (point-in-time observat
 
 ### Decision
 **HOLD.** Zero at-the-open buys. Zero midday conditionals authored. Held XLP/XLB/XLI continue under their 10% trailing GTCs into the Memorial-Day-weekend gap-risk window — no thesis break, no -7% triggers (worst XLB -2.04% with ~4.96 pp cushion), no +15% tighten triggers (best XLP +1.81% with ~13.2 pp gap to threshold), no leg within 3% of stop (XLB closest at ~5.05% price cushion). Pre-holiday Friday with NO held-basket earnings catalyst, NO leg-level binary, and NO material economic release: the strategy-consistent action is HOLD through the close and let the trail GTCs cover the 66-hour weekend gap-risk window. Waller 3pm ET is the day's Fed-comm tail; conditional fire on dovish-Waller is post-midday-cycle and best evaluated in next Tuesday's pre-market post-weekend-digestion, not pre-authored today. XLE 4th-leg gate continues to hold (5th consecutive SKIP, gate 5 moving wrong direction). Daily cap 3/3 fresh, weekly cap 0/6 unchanged — week 4 closes today with 0 trades (mirrors weeks 2 and 3 cleanly). The WEEKLY REVIEW this afternoon owes: (a) State Street primary-source sector-rank reconciliation, (b) the 4-week 4th-leg-skip vs. 55% deployment framework calibration, (c) whether to accept the 3-leg basket as final for the phase or commit to XLE/XLK/XLU at a relaxed conviction bar. Midday scan re-checks for any thesis-break / sharp move; daily-summary at EOD captures final marks; weekly-review later this afternoon addresses the structural questions. Patience > activity into the 3-day weekend.
+
+## 2026-05-22 — Midday Scan
+
+### Account (12:01 CT)
+- Equity: $99,976.25 | Cash: $45,158.79 (45.17%) | Buying power: $145,135.04 | Daytrade count: 0
+- Positions (cost basis $54,841.21 / mkt $54,834.18 / ~54.85% deployed):
+  - XLP 239 sh @ $83.357 — current $84.75, intraday +0.11%, unrealized +$332.90 (+1.67%)
+  - XLB 390 sh @ $51.062 — current $50.23, intraday +0.42%, unrealized -$324.65 (-1.63%)
+  - XLI 87 sh @ $172.466 — current $172.29, intraday +1.03%, unrealized -$15.28 (-0.10%)
+- Open orders (3 trailing 10% GTCs, all unchanged from pre-market):
+  - XLP stop $78.0255 / hwm $86.695 — no new intraday high (current $84.75 well below hwm)
+  - XLB stop $47.493 / hwm $52.77 — unchanged
+  - XLI stop $159.948 / hwm $177.72 — unchanged
+
+### Actions
+- **Cut losers (-7% rule):** None. Worst leg XLB -1.63% (improved from yesterday's -2.04% EOD on +0.42% intraday bounce), well above -7% trigger. Price cushion XLB current $50.23 vs stop $47.493 = ~5.45%; unrealized cushion to -7% manual trigger = ~5.37 pp. XLI cushion ~7.17% price / ~6.90 pp; XLP cushion ~7.93% price / ~8.67 pp.
+- **Tighten winners:** None. Best leg XLP +1.67% (below +15% threshold by ~13.33 pp).
+- **Thesis check:** No breaks. All three legs green intraday — basket is mean-reverting Thursday's flat-to-mildly-red drift in a textbook pre-holiday-Friday light-volume tape. XLI +1.03% intraday leads (industrial-bid digestion of yesterday's DE print is now fully behind the leg; XLI recovered from -1.12% Thu EOD to -0.10% now, essentially flat to entry). XLB +0.42% intraday continues the chemicals-tailwind narrative (per pre-market XLB-thesis section). XLP +0.11% intraday flat-to-mildly-green — defensive leg digesting Mon WMT-driven rip without further compression. No idiosyncratic news on any leg; no Michigan-Sentiment-FINAL revision surprise (10:00 ET release was within consensus envelope, no leg-level read-through). Basket pre-market drift of +0.06% has expanded to +0.24% equity gain ($99,792.72 → $99,976.25); consistent with the pre-holiday-bid pattern flagged in pre-market.
+- **Conditionals:** None to evaluate — today's pre-market RESEARCH-LOG explicitly authored ZERO conditionals (Memorial-Day-weekend gap-risk Friday + Waller 3pm ET post-midday-cycle + XLE/XLK/XLU all watch-only with no fresh catalyst). The "No conditionals to evaluate" path applies cleanly.
+- **Intraday research:** None. No leg moving sharply without obvious cause; XLI +1.03% intraday is the largest move and is the clean read-through to yesterday's DE post-print digestion + general industrial-bid sector tone. No Perplexity / WebSearch call warranted.
+
+### Env-check note
+Skipped loop check per saved feedback memory; pre-market and this run both confirmed via wrapper smoke-test that credentials are live (account equity $99,976.25 just returned). No env work needed.
+
+### Decision
+NO ACTION. Held basket intact, no cuts, no tightens, no conditional fire, no Telegram. Trades today 0/3, trades this week 0/6 fresh, deployment ~54.85% unchanged (20th consecutive session at ~55%). Pre-holiday-Friday light-volume tape with all three legs green intraday (XLI +1.03% leading on industrial bid + DE print fully digested, XLB +0.42% on chemicals tape, XLP +0.11% defensive flat) is a textbook quiet midday — basket is at +0.24% intraday vs. last_equity and back into the green on phase P&L (likely near flat / mildly positive vs. May 21 EOD -0.26%). No leg within 3% of stop (XLB closest at ~5.45% price cushion), no leg within 5 pp of -7% manual trigger (XLB closest at ~5.37 pp), no leg near +15% tighten threshold (XLP closest at ~13.33 pp). Waller 3pm ET Fed-comm tail is post-midday-cycle and not actionable from this scan; daily-summary at EOD captures Waller-driven session-close moves + final marks. Weekly-review later this afternoon addresses the structural 4th-leg / deployment-gap framework calibration. Patience > activity into the 66-hour Memorial-Day weekend gap-risk window.
