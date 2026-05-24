@@ -128,3 +128,28 @@ button:hover {
   background: #2a3a55;
   color: #fff;
 }
+
+/* ---------- TCP / IK status ---------- */
+
+.section-h {
+  margin: 1.6rem 0 0.6rem;
+}
+
+.hint {
+  margin: 0 0 0.6rem;
+  color: #8a93a6;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.ik-status {
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.74rem;
+}
+
+.ik-status.ok   { color: #6fd58b; background: #15321f; }
+.ik-status.warn { color: #f0c060; background: #3a2a15; }
+.ik-status.err  { color: #f08585; background: #3a1c1c; }

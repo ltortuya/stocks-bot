@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { TransformControls } from "three/addons/controls/TransformControls.js";
 import URDFLoader, { URDFRobot } from "urdf-loader";
-import { useStore } from "../state/store";
+import { JointVec, useStore } from "../state/store";
+import { kin } from "../rpc/kinematics";
 
 export function Viewer() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,7 +15,6 @@ export function Viewer() {
     const width = container.clientWidth;
     const height = container.clientHeight;
 
-    // Scene
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x0e1117);
 
@@ -46,24 +47,103 @@ export function Viewer() {
     const worldAxes = new THREE.AxesHelper(0.12);
     scene.add(worldAxes);
 
-    // Load URDF
+    // TCP gizmo — a small sphere with a TransformControls handle. The user
+    // drags the colored arrows to move it; we run IK on each new position.
+    const gizmoProxy = new THREE.Mesh(
+      new THREE.SphereGeometry(0.022, 20, 20),
+      new THREE.MeshStandardMaterial({
+        color: 0xf0a050,
+        emissive: 0xf0a050,
+        emissiveIntensity: 0.25,
+        roughness: 0.4,
+      })
+    );
+    gizmoProxy.visible = false;
+    scene.add(gizmoProxy);
+
+    const tcontrols = new TransformControls(camera, renderer.domElement);
+    tcontrols.setMode("translate");
+    tcontrols.setSize(0.85);
+    tcontrols.attach(gizmoProxy);
+    // TransformControls is itself a THREE.Object3D in newer three.js.
+    scene.add(tcontrols as unknown as THREE.Object3D);
+
+    // Disable orbit while dragging the gizmo so the camera doesn't fight us.
+    tcontrols.addEventListener("dragging-changed", (e: any) => {
+      controls.enabled = !e.value;
+    });
+
+    // ---- IK dispatch (single in-flight, last write wins) -----------------
+    let ikInFlight = false;
+    let ikPending: THREE.Vector3 | null = null;
+
+    const tmpVec = new THREE.Vector3();
+
+    const dispatchIK = async () => {
+      const robot = robotRef.current;
+      if (!robot || ikInFlight || !ikPending) return;
+
+      ikInFlight = true;
+      const targetWorld = ikPending;
+      ikPending = null;
+
+      try {
+        // Convert world position into the robot's local URDF frame.
+        const local = robot.worldToLocal(tmpVec.copy(targetWorld));
+        const seed = useStore.getState().q;
+        const result = await kin.ik([local.x, local.y, local.z], seed);
+        useStore.getState().setAllJoints(result.q as JointVec);
+        useStore.getState().setIkStatus({
+          residual: result.residual,
+          ok: result.ok,
+          clamped: result.clamped,
+        });
+      } catch (err) {
+        useStore.getState().setIkStatus({
+          residual: NaN,
+          ok: false,
+          clamped: false,
+          error: String(err),
+        });
+      } finally {
+        ikInFlight = false;
+        if (ikPending) dispatchIK();
+      }
+    };
+
+    tcontrols.addEventListener("objectChange", () => {
+      ikPending = gizmoProxy.position.clone();
+      dispatchIK();
+    });
+
+    // ---- Load URDF --------------------------------------------------------
     const loader = new URDFLoader();
     loader.load("/ar3.urdf", (robot: URDFRobot) => {
-      // URDF uses Z-up; Three.js uses Y-up.
-      robot.rotation.x = -Math.PI / 2;
+      robot.rotation.x = -Math.PI / 2; // Z-up → Y-up
       scene.add(robot);
       robotRef.current = robot;
 
-      // TCP axes on the end-effector
       const tcp = robot.links?.["link6"];
       if (tcp) tcp.add(new THREE.AxesHelper(0.08));
 
-      // Apply current joint state immediately
       const q = useStore.getState().q;
       q.forEach((v, i) => robot.setJointValue(`joint${i + 1}`, v));
+
+      // Place gizmo on TCP and reveal it.
+      syncGizmoToTcp();
+      gizmoProxy.visible = true;
     });
 
-    // React to joint state changes
+    // Sync gizmo proxy to the TCP world position (only when user isn't dragging).
+    const syncGizmoToTcp = () => {
+      const robot = robotRef.current;
+      if (!robot || tcontrols.dragging) return;
+      const tcp = robot.links?.["link6"];
+      if (!tcp) return;
+      tcp.getWorldPosition(gizmoProxy.position);
+    };
+
+    // React to joint changes from sliders (or IK itself).
     const unsub = useStore.subscribe((state) => {
       const robot = robotRef.current;
       if (!robot) return;
@@ -75,6 +155,7 @@ export function Viewer() {
     const animate = () => {
       raf = requestAnimationFrame(animate);
       controls.update();
+      syncGizmoToTcp();
       renderer.render(scene, camera);
     };
     animate();
@@ -94,6 +175,8 @@ export function Viewer() {
       cancelAnimationFrame(raf);
       ro.disconnect();
       unsub();
+      tcontrols.detach();
+      tcontrols.dispose();
       renderer.dispose();
       if (renderer.domElement.parentNode === container) {
         container.removeChild(renderer.domElement);

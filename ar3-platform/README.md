@@ -8,10 +8,10 @@ See [`DESIGN.md`](./DESIGN.md) for the architecture and milestone plan.
 ## Status
 
 **M0 — Scaffold** ✅
-Tauri shell + React frontend + Python kinematics sidecar communicate
-over JSON-RPC stdio. The UI displays the sidecar's `health` response.
+**M1 — Viewer + FK** ✅ (URDF + joint sliders driving the 3D arm)
+**M2 — Inverse Kinematics** ✅ (drag the TCP, joints solve automatically)
 
-Next: **M1 — Viewer + FK** (load AR3 URDF, joint sliders drive the arm in 3D).
+Next: **M3 — Programs** (record waypoints, save / load, play back with trajectories).
 
 ## Prerequisites
 
@@ -38,6 +38,9 @@ pnpm install
 
 # Generate placeholder app icons from any source PNG (one-time)
 pnpm tauri icon path/to/source-icon.png
+
+# Python kinematics dependencies (one-time, needed for M2+)
+python -m pip install ikpy numpy scipy
 ```
 
 ## Run in dev

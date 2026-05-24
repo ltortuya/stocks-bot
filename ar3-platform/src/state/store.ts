@@ -12,11 +12,21 @@ export const JOINT_LIMITS: ReadonlyArray<readonly [number, number]> = [
   [-2.7, 2.7],
 ] as const;
 
+export interface IkStatus {
+  residual: number;     // distance in meters from requested TCP
+  ok: boolean;
+  clamped: boolean;     // hit a joint limit
+  error?: string;
+}
+
 interface AppState {
   q: JointVec;
   setJoint: (i: number, v: number) => void;
   setAllJoints: (q: JointVec) => void;
   home: () => void;
+
+  ik: IkStatus | null;
+  setIkStatus: (s: IkStatus | null) => void;
 }
 
 export const useStore = create<AppState>((set) => ({
@@ -28,5 +38,8 @@ export const useStore = create<AppState>((set) => ({
       return { q };
     }),
   setAllJoints: (q) => set({ q }),
-  home: () => set({ q: [0, 0, 0, 0, 0, 0] }),
+  home: () => set({ q: [0, 0, 0, 0, 0, 0], ik: null }),
+
+  ik: null,
+  setIkStatus: (s) => set({ ik: s }),
 }));

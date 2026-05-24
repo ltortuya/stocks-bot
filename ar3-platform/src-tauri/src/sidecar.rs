@@ -39,21 +39,18 @@ struct RpcError {
     message: String,
 }
 
-/// Resolves the path to the Python sidecar script.
-///
-/// In dev, the working dir under `pnpm tauri dev` is `src-tauri/`, so the
-/// script lives at `../sidecar/server.py`. In a bundled release we'll later
-/// switch to a PyInstaller binary registered as a Tauri sidecar.
-fn resolve_sidecar_script(app: &AppHandle) -> Result<std::path::PathBuf> {
+/// Resolves a project-relative path. Used to find sidecar/server.py and
+/// public/ar3.urdf. Tries dev-mode locations first, then bundled resources.
+fn resolve_project_file(app: &AppHandle, rel: &str) -> Result<std::path::PathBuf> {
     let cwd = std::env::current_dir().context("current_dir")?;
 
     let candidates = [
-        cwd.join("../sidecar/server.py"),
-        cwd.join("sidecar/server.py"),
+        cwd.join("..").join(rel), // pnpm tauri dev: cwd is src-tauri/
+        cwd.join(rel),
         app.path()
             .resource_dir()
             .ok()
-            .map(|p| p.join("sidecar/server.py"))
+            .map(|p| p.join(rel))
             .unwrap_or_default(),
     ];
 
@@ -63,7 +60,8 @@ fn resolve_sidecar_script(app: &AppHandle) -> Result<std::path::PathBuf> {
         }
     }
     Err(anyhow!(
-        "sidecar/server.py not found (looked relative to cwd={:?})",
+        "{} not found (looked relative to cwd={:?})",
+        rel,
         cwd
     ))
 }
@@ -81,12 +79,23 @@ struct Inner {
 
 impl SidecarState {
     pub fn spawn(app: &AppHandle) -> Result<Self> {
-        let script = resolve_sidecar_script(app)?;
-        let python = std::env::var("AR3_PYTHON").unwrap_or_else(|_| "python3".to_string());
+        let script = resolve_project_file(app, "sidecar/server.py")?;
+        let urdf = resolve_project_file(app, "public/ar3.urdf").ok();
+        let python = std::env::var("AR3_PYTHON").unwrap_or_else(|_| {
+            // On Windows, the canonical command is `python`; elsewhere `python3`.
+            if cfg!(windows) {
+                "python".to_string()
+            } else {
+                "python3".to_string()
+            }
+        });
 
-        let mut child = Command::new(&python)
-            .arg("-u") // unbuffered stdio
-            .arg(&script)
+        let mut cmd = Command::new(&python);
+        cmd.arg("-u").arg(&script);
+        if let Some(p) = &urdf {
+            cmd.arg("--urdf").arg(p);
+        }
+        let mut child = cmd
             .stdin(Stdio::piped())
             .stdout(Stdio::piped())
             .stderr(Stdio::inherit())

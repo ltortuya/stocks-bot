@@ -22,7 +22,7 @@ export default function App() {
       <header>
         <div>
           <h1>AR3 Platform</h1>
-          <p className="subtitle">Milestone 1 — viewer + forward kinematics</p>
+          <p className="subtitle">Milestone 2 — inverse kinematics</p>
         </div>
         <span className={`status status-${status.kind}`}>
           {status.kind === "loading" && "connecting…"}

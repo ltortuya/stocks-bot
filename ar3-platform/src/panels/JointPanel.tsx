@@ -6,6 +6,7 @@ export function JointPanel() {
   const q = useStore((s) => s.q);
   const setJoint = useStore((s) => s.setJoint);
   const home = useStore((s) => s.home);
+  const ik = useStore((s) => s.ik);
 
   return (
     <div className="panel">
@@ -28,6 +29,27 @@ export function JointPanel() {
         );
       })}
       <button onClick={home}>Home</button>
+
+      <h2 className="section-h">TCP control</h2>
+      <p className="hint">
+        Drag the colored arrows on the orange ball in the 3D view to move the
+        tool tip. The arm solves for you.
+      </p>
+      {ik && (
+        <div className={`ik-status ${ik.error ? "err" : ik.ok ? "ok" : "warn"}`}>
+          {ik.error ? (
+            <>
+              <strong>error:</strong> {ik.error}
+            </>
+          ) : (
+            <>
+              <strong>{ik.ok ? "ok" : "approx"}</strong>{" "}
+              residual {(ik.residual * 1000).toFixed(1)} mm
+              {ik.clamped && " · joint clamped"}
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }

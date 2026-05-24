@@ -31,6 +31,16 @@ async fn sidecar_health(
     })
 }
 
+/// Generic passthrough: frontend calls any sidecar method by name.
+#[tauri::command]
+async fn sidecar_call(
+    state: tauri::State<'_, sidecar::SidecarState>,
+    method: String,
+    params: serde_json::Value,
+) -> Result<serde_json::Value, String> {
+    state.call(&method, params).await.map_err(|e| e.to_string())
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -42,7 +52,7 @@ pub fn run() {
             app.manage(sidecar);
             Ok(())
         })
-        .invoke_handler(tauri::generate_handler![sidecar_health])
+        .invoke_handler(tauri::generate_handler![sidecar_health, sidecar_call])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
