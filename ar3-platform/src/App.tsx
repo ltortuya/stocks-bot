@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { Viewer } from "./scene/Viewer";
 import { JointPanel } from "./panels/JointPanel";
+import { ProgramPanel } from "./panels/ProgramPanel";
 
 type SidecarStatus =
   | { kind: "loading" }
@@ -22,7 +23,7 @@ export default function App() {
       <header>
         <div>
           <h1>AR3 Platform</h1>
-          <p className="subtitle">Milestone 2 — inverse kinematics</p>
+          <p className="subtitle">Milestone 3 — programs</p>
         </div>
         <span className={`status status-${status.kind}`}>
           {status.kind === "loading" && "connecting…"}
@@ -35,6 +36,7 @@ export default function App() {
         <Viewer />
         <aside>
           <JointPanel />
+          <ProgramPanel />
         </aside>
       </main>
     </div>
