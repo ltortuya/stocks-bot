@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { TransformControls } from "three/addons/controls/TransformControls.js";
+import { STLLoader } from "three/addons/loaders/STLLoader.js";
 import URDFLoader, { URDFRobot } from "urdf-loader";
 import { JointVec, useStore } from "../state/store";
 import { kin } from "../rpc/kinematics";
@@ -181,6 +182,30 @@ export function Viewer() {
 
     // ---- URDF load --------------------------------------------------------
     const loader = new URDFLoader();
+    // urdf-loader's default mesh callback uses dynamic imports for STLLoader
+    // that don't always resolve under Vite. Wire STL explicitly so the
+    // ar3_core meshes are guaranteed to load.
+    loader.loadMeshCb = (path, manager, done) => {
+      const ext = path.split(".").pop()?.toLowerCase();
+      if (ext === "stl") {
+        new STLLoader(manager).load(
+          path,
+          (geom) => {
+            geom.computeVertexNormals();
+            const mesh = new THREE.Mesh(geom);
+            done(mesh);
+          },
+          undefined,
+          (err) => {
+            console.error("[ar3] STL load failed:", path, err);
+            done(null as unknown as THREE.Object3D, err as Error);
+          }
+        );
+      } else {
+        console.warn("[ar3] no loader for mesh extension:", path);
+        done(new THREE.Object3D());
+      }
+    };
     loader.load("/ar3.urdf", (robot: URDFRobot) => {
       robot.rotation.x = -Math.PI / 2;
       scene.add(robot);
