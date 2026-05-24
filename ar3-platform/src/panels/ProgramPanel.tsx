@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useStore } from "../state/store";
-import { playProgram, stopProgram } from "../playback/player";
+import { jumpTo, playProgram, stopProgram } from "../playback/player";
 
 const RAD2DEG = 180 / Math.PI;
 
@@ -16,7 +16,10 @@ export function ProgramPanel() {
   const updateWaypoint = useStore((s) => s.updateWaypoint);
   const clearProgram = useStore((s) => s.clearProgram);
   const loadProgram = useStore((s) => s.loadProgram);
-  const setAllJoints = useStore((s) => s.setAllJoints);
+  const undo = useStore((s) => s.undo);
+  const redo = useStore((s) => s.redo);
+  const undoLen = useStore((s) => s._undo.length);
+  const redoLen = useStore((s) => s._redo.length);
 
   const [modal, setModal] = useState<"export" | "import" | null>(null);
   const [importText, setImportText] = useState("");
@@ -55,7 +58,27 @@ export function ProgramPanel() {
 
   return (
     <div className="panel">
-      <h2 className="section-h">Program</h2>
+      <div className="section-head">
+        <h2 className="section-h">Program</h2>
+        <div className="undo-buttons">
+          <button
+            className="icon"
+            onClick={undo}
+            disabled={undoLen === 0}
+            title="Undo (Ctrl+Z)"
+          >
+            ↶
+          </button>
+          <button
+            className="icon"
+            onClick={redo}
+            disabled={redoLen === 0}
+            title="Redo (Ctrl+Shift+Z)"
+          >
+            ↷
+          </button>
+        </div>
+      </div>
 
       <button className="primary" onClick={() => addWaypoint(q)}>
         + Record current pose
@@ -85,8 +108,8 @@ export function ProgramPanel() {
                 />
                 <button
                   className="icon"
-                  title="Jump arm to this pose"
-                  onClick={() => setAllJoints(wp.q)}
+                  title="Jump arm to this pose (animated)"
+                  onClick={() => jumpTo(wp.q, Math.min(wp.duration, 0.8))}
                 >
                   →
                 </button>

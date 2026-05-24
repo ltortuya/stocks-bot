@@ -6,6 +6,14 @@ import URDFLoader, { URDFRobot } from "urdf-loader";
 import { JointVec, useStore } from "../state/store";
 import { kin } from "../rpc/kinematics";
 
+const CAMERA_HOME = new THREE.Vector3(1.0, 0.9, 1.0);
+const CAMERA_TARGET = new THREE.Vector3(0, 0.4, 0);
+
+// Approximate maximum reach of the AR3 (link lengths summed minus a margin
+// for joint limits). The dome at the base visualizes the work envelope.
+const REACH_RADIUS = 0.62;
+const SHOULDER_HEIGHT = 0.17;
+
 export function Viewer() {
   const containerRef = useRef<HTMLDivElement>(null);
   const robotRef = useRef<URDFRobot | null>(null);
@@ -19,7 +27,7 @@ export function Viewer() {
     scene.background = new THREE.Color(0x0e1117);
 
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.01, 100);
-    camera.position.set(1.0, 0.9, 1.0);
+    camera.position.copy(CAMERA_HOME);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(width, height);
@@ -27,7 +35,7 @@ export function Viewer() {
     container.appendChild(renderer.domElement);
 
     const controls = new OrbitControls(camera, renderer.domElement);
-    controls.target.set(0, 0.4, 0);
+    controls.target.copy(CAMERA_TARGET);
     controls.enableDamping = true;
     controls.dampingFactor = 0.08;
     controls.update();
@@ -41,8 +49,53 @@ export function Viewer() {
     rim.position.set(-3, 2, -3);
     scene.add(rim);
 
-    scene.add(new THREE.GridHelper(2, 20, 0x3a4257, 0x232838));
+    // Floor grid (toggleable)
+    const grid = new THREE.GridHelper(2, 20, 0x3a4257, 0x232838);
+    scene.add(grid);
     scene.add(new THREE.AxesHelper(0.12));
+
+    // Workspace reach dome — translucent hemisphere centered at the shoulder.
+    // Approximate envelope, not the exact reachable manifold.
+    const domeGroup = new THREE.Group();
+    const domeMesh = new THREE.Mesh(
+      new THREE.SphereGeometry(
+        REACH_RADIUS,
+        32,
+        16,
+        0,
+        Math.PI * 2,
+        0,
+        Math.PI / 2
+      ),
+      new THREE.MeshBasicMaterial({
+        color: 0x4c9aff,
+        transparent: true,
+        opacity: 0.06,
+        side: THREE.DoubleSide,
+        depthWrite: false,
+      })
+    );
+    const domeWire = new THREE.Mesh(
+      new THREE.SphereGeometry(
+        REACH_RADIUS,
+        16,
+        8,
+        0,
+        Math.PI * 2,
+        0,
+        Math.PI / 2
+      ),
+      new THREE.MeshBasicMaterial({
+        color: 0x4c9aff,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.18,
+      })
+    );
+    domeGroup.add(domeMesh);
+    domeGroup.add(domeWire);
+    domeGroup.position.y = SHOULDER_HEIGHT;
+    scene.add(domeGroup);
 
     // TCP proxy + TransformControls (drag the colored arrows).
     const gizmoProxy = new THREE.Mesh(
@@ -88,13 +141,13 @@ export function Viewer() {
       try {
         const local = robot.worldToLocal(tmpVec.copy(targetWorld));
         const seed = useStore.getState().q;
-        // Safety net: if the sidecar dies entirely the await would never
-        // resolve, jamming `ikInFlight` forever. The sidecar already has its
-        // own 400ms guard; this 1.5s race only fires if Python crashed.
         const timeout = new Promise<never>((_, rej) =>
           setTimeout(() => rej(new Error("sidecar unresponsive")), 1500)
         );
-        const result = await Promise.race([kin.ik([local.x, local.y, local.z], seed), timeout]);
+        const result = await Promise.race([
+          kin.ik([local.x, local.y, local.z], seed),
+          timeout,
+        ]);
         if (result.residual < REACH_TOL) {
           useStore.getState().setAllJoints(result.q as JointVec);
         }
@@ -128,13 +181,15 @@ export function Viewer() {
       scene.add(robot);
       robotRef.current = robot;
 
-      const tcp = robot.links?.["link6"];
-      if (tcp) tcp.add(new THREE.AxesHelper(0.08));
+      const tcpLink = robot.links?.["link6"];
+      if (tcpLink) tcpLink.add(new THREE.AxesHelper(0.08));
 
       useStore
         .getState()
         .q.forEach((v, i) => robot.setJointValue(`joint${i + 1}`, v));
+
       snapGizmoToTcp();
+      pushTcpToStore();
       gizmoProxy.visible = true;
     });
 
@@ -147,12 +202,60 @@ export function Viewer() {
       tcp.getWorldPosition(gizmoProxy.position);
     };
 
-    const unsub = useStore.subscribe((state) => {
+    // Push TCP position in URDF coords to the store so panels can display it.
+    const tcpWorld = new THREE.Vector3();
+    const tcpLocal = new THREE.Vector3();
+    const pushTcpToStore = () => {
       const robot = robotRef.current;
       if (!robot) return;
-      state.q.forEach((v, i) => robot.setJointValue(`joint${i + 1}`, v));
-      if (!isDragging) snapGizmoToTcp();
+      const tcp = robot.links?.["link6"];
+      if (!tcp) return;
+      tcp.updateMatrixWorld(true);
+      tcp.getWorldPosition(tcpWorld);
+      tcpLocal.copy(tcpWorld);
+      robot.worldToLocal(tcpLocal);
+      const prev = useStore.getState().tcp;
+      const next: [number, number, number] = [tcpLocal.x, tcpLocal.y, tcpLocal.z];
+      if (
+        !prev ||
+        Math.abs(prev[0] - next[0]) > 1e-5 ||
+        Math.abs(prev[1] - next[1]) > 1e-5 ||
+        Math.abs(prev[2] - next[2]) > 1e-5
+      ) {
+        useStore.getState().setTcp(next);
+      }
+    };
+
+    // ---- React to store changes ------------------------------------------
+    let lastQ = useStore.getState().q;
+    let lastViewer = useStore.getState().viewer;
+    const unsub = useStore.subscribe((state) => {
+      const robot = robotRef.current;
+      if (robot && state.q !== lastQ) {
+        lastQ = state.q;
+        state.q.forEach((v, i) => robot.setJointValue(`joint${i + 1}`, v));
+        pushTcpToStore();
+        if (!isDragging) snapGizmoToTcp();
+      }
+      if (state.viewer !== lastViewer) {
+        if (state.viewer.showGrid !== lastViewer.showGrid) {
+          grid.visible = state.viewer.showGrid;
+        }
+        if (state.viewer.showWorkspace !== lastViewer.showWorkspace) {
+          domeGroup.visible = state.viewer.showWorkspace;
+        }
+        if (state.viewer.resetViewTick !== lastViewer.resetViewTick) {
+          camera.position.copy(CAMERA_HOME);
+          controls.target.copy(CAMERA_TARGET);
+          controls.update();
+        }
+        lastViewer = state.viewer;
+      }
     });
+
+    // Initial viewer settings sync (in case persisted state differs).
+    grid.visible = lastViewer.showGrid;
+    domeGroup.visible = lastViewer.showWorkspace;
 
     // Animate
     let raf = 0;
@@ -188,5 +291,39 @@ export function Viewer() {
     };
   }, []);
 
-  return <div ref={containerRef} className="viewer" />;
+  return (
+    <div ref={containerRef} className="viewer">
+      <ViewerToolbar />
+    </div>
+  );
+}
+
+function ViewerToolbar() {
+  const showGrid = useStore((s) => s.viewer.showGrid);
+  const showWorkspace = useStore((s) => s.viewer.showWorkspace);
+  const toggleGrid = useStore((s) => s.toggleGrid);
+  const toggleWorkspace = useStore((s) => s.toggleWorkspace);
+  const requestResetView = useStore((s) => s.requestResetView);
+
+  return (
+    <div className="viewer-toolbar">
+      <button
+        className={`vt ${showGrid ? "vt-on" : ""}`}
+        onClick={toggleGrid}
+        title="Toggle floor grid"
+      >
+        grid
+      </button>
+      <button
+        className={`vt ${showWorkspace ? "vt-on" : ""}`}
+        onClick={toggleWorkspace}
+        title="Toggle workspace reach dome"
+      >
+        reach
+      </button>
+      <button className="vt" onClick={requestResetView} title="Reset camera">
+        reset view
+      </button>
+    </div>
+  );
 }

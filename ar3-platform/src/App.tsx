@@ -4,6 +4,7 @@ import { Viewer } from "./scene/Viewer";
 import { JointPanel } from "./panels/JointPanel";
 import { ProgramPanel } from "./panels/ProgramPanel";
 import { TransportPill } from "./panels/TransportPill";
+import { useStore } from "./state/store";
 
 type SidecarStatus =
   | { kind: "loading" }
@@ -19,12 +20,31 @@ export default function App() {
       .catch((err) => setStatus({ kind: "error", message: String(err) }));
   }, []);
 
+  // Global keyboard shortcuts (undo / redo on the program).
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement | null)?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA") return; // don't hijack editing
+      const mod = e.ctrlKey || e.metaKey;
+      if (!mod) return;
+      if (e.key === "z" && !e.shiftKey) {
+        e.preventDefault();
+        useStore.getState().undo();
+      } else if ((e.key === "z" && e.shiftKey) || e.key === "y") {
+        e.preventDefault();
+        useStore.getState().redo();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   return (
     <div className="app">
       <header>
         <div>
           <h1>AR3 Platform</h1>
-          <p className="subtitle">Milestone 4 — transport abstraction</p>
+          <p className="subtitle">Milestone 5 — polish</p>
         </div>
         <div className="header-status">
           <span className={`status status-${status.kind}`}>

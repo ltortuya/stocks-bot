@@ -4,6 +4,7 @@ const RAD2DEG = 180 / Math.PI;
 
 export function JointPanel() {
   const q = useStore((s) => s.q);
+  const tcp = useStore((s) => s.tcp);
   const setJoint = useStore((s) => s.setJoint);
   const home = useStore((s) => s.home);
   const ik = useStore((s) => s.ik);
@@ -35,6 +36,23 @@ export function JointPanel() {
         Drag the colored arrows at the tool tip to move the arm. Red = X,
         green = Y, blue = Z.
       </p>
+      {tcp && (
+        <div className="tcp-readout">
+          <span>
+            <em>X</em>
+            <code>{(tcp[0] * 1000).toFixed(1)}</code>
+          </span>
+          <span>
+            <em>Y</em>
+            <code>{(tcp[1] * 1000).toFixed(1)}</code>
+          </span>
+          <span>
+            <em>Z</em>
+            <code>{(tcp[2] * 1000).toFixed(1)}</code>
+          </span>
+          <span className="unit">mm</span>
+        </div>
+      )}
       {ik && (
         <div className={`ik-status ${ik.error ? "err" : ik.ok ? "ok" : "warn"}`}>
           {ik.error ? (
