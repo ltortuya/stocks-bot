@@ -6,9 +6,6 @@ import URDFLoader, { URDFRobot } from "urdf-loader";
 import { JointVec, useStore } from "../state/store";
 import { kin } from "../rpc/kinematics";
 
-// Minimal debug logger — keep it on while we hunt the IK freeze.
-const dbg = (...args: unknown[]) => console.log("[ar3]", ...args);
-
 export function Viewer() {
   const containerRef = useRef<HTMLDivElement>(null);
   const robotRef = useRef<URDFRobot | null>(null);
@@ -67,44 +64,30 @@ export function Viewer() {
     const gizmoHelper = tcontrols.getHelper();
     scene.add(gizmoHelper);
 
-    // We track dragging state ourselves — three.js's `dragging` property has
-    // been unreliable across versions.
     let isDragging = false;
     tcontrols.addEventListener("dragging-changed", (e: any) => {
       isDragging = !!e.value;
       controls.enabled = !isDragging;
-      dbg("dragging-changed", { isDragging });
       if (!isDragging) snapGizmoToTcp();
     });
 
     // ---- IK dispatch -----------------------------------------------------
     let ikInFlight = false;
     let ikPending: THREE.Vector3 | null = null;
-    let ikSeq = 0;
     const tmpVec = new THREE.Vector3();
     const REACH_TOL = 0.05;
 
     const dispatchIK = async () => {
       const robot = robotRef.current;
-      if (!robot) {
-        dbg("dispatchIK: no robot yet");
-        return;
-      }
-      if (ikInFlight) {
-        dbg("dispatchIK: already in flight, will retry");
-        return;
-      }
-      if (!ikPending) return;
+      if (!robot || ikInFlight || !ikPending) return;
 
       ikInFlight = true;
-      const seq = ++ikSeq;
       const targetWorld = ikPending;
       ikPending = null;
 
       try {
         const local = robot.worldToLocal(tmpVec.copy(targetWorld));
         const seed = useStore.getState().q;
-        dbg(`IK #${seq} → local`, [local.x.toFixed(3), local.y.toFixed(3), local.z.toFixed(3)]);
         // Safety net: if the sidecar dies entirely the await would never
         // resolve, jamming `ikInFlight` forever. The sidecar already has its
         // own 400ms guard; this 1.5s race only fires if Python crashed.
@@ -112,12 +95,6 @@ export function Viewer() {
           setTimeout(() => rej(new Error("sidecar unresponsive")), 1500)
         );
         const result = await Promise.race([kin.ik([local.x, local.y, local.z], seed), timeout]);
-        dbg(`IK #${seq} ✓`, {
-          residual_mm: (result.residual * 1000).toFixed(1),
-          ok: result.ok,
-          clamped: result.clamped,
-          applied: result.residual < REACH_TOL,
-        });
         if (result.residual < REACH_TOL) {
           useStore.getState().setAllJoints(result.q as JointVec);
         }
@@ -127,7 +104,6 @@ export function Viewer() {
           clamped: result.clamped,
         });
       } catch (err) {
-        dbg(`IK #${seq} ✗`, String(err));
         useStore.getState().setIkStatus({
           residual: NaN,
           ok: false,
@@ -136,10 +112,7 @@ export function Viewer() {
         });
       } finally {
         ikInFlight = false;
-        if (ikPending) {
-          dbg("dispatchIK: chaining next");
-          dispatchIK();
-        }
+        if (ikPending) dispatchIK();
       }
     };
 
@@ -154,7 +127,6 @@ export function Viewer() {
       robot.rotation.x = -Math.PI / 2;
       scene.add(robot);
       robotRef.current = robot;
-      dbg("URDF loaded; joints:", Object.keys(robot.joints || {}));
 
       const tcp = robot.links?.["link6"];
       if (tcp) tcp.add(new THREE.AxesHelper(0.08));
