@@ -4,6 +4,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { TransformControls } from "three/addons/controls/TransformControls.js";
 import { STLLoader } from "three/addons/loaders/STLLoader.js";
 import URDFLoader, { URDFRobot } from "urdf-loader";
+import type { LineMaterial } from "three/addons/lines/LineMaterial.js";
 import { JointVec, useStore } from "../state/store";
 import { kin } from "../rpc/kinematics";
 import { buildToolpathLines } from "../gcode/toolpath";
@@ -104,29 +105,60 @@ export function Viewer() {
     domeGroup.position.y = SHOULDER_HEIGHT;
     scene.add(domeGroup);
 
-    // Toolpath: a separate group rotated like the robot so its mm-scale
-    // workpiece coordinates land in the URDF frame.
-    const toolpathGroup = new THREE.Group();
-    toolpathGroup.rotation.x = -Math.PI / 2;
-    scene.add(toolpathGroup);
+    // Toolpath: workpieceGroup positions the workpiece origin in WORLD
+    // coords (URDF Z-up → world Y-up via (x, z, -y)). A child frame applies
+    // the -π/2 X rotation so anything added in workpiece (URDF) coords
+    // renders correctly. Both the toolpath geometry and the small origin
+    // marker live inside that rotated frame.
+    const workpieceGroup = new THREE.Group();
+    scene.add(workpieceGroup);
+    const workpieceFrame = new THREE.Group();
+    workpieceFrame.rotation.x = -Math.PI / 2;
+    workpieceGroup.add(workpieceFrame);
 
-    const disposeToolpathChildren = () => {
-      while (toolpathGroup.children.length > 0) {
-        const c = toolpathGroup.children[0];
-        toolpathGroup.remove(c);
-        if (c instanceof THREE.LineSegments) {
-          c.geometry.dispose();
-          (c.material as THREE.Material).dispose();
-        }
+    const originMarker = new THREE.AxesHelper(0.05);
+    workpieceFrame.add(originMarker);
+
+    const toolpathMatRef: { current: LineMaterial | null } = { current: null };
+
+    const disposeToolpathLines = () => {
+      // Remove only the LineSegments2; keep the origin marker.
+      for (let i = workpieceFrame.children.length - 1; i >= 0; i--) {
+        const c = workpieceFrame.children[i];
+        if (c === originMarker) continue;
+        workpieceFrame.remove(c);
+        const anyc = c as unknown as {
+          geometry?: { dispose(): void };
+          material?: { dispose(): void };
+        };
+        anyc.geometry?.dispose();
+        anyc.material?.dispose();
       }
+      toolpathMatRef.current = null;
     };
 
-    const rebuildToolpath = (toolpath: ReturnType<typeof useStore.getState>["toolpath"]) => {
-      disposeToolpathChildren();
+    const rebuildToolpath = (
+      toolpath: ReturnType<typeof useStore.getState>["toolpath"]
+    ) => {
+      disposeToolpathLines();
       if (toolpath && toolpath.moves.length > 0) {
-        toolpathGroup.add(buildToolpathLines(toolpath));
+        const built = buildToolpathLines(toolpath);
+        built.material.resolution.set(
+          renderer.domElement.clientWidth,
+          renderer.domElement.clientHeight
+        );
+        workpieceFrame.add(built.object);
+        toolpathMatRef.current = built.material;
       }
     };
+
+    const applyWorkpieceOrigin = (
+      xyz: readonly [number, number, number]
+    ) => {
+      // URDF (x, y, z) → world (x, z, -y).
+      workpieceGroup.position.set(xyz[0], xyz[2], -xyz[1]);
+    };
+    applyWorkpieceOrigin(useStore.getState().workpieceOrigin);
 
     // TCP proxy + TransformControls (drag the colored arrows).
     const gizmoProxy = new THREE.Mesh(
@@ -302,6 +334,7 @@ export function Viewer() {
     let lastQ = useStore.getState().q;
     let lastViewer = useStore.getState().viewer;
     let lastToolpath = useStore.getState().toolpath;
+    let lastWorkpiece = useStore.getState().workpieceOrigin;
     const unsub = useStore.subscribe((state) => {
       const robot = robotRef.current;
       if (robot && state.q !== lastQ) {
@@ -318,7 +351,7 @@ export function Viewer() {
           domeGroup.visible = state.viewer.showWorkspace;
         }
         if (state.viewer.showToolpath !== lastViewer.showToolpath) {
-          toolpathGroup.visible = state.viewer.showToolpath;
+          workpieceGroup.visible = state.viewer.showToolpath;
         }
         if (state.viewer.resetViewTick !== lastViewer.resetViewTick) {
           camera.position.copy(CAMERA_HOME);
@@ -331,12 +364,16 @@ export function Viewer() {
         lastToolpath = state.toolpath;
         rebuildToolpath(state.toolpath);
       }
+      if (state.workpieceOrigin !== lastWorkpiece) {
+        lastWorkpiece = state.workpieceOrigin;
+        applyWorkpieceOrigin(state.workpieceOrigin);
+      }
     });
 
     // Initial viewer settings sync (in case persisted state differs).
     grid.visible = lastViewer.showGrid;
     domeGroup.visible = lastViewer.showWorkspace;
-    toolpathGroup.visible = lastViewer.showToolpath;
+    workpieceGroup.visible = lastViewer.showToolpath;
     rebuildToolpath(lastToolpath);
 
     // Animate
@@ -357,6 +394,8 @@ export function Viewer() {
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
       renderer.setSize(w, h);
+      // LineMaterial needs the pixel resolution to size linewidth correctly.
+      if (toolpathMatRef.current) toolpathMatRef.current.resolution.set(w, h);
     });
     ro.observe(container);
 
@@ -366,7 +405,7 @@ export function Viewer() {
       unsub();
       try { tcontrols.detach(); } catch {}
       try { scene.remove(gizmoHelper); } catch {}
-      disposeToolpathChildren();
+      disposeToolpathLines();
       renderer.dispose();
       if (renderer.domElement.parentNode === container) {
         container.removeChild(renderer.domElement);

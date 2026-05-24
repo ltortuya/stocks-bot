@@ -32,10 +32,18 @@ export function ToolpathPanel() {
   const toolpath = useStore((s) => s.toolpath);
   const loadToolpath = useStore((s) => s.loadToolpath);
   const clearToolpath = useStore((s) => s.clearToolpath);
+  const workpieceOrigin = useStore((s) => s.workpieceOrigin);
+  const setWorkpieceOrigin = useStore((s) => s.setWorkpieceOrigin);
 
   const [showImport, setShowImport] = useState(false);
   const [text, setText] = useState("");
   const [parseError, setParseError] = useState<string | null>(null);
+
+  const setOriginAxis = (axis: 0 | 1 | 2, valueMm: number) => {
+    const next = [...workpieceOrigin] as [number, number, number];
+    next[axis] = valueMm / 1000;
+    setWorkpieceOrigin(next);
+  };
 
   const onLoad = () => {
     setParseError(null);
@@ -74,6 +82,25 @@ export function ToolpathPanel() {
 
       {toolpath && (
         <>
+          <div className="wp-origin">
+            <div className="row-label">Workpiece origin (mm in robot frame)</div>
+            <div className="wp-origin-row">
+              {(["X", "Y", "Z"] as const).map((axis, i) => (
+                <label key={axis}>
+                  <em>{axis}</em>
+                  <input
+                    type="number"
+                    step="10"
+                    value={Math.round(workpieceOrigin[i] * 1000)}
+                    onChange={(e) =>
+                      setOriginAxis(i as 0 | 1 | 2, parseFloat(e.target.value) || 0)
+                    }
+                  />
+                </label>
+              ))}
+            </div>
+          </div>
+
           <div className="tp-stats">
             <div className="row"><span>Moves</span><span>{toolpath.moves.length}</span></div>
             <div className="row"><span>Feed length</span><span>{formatLen(toolpath.feedLength_mm)}</span></div>

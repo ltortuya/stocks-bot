@@ -95,6 +95,11 @@ interface AppState {
   toolpathSource: string | null;
   loadToolpath: (gcode: string) => Toolpath;
   clearToolpath: () => void;
+
+  // Workpiece origin in URDF coords (metres). The toolpath's (0, 0, 0)
+  // sits here. Default places it visibly in front of the robot's base.
+  workpieceOrigin: Vec3;
+  setWorkpieceOrigin: (xyz: Vec3) => void;
 }
 
 const newId = () =>
@@ -251,6 +256,11 @@ export const useStore = create<AppState>()(
         return parsed;
       },
       clearToolpath: () => set({ toolpath: null, toolpathSource: null }),
+
+      // 30 cm in front of the robot in URDF X, 5 cm above the floor in
+      // URDF Z. Far enough from the base mesh that small parts are visible.
+      workpieceOrigin: [0.3, 0, 0.05],
+      setWorkpieceOrigin: (xyz) => set({ workpieceOrigin: xyz }),
     }),
     {
       name: "ar3-platform",
@@ -259,6 +269,7 @@ export const useStore = create<AppState>()(
         defaultDuration: state.defaultDuration,
         viewer: state.viewer,
         toolpathSource: state.toolpathSource,
+        workpieceOrigin: state.workpieceOrigin,
       }),
       onRehydrateStorage: () => (state) => {
         // Re-parse the saved gcode so the in-memory Toolpath is rebuilt
