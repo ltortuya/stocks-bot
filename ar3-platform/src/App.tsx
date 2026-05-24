@@ -3,6 +3,7 @@ import { invoke } from "@tauri-apps/api/core";
 import { Viewer } from "./scene/Viewer";
 import { JointPanel } from "./panels/JointPanel";
 import { ProgramPanel } from "./panels/ProgramPanel";
+import { TransportPill } from "./panels/TransportPill";
 
 type SidecarStatus =
   | { kind: "loading" }
@@ -23,13 +24,16 @@ export default function App() {
       <header>
         <div>
           <h1>AR3 Platform</h1>
-          <p className="subtitle">Milestone 3 — programs</p>
+          <p className="subtitle">Milestone 4 — transport abstraction</p>
         </div>
-        <span className={`status status-${status.kind}`}>
-          {status.kind === "loading" && "connecting…"}
-          {status.kind === "ok" && `sidecar v${status.version}`}
-          {status.kind === "error" && `sidecar error`}
-        </span>
+        <div className="header-status">
+          <span className={`status status-${status.kind}`}>
+            {status.kind === "loading" && "connecting…"}
+            {status.kind === "ok" && `sidecar v${status.version}`}
+            {status.kind === "error" && `sidecar error`}
+          </span>
+          <TransportPill />
+        </div>
       </header>
 
       <main>

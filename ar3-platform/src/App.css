@@ -48,7 +48,46 @@ header h1 {
 
 .status-loading { color: #c5cad8; background: #1f2533; }
 .status-ok      { color: #6fd58b; background: #15321f; }
+.status-warn    { color: #f0c060; background: #3a2a15; }
 .status-error   { color: #f08585; background: #3a1c1c; }
+
+.header-status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.transport-pill-group {
+  display: flex;
+  gap: 0.35rem;
+}
+
+button.status-btn {
+  margin: 0;
+  width: auto;
+  font-size: 0.72rem;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  border: 1px solid transparent;
+}
+button.status-btn.status-loading { color: #c5cad8; background: #1f2533; border-color: #2f3548; }
+button.status-btn.status-ok      { color: #6fd58b; background: #15321f; border-color: #1f4a30; }
+button.status-btn.status-warn    { color: #f0c060; background: #3a2a15; border-color: #5a4220; }
+button.status-btn.status-error   { color: #f08585; background: #3a1c1c; border-color: #5a2a2a; }
+
+button.status-btn.estop {
+  text-transform: uppercase;
+  background: #1a1f2a;
+  color: #f08585;
+  border-color: #5a2a2a;
+  letter-spacing: 0.08em;
+}
+button.status-btn.estop:not(:disabled):hover { background: #4a1c1c; color: #fff; }
+button.status-btn.estop:disabled { opacity: 0.35; cursor: default; }
 
 /* ---------- main layout ---------- */
 

@@ -11,8 +11,9 @@ See [`DESIGN.md`](./DESIGN.md) for the architecture and milestone plan.
 **M1 — Viewer + FK** ✅ (URDF + joint sliders driving the 3D arm)
 **M2 — Inverse Kinematics** ✅ (drag the TCP, joints solve automatically)
 **M3 — Programs** ✅ (record waypoints, save / load, play back smoothly)
+**M4 — Transport abstraction** ✅ (Rust `Transport` trait + SimTransport; joint state mirrors to the transport at 50 Hz)
 
-Next: **M4 — Transport abstraction** (lay the groundwork to drive a real arm).
+Next: **M5 — Polish** (workspace volume, reachability shading, real AR3 meshes).
 
 ## Prerequisites
 
