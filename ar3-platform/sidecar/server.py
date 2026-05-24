@@ -16,7 +16,9 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import queue
 import sys
+import threading
 import traceback
 from typing import Any, Callable
 
@@ -162,11 +164,32 @@ def _ik(params: dict[str, Any]) -> dict[str, Any]:
     q_seed = params.get("q_seed") or [0.0] * 6
     seed_full = _to_chain_q(list(q_seed))
 
-    # Position-only IK (M2). Orientation IK can come with M9 (sculpting).
-    sol = CHAIN.inverse_kinematics(  # type: ignore[union-attr]
-        target_position=xyz,
-        initial_position=seed_full,
-    )
+    # Run ikpy in a worker thread with a hard timeout. ikpy's Levenberg-
+    # Marquardt solver can take very long (or effectively forever) on
+    # unreachable targets; without this bound, one bad call jams the entire
+    # IK pipeline because the host has no way to know we hung.
+    result_q: queue.Queue = queue.Queue(maxsize=1)
+
+    def _worker() -> None:
+        try:
+            sol = CHAIN.inverse_kinematics(  # type: ignore[union-attr]
+                target_position=xyz,
+                initial_position=seed_full,
+            )
+            result_q.put(("ok", sol))
+        except BaseException as e:  # noqa: BLE001
+            result_q.put(("err", e))
+
+    threading.Thread(target=_worker, daemon=True).start()
+    try:
+        kind, value = result_q.get(timeout=0.4)
+    except queue.Empty:
+        raise TimeoutError(
+            "IK solver exceeded 400ms — target likely unreachable"
+        )
+    if kind == "err":
+        raise value  # type: ignore[misc]
+    sol = value
 
     q_active = _from_chain_q(list(sol))
 
@@ -182,17 +205,21 @@ def _ik(params: dict[str, Any]) -> dict[str, Any]:
 
     # Residual = how far off the achieved TCP is from the requested point.
     achieved = CHAIN.forward_kinematics(_to_chain_q(q_active))  # type: ignore[union-attr]
-    err = (
+    err = float(
         (achieved[0, 3] - xyz[0]) ** 2
         + (achieved[1, 3] - xyz[1]) ** 2
         + (achieved[2, 3] - xyz[2]) ** 2
     ) ** 0.5
 
+    # Cast every comparison through `bool()` — numpy comparisons return
+    # numpy.bool_ which the stdlib json encoder cannot serialize. A previous
+    # build of this code crashed the sidecar whenever the residual exceeded
+    # the tolerance, jamming the frontend's in-flight IK request forever.
     return {
-        "q": q_active,
-        "ok": err < 0.01 and not clamped,  # 10 mm tolerance
-        "residual": float(err),
-        "clamped": clamped,
+        "q": [float(v) for v in q_active],
+        "ok": bool(err < 0.01 and not clamped),
+        "residual": err,
+        "clamped": bool(clamped),
     }
 
 
@@ -201,8 +228,22 @@ def _ik(params: dict[str, Any]) -> dict[str, Any]:
 # ---------------------------------------------------------------------------
 
 
+def _json_safe(o: Any) -> Any:
+    """Fallback for objects the default json encoder can't handle.
+
+    numpy scalars (numpy.bool_, numpy.float64, etc.) and numpy arrays leak
+    into responses easily. Without this default the encoder raises
+    TypeError, which kills the sidecar and freezes the frontend.
+    """
+    if hasattr(o, "item"):
+        return o.item()
+    if hasattr(o, "tolist"):
+        return o.tolist()
+    raise TypeError(f"not JSON-serializable: {type(o).__name__}")
+
+
 def _write(obj: dict[str, Any]) -> None:
-    sys.stdout.write(json.dumps(obj, separators=(",", ":")) + "\n")
+    sys.stdout.write(json.dumps(obj, separators=(",", ":"), default=_json_safe) + "\n")
     sys.stdout.flush()
 
 

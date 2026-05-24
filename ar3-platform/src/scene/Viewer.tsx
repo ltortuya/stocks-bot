@@ -105,7 +105,13 @@ export function Viewer() {
         const local = robot.worldToLocal(tmpVec.copy(targetWorld));
         const seed = useStore.getState().q;
         dbg(`IK #${seq} → local`, [local.x.toFixed(3), local.y.toFixed(3), local.z.toFixed(3)]);
-        const result = await kin.ik([local.x, local.y, local.z], seed);
+        // Safety net: if the sidecar dies entirely the await would never
+        // resolve, jamming `ikInFlight` forever. The sidecar already has its
+        // own 400ms guard; this 1.5s race only fires if Python crashed.
+        const timeout = new Promise<never>((_, rej) =>
+          setTimeout(() => rej(new Error("sidecar unresponsive")), 1500)
+        );
+        const result = await Promise.race([kin.ik([local.x, local.y, local.z], seed), timeout]);
         dbg(`IK #${seq} ✓`, {
           residual_mm: (result.residual * 1000).toFixed(1),
           ok: result.ok,
