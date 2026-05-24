@@ -177,9 +177,10 @@ export function Viewer() {
       cancelAnimationFrame(raf);
       ro.disconnect();
       unsub();
-      tcontrols.detach();
-      scene.remove(gizmoHelper);
-      tcontrols.dispose();
+      try { tcontrols.detach(); } catch {}
+      try { scene.remove(gizmoHelper); } catch {}
+      // tcontrols.dispose() in three r163+ calls this.traverse() which doesn't
+      // exist on the refactored class — skip it; the GC handles memory.
       renderer.dispose();
       if (renderer.domElement.parentNode === container) {
         container.removeChild(renderer.domElement);
