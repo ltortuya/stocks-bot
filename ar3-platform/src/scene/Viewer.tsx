@@ -6,6 +6,7 @@ import { STLLoader } from "three/addons/loaders/STLLoader.js";
 import URDFLoader, { URDFRobot } from "urdf-loader";
 import { JointVec, useStore } from "../state/store";
 import { kin } from "../rpc/kinematics";
+import { buildToolpathLines } from "../gcode/toolpath";
 
 const CAMERA_HOME = new THREE.Vector3(1.1, 0.8, 1.1);
 const CAMERA_TARGET = new THREE.Vector3(0, 0.35, 0);
@@ -102,6 +103,30 @@ export function Viewer() {
     domeGroup.add(domeWire);
     domeGroup.position.y = SHOULDER_HEIGHT;
     scene.add(domeGroup);
+
+    // Toolpath: a separate group rotated like the robot so its mm-scale
+    // workpiece coordinates land in the URDF frame.
+    const toolpathGroup = new THREE.Group();
+    toolpathGroup.rotation.x = -Math.PI / 2;
+    scene.add(toolpathGroup);
+
+    const disposeToolpathChildren = () => {
+      while (toolpathGroup.children.length > 0) {
+        const c = toolpathGroup.children[0];
+        toolpathGroup.remove(c);
+        if (c instanceof THREE.LineSegments) {
+          c.geometry.dispose();
+          (c.material as THREE.Material).dispose();
+        }
+      }
+    };
+
+    const rebuildToolpath = (toolpath: ReturnType<typeof useStore.getState>["toolpath"]) => {
+      disposeToolpathChildren();
+      if (toolpath && toolpath.moves.length > 0) {
+        toolpathGroup.add(buildToolpathLines(toolpath));
+      }
+    };
 
     // TCP proxy + TransformControls (drag the colored arrows).
     const gizmoProxy = new THREE.Mesh(
@@ -276,6 +301,7 @@ export function Viewer() {
     // ---- React to store changes ------------------------------------------
     let lastQ = useStore.getState().q;
     let lastViewer = useStore.getState().viewer;
+    let lastToolpath = useStore.getState().toolpath;
     const unsub = useStore.subscribe((state) => {
       const robot = robotRef.current;
       if (robot && state.q !== lastQ) {
@@ -291,6 +317,9 @@ export function Viewer() {
         if (state.viewer.showWorkspace !== lastViewer.showWorkspace) {
           domeGroup.visible = state.viewer.showWorkspace;
         }
+        if (state.viewer.showToolpath !== lastViewer.showToolpath) {
+          toolpathGroup.visible = state.viewer.showToolpath;
+        }
         if (state.viewer.resetViewTick !== lastViewer.resetViewTick) {
           camera.position.copy(CAMERA_HOME);
           controls.target.copy(CAMERA_TARGET);
@@ -298,11 +327,17 @@ export function Viewer() {
         }
         lastViewer = state.viewer;
       }
+      if (state.toolpath !== lastToolpath) {
+        lastToolpath = state.toolpath;
+        rebuildToolpath(state.toolpath);
+      }
     });
 
     // Initial viewer settings sync (in case persisted state differs).
     grid.visible = lastViewer.showGrid;
     domeGroup.visible = lastViewer.showWorkspace;
+    toolpathGroup.visible = lastViewer.showToolpath;
+    rebuildToolpath(lastToolpath);
 
     // Animate
     let raf = 0;
@@ -331,6 +366,7 @@ export function Viewer() {
       unsub();
       try { tcontrols.detach(); } catch {}
       try { scene.remove(gizmoHelper); } catch {}
+      disposeToolpathChildren();
       renderer.dispose();
       if (renderer.domElement.parentNode === container) {
         container.removeChild(renderer.domElement);
@@ -348,8 +384,11 @@ export function Viewer() {
 function ViewerToolbar() {
   const showGrid = useStore((s) => s.viewer.showGrid);
   const showWorkspace = useStore((s) => s.viewer.showWorkspace);
+  const showToolpath = useStore((s) => s.viewer.showToolpath);
+  const hasToolpath = useStore((s) => !!s.toolpath);
   const toggleGrid = useStore((s) => s.toggleGrid);
   const toggleWorkspace = useStore((s) => s.toggleWorkspace);
+  const toggleToolpath = useStore((s) => s.toggleToolpath);
   const requestResetView = useStore((s) => s.requestResetView);
 
   return (
@@ -368,6 +407,15 @@ function ViewerToolbar() {
       >
         reach
       </button>
+      {hasToolpath && (
+        <button
+          className={`vt ${showToolpath ? "vt-on" : ""}`}
+          onClick={toggleToolpath}
+          title="Toggle toolpath overlay"
+        >
+          path
+        </button>
+      )}
       <button className="vt" onClick={requestResetView} title="Reset camera">
         reset view
       </button>

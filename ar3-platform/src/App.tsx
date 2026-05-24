@@ -3,6 +3,7 @@ import { invoke } from "@tauri-apps/api/core";
 import { Viewer } from "./scene/Viewer";
 import { JointPanel } from "./panels/JointPanel";
 import { ProgramPanel } from "./panels/ProgramPanel";
+import { ToolpathPanel } from "./panels/ToolpathPanel";
 import { TransportPill } from "./panels/TransportPill";
 import { useStore } from "./state/store";
 
@@ -44,7 +45,7 @@ export default function App() {
       <header>
         <div>
           <h1>AR3 Platform</h1>
-          <p className="subtitle">Milestone 5 — polish</p>
+          <p className="subtitle">Milestone 9 — G-code import</p>
         </div>
         <div className="header-status">
           <span className={`status status-${status.kind}`}>
@@ -61,6 +62,7 @@ export default function App() {
         <aside>
           <JointPanel />
           <ProgramPanel />
+          <ToolpathPanel />
         </aside>
       </main>
     </div>

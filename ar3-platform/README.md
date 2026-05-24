@@ -13,8 +13,9 @@ See [`DESIGN.md`](./DESIGN.md) for the architecture and milestone plan.
 **M3 — Programs** ✅ (record waypoints, save / load, play back smoothly)
 **M4 — Transport abstraction** ✅ (Rust `Transport` trait + SimTransport; joint state mirrors at 50 Hz)
 **M5 — Polish** ✅ (reach dome, TCP readout, smooth jumps, undo / redo, view toolbar, real AR3 meshes)
+**M9 — G-code import & toolpath visualization** ✅ (paste G-code, render as colored 3D lines, stats + bbox)
 
-**v1 foundation complete.** Next: **M6 — Real hardware** (`SerialTransport` driving an AR3 Teensy over USB).
+Next: **M6 — Real hardware** (SerialTransport driving an AR3 Teensy over USB).
 
 ## Robot description
 

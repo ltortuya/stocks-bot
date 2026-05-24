@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { parseGcode, type Toolpath } from "../gcode/parser";
 
 export type JointVec = [number, number, number, number, number, number];
 export type Vec3 = [number, number, number];
@@ -37,6 +38,7 @@ export interface PlaybackState {
 export interface ViewerSettings {
   showGrid: boolean;
   showWorkspace: boolean;
+  showToolpath: boolean;
   resetViewTick: number; // increment to request a camera reset
 }
 
@@ -85,7 +87,14 @@ interface AppState {
   viewer: ViewerSettings;
   toggleGrid: () => void;
   toggleWorkspace: () => void;
+  toggleToolpath: () => void;
   requestResetView: () => void;
+
+  // ---- toolpath (runtime-only; the source gcode is persisted, see below) ----
+  toolpath: Toolpath | null;
+  toolpathSource: string | null;
+  loadToolpath: (gcode: string) => Toolpath;
+  clearToolpath: () => void;
 }
 
 const newId = () =>
@@ -202,7 +211,12 @@ export const useStore = create<AppState>()(
       setPlaybackIndex: (index) =>
         set((state) => ({ playback: { ...state.playback, index } })),
 
-      viewer: { showGrid: true, showWorkspace: true, resetViewTick: 0 },
+      viewer: {
+        showGrid: true,
+        showWorkspace: true,
+        showToolpath: true,
+        resetViewTick: 0,
+      },
       toggleGrid: () =>
         set((state) => ({
           viewer: { ...state.viewer, showGrid: !state.viewer.showGrid },
@@ -214,6 +228,13 @@ export const useStore = create<AppState>()(
             showWorkspace: !state.viewer.showWorkspace,
           },
         })),
+      toggleToolpath: () =>
+        set((state) => ({
+          viewer: {
+            ...state.viewer,
+            showToolpath: !state.viewer.showToolpath,
+          },
+        })),
       requestResetView: () =>
         set((state) => ({
           viewer: {
@@ -221,6 +242,15 @@ export const useStore = create<AppState>()(
             resetViewTick: state.viewer.resetViewTick + 1,
           },
         })),
+
+      toolpath: null,
+      toolpathSource: null,
+      loadToolpath: (gcode) => {
+        const parsed = parseGcode(gcode);
+        set({ toolpath: parsed, toolpathSource: gcode });
+        return parsed;
+      },
+      clearToolpath: () => set({ toolpath: null, toolpathSource: null }),
     }),
     {
       name: "ar3-platform",
@@ -228,7 +258,20 @@ export const useStore = create<AppState>()(
         program: state.program,
         defaultDuration: state.defaultDuration,
         viewer: state.viewer,
+        toolpathSource: state.toolpathSource,
       }),
+      onRehydrateStorage: () => (state) => {
+        // Re-parse the saved gcode so the in-memory Toolpath is rebuilt
+        // without persisting the (potentially large) parsed move list.
+        if (state?.toolpathSource) {
+          try {
+            state.toolpath = parseGcode(state.toolpathSource);
+          } catch {
+            state.toolpath = null;
+            state.toolpathSource = null;
+          }
+        }
+      },
     }
   )
 );
