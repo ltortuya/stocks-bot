@@ -65,8 +65,10 @@ export function Viewer() {
     tcontrols.setMode("translate");
     tcontrols.setSize(0.85);
     tcontrols.attach(gizmoProxy);
-    // TransformControls is itself a THREE.Object3D in newer three.js.
-    scene.add(tcontrols as unknown as THREE.Object3D);
+    // In three.js >= r163 TransformControls no longer extends Object3D;
+    // its visual handles live in a separate root accessed via getHelper().
+    const gizmoHelper = tcontrols.getHelper();
+    scene.add(gizmoHelper);
 
     // Disable orbit while dragging the gizmo so the camera doesn't fight us.
     tcontrols.addEventListener("dragging-changed", (e: any) => {
@@ -176,6 +178,7 @@ export function Viewer() {
       ro.disconnect();
       unsub();
       tcontrols.detach();
+      scene.remove(gizmoHelper);
       tcontrols.dispose();
       renderer.dispose();
       if (renderer.domElement.parentNode === container) {
