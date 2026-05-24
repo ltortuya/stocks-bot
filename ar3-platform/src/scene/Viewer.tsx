@@ -182,31 +182,48 @@ export function Viewer() {
 
     // ---- URDF load --------------------------------------------------------
     const loader = new URDFLoader();
+    // Vite serves public/ at the site root, so the URDF's
+    // /ar3-meshes/foo.STL paths resolve as absolute URLs already.
+    loader.workingPath = "";
     // urdf-loader's default mesh callback uses dynamic imports for STLLoader
-    // that don't always resolve under Vite. Wire STL explicitly so the
-    // ar3_core meshes are guaranteed to load.
+    // that don't always resolve under Vite. Wire STL explicitly with an
+    // explicit material so we never fall through to a no-material draw.
+    const meshMaterial = new THREE.MeshStandardMaterial({
+      color: 0xd9c356, // muted gold to match the AR3's signature color
+      roughness: 0.55,
+      metalness: 0.18,
+    });
     loader.loadMeshCb = (path, manager, done) => {
+      console.log("[ar3] mesh fetch:", path);
       const ext = path.split(".").pop()?.toLowerCase();
-      if (ext === "stl") {
-        new STLLoader(manager).load(
-          path,
-          (geom) => {
-            geom.computeVertexNormals();
-            const mesh = new THREE.Mesh(geom);
-            done(mesh);
-          },
-          undefined,
-          (err) => {
-            console.error("[ar3] STL load failed:", path, err);
-            done(null as unknown as THREE.Object3D, err as Error);
-          }
-        );
-      } else {
-        console.warn("[ar3] no loader for mesh extension:", path);
+      if (ext !== "stl") {
+        console.warn("[ar3] unsupported mesh extension:", path);
         done(new THREE.Object3D());
+        return;
       }
+      new STLLoader(manager).load(
+        path,
+        (geom) => {
+          geom.computeVertexNormals();
+          const mesh = new THREE.Mesh(geom, meshMaterial.clone());
+          console.log(
+            "[ar3] mesh ok:",
+            path,
+            "vertices:",
+            geom.attributes.position?.count
+          );
+          done(mesh);
+        },
+        undefined,
+        (err) => {
+          console.error("[ar3] STL load FAILED:", path, err);
+          done(null as unknown as THREE.Object3D, err as Error);
+        }
+      );
     };
     loader.load("/ar3.urdf", (robot: URDFRobot) => {
+      console.log("[ar3] URDF loaded, joints:", Object.keys(robot.joints || {}));
+      console.log("[ar3] URDF loaded, links:", Object.keys(robot.links || {}));
       robot.rotation.x = -Math.PI / 2;
       scene.add(robot);
       robotRef.current = robot;
