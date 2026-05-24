@@ -224,7 +224,7 @@ export const useStore = create<AppState>()(
     }),
     {
       name: "ar3-platform",
-      partialize: (state) => ({
+      partialize: (state: AppState) => ({
         program: state.program,
         defaultDuration: state.defaultDuration,
         viewer: state.viewer,
