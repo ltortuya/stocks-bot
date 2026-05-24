@@ -32,8 +32,8 @@ export function JointPanel() {
 
       <h2 className="section-h">TCP control</h2>
       <p className="hint">
-        Drag the colored arrows on the orange ball in the 3D view to move the
-        tool tip. The arm solves for you.
+        Click and drag the orange ball at the tool tip. Movement is in the
+        plane facing the camera — rotate the view to drag along another axis.
       </p>
       {ik && (
         <div className={`ik-status ${ik.error ? "err" : ik.ok ? "ok" : "warn"}`}>
