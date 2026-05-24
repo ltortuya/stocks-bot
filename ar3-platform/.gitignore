@@ -1,0 +1,21 @@
+# dependencies
+node_modules/
+dist/
+.pnpm-store/
+
+# tauri / rust
+src-tauri/target/
+src-tauri/Cargo.lock.bak
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+*.egg-info/
+
+# editor
+.vscode/
+.idea/
+*.swp
+.DS_Store

@@ -1,0 +1,20 @@
+[project]
+name = "ar3-sidecar"
+version = "0.0.1"
+description = "Kinematics sidecar for the AR3 Platform"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+# Pulled in starting at M1 (FK) / M2 (IK)
+kinematics = [
+    "numpy>=1.26",
+    "roboticstoolbox-python>=1.1",
+]
+dev = [
+    "pytest>=8",
+]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
