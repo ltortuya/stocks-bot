@@ -100,6 +100,23 @@ interface AppState {
   // sits here. Default places it visibly in front of the robot's base.
   workpieceOrigin: Vec3;
   setWorkpieceOrigin: (xyz: Vec3) => void;
+
+  // ---- toolpath simulation ----
+  sim: SimState;
+  setSimStatus: (s: SimState["status"]) => void;
+  setSimProgress: (p: number) => void;
+  setSimSpeed: (speed: number) => void;
+  setSimReachability: (unreachable: number, total: number) => void;
+  setSimError: (err: string | null) => void;
+}
+
+export interface SimState {
+  status: "idle" | "compiling" | "playing" | "error";
+  progress: number; // 0..1
+  speed: number;    // playback multiplier vs. real time
+  unreachableSamples: number;
+  totalSamples: number;
+  error: string | null;
 }
 
 const newId = () =>
@@ -261,6 +278,27 @@ export const useStore = create<AppState>()(
       // URDF Z. Far enough from the base mesh that small parts are visible.
       workpieceOrigin: [0.3, 0, 0.05],
       setWorkpieceOrigin: (xyz) => set({ workpieceOrigin: xyz }),
+
+      sim: {
+        status: "idle",
+        progress: 0,
+        speed: 10,
+        unreachableSamples: 0,
+        totalSamples: 0,
+        error: null,
+      },
+      setSimStatus: (status) =>
+        set((s) => ({ sim: { ...s.sim, status, error: status === "error" ? s.sim.error : null } })),
+      setSimProgress: (progress) =>
+        set((s) => ({ sim: { ...s.sim, progress } })),
+      setSimSpeed: (speed) =>
+        set((s) => ({ sim: { ...s.sim, speed } })),
+      setSimReachability: (unreachable, total) =>
+        set((s) => ({
+          sim: { ...s.sim, unreachableSamples: unreachable, totalSamples: total },
+        })),
+      setSimError: (error) =>
+        set((s) => ({ sim: { ...s.sim, error } })),
     }),
     {
       name: "ar3-platform",

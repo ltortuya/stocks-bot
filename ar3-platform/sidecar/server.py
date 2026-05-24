@@ -154,6 +154,74 @@ def _fk(params: dict[str, Any]) -> dict[str, Any]:
     return {"pose": {"xyz": xyz, "rpy": rpy}}
 
 
+@method("ik_batch")
+def _ik_batch(params: dict[str, Any]) -> dict[str, Any]:
+    """Run IK for a list of points in sequence with warm-started seeds.
+
+    Single IPC round-trip for an entire toolpath sample set; warm-starting
+    each solve from the previous solution keeps convergence fast (~5-10ms
+    per point) and avoids configuration jumps along the path.
+    """
+    _need_kinematics()
+    points = params.get("points") or []
+    if not isinstance(points, list):
+        raise ValueError("points must be a list")
+    seed = params.get("q_seed") or [0.0] * 6
+    seed_full = _to_chain_q(list(seed))
+
+    results: list[dict[str, Any]] = []
+    last_q = [float(v) for v in seed]
+
+    for idx, pt in enumerate(points):
+        if not pt or len(pt) != 3:
+            results.append({
+                "q": last_q,
+                "ok": False,
+                "residual": float("inf"),
+                "clamped": False,
+                "error": f"point {idx}: expected [x, y, z]",
+            })
+            continue
+        try:
+            sol = CHAIN.inverse_kinematics(  # type: ignore[union-attr]
+                target_position=pt,
+                initial_position=seed_full,
+            )
+            q_active = _from_chain_q(list(sol))
+            clamped = False
+            for i, (lo, hi) in enumerate(JOINT_LIMITS):
+                if q_active[i] < lo:
+                    q_active[i] = lo
+                    clamped = True
+                elif q_active[i] > hi:
+                    q_active[i] = hi
+                    clamped = True
+            achieved = CHAIN.forward_kinematics(_to_chain_q(q_active))  # type: ignore[union-attr]
+            err = float(
+                (achieved[0, 3] - pt[0]) ** 2
+                + (achieved[1, 3] - pt[1]) ** 2
+                + (achieved[2, 3] - pt[2]) ** 2
+            ) ** 0.5
+            q_out = [float(v) for v in q_active]
+            results.append({
+                "q": q_out,
+                "ok": bool(err < 0.01 and not clamped),
+                "residual": err,
+                "clamped": bool(clamped),
+            })
+            last_q = q_out
+            seed_full = _to_chain_q(q_out)
+        except Exception as e:  # noqa: BLE001
+            results.append({
+                "q": last_q,
+                "ok": False,
+                "residual": float("inf"),
+                "clamped": False,
+                "error": f"{type(e).__name__}: {e}",
+            })
+    return {"results": results}
+
+
 @method("ik")
 def _ik(params: dict[str, Any]) -> dict[str, Any]:
     _need_kinematics()

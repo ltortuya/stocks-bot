@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { useStore } from "../state/store";
+import {
+  runToolpathSimulation,
+  stopToolpathSimulation,
+} from "../playback/toolpathSim";
 
 const EXAMPLE_PLACEHOLDER = `; Example: 100mm square pocket pass
 G21
@@ -34,6 +38,8 @@ export function ToolpathPanel() {
   const clearToolpath = useStore((s) => s.clearToolpath);
   const workpieceOrigin = useStore((s) => s.workpieceOrigin);
   const setWorkpieceOrigin = useStore((s) => s.setWorkpieceOrigin);
+  const sim = useStore((s) => s.sim);
+  const setSimSpeed = useStore((s) => s.setSimSpeed);
 
   const [showImport, setShowImport] = useState(false);
   const [text, setText] = useState("");
@@ -128,6 +134,49 @@ export function ToolpathPanel() {
             <span><i className="sw sw-feed" /> feed</span>
             <span><i className="sw sw-cut" /> cutting</span>
           </div>
+
+          <div className="sim-row">
+            <button
+              className="play"
+              onClick={runToolpathSimulation}
+              disabled={sim.status === "compiling" || sim.status === "playing"}
+            >
+              {sim.status === "idle" && "▶ Run simulation"}
+              {sim.status === "compiling" && `Compiling… ${Math.round(sim.progress * 100)}%`}
+              {sim.status === "playing" && `Playing… ${Math.round(sim.progress * 100)}%`}
+              {sim.status === "error" && "Error — see console"}
+            </button>
+            {(sim.status === "compiling" || sim.status === "playing") && (
+              <button className="play stop" onClick={stopToolpathSimulation}>
+                ■ Stop
+              </button>
+            )}
+          </div>
+
+          <div className="sim-speed">
+            <label>Speed</label>
+            {[1, 5, 10, 25].map((s) => (
+              <button
+                key={s}
+                className={`vt ${sim.speed === s ? "vt-on" : ""}`}
+                onClick={() => setSimSpeed(s)}
+                disabled={sim.status === "compiling"}
+              >
+                {s}×
+              </button>
+            ))}
+          </div>
+
+          {sim.totalSamples > 0 && sim.status !== "compiling" && (
+            <div
+              className={`ik-status ${sim.unreachableSamples > 0 ? "warn" : "ok"}`}
+              style={{ marginTop: "0.5rem" }}
+            >
+              {sim.unreachableSamples === 0
+                ? `${sim.totalSamples} sample${sim.totalSamples === 1 ? "" : "s"} all reachable`
+                : `${sim.unreachableSamples} / ${sim.totalSamples} sample${sim.totalSamples === 1 ? "" : "s"} unreachable`}
+            </div>
+          )}
 
           <div className="program-io">
             <button
