@@ -12,9 +12,19 @@ See [`DESIGN.md`](./DESIGN.md) for the architecture and milestone plan.
 **M2 — Inverse Kinematics** ✅ (drag the TCP, joints solve automatically)
 **M3 — Programs** ✅ (record waypoints, save / load, play back smoothly)
 **M4 — Transport abstraction** ✅ (Rust `Transport` trait + SimTransport; joint state mirrors at 50 Hz)
-**M5 — Polish** ✅ (reach dome, TCP readout, smooth jumps, undo / redo, view toolbar)
+**M5 — Polish** ✅ (reach dome, TCP readout, smooth jumps, undo / redo, view toolbar, real AR3 meshes)
 
 **v1 foundation complete.** Next: **M6 — Real hardware** (`SerialTransport` driving an AR3 Teensy over USB).
+
+## Robot description
+
+The 3D model in the viewer comes from
+[`ongdexter/ar3_core`](https://github.com/ongdexter/ar3_core)
+(MIT licensed). The mesh STLs and the URDF live under
+[`public/ar3-meshes/`](public/ar3-meshes/) and
+[`public/ar3.urdf`](public/ar3.urdf). The hand-built cylinder
+fallback lives at `public/ar3-cylinders.urdf` — change the path in
+`src/scene/Viewer.tsx` to swap.
 
 ## Prerequisites
 

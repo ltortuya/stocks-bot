@@ -44,14 +44,15 @@ except Exception as e:  # noqa: BLE001 — want the broadest "anything missing"
 CHAIN = None  # ikpy.chain.Chain, populated in main()
 URDF_PATH: str | None = None
 
-# Joint limits in radians, matching public/ar3.urdf.
+# Joint limits in radians, matching public/ar3.urdf (community AR3 from
+# ongdexter/ar3_core with our added limit elements).
 JOINT_LIMITS: list[tuple[float, float]] = [
     (-2.97, 2.97),
-    (-2.25, 2.25),
-    (-2.50, 2.50),
+    (-1.75, 1.75),
+    (-2.40, 2.40),
     (-2.88, 2.88),
     (-1.83, 1.83),
-    (-2.70, 2.70),
+    (-2.71, 2.71),
 ]
 
 # ---------------------------------------------------------------------------

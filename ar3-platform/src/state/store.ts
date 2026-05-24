@@ -4,14 +4,15 @@ import { persist } from "zustand/middleware";
 export type JointVec = [number, number, number, number, number, number];
 export type Vec3 = [number, number, number];
 
-// Joint limits in radians, matching public/ar3.urdf.
+// Joint limits in radians, matching public/ar3.urdf (community AR3 model
+// from ongdexter/ar3_core, with our added <limit> elements).
 export const JOINT_LIMITS: ReadonlyArray<readonly [number, number]> = [
   [-2.97, 2.97],
-  [-2.25, 2.25],
-  [-2.5, 2.5],
+  [-1.75, 1.75],
+  [-2.4, 2.4],
   [-2.88, 2.88],
   [-1.83, 1.83],
-  [-2.7, 2.7],
+  [-2.71, 2.71],
 ] as const;
 
 export interface IkStatus {

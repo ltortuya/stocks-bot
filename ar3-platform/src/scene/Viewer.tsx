@@ -6,13 +6,18 @@ import URDFLoader, { URDFRobot } from "urdf-loader";
 import { JointVec, useStore } from "../state/store";
 import { kin } from "../rpc/kinematics";
 
-const CAMERA_HOME = new THREE.Vector3(1.0, 0.9, 1.0);
-const CAMERA_TARGET = new THREE.Vector3(0, 0.4, 0);
+const CAMERA_HOME = new THREE.Vector3(1.1, 0.8, 1.1);
+const CAMERA_TARGET = new THREE.Vector3(0, 0.35, 0);
 
-// Approximate maximum reach of the AR3 (link lengths summed minus a margin
-// for joint limits). The dome at the base visualizes the work envelope.
-const REACH_RADIUS = 0.62;
+// Approximate work envelope of the AR3 (~720 mm from shoulder per CAD).
+// Shoulder height tracks the real base_link height; see public/ar3.urdf.
+const REACH_RADIUS = 0.72;
 const SHOULDER_HEIGHT = 0.17;
+
+// The community URDF (ongdexter/ar3_core) names joints joint_1..joint_6 and
+// the TCP link link_6. urdf-loader exposes them under the same names.
+const JOINT_NAMES = ["joint_1", "joint_2", "joint_3", "joint_4", "joint_5", "joint_6"];
+const TCP_LINK = "link_6";
 
 export function Viewer() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -181,12 +186,12 @@ export function Viewer() {
       scene.add(robot);
       robotRef.current = robot;
 
-      const tcpLink = robot.links?.["link6"];
+      const tcpLink = robot.links?.[TCP_LINK];
       if (tcpLink) tcpLink.add(new THREE.AxesHelper(0.08));
 
       useStore
         .getState()
-        .q.forEach((v, i) => robot.setJointValue(`joint${i + 1}`, v));
+        .q.forEach((v, i) => robot.setJointValue(JOINT_NAMES[i], v));
 
       snapGizmoToTcp();
       pushTcpToStore();
@@ -196,7 +201,7 @@ export function Viewer() {
     const snapGizmoToTcp = () => {
       const robot = robotRef.current;
       if (!robot) return;
-      const tcp = robot.links?.["link6"];
+      const tcp = robot.links?.[TCP_LINK];
       if (!tcp) return;
       tcp.updateMatrixWorld(true);
       tcp.getWorldPosition(gizmoProxy.position);
@@ -208,7 +213,7 @@ export function Viewer() {
     const pushTcpToStore = () => {
       const robot = robotRef.current;
       if (!robot) return;
-      const tcp = robot.links?.["link6"];
+      const tcp = robot.links?.[TCP_LINK];
       if (!tcp) return;
       tcp.updateMatrixWorld(true);
       tcp.getWorldPosition(tcpWorld);
@@ -233,7 +238,7 @@ export function Viewer() {
       const robot = robotRef.current;
       if (robot && state.q !== lastQ) {
         lastQ = state.q;
-        state.q.forEach((v, i) => robot.setJointValue(`joint${i + 1}`, v));
+        state.q.forEach((v, i) => robot.setJointValue(JOINT_NAMES[i], v));
         pushTcpToStore();
         if (!isDragging) snapGizmoToTcp();
       }
