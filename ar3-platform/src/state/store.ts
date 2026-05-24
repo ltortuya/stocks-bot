@@ -101,6 +101,10 @@ interface AppState {
   workpieceOrigin: Vec3;
   setWorkpieceOrigin: (xyz: Vec3) => void;
 
+  // ---- tool (cutting bit attached to the flange) ----
+  tool: ToolSettings;
+  setTool: (patch: Partial<ToolSettings>) => void;
+
   // ---- toolpath simulation ----
   sim: SimState;
   setSimStatus: (s: SimState["status"]) => void;
@@ -117,6 +121,11 @@ export interface SimState {
   unreachableSamples: number;
   totalSamples: number;
   error: string | null;
+}
+
+export interface ToolSettings {
+  length_mm: number;    // distance from flange (link_6 origin) to bit tip
+  diameter_mm: number;  // bit diameter for visualization
 }
 
 const newId = () =>
@@ -279,6 +288,11 @@ export const useStore = create<AppState>()(
       workpieceOrigin: [0.3, 0, 0.05],
       setWorkpieceOrigin: (xyz) => set({ workpieceOrigin: xyz }),
 
+      // Default: 2" length × 1/8" diameter trim-router-class bit.
+      tool: { length_mm: 50.8, diameter_mm: 3.175 },
+      setTool: (patch) =>
+        set((s) => ({ tool: { ...s.tool, ...patch } })),
+
       sim: {
         status: "idle",
         progress: 0,
@@ -308,6 +322,7 @@ export const useStore = create<AppState>()(
         viewer: state.viewer,
         toolpathSource: state.toolpathSource,
         workpieceOrigin: state.workpieceOrigin,
+        tool: state.tool,
       }),
       onRehydrateStorage: () => (state) => {
         // Re-parse the saved gcode so the in-memory Toolpath is rebuilt

@@ -38,6 +38,8 @@ export function ToolpathPanel() {
   const clearToolpath = useStore((s) => s.clearToolpath);
   const workpieceOrigin = useStore((s) => s.workpieceOrigin);
   const setWorkpieceOrigin = useStore((s) => s.setWorkpieceOrigin);
+  const tool = useStore((s) => s.tool);
+  const setTool = useStore((s) => s.setTool);
   const sim = useStore((s) => s.sim);
   const setSimSpeed = useStore((s) => s.setSimSpeed);
 
@@ -88,6 +90,41 @@ export function ToolpathPanel() {
 
       {toolpath && (
         <>
+          <div className="wp-origin">
+            <div className="row-label">Tool (mm)</div>
+            <div className="wp-origin-row">
+              <label>
+                <em>L</em>
+                <input
+                  type="number"
+                  step="1"
+                  min="0"
+                  value={+tool.length_mm.toFixed(2)}
+                  onChange={(e) =>
+                    setTool({ length_mm: parseFloat(e.target.value) || 0 })
+                  }
+                />
+              </label>
+              <label>
+                <em>Ø</em>
+                <input
+                  type="number"
+                  step="0.1"
+                  min="0"
+                  value={+tool.diameter_mm.toFixed(3)}
+                  onChange={(e) =>
+                    setTool({ diameter_mm: parseFloat(e.target.value) || 0 })
+                  }
+                />
+              </label>
+              <label className="hint-small">
+                2″ = 50.8
+                <br />
+                ⅛″ = 3.175
+              </label>
+            </div>
+          </div>
+
           <div className="wp-origin">
             <div className="row-label">Workpiece origin (mm in robot frame)</div>
             <div className="wp-origin-row">

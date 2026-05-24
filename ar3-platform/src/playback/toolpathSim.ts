@@ -33,7 +33,11 @@ export async function runToolpathSimulation(): Promise<void> {
   state.setSimProgress(0);
 
   try {
-    const samples = sampleToolpath(state.toolpath, state.workpieceOrigin);
+    const samples = sampleToolpath(
+      state.toolpath,
+      state.workpieceOrigin,
+      state.tool.length_mm
+    );
     if (samples.length === 0) {
       state.setSimStatus("idle");
       return;

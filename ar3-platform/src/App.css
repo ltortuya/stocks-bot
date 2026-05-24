@@ -355,6 +355,16 @@ button:hover {
   -webkit-appearance: none;
   margin: 0;
 }
+.wp-origin-row label.hint-small {
+  flex-direction: column;
+  align-items: flex-start;
+  color: #6c7488;
+  font-size: 0.62rem;
+  line-height: 1.15;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+.wp-origin + .wp-origin { margin-top: 0.5rem; }
 
 .sim-row {
   display: flex;

@@ -14,30 +14,36 @@ export interface SamplePoint {
   spindleOn: boolean;
 }
 
-/** Convert workpiece (mm) → URDF (m) given the workpiece origin in URDF m. */
+/**
+ * Convert workpiece (mm) → URDF (m) given the workpiece origin in URDF m
+ * and the tool length offset. The flange (link_6 origin) sits `toolLength`
+ * above where the G-code says the tip should go — we assume the spindle
+ * points along workpiece -Z, which is the typical CNC mount.
+ */
 function toUrdf(
   pt_mm: Vec3,
-  origin_m: readonly [number, number, number]
+  origin_m: readonly [number, number, number],
+  toolLength_mm: number
 ): [number, number, number] {
   return [
     pt_mm[0] / 1000 + origin_m[0],
     pt_mm[1] / 1000 + origin_m[1],
-    pt_mm[2] / 1000 + origin_m[2],
+    (pt_mm[2] + toolLength_mm) / 1000 + origin_m[2],
   ];
 }
 
 export function sampleToolpath(
   toolpath: Toolpath,
-  workpieceOrigin: readonly [number, number, number]
+  workpieceOrigin: readonly [number, number, number],
+  toolLength_mm: number
 ): SamplePoint[] {
   const samples: SamplePoint[] = [];
   let t = 0;
 
-  // Always start with the home point so the arm has a target before motion.
   if (toolpath.moves.length > 0) {
     const first = toolpath.moves[0];
     samples.push({
-      urdf: toUrdf(first.from, workpieceOrigin),
+      urdf: toUrdf(first.from, workpieceOrigin, toolLength_mm),
       t,
       type: first.type,
       spindleOn: first.spindleOn,
@@ -66,7 +72,7 @@ export function sampleToolpath(
         move.from[2] + dz * f,
       ];
       samples.push({
-        urdf: toUrdf(pt, workpieceOrigin),
+        urdf: toUrdf(pt, workpieceOrigin, toolLength_mm),
         t: t + move_sec * f,
         type: move.type,
         spindleOn: move.spindleOn,

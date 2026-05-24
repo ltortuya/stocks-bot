@@ -237,6 +237,10 @@ export function Viewer() {
       dispatchIK();
     });
 
+    // Bit mesh handle — created after the URDF loads, updated whenever the
+    // tool changes in the store.
+    let bitMesh: THREE.Mesh | null = null;
+
     // ---- URDF load --------------------------------------------------------
     const loader = new URDFLoader();
     // Vite serves public/ at the site root, so the URDF's
@@ -286,7 +290,29 @@ export function Viewer() {
       robotRef.current = robot;
 
       const tcpLink = robot.links?.[TCP_LINK];
-      if (tcpLink) tcpLink.add(new THREE.AxesHelper(0.08));
+      if (tcpLink) {
+        tcpLink.add(new THREE.AxesHelper(0.08));
+        // Bit visualization: a thin metallic cylinder along link_6's +Z.
+        // CylinderGeometry is Y-axis aligned by default; rotate to align
+        // with Z and slide so its base sits at the flange origin.
+        const tool = useStore.getState().tool;
+        bitMesh = new THREE.Mesh(
+          new THREE.CylinderGeometry(
+            tool.diameter_mm / 2000,
+            tool.diameter_mm / 2000,
+            tool.length_mm / 1000,
+            20
+          ),
+          new THREE.MeshStandardMaterial({
+            color: 0xbcc2d0,
+            metalness: 0.65,
+            roughness: 0.3,
+          })
+        );
+        bitMesh.rotation.x = Math.PI / 2;
+        bitMesh.position.z = tool.length_mm / 2000;
+        tcpLink.add(bitMesh);
+      }
 
       useStore
         .getState()
@@ -296,6 +322,18 @@ export function Viewer() {
       pushTcpToStore();
       gizmoProxy.visible = true;
     });
+
+    const updateBit = (tool: { length_mm: number; diameter_mm: number }) => {
+      if (!bitMesh) return;
+      bitMesh.geometry.dispose();
+      bitMesh.geometry = new THREE.CylinderGeometry(
+        tool.diameter_mm / 2000,
+        tool.diameter_mm / 2000,
+        tool.length_mm / 1000,
+        20
+      );
+      bitMesh.position.z = tool.length_mm / 2000;
+    };
 
     const snapGizmoToTcp = () => {
       const robot = robotRef.current;
@@ -335,6 +373,7 @@ export function Viewer() {
     let lastViewer = useStore.getState().viewer;
     let lastToolpath = useStore.getState().toolpath;
     let lastWorkpiece = useStore.getState().workpieceOrigin;
+    let lastTool = useStore.getState().tool;
     const unsub = useStore.subscribe((state) => {
       const robot = robotRef.current;
       if (robot && state.q !== lastQ) {
@@ -367,6 +406,10 @@ export function Viewer() {
       if (state.workpieceOrigin !== lastWorkpiece) {
         lastWorkpiece = state.workpieceOrigin;
         applyWorkpieceOrigin(state.workpieceOrigin);
+      }
+      if (state.tool !== lastTool) {
+        lastTool = state.tool;
+        updateBit(state.tool);
       }
     });
 
