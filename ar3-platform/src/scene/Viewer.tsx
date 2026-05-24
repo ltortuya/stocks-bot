@@ -70,9 +70,17 @@ export function Viewer() {
     const gizmoHelper = tcontrols.getHelper();
     scene.add(gizmoHelper);
 
-    // Disable orbit while dragging the gizmo so the camera doesn't fight us.
+    // Track dragging ourselves — the new TransformControls' `dragging`
+    // property is unreliable across versions.
+    let isDragging = false;
     tcontrols.addEventListener("dragging-changed", (e: any) => {
-      controls.enabled = !e.value;
+      isDragging = !!e.value;
+      controls.enabled = !isDragging;
+      if (!isDragging) {
+        // On release, snap the gizmo to wherever the arm actually ended up,
+        // so subsequent drags start from a real TCP position.
+        snapGizmoToTcp();
+      }
     });
 
     // ---- IK dispatch (single in-flight, last write wins) -----------------
@@ -80,6 +88,7 @@ export function Viewer() {
     let ikPending: THREE.Vector3 | null = null;
 
     const tmpVec = new THREE.Vector3();
+    const REACH_TOL = 0.05; // 50 mm — don't move the arm into a clamped pose
 
     const dispatchIK = async () => {
       const robot = robotRef.current;
@@ -90,11 +99,16 @@ export function Viewer() {
       ikPending = null;
 
       try {
-        // Convert world position into the robot's local URDF frame.
         const local = robot.worldToLocal(tmpVec.copy(targetWorld));
         const seed = useStore.getState().q;
         const result = await kin.ik([local.x, local.y, local.z], seed);
-        useStore.getState().setAllJoints(result.q as JointVec);
+
+        // Only follow the cursor when the arm can plausibly reach it.
+        // Otherwise we'd lock the joints at a limit and the next drag would
+        // use a degenerate seed and the arm would appear "frozen".
+        if (result.residual < REACH_TOL) {
+          useStore.getState().setAllJoints(result.q as JointVec);
+        }
         useStore.getState().setIkStatus({
           residual: result.residual,
           ok: result.ok,
@@ -132,24 +146,28 @@ export function Viewer() {
       q.forEach((v, i) => robot.setJointValue(`joint${i + 1}`, v));
 
       // Place gizmo on TCP and reveal it.
-      syncGizmoToTcp();
+      snapGizmoToTcp();
       gizmoProxy.visible = true;
     });
 
-    // Sync gizmo proxy to the TCP world position (only when user isn't dragging).
-    const syncGizmoToTcp = () => {
+    // Place the gizmo proxy on the current TCP world position.
+    const snapGizmoToTcp = () => {
       const robot = robotRef.current;
-      if (!robot || tcontrols.dragging) return;
+      if (!robot) return;
       const tcp = robot.links?.["link6"];
       if (!tcp) return;
+      tcp.updateMatrixWorld(true);
       tcp.getWorldPosition(gizmoProxy.position);
     };
 
-    // React to joint changes from sliders (or IK itself).
+    // React to joint changes from sliders, Home button, or IK results.
+    // After every joint update, if we're not actively dragging, also pull
+    // the gizmo to the new TCP — keeps the two visually locked together.
     const unsub = useStore.subscribe((state) => {
       const robot = robotRef.current;
       if (!robot) return;
       state.q.forEach((v, i) => robot.setJointValue(`joint${i + 1}`, v));
+      if (!isDragging) snapGizmoToTcp();
     });
 
     // Animation
@@ -157,7 +175,7 @@ export function Viewer() {
     const animate = () => {
       raf = requestAnimationFrame(animate);
       controls.update();
-      syncGizmoToTcp();
+      if (!isDragging) snapGizmoToTcp();
       renderer.render(scene, camera);
     };
     animate();
