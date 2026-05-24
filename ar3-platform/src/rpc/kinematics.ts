@@ -18,10 +18,15 @@ export const kin = {
   fk: (q: JointVec) => call<{ pose: Pose }>("fk", { q }),
   ik: (xyz: [number, number, number], qSeed?: JointVec) =>
     call<IkResult>("ik", { pose: { xyz }, q_seed: qSeed }),
-  ikBatch: (points: [number, number, number][], qSeed?: JointVec) =>
+  ikBatch: (
+    points: [number, number, number][],
+    qSeed?: JointVec,
+    orientZ?: [number, number, number]
+  ) =>
     call<{ results: IkResult[] }>("ik_batch", {
       points,
       q_seed: qSeed,
+      orient_z: orientZ,
     }),
   jointLimits: () => call<{ min: number[]; max: number[] }>("joint_limits", {}),
 };

@@ -47,11 +47,17 @@ export async function runToolpathSimulation(): Promise<void> {
     unreachableCount = 0;
     let seed: JointVec = state.q;
 
+    // Constrain the end-effector's local Z axis to point along workpiece -Z
+    // (which equals URDF -Z because the workpiece frame inherits the URDF
+    // Z-up convention). This keeps the bit pointing into the workpiece
+    // instead of letting the wrist rotate freely between samples.
+    const orientZ: [number, number, number] = [0, 0, -1];
+
     for (let i = 0; i < samples.length; i += CHUNK_SIZE) {
       if (cancelToken !== token) return; // user pressed stop while compiling
       const chunk = samples.slice(i, i + CHUNK_SIZE);
       const points: [number, number, number][] = chunk.map((s) => s.urdf);
-      const r = await kin.ikBatch(points, seed);
+      const r = await kin.ikBatch(points, seed, orientZ);
       for (let j = 0; j < chunk.length; j++) {
         const res = r.results[j];
         trajectory.push({ t: chunk[j].t, q: res.q as JointVec, ok: res.ok });

@@ -161,6 +161,11 @@ def _ik_batch(params: dict[str, Any]) -> dict[str, Any]:
     Single IPC round-trip for an entire toolpath sample set; warm-starting
     each solve from the previous solution keeps convergence fast (~5-10ms
     per point) and avoids configuration jumps along the path.
+
+    Optional `orient_z` (3-vec) constrains the end-effector's local Z axis
+    to point in that direction — used by the toolpath simulator to keep
+    the bit pointing into the workpiece instead of letting the wrist
+    rotate freely between samples.
     """
     _need_kinematics()
     points = params.get("points") or []
@@ -168,6 +173,7 @@ def _ik_batch(params: dict[str, Any]) -> dict[str, Any]:
         raise ValueError("points must be a list")
     seed = params.get("q_seed") or [0.0] * 6
     seed_full = _to_chain_q(list(seed))
+    orient_z = params.get("orient_z")  # None | [x, y, z]
 
     results: list[dict[str, Any]] = []
     last_q = [float(v) for v in seed]
@@ -183,10 +189,14 @@ def _ik_batch(params: dict[str, Any]) -> dict[str, Any]:
             })
             continue
         try:
-            sol = CHAIN.inverse_kinematics(  # type: ignore[union-attr]
-                target_position=pt,
-                initial_position=seed_full,
-            )
+            ik_kwargs: dict[str, Any] = {
+                "target_position": pt,
+                "initial_position": seed_full,
+            }
+            if orient_z and len(orient_z) == 3:
+                ik_kwargs["target_orientation"] = list(orient_z)
+                ik_kwargs["orientation_mode"] = "Z"
+            sol = CHAIN.inverse_kinematics(**ik_kwargs)  # type: ignore[union-attr]
             q_active = _from_chain_q(list(sol))
             clamped = False
             for i, (lo, hi) in enumerate(JOINT_LIMITS):
