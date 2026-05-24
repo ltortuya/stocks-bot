@@ -1,44 +1,42 @@
 import { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
+import { Viewer } from "./scene/Viewer";
+import { JointPanel } from "./panels/JointPanel";
 
-type Health = { ok: boolean; version: string };
-type Status =
+type SidecarStatus =
   | { kind: "loading" }
-  | { kind: "ok"; health: Health }
+  | { kind: "ok"; version: string }
   | { kind: "error"; message: string };
 
 export default function App() {
-  const [status, setStatus] = useState<Status>({ kind: "loading" });
+  const [status, setStatus] = useState<SidecarStatus>({ kind: "loading" });
 
   useEffect(() => {
-    invoke<Health>("sidecar_health")
-      .then((health) => setStatus({ kind: "ok", health }))
+    invoke<{ ok: boolean; version: string }>("sidecar_health")
+      .then((h) => setStatus({ kind: "ok", version: h.version }))
       .catch((err) => setStatus({ kind: "error", message: String(err) }));
   }, []);
 
   return (
     <div className="app">
       <header>
-        <h1>AR3 Platform</h1>
-        <p className="subtitle">Milestone 0 — scaffold</p>
+        <div>
+          <h1>AR3 Platform</h1>
+          <p className="subtitle">Milestone 1 — viewer + forward kinematics</p>
+        </div>
+        <span className={`status status-${status.kind}`}>
+          {status.kind === "loading" && "connecting…"}
+          {status.kind === "ok" && `sidecar v${status.version}`}
+          {status.kind === "error" && `sidecar error`}
+        </span>
       </header>
 
-      <section className="card">
-        <h2>Sidecar status</h2>
-        {status.kind === "loading" && <p>Pinging Python sidecar…</p>}
-        {status.kind === "ok" && (
-          <p className="ok">
-            ✓ Sidecar up — version <code>{status.health.version}</code>
-          </p>
-        )}
-        {status.kind === "error" && (
-          <p className="err">✗ {status.message}</p>
-        )}
-      </section>
-
-      <footer>
-        <span>Tauri + React + Three.js + Python · v0.0.1</span>
-      </footer>
+      <main>
+        <Viewer />
+        <aside>
+          <JointPanel />
+        </aside>
+      </main>
     </div>
   );
 }
