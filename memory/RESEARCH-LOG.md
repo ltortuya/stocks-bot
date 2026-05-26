@@ -1261,3 +1261,51 @@ Skipped the loop env-var check per saved feedback memory; went directly to wrapp
 
 ### Midday Scan Addendum (12:00 CT)
 **No action.** US equity markets CLOSED for Memorial Day — no cash session, no intraday tape, no execution opportunity. Account snapshot confirms holiday state: equity $99,983.08 unchanged from Fri 5/22 close (`balance_asof: 2026-05-22`), all three positions `change_today: 0` / `unrealized_intraday_pl: 0`. STEP 3 (cut at -7%): zero candidates — worst leg XLB -1.51% with ~5.49 pp cushion. STEP 4 (tighten at +15%/+20%): zero candidates — best leg XLP +1.73%, ~13.27 pp below threshold. STEP 5 (thesis check): all three theses unchanged (no price action, no fresh news flow on the holiday tape). STEP 5.5 (conditionals): No conditionals to evaluate — today's pre-market authored the section as "(None.)" by design (holiday entry is set-up for Tue reopen, not execution). All three 10% trail GTCs intact and unchanged from Friday: XLP $78.0255 / hwm $86.695, XLB $47.493 / hwm $52.77, XLI $159.948 / hwm $177.72. Env-var loop check skipped per saved feedback memory; wrapper smoke-test (`alpaca.sh account`) returned live JSON — proceeded. No Telegram (silent per "action-only" rule). Next execution-eligible session: Tue 5/26 pre-market + open.
+
+
+## 2026-05-26 — Pre-market Research
+
+### Account
+- Equity: $100,383.08
+- Cash: $45,158.79 (45.02%)
+- Buying power: $145,541.87
+- Daytrade count: 0
+- Positions (cost basis $54,841.21 / mkt $55,224.29 / ~55.01% deployed):
+  - XLP 239 sh @ $83.357 — premkt $84.88, intraday +0.09%, unrealized +$363.97 (+1.83%)
+  - XLB 390 sh @ $51.062 — premkt $50.99, intraday +1.39%, unrealized -$28.25 (-0.14%)
+  - XLI 87 sh @ $172.466 — premkt $173.01, intraday +0.72%, unrealized +$47.36 (+0.32%)
+- Open orders (3 trailing 10% GTCs, all unchanged from Fri 5/22):
+  - XLP stop $78.0255 / hwm $86.695
+  - XLB stop $47.493 / hwm $52.77
+  - XLI stop $159.948 / hwm $177.72
+
+### Market Context
+- WTI / Brent: WTI ~$92/bbl (May contract), Brent ~$118/bbl — Brent–WTI spread ~$26 reflects the persistent Hormuz risk premium concentrated in Atlantic-basin grades; WTI continues its drift lower from the April $104 peak as US blockade-induced disruption stays Mid-East-localized.
+- S&P 500 futures: ESM26 ~6657.5, +0.10% (+6.5 pts) — modestly risk-on into Tue reopen; mild gains in NQ/YM futures alongside.
+- VIX: 16.85 (open 16.92 / high 16.94 / low 16.85) — upper-half of the 15–20 normal band, no regime-shift gate open.
+- Today's catalysts: (1) Conf Bd Consumer Confidence 10:00 ET (consensus tilt sub-100, prior watch); (2) Iran/Hormuz tape — US naval blockade still in effect ~6 weeks in, framework deal "may be in sight" per WH but Trump publicly said "no rush" and Iran FM says final agreement "not imminent"; (3) Kevin Warsh's post-swearing-in posture (oath taken Fri 5/22 — "reform-oriented", price-stability emphasis, Greenspan-style framing — already digested by Fri tape; first FOMC press conf is mid-June and is the next live event).
+- Earnings before open: Thin Tue — BMO is *not* today (their Q2 prints tomorrow Wed 5/27 BMO). Week's notable BMOs are retailers — BBY, DLTR, COST (Thu BMO), DKS — read-throughs for XLP (cons-disc adjacency) but no direct XLP holding fires on these.
+- Economic calendar (week 5/25–5/29): Mon holiday (closed); **Tue 5/26: Conf Bd Consumer Confidence 10:00 ET**; Wed 5/27: BMO earnings + Richmond/Dallas Fed reads; Thu 5/28: Advance Durable Goods 8:30 ET, weekly Claims 8:30 ET, COST BMO; Fri 5/29: month-end (no Tier-1 macro). Note: PCE/GDP/Personal Income & Spending NOT on this week's BLS/NY-Fed schedule for 5/26 contrary to Sun pre-week framing — most-recent PCE was prior cycle; next PCE release confirmed Thu **6/4**, not 5/28. Re-anchoring: this is **NOT** a macro-nexus week.
+- Sector momentum (YTD 2026, per StockCharts RRG + Capital Spectator early-Jan baseline updated through 5/25): **Leaders** XLF (#1 RRG-leading), XLE (#2 RS-leading despite oil drift), XLU/XLV (improving→leading). **Mid-pack** XLI (leading→weakening), XLP (defensive mid). **Laggards** XLK (lagging, negative RRG heading) and **XLB (leading→weakening, bottom-tier rank)**. Note: XLB's RRG-weakening flag is consistent with the basket's worst-leg behavior over the last 2 weeks (XLB hit -4.02% phase-low 5/19, currently -0.14% premkt) — flagged as the watch leg if the RRG roll continues.
+
+### Trade Ideas
+1. **HOLD basket intact at the open** — no new buys. Premkt has all three legs green (XLP +0.09%, XLB +1.39%, XLI +0.72%), basket back to +0.38% phase P&L from -0.02% Fri close; reopen-bid-into-an-unchanged-tape is the default tape behavior for the day-after-holiday Tue, not a fundamental shift requiring action.
+2. **XLF (Financials) — defer, not today.** Sector momentum #1 + Warsh-as-Chair-may-be-regulatory-easer-tailwind is the cleanest 4th-leg narrative on the board, BUT no day-specific catalyst fires today (no bank earnings, no rate-path news). Reassess Wed 5/27 pre-market — gate is a specific intraday catalyst, not just sector RS.
+3. **XLE (Energy) — continue gating, 7th session.** WTI has now drifted to ~$92 (down from $96 area when the gate was authored 5/18, and far from the $104 April peak). Gate 5 (intraday bullish ≥+1.5%) actively moves further from trigger as oil bleeds. Tier-1 wire (Reuters/Bloomberg/WSJ/AP/Platts/Argus) confirmation of the Crestwood blockade-extension headline STILL ABSENT — gate 1 dispositive for the 7th session. The setup is actively decaying; flag for retirement at Friday's weekly review if conditions don't reverse by 5/29.
+4. **XLK / XLU — watch-only.** XLK lagging on RRG (negative heading) — bearish, no add. XLU improving toward leading — interesting but no specific Tue catalyst; on the longer-term 4th-leg shortlist with XLF and XLV.
+
+### Conditional Entries (midday-eligible) — up to 3
+
+(None.)
+
+Rationale: Conf Bd Consumer Confidence 10:00 ET is the only intraday macro event but its read-through to held XLP is symmetric (upside lifts the leg I already own; downside hurts it but stop is ~7.94% below current and -7% manual trigger is ~8.83 pp away — already managed by GTC trail). No conviction 4th-leg setup that benefits from intraday confirmation vs. at-the-open execution; XLE gate is already gated on data-quality (not midday tape), XLF/XLU have no day-specific catalyst, and basket re-rate into a re-opening green tape doesn't require conditional structure. Default to zero per "patience > activity" and "conditionals are for genuine intraday-confirmation setups, not default placeholders."
+
+### Risk Factors
+- **Conf Bd Consumer Confidence 10:00 ET miss** — downside surprise (sub-95 consensus zone) pressures XLP (cons-staples is consumer-spending proxy) and broadens to risk-off; XLP +1.83% unrealized cushion absorbs a typical -1 to -2% intraday move comfortably.
+- **Iran/Hormuz tape — "no rush" stance from US + Iran FM "not imminent" framing** means the framework deal can slip; either direction is news-binary: (a) deal lands → oil dumps, XLE leg-add window closes, broad risk-on (basket benefits but slightly); (b) talks break + kinetic escalation → oil spikes, broad risk-off (basket hit, esp. XLB cyclicals).
+- **XLB RRG-weakening continuation** — laggard sector tier per StockCharts; if XLB extends its 5/19-style drawdown (-2.41% session) it re-approaches -4% unrealized and the -7% manual-cut watchlist. Currently the worst leg by RRG signal even though by P&L it's flat at -0.14%.
+- **Warsh "reform-oriented" Fed signal** — has been digested since Fri but if he or another FOMC member speaks today and signals balance-sheet/discount-window/regulatory framework changes that the market hasn't priced, that's a re-rating risk. No public Fed speaker listed for Tue 5/26 yet but a surprise headline is the asymmetric risk.
+- **Basket concentration unchanged** — 21+ sessions at ~55% deployment, 3 correlated cyclical/defensive ETFs. Friday weekly review explicitly reaffirmed deferral; the structural deployment gap (~20 pp below 75-85% target) is THE strategic question, not a tactical one.
+
+### Decision
+**HOLD.** Zero at-the-open buys, zero midday conditionals. Held XLP/XLB/XLI continue under their 10% trailing GTCs into the Tue reopen — no thesis breaks, no -7% triggers (worst XLB -0.14% with ~6.86 pp cushion), no +15% tighten triggers (best XLP +1.83% with ~13.17 pp gap), no leg within 3% of stop (XLB closest at ~6.86% price cushion vs. premkt). Day's only macro variable is Conf Bd Consumer Confidence 10:00 ET — symmetric to held XLP, already trail-protected, no add-on conditional warranted. XLE 4th-leg gate enters 7th session of data-quality gating with gate 5 (oil intraday-bullish) actively decaying as WTI bleeds to $92; flag for weekly-review retirement decision Fri 5/29 if conditions don't reverse. Sector momentum read (StockCharts RRG): XLF leading + XLU/XLV improving = best 4th-leg shortlist for Wed/Thu re-authoring; XLB's leading→weakening posture is the basket's watch leg. Mid-week setup question: Thu 5/28 Advance Durable Goods 8:30 ET is the week's secondary binary (not the macro-nexus event Sun framing implied — PCE is 6/4 not 5/28). Tue pre-market disposition: maintain basket, monitor 10:00 ET print, defer 4th-leg add to Wed pre-market re-cycle with at least one specific intraday catalyst as gate. Env-var loop check again printed MISSING for all five vars; wrapper smoke-test (`alpaca.sh account`) returned live JSON with portfolio_value $100,383.08 — proceeded per saved feedback memory.
