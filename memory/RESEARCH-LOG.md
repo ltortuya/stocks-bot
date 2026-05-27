@@ -1398,3 +1398,27 @@ Env-var loop check again printed MISSING for all five vars (ALPACA_API_KEY, ALPA
 
 ### Decision
 **HOLD.** Zero at-the-open buys, zero midday conditionals authored. Held XLP/XLB/XLI continue under their 10% trailing GTCs through Wed light-macro tape — all three legs GREEN premkt for the first time since pre-5/19 (XLI +1.52% best / new phase-best $, XLB +0.66% first green in 23 sessions, XLP +0.37%), basket Day P&L +$237 lifts Phase P&L to +0.43% (strongest since May 12 +0.85% high). No -7% triggers (worst XLP +0.37%, cushion ~7.37 pp), no +15% tighten triggers (best XLI +1.52%, ~13.48 pp gap), no leg within 3% of stop (XLI closest at ~8.65% price cushion). Wed has NO Tier-1 macro (no CPI/PPI/FOMC/NFP), NO held-basket earnings (COST is Thu AMC, not today), NO XLF/XLU/XLV/XLK day-specific catalyst — strategy-consistent action is HOLD and let the basket work. Fed speakers Bowman 13:15 ET / Paulson 13:45 ET are post-midday-cycle and not actionable from pre-market. XLE 4th-leg gate enters 8th session of data-quality + gate-5 decay (WTI $90.79, ~$14 below trigger); formal retirement decision queued for Fri 5/29. XLF source-disagreement (StockCharts #1-leader vs Investing.com lagging) needs Fri State Street reconciliation before any conditional authoring. Daily cap 3/3 fresh, weekly cap 5/6 remaining (0 trades wk-to-date). Mid-week setup: Thu 5/28 macro + earnings nexus (Durable Goods + Claims 8:30 ET + COST/BBY/DLTR/DKS BMO) is the WEEK'S primary binary — tomorrow's pre-market authors Thu specifics. Midday scan re-checks for thesis-break / sharp move; daily-summary at EOD captures final marks. Patience > activity into the Wed-Thu setup window.
+
+### Midday Scan Addendum (12:01 ET / 10:01 PT)
+**NO ACTION.** Live snapshot at scan:
+- XLP 239 sh @ $83.357 → $84.865 intraday, unrealized +$360.38 (+1.81%), Day +1.48%
+- XLB 390 sh @ $51.062 → $51.25 intraday, unrealized +$73.15 (+0.37%), Day +0.51%
+- XLI 87 sh @ $172.466 → $174.635 intraday, unrealized +$188.74 (+1.26%), Day +0.19%
+- Equity $100,620.10 (Phase +$620.10 / +0.62%, Day P&L vs Tue close $100,196.56: +$423.54 / +0.42%) — strongest midday phase print since the May 12 +0.85% high. Buying power $145,778.89, cash $45,158.79, daytrade_count 0.
+
+**STEP 3 (cuts):** None. Worst leg XLB +0.37% unrealized, ~7.37 pp cushion to -7% trigger. Zero cut candidates.
+
+**STEP 4 (tightens):** None. Best leg XLP +1.81% unrealized, ~13.19 pp below +15% threshold. Zero tighten candidates. **No new hwms** intraday: XLB $51.25 < hwm $52.77 (-2.88%), XLI $174.635 < hwm $177.72 (-1.74%), XLP $84.865 < hwm $86.695 (-2.11%) — all three trailing GTC stops unchanged at $47.493 / $159.948 / $78.0255.
+
+**STEP 5 (thesis):** Intact across all three legs. Basket Day P&L +$423.54 (+0.42%) is consistent with the pre-market "let the basket work / Wed-light-macro" thesis — no idiosyncratic news on top holdings (COST/WMT in XLP, LIN/NEM in XLB, CAT/GE/BA in XLI), no leg-level binary today. **XLB extends premkt green-flip into intraday** (+0.51% Day, second consecutive green session after 23 sessions underwater) — RRG leading→weakening flag still pending more sessions for trend reversal but the cost-basis recovery continues. XLP +1.48% intraday is the standout, defensive leg leading on a constructive risk-on tape (note: yesterday XLP gave back -1.38% on the same setup, today reversed; net XLP delivering symmetric performance to-tape). No thesis breaks.
+
+**STEP 5.5 (conditionals):** No conditionals to evaluate. Today's RESEARCH-LOG Conditional Entries section is explicitly "(None.)" — pre-market authored zero conditionals citing no Wed-specific catalyst, source-disagreement on XLF, and the asymmetry to let the basket work on the first all-green session in weeks. Daily cap remains 3/3 fresh; weekly cap 5/6 remaining; 0 trades week-to-date.
+
+**STEP 6 (intraday research):** None warranted — no leg moving sharply with no obvious cause; the basket move is broad-tape risk-on and consistent with pre-market framework.
+
+**STEP 7 (notification):** SILENT (no action taken — per routine, skips and no-action are silent).
+
+**Disposition into PM:** Continue HOLD into Wed afternoon. Bowman 13:15 ET / Paulson 13:45 ET Fed speakers remain the day's only tail-risk events; tape-reactivity will land in EOD daily-summary. Tomorrow's pre-market authors Thu COST + Durable Goods + Claims setup. XLE retirement decision still queued for Fri weekly review (8th gate-1 session today).
+
+### Env-check note (midday)
+Env-var loop check again printed MISSING for all five vars; wrapper smoke-test (`alpaca.sh account`) returned live JSON with portfolio_value $100,620.10 — proceeded per saved feedback memory.
