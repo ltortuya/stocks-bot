@@ -1422,3 +1422,60 @@ Env-var loop check again printed MISSING for all five vars (ALPACA_API_KEY, ALPA
 
 ### Env-check note (midday)
 Env-var loop check again printed MISSING for all five vars; wrapper smoke-test (`alpaca.sh account`) returned live JSON with portfolio_value $100,620.10 — proceeded per saved feedback memory.
+
+## 2026-05-28 — Pre-market Research
+
+(Thursday open. Week 5 day 3. Heavy 8:30 ET macro data nexus + COST AMC.)
+
+### Account
+- Equity: $100,535.95
+- Cash: $45,158.79 (44.92%)
+- Buying power: $145,694.74
+- Daytrade count: 0
+- Long market value: $55,377.16 (~55.08% deployed)
+- Positions (pre-open marks):
+  - XLP 239 sh @ $83.357 → $84.74 premkt (+$0.16 vs $84.58 Wed close, +0.19%), unrealized +$330.51 (+1.66%), trail GTC $78.0255 (hwm $86.695)
+  - XLB 390 sh @ $51.062 → $51.18 premkt (~flat vs $51.17 Wed close), unrealized +$45.85 (+0.23%), trail GTC $47.493 (hwm $52.77)
+  - XLI 87 sh @ $172.466 → $174.30 (flat vs Wed close), unrealized +$159.59 (+1.06%), trail GTC $159.948 (hwm $177.72)
+- Open orders: 3 trailing GTCs (one per leg, 10% trail) — confirmed live and unchanged
+- Phase P&L: +$535.95 (+0.54%) on the live snapshot vs Wed EOD +$493.81 (+0.49%); minor +$42 premkt drift, basket modestly green
+
+### Market Context
+- WTI / Brent: WTI ~$90.20, Brent ~$96.00 — oil grinds lower, geopolitical premium fully drained; WTI now ~$15 below the XLE conditional's gate-5 sustained-$105 threshold
+- S&P 500 futures: ES Jun (ESM26) ~7,532.25, -0.10% (-7.75 pts) premkt — mildly negative tone into 8:30 ET data dump
+- VIX: no live tick from Perplexity (May monthly avg ~17.44, recent daily prints mid-to-high teens, VIX Jun futures ~18.25 on 5/28) — implied current spot in the **17-18** zone, well off any stress level
+- Today's catalysts: (1) **8:30 ET quadruple macro release** — PCE (April), Q1 GDP 2nd estimate, Advance Durable Goods, Initial Jobless Claims (also Personal Income/Spending, Retail/Wholesale Inventories adv); (2) **Fed Williams 8:55 ET** immediately post-data; (3) **New Home Sales 10:00 ET**; (4) **Fed Musalem 10:15 ET**; (5) **COST Q3 FY26 AMC** (5:00 PM ET / 2:00 PM PT call) = XLP-specific binary for **Friday's open**, NOT today's tape
+- Earnings before open: **NONE relevant to the held basket.** Perplexity confirmed COST is **AMC** (yesterday's EOD note had this wrong — said BMO), and BBY/DLTR/DKS are **not scheduled today** (yesterday's EOD note also wrong). The XLP-COST binary is overnight Thu→Fri risk, not at-the-open exposure today.
+- Economic calendar: **TODAY IS THE HEAVY DAY this week** (see Risk Factors). Tomorrow Fri 5/29 is light (NY Fed nowcast / Multivariate Core Trend Inflation, no top-tier print). NO CPI/PPI/NFP/FOMC this week.
+- Sector momentum (Perplexity + First Trust through 3/6/26 + Investing.com RRG): **Leading** = XLE (+26.47% YTD), XLP (+10.66%), XLI (+9.61%), XLB; **Improving** = XLU, XLRE; **Weakening** = XLV; **Lagging** = XLK, XLF, XLC, XLY. Held basket (XLP/XLB/XLI) all sit in the leading quadrant — sector-momentum thesis intact for the carrier legs.
+- Held-ticker news scan: no idiosyncratic break on XLP top holdings (WMT ~12% / COST ~10% / PG ~7% — defensive carry tone unchanged, COST quiet into AMC print), XLB (Linde ~14.7%, Newmont ~7.4%, Nucor/FCX/APD — no day-specific catalyst, ETF $50.99-$51.30 intraday yesterday on below-avg volume), XLI (CAT ~7.6%, GE Aero ~6%, GEV ~5.2%, BA ~3.2% — reshoring/aerospace/defense tailwind narrative continues, ETF inflows noted in Nasdaq feed, no leg-level binary today)
+
+### Trade Ideas
+1. **HOLD held basket (XLP/XLB/XLI)** — sector-momentum leadership intact, all three legs green pre-open for the second consecutive session (XLP +1.66%, XLI +1.06%, XLB +0.23%), all three trailing GTCs unchanged. No add: 8:30 ET quad-data + Fed Williams 8:55 ET is the wrong moment to lift exposure mid-pre-market.
+2. **XLE 4th-leg conditional — RETIRE candidate** (formal decision queued Fri 5/29 weekly review). 9th consecutive session of gate-1 SKIP (no Tier-1 wire confirming Crestwood blockade-extension) and gate 5 (WTI sustained ≥$105) now ~$15 below trigger with WTI at $90.20 and bleeding. Setup mechanically dead; carrying it on the watchlist is now ledger-only. SKIP today.
+3. **XLU 4th-leg watch** — Investing.com RRG places XLU in the **Improving** quadrant alongside XLRE; rate-sensitive, mentioned price target ~$48, "not yet overbought." NOT actionable today: no Thu-specific catalyst, no Tier-1 read, and lifting exposure into 8:30 ET PCE/GDP/durables/claims violates the patience-into-binary rule. Re-author for Fri pre-market only if PCE prints **dovish** (rate-cut odds reprice up) — that's the cleanest Thu-data → Fri-XLU entry framework.
+4. **XLF 4th-leg watch** — source disagreement persists (StockCharts #1-leader vs Investing.com Lagging quadrant). Fri State Street primary-source reconciliation still owed before any conditional authoring. SKIP today.
+5. **All earnings-binary names (no held-basket prints today; COST AMC)** — SKIP. No edge pre-print, and COST risk lands on **Friday's open**, not today's session.
+
+### Conditional Entries (midday-eligible) — up to 3
+(None.) Today is a heavy 8:30 ET macro nexus (PCE + GDP 2nd + durable goods + claims, all simultaneous) immediately followed by Fed Williams 8:55 ET — the strategy-consistent stance is "let the basket work" and reassess at EOD / Fri pre-market once the data + Fed-speaker tape clears. No setup genuinely benefits from midday intraday confirmation today; the XLE setup is mechanically dead pending Fri retirement vote, XLU/XLF watch posture remains observational, and the COST binary is AMC. Authoring a midday conditional into a tape this loaded would force action without an asymmetric edge.
+
+### Risk Factors
+- **8:30 ET quadruple macro release (PCE + Q1 GDP 2nd + Advance Durable Goods + Initial Jobless Claims)** is the volatility nexus of the week — the data prints simultaneously, so cross-print interaction (e.g., hot PCE + soft GDP = stagflation tape) can swing rate-cut odds and equity multiples in seconds. Held basket has indirect exposure: XLP is the Fed-doves bid, XLI is the growth-print bid, XLB is the goods-economy proxy via Linde/Newmont.
+- **Fed Williams 8:55 ET** lands ~25 minutes after the 8:30 dump — first Fed reaction-function read on the data. Hawkish lean compresses XLP (rate-sensitive defensive), dovish lean lifts the same leg + XLU. Musalem 10:15 ET follow-up adds a second Fed comm read.
+- **COST Q3 AMC (5:00 PM ET)** — XLP top-3 (~9-10% NAV); per Perplexity Street EPS consensus ~$4.92-$4.98 with Zacks ESP +1.95% (statistical beat bias), comps tracking mid-single digits. Miss compresses XLP ~0.5-1% Fri open; beat lifts XLP toward +1.5-2%. **Risk lives in overnight gap into Fri, not today's session.**
+- **Oil bleed continues** — WTI $90.20 is the lowest print of the phase; gate 5 of XLE conditional ~$15 below trigger, structural geopolitical premium fully drained. No held-basket impact, but mechanically retires the 4th-leg shortlist's only post-decay candidate.
+- **Structural deployment gap extends to 24th consecutive session** at ~55% vs 75-85% target (~20pp gap). Pattern persists through 5 weeks; Fri weekly review must address whether the deployment ceiling at ~55% is now the de facto strategy.
+- **4-week zero-trade pattern entering its 5th week** — 0/6 weekly cap unused for 4 consecutive weeks (now 0 trades through 2 sessions of week 5). Persistence of the pattern + a flat phase P&L (+0.54%) raises the question of whether the buy-side gate is set too tight or whether the conditional-authoring framework is filtering out viable setups (XLE = data-quality gated 9 sessions; XLF = source-disagreement gated; XLU/XLK/XLV = no catalyst-day match) — flag for Fri weekly review.
+- **XLP overbought question** — fwd P/E ~23-24x vs 5-yr avg ~22.7x flagged in prior pre-markets; +1.66% unrealized today, last hwm $86.695 on 5/19, current $84.74 = -2.26% off hwm. Not actionable now, but a hot PCE + hawkish Williams combination could compress XLP toward the trail stop's hwm proximity gate.
+
+### Decision
+**HOLD.** Three reinforcing reasons:
+1. **8:30 ET quad-data release** is the week's volatility nexus — opening new exposure into a four-simultaneous macro dump + 8:55 ET Fed-speaker chaser has no asymmetric edge and violates the patience-into-binary rule that has correctly governed the basket through 5 weeks.
+2. **COST AMC tonight** is the XLP-specific binary; the right moment to reassess XLP positioning is Fri pre-market once the print and Fri-open gap are visible, not today.
+3. **Held basket is working** — all three legs green pre-open for the second straight session (XLP +1.66%, XLI +1.06%, XLB +0.23%, basket phase P&L +0.54% best closing posture of the challenge), all three trailing GTCs in place and unbreached. No -7% cut candidate (worst XLB +0.23%, ~7.23 pp cushion), no +15% tighten candidate (best XLP +1.66%, ~13.34 pp gap), no leg within 3% of stop (XLI closest at ~8.23% cushion). The basket has earned the "let it work" stance through today's binary.
+
+Zero at-the-open buys. Zero midday conditionals authored. Daily cap 3/3 fresh, weekly cap 6/6 (week 5 stays 0 trades after 2 sessions, mirroring weeks 2-4 — flag for tomorrow's weekly review). Midday scan re-checks for thesis-break / sharp move (worst-case = hot PCE + hawkish Williams compresses XLP toward stop); daily-summary at EOD captures final marks and COST-AMC-into-Fri-gap framing. Patience > activity into the data + Fed-speaker tape.
+
+### Env-check note (pre-market)
+Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`alpaca.sh account`) returned live JSON with portfolio_value $100,535.95 — proceeded per saved feedback memory. Perplexity research wrapper succeeded across all 8 queries (oil, ES futures, VIX, catalysts, earnings, econ calendar, sector momentum, XLP/XLB/XLI ticker news).
