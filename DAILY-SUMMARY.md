@@ -42,3 +42,7 @@ PRE-MARKET ABORT 2026-05-26 — env vars missing in routine: ALPACA_API_KEY, ALP
 ---
 ## 2026-05-27 11:10 UTC (fallback — Telegram not configured)
 pre-market 2026-05-27 ABORT: ALPACA_API_KEY/ALPACA_SECRET_KEY/PERPLEXITY_API_KEY/TELEGRAM_TOKEN/TELEGRAM_CHAT_ID not in env. Wrapper smoke-test failed. Today's pre-market entry already committed at 8995032 — no duplicate authored.
+
+---
+## 2026-05-28 11:10 UTC (fallback — Telegram not configured)
+pre-market 2026-05-28 ABORT: env vars missing: ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID
