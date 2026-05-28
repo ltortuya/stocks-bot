@@ -1479,3 +1479,27 @@ Zero at-the-open buys. Zero midday conditionals authored. Daily cap 3/3 fresh, w
 
 ### Env-check note (pre-market)
 Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`alpaca.sh account`) returned live JSON with portfolio_value $100,535.95 — proceeded per saved feedback memory. Perplexity research wrapper succeeded across all 8 queries (oil, ES futures, VIX, catalysts, earnings, econ calendar, sector momentum, XLP/XLB/XLI ticker news).
+
+### Midday Scan Addendum (12:00 CT)
+**NO ACTION.** Live snapshot at scan:
+- XLP 239 sh @ $83.357 → $84.685 intraday, unrealized +$317.36 (+1.59%), Day +$25.10 (+0.12%)
+- XLB 390 sh @ $51.062 → $51.455 intraday, unrealized +$153.10 (+0.77%), Day +$107.25 (+0.54%)
+- XLI 87 sh @ $172.466 → $174.66 intraday, unrealized +$190.91 (+1.27%), Day +$31.32 (+0.21%)
+- Equity $100,660.94 (Phase +$660.94 / +0.66%, Day P&L vs Wed close $100,493.81: +$167.13 / +0.17%) — strongest midday phase print of the challenge to date. Buying power $145,819.73, cash $45,158.79, daytrade_count 0, Long MV $55,502.15 (~55.14% deployed).
+
+**STEP 3 (cuts):** None. Worst leg XLB +0.77% unrealized, ~7.77 pp cushion to -7% trigger. Zero cut candidates.
+
+**STEP 4 (tightens):** None. Best leg XLI +1.27% unrealized, ~13.73 pp below +15% threshold. Zero tighten candidates. **No new hwms** intraday: XLP $84.685 < hwm $86.695 (-2.32%), XLB $51.455 < hwm $52.77 (-2.49%), XLI $174.66 < hwm $177.72 (-1.72%) — all three trailing GTC stops unchanged at $78.0255 / $47.493 / $159.948.
+
+**STEP 5 (thesis):** Intact across all three legs. Basket Day P&L +$167.13 (+0.17%) — modestly green into midday with the 8:30 ET quadruple macro dump (PCE/Q1 GDP 2nd/Advance Durable Goods/Initial Claims) + Fed Williams 8:55 ET now fully digested without basket-breaking moves; pre-market "let the basket work into the binary" framework validated. All three legs green for the 3rd consecutive session — XLI lifted to leg-leader on unrealized (+1.27%), XLP defensive carry +1.59% (best on unrealized) but giving back vs premkt +1.66%, XLB extended cost-basis recovery into the green for the 3rd straight session (+0.77% — best unrealized print since entry 5/04). No idiosyncratic news on top holdings (COST/WMT/PG in XLP, LIN/NEM in XLB, CAT/GE/BA in XLI); COST AMC tonight is the only remaining XLP-specific binary and lives on **Fri's open**, not today. No thesis breaks.
+
+**STEP 5.5 (conditionals):** No conditionals to evaluate. Today's RESEARCH-LOG Conditional Entries section is explicitly "(None.)" — pre-market authored zero conditionals citing the 8:30 ET quad-macro nexus + Fed-speaker chaser making any midday-intraday-confirmation entry non-asymmetric, the XLE setup mechanically dead pending Fri retirement vote, and XLU/XLF watch-only. Daily cap remains 3/3 fresh; weekly cap 6/6 (week 5 stays at 0 trades after 3 sessions).
+
+**STEP 6 (intraday research):** None warranted — no leg moving sharply with no obvious cause; the post-8:30 macro tape is broadly digested and basket Day P&L (+0.17%) is consistent with a benign data outcome. The Williams/Musalem Fed-speaker pair (8:55 ET / 10:15 ET) absorbed without basket-level reaction.
+
+**STEP 7 (notification):** SILENT (no action taken — per routine, skips and no-action are silent).
+
+**Disposition into PM:** Continue HOLD into Thu afternoon. The COST AMC print (5:00 PM ET / 2:00 PM PT call) is the day's only remaining binary — overnight gap risk into Fri open, not today's session. EOD daily-summary will capture final marks and frame COST-into-Fri positioning. Fri pre-market authors COST-gap response + XLE retirement decision + XLF source reconciliation as queued for the Fri 5/29 weekly review.
+
+### Env-check note (midday)
+Env-var loop check again printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID, PERPLEXITY_API_KEY); wrapper smoke-test (`alpaca.sh account`) returned live JSON with portfolio_value $100,660.94 — proceeded per saved feedback memory.
