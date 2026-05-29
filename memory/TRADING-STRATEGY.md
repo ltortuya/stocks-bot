@@ -21,6 +21,7 @@ Beat the S&P 500 over the challenge window. Stocks only — no options, ever.
 9. Follow sector momentum
 10. Exit a sector after 2 consecutive failed trades
 11. Patience > activity
+12. **Deployment floor**: if 0 single-name/sector setups pass the conditional-entry gates by EOD Tuesday of any week, deploy ≥20% of equity to a broad-index core (SPY first choice; RSP backup) with the standard 10% trail GTC at Wednesday open. Replace if a higher-conviction single-name/sector triggers later in the week. (Codified 2026-05-29 weekly review after 5 weeks at ~55% deployment vs the 75–85% target.)
 
 ## Buy-side Gate (every check must pass)
 - Total positions after this fill ≤ 6
