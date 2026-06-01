@@ -1646,6 +1646,7 @@ Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPA
 1. **XLU** — allocation $19,933 (~20% equity), stop 10% trail GTC, target +20% (entry at midday → exit at trail-stop ratchet to 5% per Rule 6 ladder), R:R ≥2:1
    Condition: At midday scan, all THREE of the following must hold simultaneously: (a) ISM Manufacturing Prices print soft (sub-60 print OR ≥3-point MoM decline from prior 67.5 if April; "soft" means clearly below survey consensus), (b) 10Y yield down ≥10bp intraday on the ISM reaction (from ~4.45% open → ≤4.35% at midday), (c) XLU green ≥+0.5% intraday at midday scan tick. **All three required; ANY ONE failing = SKIP for the day.** If only (a) + (b) fire without (c) by midday, defer authoring to Tue conditional re-author.
    Catalyst: Per week 5 weekly review directive — XLU dovish-PCE gate-fail (5/29 Fri) was replaced with a broader rate-sensitivity gate (10Y down ≥10bp WoW OR VIX >18 sustained 2 sessions). Today's ISM cluster is the week's first macro binary that could trigger the 10Y leg; if ISM Prices undershoot and bonds rally, XLU is the cleanest single-leg expression of the dovish-rates rotation. Also adds **defensive low-correlation 4th leg** that the 3-leg basket has lacked through 3 single-session ~$500-$900 wipes in 11 trading days (Fri 5/15, Tue 5/20, Fri 5/29 risk-off pattern).
+   → Skipped (12:01 CT): gate (c) — XLU $43.365 vs prev close $44.42 = **-2.375% intraday** (RED, not green ≥+0.5%); gate (c) failing is dispositive per "ANY ONE failing = SKIP for the day." Gates (a)/(b) not evaluated. Defensive cohort weakness (XLP -1.92% unrealized, XLU -2.37% Day) confirms ISM print was NOT cleanly soft-Prices / dovish-rates; bond rally did not materialize at scale. Pre-market intraday-addendum gate-(c) read at 11:00 ET preview also flagged this. No re-author today; XLU back on Tue-eligible relaxed-framework watch.
 
 (No 2nd or 3rd conditional today. Rationale: XLK setup is gated on tonight's CRDO/HPE AMC prints — Tue pre-market authoring; XLF formally ruled out; SPY/RSP is the Rule 12 Wed-open mechanism, not a midday-eligible conditional; XLE retired. Authoring beyond the XLU conditional would re-introduce the "single watch-list candidate forced" pattern week 5 weekly review explicitly flagged.)
 
@@ -1689,3 +1690,27 @@ Zero at-the-open buys. One midday-eligible conditional authored (XLU, three-leg 
 
 ### Env-check note (intraday)
 Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $99,206.49 — proceeded per saved feedback memory.
+
+### Midday Scan Addendum (12:01 CT / 13:01 ET)
+**NO ACTION.** Live snapshot:
+- XLP 239 sh @ $83.357 → $81.755, unrealized **-$382.91 (-1.92%)**, Day -1.39%
+- XLB 390 sh @ $51.062 → $50.795, unrealized **-$104.30 (-0.52%)**, Day -0.69%
+- XLI 87 sh @ $172.466 → $172.065, unrealized **-$34.85 (-0.23%)**, Day -0.62%
+- Equity **$99,478.69** (Phase **-$521.31 / -0.52%**, Day P&L vs Fri close $99,979.01: **-$500.32 / -0.50%**). Cash $45,158.79, daytrade_count 0, Long MV $54,319.90 (~54.60% deployed).
+
+**STEP 3 (cuts):** None. Worst leg XLP -1.92% unrealized (5.08 pp cushion to -7%).
+
+**STEP 4 (tightens):** None. Best leg XLB -0.52% (no leg green, ~15.5 pp below +15% threshold). No new hwms: XLP $81.755 < hwm $86.695 (-5.70%), XLB $50.795 < hwm $52.77 (-3.74%), XLI $172.065 < hwm $177.72 (-3.18%). All three trail GTCs **unchanged** at $78.0255 / $47.493 / $159.948. Stop-price cushions: XLP 4.61%, XLB 6.95%, XLI 7.58% — all outside the 3% proximity gate.
+
+**STEP 5 (thesis):** Intact. Basket recovered modestly off 11:00 ET intraday-addendum lows (XLB $50.26 → $50.795 +1.06%; XLI $170.78 → $172.065 +0.75%; XLP $81.945 → $81.755 -0.23% — XLP only one lower vs intraday print). Post-ISM tape is **correlated risk-off-lite** — basket -0.50% Day, defensives (XLP) bleeding harder than cyclicals (XLB/XLI), exactly the pattern that would NOT print if ISM Prices came in soft + 10Y rallied (dovish-rates would bid XLU/XLP). The price action externally validates gate (c) read: XLU -2.37% Day = ISM print was NOT cleanly soft. No idiosyncratic news on any top holding (WMT/COST/PG/KO/PM in XLP, LIN/NEM in XLB, CAT/GE/BA in XLI) at scan tick. Pre-market HOLD framework stands.
+
+**STEP 5.5 (conditionals):** **1 evaluated, 1 SKIPPED.** XLU conditional → gate (c) failed dispositively (XLU -2.375% intraday vs required ≥+0.5% green); audit line appended above. Zero fires.
+
+**STEP 6 (research):** None needed — no idiosyncratic move; ISM-driven broad-tape weakness already modeled.
+
+**STEP 7 (notification):** SILENT (no action — no cuts, no tightens, no thesis exits, no conditional fires).
+
+**Disposition into EOD:** HOLD continues. Phase 6 day 1 baseline tracking at -0.52% intraday, larger than the Tue +0.21% reopen-day gain that opened Week 5 but well shy of the -0.79% intraday-addendum low — basket recovered $272 off the 11:00 ET trough. Daily-summary captures final marks + Rule 12 day-1 status (0 single-name/sector fires; XLK still gated on tonight's CRDO/HPE AMC; SPY Rule-12 Wed-open trigger still 1 session out from evaluation pivot at Tue EOD). Tomorrow (Tue): pre-market authors XLK post-CRDO/HPE AMC, and Tue midday scan is the **explicit Rule 12 EOD-Tue assessment**.
+
+### Env-check note (midday)
+Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh positions`) returned live JSON with three positions and portfolio_value $99,478.69 (via `account`) — proceeded per saved feedback memory.
