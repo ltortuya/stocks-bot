@@ -1669,3 +1669,23 @@ Env-var loop check again printed MISSING for all five vars (ALPACA_API_KEY, ALPA
 4. **XLF formally RULED OUT** per State Street primary (-4.33% YTD NAV) — the week-5-deferred reconciliation is closed; one item off the watchlist permanently.
 
 Zero at-the-open buys. One midday-eligible conditional authored (XLU, three-leg trigger gates). Daily cap 3/3 fresh, weekly cap 6/6 (week 6 opens at 0 trades). Today's midday scan re-evaluates the XLU conditional against the 10:00 ET ISM cluster reaction (10Y move, XLU intraday, ISM Prices print). EOD daily-summary captures final marks + Phase 6 day 1 baseline. Tomorrow (Tue): pre-market authors XLK post-CRDO/HPE AMC, and Tue midday scan is the **explicit Rule 12 EOD-Tue assessment**: if zero single-name/sector setup has fired by then, Wed open mechanically deploys ≥20% to SPY. Patience > activity into the ISM print; the day's only real action is at 10:00 ET.
+
+### Intraday Check Addendum (08:00 PDT / 11:00 ET, ~60 min post-ISM print)
+**NO ACTION.** Risk-management-only routine; new entries reserved for market-open (already past). Live snapshot:
+- XLP 239 sh @ $83.357 → $81.945, unrealized **-$337.50 (-1.69%)**, Day **-$230.64 (-1.16%)** — basket's deepest leg; gave back from premkt $82.90 (-1.15% additional intraday)
+- XLB 390 sh @ $51.062 → $50.26, unrealized **-$312.95 (-1.57%)**, Day **-$347.10 (-1.74%)** — bled deeper than premkt $50.95 (-1.36% intraday); standout intraday red
+- XLI 87 sh @ $172.466 → $170.78, unrealized **-$146.65 (-0.98%)**, Day **-$204.45 (-1.36%)** — modest bounce off premkt low $170.38 (+0.23%)
+- Equity **$99,206.49** (Phase **-$793.51 / -0.79%**, Day P&L vs Fri close $99,979.01: **-$772.52 / -0.77%**). Cash $45,158.79, daytrade_count 0, Long MV $54,047.70 (~54.48% deployed).
+
+**STEP 3 (cuts):** None. Worst leg **XLP -1.69% unrealized, ~5.31 pp cushion to -7% trigger**. Zero cut candidates.
+
+**STEP 4 (tightens):** None. No leg green; best leg **XLI -0.98% unrealized, ~15.98 pp below +15% threshold**. Zero tighten candidates. **No new hwms** intraday: XLP $81.945 < hwm $86.695 (-5.48%), XLB $50.26 < hwm $52.77 (-4.76%), XLI $170.78 < hwm $177.72 (-3.91%) — all three trailing GTC stops **unchanged** at $78.0255 / $47.493 / $159.948.
+
+**STEP 5 (thesis):** Intact across all three legs. Post-ISM print (10:00 ET cluster ran ~60 min ago): basket reaction is **broad-tape risk-off**, not idiosyncratic break — XLP defensive (-1.16% Day) AND cyclicals XLB/XLI (-1.74% / -1.36% Day) both red simultaneously is the classic correlated-leg behavior week 5 review codified Rule 12 to address. The price action suggests ISM print was NOT cleanly soft (defensives would otherwise be bid on dovish-rates rotation); XLU conditional gate (c) — "XLU green ≥+0.5% intraday at midday scan" — almost certainly failing given XLP defensive cohort is -1.16% Day. **Stop-proximity gates**: XLB closest at price cushion **5.31%** ($50.26 → $47.493 trail) — still outside the 3% proximity gate (and the trail stop has 5+ pp of room before it triggers); XLP cushion 4.78%, XLI cushion 6.46%. No thesis breaks; no idiosyncratic news on any top holding (WMT/COST/PG/KO/PM, LIN/NEM, CAT/GE/BA) identified at scan tick. Pre-market HOLD decision stands; broad-tape weakness was explicitly modeled as "all three red premkt, classic correlated-leg behavior" risk factor.
+
+**STEP 6 (notification):** SILENT (no action taken).
+
+**Disposition into midday scan:** HOLD continues. Midday routine (later this session) re-evaluates XLU conditional formally against the three gates (a/b/c). Current signal: gate (c) failing on XLU given defensive cohort cohort weakness; (a) and (b) require explicit ISM Prices print + 10Y intraday delta data not pulled in this routine. EOD daily-summary captures the Phase 6 day 1 baseline + final marks. Rule 12 Tue EOD evaluation remains the structural pivot; today is informational only.
+
+### Env-check note (intraday)
+Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $99,206.49 — proceeded per saved feedback memory.
