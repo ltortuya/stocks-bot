@@ -1714,3 +1714,23 @@ Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPA
 
 ### Env-check note (midday)
 Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh positions`) returned live JSON with three positions and portfolio_value $99,478.69 (via `account`) — proceeded per saved feedback memory.
+
+### Intraday Check Addendum #2 (11:30 PDT / 14:30 ET)
+**NO ACTION.** Risk-management-only routine; new entries forbidden per intraday-check rule. Live snapshot:
+- XLP 239 sh @ $83.357 → $81.995, unrealized **-$325.55 (-1.63%)**, Day **-$218.69 (-1.10%)** — recovered modestly from midday $81.755 (+0.29% off midday low)
+- XLB 390 sh @ $51.062 → $51.005, unrealized **-$22.40 (-0.11%)**, Day **-$56.55 (-0.28%)** — recovered further from midday $50.795 (+0.41%); back within ~$22 of cost basis
+- XLI 87 sh @ $172.466 → $172.775, unrealized **+$26.92 (+0.18%)**, Day **-$30.89 (-0.21%)** — **flipped GREEN since midday** ($172.065 → $172.775, +0.41%); first green leg of the session
+- Equity **$99,661.51** (Phase **-$338.49 / -0.34%**, Day P&L vs Fri close $99,979.01: **-$317.50 / -0.32%**). Cash $45,158.79, daytrade_count 0, Long MV $54,502.72 (~54.69% deployed).
+
+**STEP 3 (cuts):** None. Worst leg **XLP -1.63% unrealized, ~5.37 pp cushion to -7% trigger**. Zero cut candidates.
+
+**STEP 4 (tightens):** None. Best leg **XLI +0.18% unrealized, ~14.82 pp below +15% threshold**. Zero tighten candidates. **No new hwms**: XLP $81.995 < hwm $86.695 (-5.42%), XLB $51.005 < hwm $52.77 (-3.35%), XLI $172.775 < hwm $177.72 (-2.79%) — all three trailing GTC stops **unchanged** at $78.0255 / $47.493 / $159.948. Stop-price cushions: XLP **4.61%**, XLB **6.89%**, XLI **6.85%** — all outside the 3% proximity gate.
+
+**STEP 5 (thesis):** Intact across all three legs. Basket has continued the recovery off the 13:01 ET midday print: XLP $81.755 → $81.995 (+0.29%), XLB $50.795 → $51.005 (+0.41%), XLI $172.065 → $172.775 (+0.41%, **flipped green**). Two-leg flip pattern (XLB nearly flat at cost; XLI green) suggests post-ISM correlated risk-off has unwound roughly half its intraday drawdown into the afternoon session — cyclicals leading the bounce, defensive XLP still the laggard (-1.63%) on continued rotation pressure consistent with the pre-market "ISM print not cleanly soft" read. No idiosyncratic news on any top holding (WMT/COST/PG/KO/PM, LIN/NEM, CAT/GE/BA) at scan tick. Pre-market HOLD framework stands; intraday addendum #1's "broad-tape risk-off, not idiosyncratic break" read is now validated by the partial reversal pattern.
+
+**STEP 6 (notification):** SILENT (no action taken).
+
+**Disposition into EOD:** HOLD continues. Phase 6 day 1 baseline now tracking at -0.34% (intraday -$338 vs midday print -$521, off ~$183 of recovery). Daily-summary captures final marks + Rule 12 day-1 status (0 single-name/sector fires today; XLK still gated on tonight's CRDO/HPE AMC; SPY Rule-12 Wed-open trigger 1 session out from Tue EOD evaluation pivot). Tomorrow (Tue): pre-market authors XLK post-CRDO/HPE AMC; Tue midday is the **explicit Rule 12 EOD-Tue assessment**.
+
+### Env-check note (intraday #2)
+Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with equity $99,661.51 — proceeded per saved feedback memory.
