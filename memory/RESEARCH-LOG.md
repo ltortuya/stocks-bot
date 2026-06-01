@@ -1594,3 +1594,78 @@ Zero at-the-open buys. Zero midday conditionals authored. Daily cap 3/3 fresh, w
 
 ### Env-check note (midday)
 Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $100,145.89 — proceeded per saved feedback memory.
+
+## 2026-06-01 — Pre-market Research
+
+(Monday open. **Phase 6 / new month / week 6 day 1.** First session under newly codified **TRADING-STRATEGY.md Rule 12** — deployment-floor mechanism: if 0 single-name/sector setups pass gates by EOD Tuesday, deploy ≥20% to SPY/RSP at Wed open. Today owes per week 5 weekly review: (a) XLF source reconciliation via State Street primary, (b) XLU relaxed framework re-authoring, (c) Tue EOD assessment of Rule 12 trigger.)
+
+### Account
+- Equity: $99,665.45
+- Cash: $45,158.79 (45.31%)
+- Buying power: $144,824.24
+- Daytrade count: 0
+- Long market value: $54,506.66 (~54.69% deployed)
+- Positions (pre-open marks):
+  - XLP 239 sh @ $83.357 → $82.90 premkt (-$0.01 vs $82.87 Fri close, **-0.01%**), unrealized -$109.25 (-0.55%), trail GTC $78.0255 (hwm $86.695)
+  - XLB 390 sh @ $51.062 → $50.95 premkt (-$0.20 vs $51.15 Fri close, **-0.39%**), unrealized -$43.85 (-0.22%), trail GTC $47.493 (hwm $52.77)
+  - XLI 87 sh @ $172.466 → $170.38 premkt (-$2.79 vs $173.17 Fri close, **-1.59%**), unrealized -$181.45 (-1.21%), trail GTC $159.948 (hwm $177.72)
+- Open orders: 3 trailing GTCs (one per leg, 10% trail) — confirmed live and unchanged
+- Phase P&L: -$334.55 (-0.33%) on live snapshot vs Fri EOD -$20.99 (-0.02%); Day P&L vs Fri close $99,979.01: **-$313.56 (-0.31%)** — basket red premkt led by **XLI -1.59%** (deepest single-leg red premkt this phase); broad-tape weakness ahead of 10:00 ET ISM print is the dominant signal
+
+### Market Context
+- WTI / Brent: **WTI ~$89-90** (June 1 intraday session $89.02-$92.66, latest close $89.75 per Twelve Data; Polymarket text "WTI trades near $89-90/bbl"); **Brent ~$106** (EIA May-Jun 2026 projection). WTI extended bleed from Fri $90.32 → today $89.75 (-0.6%), now ~6 sessions deeper than 5/22 alarm. Gate 5 of the retired XLE conditional (WTI ≥$105) ~$15 below trigger; setup is closed per Fri weekly review — no XLE re-author this phase absent Q3 geopolitical-shock reset.
+- S&P 500 futures: **ESM26 +0.18-0.20%** premkt — modestly risk-on tone per Barchart; not directional enough to skew the ISM print binary. Net: constructive into a heavy-macro Monday.
+- VIX: **15.32** (live tick per YCharts; Fri close 15.74 = -2.7% on the day). **Inside the 16-22 normal band; regime-shift watch flag OFF.** The relaxed-XLU trigger gate "VIX >18 sustained 2 sessions" is currently ~2.7 points below threshold and ~6 points below the regime-shift line.
+- Today's catalysts: **HEAVY MACRO MORNING.** (1) **09:45 ET S&P Global Manufacturing PMI (final May)** — secondary; (2) **10:00 ET ISM Manufacturing PMI (May)** — primary headline binary; (3) **10:00 ET ISM Prices** — the inflation-component sub-print (recent trend rising on energy/logistics); (4) **10:00 ET ISM Employment + ISM New Orders** — labor/demand sub-prints; (5) **10:00 ET Construction Spending MoM** — secondary. (6) **NO Fed speakers** — June FOMC blackout period (FOMC June 16-17), the entire week should be Fed-speaker-quiet. Implication: today's ISM cluster IS the macro tape; no late-day Fed-speaker chaser risk.
+- Earnings before open: **NONE noteworthy from held basket.** Only **SAIC** (Science Applications International) BMO from research; AMC: **HPE + CRDO** (AI/networking/data-center). No held-basket constituent reports today; CRDO/HPE are XLK-relevant for Tue setup.
+- Economic calendar this week: Today ISM Mfg + ISM Prices/Employment/New Orders + Construction Spending; Wed expected ADP + ISM Services (unconfirmed); **Fri 6/5 NFP/Jobs Report** (typical first-Fri schedule, unconfirmed in research). CPI not first week of June; next CPI ~6/10. FOMC blackout through 6/17.
+- Sector momentum YTD 2026 (**countryetftracker primary; source-disagreement resolution noted below**): **XLE > XLK > XLB > XLI > XLF > XLP > XLU**. Held basket (XLP/XLB/XLI) sits 3rd, 4th, 6th of 7 ranked tickers — XLB/XLI in the cyclical-leading cluster, XLP defensive mid/low. **XLE leadership unchanged across sources** despite the WTI bleed YTD — Energy still tops the YTD board on the YTD-aggregate even after May give-back.
+- **XLF SOURCE-RECONCILIATION (per week 5 weekly review directive) — RESOLVED, XLF RULED OUT**:
+  - State Street primary (sectorspdrs.com / ssga.com fund page for XLF): **YTD NAV -4.33% / YTD market price -4.31%** (as of Apr 30 2026 monthly factsheet); NAV $51.28 (May 30 2026).
+  - This **CONFIRMS Investing.com's Lagging-quadrant -4.68% YTD reading** and **RULES OUT StockCharts' "#1 leader RRG" reading** (which was a short-term momentum read on a bounce off the YTD lows, NOT a YTD-leadership read).
+  - **Disposition: XLF formally REMOVED from the 4th-leg active shortlist for Phase 6.** No re-author this phase absent a thesis reset (e.g., rate-cut cycle restart that materially re-prices financials). The 3rd-consecutive-Friday reconciliation deferral is finally closed.
+- Held-ticker news scan:
+  - **XLP**: Recent ValuEngine recap (late Apr) had staples ETFs incl XLP at 4 (Buy) rating, modest outperformance expected; defensive/lower-beta posture into volatility pickup. No idiosyncratic news today on top holdings (WMT 11-12% / COST 9-10% / PG 7-8% / KO 6-6.5% / PM 5.6-6.2%). Premkt $82.90 essentially flat vs Fri close — clean reset post-month-end rotation.
+  - **XLB**: Materials sector outlook "selective and cyclical"; mid-pack YTD per countryetftracker. LIN 14.4-14.5% / NEM 7.1-7.2% top holdings. No idiosyncratic news on either; XLB -0.39% premkt drift = broad-tape pre-ISM.
+  - **XLI**: Industrials outlook "incrementally more optimistic multi-year on capex/reshoring/infrastructure"; mid-leading YTD per countryetftracker. **XLI -1.59% premkt is the standout red leg** — CAT 7.65% / GE ~6% / BA 3-4% top holdings; no idiosyncratic news identified, the move is most likely broad-tape pre-ISM rotation (cyclicals soft into a binary that could trigger growth-concern repricing). Cushion to -7% trigger = **~5.79 pp** (worst leg in the basket today); cushion to trail GTC $159.948 = **~6.12%** (still outside 3% proximity gate).
+- Iran/Hormuz tape: No fresh kinetic-escalation headline. WTI structural bleed ($107 alarm → $89.75 today = -16.6% in 6 weeks) confirms the geopolitical premium has fully drained. XLE retired Fri stays retired.
+- 10Y Treasury yield: **~4.45%** (Fri 5/29 close print per FRED/YCharts; next Treasury release today). The relaxed-XLU trigger gate "10Y down >10bp WoW" requires today's ISM print to push 10Y to ~4.35% or lower to fire; current setup is neutral entering the print.
+- Fed cut expectations: Unchanged. June FOMC blackout in force.
+
+### Trade Ideas
+1. **HOLD held basket (XLP/XLB/XLI)** through 10:00 ET ISM print — no leg-level binary today; no idiosyncratic news on any top holding; XLI -1.59% premkt is broad-tape rotation, NOT thesis break. Trail-GTC discipline intact, all three legs outside both the -7% manual-cut trigger and the 3% stop-proximity gate. No pre-emptive trim into the ISM binary.
+2. **XLF 4th-leg framework — FORMALLY RULED OUT.** State Street primary confirms -4.33% YTD NAV; week-5-deferred reconciliation closed. Removed from active shortlist for Phase 6.
+3. **XLU 4th-leg conditional — RELAXED FRAMEWORK AUTHORED PER WEEK 5 DIRECTIVE** (see Conditional Entries). New trigger: 10Y down ≥10bp intraday on ISM print AND ISM Prices soft AND XLU green at midday scan. Gates today: 10Y at 4.45% entering print = neutral; VIX 15.32 = below 18 trigger; setup depends on ISM-print reaction.
+4. **XLK 4th-leg watch — DEFER TO TUE PRE-MARKET POST-CRDO/HPE AMC.** AI/networking/data-center prints tonight; HPE 11-12% headline reaction + CRDO post-print read is the Tue pre-market authoring framework. No XLK conditional today (no Mon-specific AI catalyst).
+5. **SPY 4th-leg / Rule-12 deployment-floor candidate — INFORMATIONAL ONLY TODAY.** Rule 12 mechanism: if zero single-name/sector setups fire Mon-Tue, deploy ≥20% of equity ($19,933 sizing) to SPY at Wed open with standard 10% trail GTC. Today is Mon (day 1 of the 2-day evaluation window); Rule 12 cannot trigger until Wed open. No conditional needed today; Tue EOD pre-market explicitly assesses Rule-12-Wed-fire.
+6. **XLE — RETIRED. No re-author.** Gate 5 mechanically dead; Fri weekly-review thesis-level retirement stands.
+7. **XLV — SKIP.** Weakening across sources; no thesis edge.
+8. **Any earnings-binary single names (SAIC BMO / HPE CRDO AMC)** — SKIP per strategy (sector-ETF momentum only; no single-name earnings binaries).
+
+### Conditional Entries (midday-eligible) — up to 3
+1. **XLU** — allocation $19,933 (~20% equity), stop 10% trail GTC, target +20% (entry at midday → exit at trail-stop ratchet to 5% per Rule 6 ladder), R:R ≥2:1
+   Condition: At midday scan, all THREE of the following must hold simultaneously: (a) ISM Manufacturing Prices print soft (sub-60 print OR ≥3-point MoM decline from prior 67.5 if April; "soft" means clearly below survey consensus), (b) 10Y yield down ≥10bp intraday on the ISM reaction (from ~4.45% open → ≤4.35% at midday), (c) XLU green ≥+0.5% intraday at midday scan tick. **All three required; ANY ONE failing = SKIP for the day.** If only (a) + (b) fire without (c) by midday, defer authoring to Tue conditional re-author.
+   Catalyst: Per week 5 weekly review directive — XLU dovish-PCE gate-fail (5/29 Fri) was replaced with a broader rate-sensitivity gate (10Y down ≥10bp WoW OR VIX >18 sustained 2 sessions). Today's ISM cluster is the week's first macro binary that could trigger the 10Y leg; if ISM Prices undershoot and bonds rally, XLU is the cleanest single-leg expression of the dovish-rates rotation. Also adds **defensive low-correlation 4th leg** that the 3-leg basket has lacked through 3 single-session ~$500-$900 wipes in 11 trading days (Fri 5/15, Tue 5/20, Fri 5/29 risk-off pattern).
+
+(No 2nd or 3rd conditional today. Rationale: XLK setup is gated on tonight's CRDO/HPE AMC prints — Tue pre-market authoring; XLF formally ruled out; SPY/RSP is the Rule 12 Wed-open mechanism, not a midday-eligible conditional; XLE retired. Authoring beyond the XLU conditional would re-introduce the "single watch-list candidate forced" pattern week 5 weekly review explicitly flagged.)
+
+### Risk Factors
+- **10:00 ET ISM Manufacturing PMI is the dominant intraday binary** — headline + Prices + Employment + New Orders all printing simultaneously. Hot Prices = bonds sell off, defensives soft, rate-cut odds compress, XLU conditional gate fails. Soft Prices = bonds rally, defensives bid, XLU conditional gate possibly fires. Soft headline + soft Prices = mild risk-off mix where XLI (cyclical) takes incremental pain. **Set the ISM print at 10:00 ET as the day's only material macro variable.**
+- **XLI premkt -1.59% is the deepest single-leg pre-open drift since 5/19** — the leg has -1.21% unrealized P&L vs cost (cushion to -7% = 5.79 pp; cushion to trail $159.948 = 6.12%, still outside 3% proximity). NOT a thesis-break call yet, but XLI re-checks at midday scan are the day's primary risk-management focus. If ISM Mfg headline prints contraction (<50) and XLI extends to ~-3.5% unrealized intraday, the cushion to trail tightens toward proximity gate.
+- **3-leg-basket effective-correlation-~1 weakness** (confirmed 3 times in 11 trading days per week 5 review) extends into week 6 — XLP/XLB/XLI today are all red premkt, classic correlated-leg behavior. Rule 12 codified specifically to introduce a 4th leg (SPY broad-index) when the conditional pipeline produces zero candidates; mechanism is now in force.
+- **Heavy macro morning + light Mon trading volume risk** — ISM cluster at 10:00 ET into pre-NFP-week tape; if Mon volume is thin (Memorial-Day-week pattern carries into the new month occasionally), the print reaction can be amplified relative to typical. No directional bias, but magnitude can be elevated.
+- **Tue CRDO/HPE AMC + Wed-likely ADP + Fri-likely NFP** — the week is back-loaded with macro variables. Authoring deployment today on a single-print binary (XLU on ISM only) carries the asymmetric risk that a Wed/Fri print reverses the rate-sensitivity setup before the XLU position has run more than 1 session.
+- **Phase 6 / new month sentiment reset** — May closed essentially flat for the basket (-0.02% phase) vs SPX +0.6% week / +4.81% phase = ~-4.85% cumulative gap. June 1 carries a "new month, new sentiment" optical reset but does NOT change the structural deployment gap (~55% vs 75-85% target) — Rule 12 is the only mechanism that addresses this.
+- **XLF formally ruled out today reduces the active 4th-leg shortlist to 3** — XLU (relaxed framework today), XLK (deferred to Tue post-CRDO/HPE), SPY (Rule 12 Wed-open default). If all three fail to fire by EOD Tue, Rule 12 triggers Wed open mechanically. The shortlist is intentionally compact to avoid the "5 correct gate-rejections per week + zero deployment" pattern of weeks 1-5.
+
+### Env-check note (pre-market)
+Env-var loop check again printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $99,665.45 — proceeded per saved feedback memory. Perplexity research wrapper succeeded across all 10 queries (oil, ES futures, VIX, catalysts, earnings BMO, weekly econ calendar, sector momentum, XLP/XLB/XLI ticker news, XLF State Street primary, 10Y/Fed expectations).
+
+### Decision
+**HOLD at open, with one midday-eligible XLU conditional gated on the ISM print reaction.** Reasoning:
+1. **No leg-level binary today** — no held-basket holding reports earnings; XLI -1.59% premkt is broad-tape rotation, not thesis-break (no idiosyncratic news identified on any XLI top holding); all three trail GTCs unchanged at $78.0255 / $47.493 / $159.948.
+2. **All risk-management gates intact at open** — zero -7% cut candidates (worst leg XLI -1.21% unrealized, 5.79 pp cushion); zero +15% tighten candidates (best leg XLB -0.22%, none green at premkt); zero legs within 3% of stop (XLI closest at ~6.12% price cushion vs $159.948).
+3. **Rule 12 is now in force — Tue EOD is the evaluation pivot** — Wed open is the auto-deployment date if no single-name/sector setup fires by EOD Tue. The XLU conditional today (ISM-gated) is the first independent-thesis candidate; XLK conditional Tue pre-market post-CRDO/HPE AMC is the second; SPY Rule-12 fallback Wed open is the third. Pipeline is 3-deep per week 5 directive.
+4. **XLF formally RULED OUT** per State Street primary (-4.33% YTD NAV) — the week-5-deferred reconciliation is closed; one item off the watchlist permanently.
+
+Zero at-the-open buys. One midday-eligible conditional authored (XLU, three-leg trigger gates). Daily cap 3/3 fresh, weekly cap 6/6 (week 6 opens at 0 trades). Today's midday scan re-evaluates the XLU conditional against the 10:00 ET ISM cluster reaction (10Y move, XLU intraday, ISM Prices print). EOD daily-summary captures final marks + Phase 6 day 1 baseline. Tomorrow (Tue): pre-market authors XLK post-CRDO/HPE AMC, and Tue midday scan is the **explicit Rule 12 EOD-Tue assessment**: if zero single-name/sector setup has fired by then, Wed open mechanically deploys ≥20% to SPY. Patience > activity into the ISM print; the day's only real action is at 10:00 ET.
