@@ -1808,3 +1808,23 @@ Env-var loop check again printed MISSING for all five vars (ALPACA_API_KEY, ALPA
 4. **3-deep pipeline reduced to 1 active by inheritance** — XLU dropped on gate-hostility (Mon ISM Prices 82.1 → 10Y wrong direction), XLF ruled out, leaving XLK as the sole conditional. Rule 12 SPY Wed-open fallback is the mechanical safety net if XLK skips at midday.
 
 Zero at-the-open buys. One midday-eligible conditional authored (XLK, three-gate trigger). Daily cap 3/3 fresh, weekly cap 6/6 (week 6 stays at 0 trades after 1 session). Today's midday scan formally evaluates XLK conditional against HPE+XLK+NVDA gates and IS the Rule 12 EOD-Tue assessment that determines Wed open auto-deployment. EOD daily-summary captures final marks + Rule 12 trigger status. Tomorrow (Wed): either (a) Rule 12 fires SPY ≥20% auto-deploy at open if XLK skipped today, OR (b) the conditional fired and the basket has a new XLK leg with the pipeline reset for Thu/Fri. Patience > activity into the macro print; the day's only real action is at midday on the HPE-follow-through read.
+
+### Intraday Check Addendum (08:00 PDT / 11:00 ET, ~60 min post-open, pre-JOLTS reaction settled)
+**NO ACTION.** Risk-management-only routine; new entries reserved for market-open (already past). Live snapshot:
+- XLP 239 sh @ $83.357 → $81.695, unrealized **-$397.25 (-1.99%)**, Day **-$80.07 (-0.41%)** vs $82.03 Mon close — extends to 4th consecutive red close-or-mark; gave back from premkt $81.89 (-0.24% additional intraday)
+- XLB 390 sh @ $51.062 → $51.555, unrealized **+$192.10 (+0.97%)**, Day **+$247.65 (+1.25%)** vs $50.92 Mon close — rebounded from premkt flat to green; standout intraday bid
+- XLI 87 sh @ $172.466 → $174.15, unrealized **+$146.54 (+0.98%)**, Day **+$152.25 (+1.02%)** vs $172.40 Mon close — green on broad-tape risk-on; CAT/GE leadership intact
+- Equity **$99,935.64** (Phase 6 P&L vs Fri 5/29 close $99,979.01: **-$43.37 / -0.04%**, Day P&L vs Mon close $99,621.56: **+$314.08 / +0.32%**). Cash $45,158.79, daytrade_count 0, Long MV $54,776.85 (~54.81% deployed).
+
+**STEP 3 (cuts):** None. Worst leg **XLP -1.99% unrealized, ~5.01 pp cushion to -7% trigger** (compressed from premkt 5.24pp by ~23 bp on the 4th-consecutive-red drift). Zero cut candidates.
+
+**STEP 4 (tightens):** None. Best leg **XLI +0.98% / XLB +0.97% unrealized, both ~14 pp below +15% threshold**. Zero tighten candidates. **No new hwms** intraday: XLP $81.695 < hwm $86.695 (-5.77%), XLB $51.555 < hwm $52.77 (-2.30%), XLI $174.15 < hwm $177.72 (-2.01%) — XLB and XLI both ~2-3% under hwm but stops are server-side ratcheted only on new hwm prints. All three trailing GTC stops **unchanged** at $78.0255 / $47.493 / $159.948.
+
+**STEP 5 (thesis):** Intact across all three legs. Tape signature is **HPE catalyst risk-on overlay** — XLB/XLI green +1% on cyclical/AI-tape lift (consistent with premkt ESM26 +0.3% and HPE +29-32% AH ripple into the broader industrial/materials cohort); XLP defensive lone red on continued rotation OUT of defensives toward the AI-capex-led tape (XLP -0.41% Day is broad-tape rotation, NOT idiosyncratic — no news on WMT/COST/PG/KO; DG BMO print not basket-impactful). Pre-market explicitly modeled XLP "3 consecutive sessions red, now 4th — cushion compressing but not yet thesis-break candidate." **Stop-proximity gates**: XLP closest at price cushion **4.49%** ($81.695 → $78.0255 trail), still outside 3% proximity gate; XLB cushion 7.88%, XLI cushion 8.16% — all outside trigger. No thesis breaks; no idiosyncratic news on any top holding (WMT/COST/PG/KO, LIN/NEM, CAT/GE/GEV/BA) identified at scan tick.
+
+**STEP 6 (notification):** SILENT (no action taken).
+
+**Disposition into midday scan:** HOLD continues. Midday routine (later this session) formally re-evaluates **XLK conditional** against three gates (a) HPE ≥+20% from $47.00 (i.e., ≥$56.40), (b) XLK green ≥+1.0% intraday, (c) NVDA green ≥+0.5%. Current tape directional read: cyclical-tape bid (XLB/XLI +1%) supports gate (b) breadth interpretation, but the gates are evaluated at the 12:01 CT scan tick on actual XLK/NVDA/HPE prints (not held-basket cohort behavior). Rule 12 Tue EOD evaluation remains the structural pivot today; if XLK conditional fires at midday, Rule 12 SPY Wed-open auto-deploy is preempted; if it skips, Rule 12 mechanically fires Wed open.
+
+### Env-check note (intraday)
+Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $99,935.64 — proceeded per saved feedback memory.
