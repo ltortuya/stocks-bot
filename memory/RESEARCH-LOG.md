@@ -1784,6 +1784,7 @@ Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPA
 1. **XLK** — allocation $19,917 (~20% equity, exact-fit to Rule 12 floor sizing), stop 10% trail GTC, target +20% (entry at midday → exit at Rule 6 ladder ratchet to 5% trail), R:R ≥2:1
    Condition: At midday scan (12:01 CT), all THREE of the following must hold simultaneously: **(a)** HPE intraday holds ≥+20% from Mon $47.00 regular close (i.e., HPE trading ≥$56.40 at scan tick — confirms the AH catalyst translated into a sustained regular-session bid rather than a peak-and-fade); **(b)** XLK green ≥+1.0% intraday at midday scan tick (broader sector-level confirmation, not just HPE single-stock gap); **(c)** NVDA green ≥+0.5% at midday scan tick (AI-tape breadth confirmation — HPE's AI capex thesis is most credible if the #1 chip name confirms the bid). **All three required; ANY ONE failing = SKIP for the day.** If (a) holds but (b) or (c) fails, XLK is HPE-alone not a sector rotation IN — defer to Wed pre-market re-author.
    Catalyst: HPE Q2 FY26 print (Mon AMC) delivered structural-beat trifecta: revenue +40% YoY $10.7B (consensus $9.6-10.0B), Non-GAAP EPS $0.79 ($0.51-0.55 consensus, +50% beat), **$5B AI systems backlog**, FY26 FCF guide raised to ≥$3.5B (a target previously associated with FY28), FY26 EPS raised to $2.30-$2.50. AH move +29-32% off $47.00 close. AI capex / networking thesis is the structural carrier of the YTD-leading XLK sector; the print is a multi-quarter forward-guide reset, not a single-quarter beat. CRDO -11.7% AH is offsetting but small-cap and single-quarter — net AI-tape signal HPE-dominant. **This is the (c) item from week 5 weekly review's 3-deep pipeline** ("one cyclical-or-tech with a non-Warsh-non-Crestwood trigger: XLK with a clean +1% AI-tape compound trigger"). If conditional fires, Rule 12 SPY Wed-open auto-deploy is preempted; if conditional skips, Rule 12 mechanically fires Wed open.
+   → Skipped (12:01 CT): all three gates fail — (a) HPE $54.66 = +16.3% from $47.00, below +20% threshold ($56.40); (b) XLK $197.41 vs prev $195.76 = +0.84%, below +1.0%; (c) NVDA $225.23 vs prev $224.42 = +0.36%, below +0.5%. HPE-fade signature exactly as pre-market risk-factor modeled; Rule 12 SPY Wed-open auto-deploy fires mechanically.
 
 (No 2nd or 3rd conditional today. Rationale: XLU relaxed framework gates are hostile to today's macro setup — ISM Prices 82.1 + neutral-to-rising 10Y starting posture make the bond-rally trigger unlikely absent a soft JOLTS surprise, and authoring a doomed-conditional re-introduces the week-1-through-4 "single-watch-list candidate forced" pattern. XLF formally ruled out Mon; XLE retired Fri; XLV weakening; SPY is the Wed-open mechanical fallback not a midday conditional. The single XLK conditional is intentionally the sole entry to keep the pipeline focused on the day's highest-conviction asymmetric setup.)
 
@@ -1828,3 +1829,29 @@ Zero at-the-open buys. One midday-eligible conditional authored (XLK, three-gate
 
 ### Env-check note (intraday)
 Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $99,935.64 — proceeded per saved feedback memory.
+
+### Midday Scan Addendum (12:01 CT / 17:01 UTC, scan-tick spec exact)
+**NO ACTION TAKEN.** XLK conditional SKIPPED on all three gates; zero cuts, zero tightens, all theses intact. Live snapshot:
+- XLP 239 sh @ $83.357 → $81.89, unrealized **-$350.64 (-1.76%)**, Day **-$33.46 (-0.17%)** vs $82.03 Mon close — recovered ~21 bp from intraday 11:00 ET trough (-1.99%); still 4th consecutive red close-or-mark
+- XLB 390 sh @ $51.062 → $51.355, unrealized **+$114.10 (+0.57%)**, Day **+$169.65 (+0.85%)** vs $50.92 Mon close — modestly faded from 11:00 ET peak (+0.97%) but holds green
+- XLI 87 sh @ $172.466 → $173.325, unrealized **+$74.77 (+0.50%)**, Day **+$80.48 (+0.54%)** vs $172.40 Mon close — faded ~48 bp from 11:00 ET peak (+0.98%) on midday digestion
+- Equity **$99,843.23** (Phase 6 P&L vs Fri 5/29 $99,979.01: **-$135.78 / -0.14%**, Day P&L vs Mon close $99,621.56: **+$221.67 / +0.22%**). Cash $45,158.79, daytrade_count 0, Long MV $54,684.44 (~54.77% deployed).
+
+**STEP 3 (cuts):** None. Worst leg **XLP -1.76% unrealized, ~5.24 pp cushion to -7% trigger** (recovered from 11:00 ET -1.99% by ~23 bp). Zero cut candidates.
+
+**STEP 4 (tightens):** None. Best leg **XLB +0.57% / XLI +0.50% unrealized, both ~14.4-14.5 pp below +15% threshold**. Zero tighten candidates. No new hwms: XLP $81.89 < hwm $86.695 (-5.54%), XLB $51.355 < hwm $52.77 (-2.68%), XLI $173.325 < hwm $177.72 (-2.47%). All three trailing GTC stops **unchanged** at $78.0255 / $47.493 / $159.948.
+
+**STEP 5 (thesis):** Intact across all three legs. XLP -0.17% Day is broad-tape rotation, NOT idiosyncratic (no news on WMT/COST/PG/KO/PM at scan tick); XLB/XLI mid-day fade from 11:00 ET peaks is HPE-catalyst-digestion typical, NOT thesis break. Stop-proximity gates: XLP closest at price cushion **4.69%** ($81.89 → $78.0255 trail), still outside 3% proximity gate; XLB cushion 7.52%, XLI cushion 7.72% — all outside trigger. No thesis breaks.
+
+**STEP 5.5 (XLK conditional eval at 12:01 CT scan tick):**
+- **(a) HPE**: $54.66 trade / $54.63 bid / $54.64 ask vs threshold $56.40 (≥+20% from $47.00). Actual: **+16.3%**. **FAIL** — HPE faded from AH +29-32% peak to regular-session +16%, a more aggressive compress than the +20% gate calibration. Pre-market risk factor "HPE gap fade risk" played out close to the modeled mid-case.
+- **(b) XLK**: latestTrade $197.41 vs prev close $195.76 → **+0.84%**, below +1.0% threshold. **FAIL** — XLK green but not sector-confirmation green; consistent with the pre-market "RRG-Lagging despite #1 YTD" framework where the HPE catalyst did NOT flip the rotation from OUT to IN.
+- **(c) NVDA**: latestTrade $225.23 vs prev close $224.42 → **+0.36%**, below +0.5% threshold. **FAIL** — chip-tape breadth confirmation absent; #1 AI single-name not endorsing the HPE capex thesis at midday.
+- Verdict: **ALL THREE GATES FAIL**. Any-one-failing = SKIP per spec; three-failing makes the SKIP dispositive on multiple independent reads. XLK conditional NOT FIRED; **Rule 12 SPY Wed-open auto-deploy (≥20% equity, ~$19,968 sizing at $99,843 equity, standard 10% trail GTC) triggers mechanically** at Wed 6/3 open per the 5/29 weekly-review codification.
+
+**STEP 6 (notification):** SILENT (no action taken; conditional skip per spec is non-notifying).
+
+**Disposition into EOD:** HOLD continues unchanged. Daily-summary captures final marks + formal Rule 12 trigger status. Tomorrow (Wed 6/3): pre-market authors SPY ≥20% deploy at open with standard 10% trail GTC — first 4th-leg addition in 26 sessions, resolves the structural deployment gap from ~55% toward the 75-85% target band. ADP private payrolls + ISM Services 10:00 ET are the day's macro variables; SPY deploy is the mechanical Rule 12 fire and is not gated on those prints. NFP Fri 6/5 remains the week's primary macro variable.
+
+### Env-check note (midday)
+Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $99,843.23 — proceeded per saved feedback memory.
