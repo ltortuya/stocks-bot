@@ -1855,3 +1855,23 @@ Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPA
 
 ### Env-check note (midday)
 Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $99,843.23 — proceeded per saved feedback memory.
+
+### Intraday Check Addendum #2 (11:30 PDT / 14:30 ET, post-midday-scan, ~90 min pre-close)
+**NO ACTION.** Risk-management-only routine; new entries reserved for market-open (already past); XLK conditional already evaluated and SKIPPED at 12:01 CT midday. Live snapshot:
+- XLP 239 sh @ $83.357 → $81.88, unrealized **-$353.03 (-1.77%)**, Day **-$35.85 (-0.18%)** vs $82.03 Mon close — essentially flat vs midday mark ($81.89); 4th consecutive red close-or-mark holding
+- XLB 390 sh @ $51.062 → $51.375, unrealized **+$121.90 (+0.61%)**, Day **+$177.45 (+0.89%)** vs $50.92 Mon close — modestly firmed from midday $51.355 (+0.04%); cyclical bid persisting through afternoon
+- XLI 87 sh @ $172.466 → $173.84, unrealized **+$119.57 (+0.80%)**, Day **+$125.28 (+0.84%)** vs $172.40 Mon close — extended from midday $173.325 (+0.30%); CAT/GE/GEV leadership intact
+- Equity **$99,890.83** (Phase 6 P&L vs Fri 5/29 $99,979.01: **-$88.18 / -0.09%**, Day P&L vs Mon close $99,621.56: **+$269.27 / +0.27%**). Cash $45,158.79, daytrade_count 0, Long MV $54,732.04 (~54.79% deployed).
+
+**STEP 3 (cuts):** None. Worst leg **XLP -1.77% unrealized, ~5.23 pp cushion to -7% trigger** (unchanged from midday). Zero cut candidates.
+
+**STEP 4 (tightens):** None. Best leg **XLI +0.80% / XLB +0.61% unrealized, both ~14.2-14.4 pp below +15% threshold**. Zero tighten candidates. No new hwms: XLP $81.88 < hwm $86.695 (-5.56%), XLB $51.375 < hwm $52.77 (-2.64%), XLI $173.84 < hwm $177.72 (-2.18%). All three trailing GTC stops **unchanged** at $78.0255 / $47.493 / $159.948.
+
+**STEP 5 (thesis):** Intact across all three legs. Afternoon tape signature is **modest cyclical drift higher** (XLB/XLI gained ~4-30 bp from midday) with XLP defensive flat — consistent with the HPE-catalyst-digestion-into-afternoon cyclical bid pattern; no idiosyncratic news on any top holding (WMT/COST/PG/KO/PM, LIN/NEM, CAT/GE/GEV/BA) at scan tick. Stop-proximity gates: XLP closest at price cushion **4.71%** ($81.88 → $78.0255 trail), still outside 3% proximity gate; XLB cushion 7.56%, XLI cushion 7.99% — all outside trigger. No thesis breaks.
+
+**STEP 6 (notification):** SILENT (no action taken).
+
+**Disposition into EOD:** HOLD continues unchanged. Daily-summary captures final marks + formal Rule 12 trigger status (XLK conditional confirmed SKIPPED at midday; SPY ≥20% Wed-open auto-deploy stands as the mechanical Rule 12 fire). Tomorrow (Wed 6/3): pre-market authors SPY deploy at open with standard 10% trail GTC. ADP private payrolls + ISM Services 10:00 ET are the day's macro variables; SPY deploy is the mechanical Rule 12 fire and is not gated on those prints. NFP Fri 6/5 remains the week's primary macro variable.
+
+### Env-check note (intraday #2)
+Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $99,890.83 — proceeded per saved feedback memory.
