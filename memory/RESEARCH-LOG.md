@@ -1965,3 +1965,26 @@ Env-var loop check again printed MISSING for all five vars (ALPACA_API_KEY, ALPA
 
 ### Env-check note (intraday #1)
 Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $100,391.71 — proceeded per saved feedback memory.
+
+### Midday Scan Addendum (12:01 CT / 17:01 UTC, scan-tick spec exact)
+**NO ACTION TAKEN.** Zero conditionals authored at pre-market (Rule 12 SPY at-open fire was the day's sole sizing action, already executed); zero cuts, zero tightens, all four theses intact. Live 4-leg snapshot:
+- SPY 26 sh @ $758.54 → $755.07, unrealized **-$90.22 (-0.46%)**, Day **-0.59%** vs $759.57 lastday — extended fade vs intraday #1 mark ($756.22, -0.15%); stop $682.5105 (10% trail, hwm $758.345, 9.61% price cushion)
+- XLB 390 sh @ $51.062 → $51.755, unrealized **+$270.10 (+1.36%)**, Day **+0.46%** vs $51.52 Tue close — faded from intraday #1 peak (+1.70%, $51.93) on midday digestion; stop $47.493 (10% trail, hwm $52.77, 8.24% price cushion)
+- XLI 87 sh @ $172.466 → $174.795, unrealized **+$202.66 (+1.35%)**, Day **+0.35%** vs $174.19 Tue close — faded from intraday #1 peak (+2.00%, $175.91) by ~63 bp on midday digestion; stop $159.948 (10% trail, hwm $177.72, 8.49% price cushion)
+- XLP 239 sh @ $83.357 → $82.55, unrealized **-$192.90 (-0.97%)**, Day **+0.88%** vs $81.83 Tue close — broadly flat vs intraday #1 ($82.495, +0.07%); 4-session red streak still paused (Day green); stop $78.0255 (10% trail, hwm $86.695, 5.48% price cushion)
+- Equity **$100,188.57** (Phase 6 P&L vs $100,000 baseline: **+$188.57 / +0.19%**, Day P&L vs Tue close $99,963.49: **+$225.08 / +0.23%**). Cash $25,436.75, daytrade_count 1, Long MV $74,751.82 (~**74.61% deployed**) — Rule 12 SPY fire stable within ~40 bp of 75-85% target band floor.
+
+**STEP 3 (cuts):** None. Worst leg **XLP -0.97% unrealized, ~6.03 pp cushion to -7% trigger**; next-worst SPY -0.46%, ~6.54 pp cushion. Zero cut candidates.
+
+**STEP 4 (tightens):** None. Best leg **XLB +1.36% / XLI +1.35% unrealized, both ~13.6-13.7 pp below +15% threshold**. Zero tighten candidates. No new hwms since intraday #1: XLB $51.755 < hwm $52.77 (-1.92%), XLI $174.795 < hwm $177.72 (-1.65%), SPY $755.07 < hwm $758.345 (-0.43%), XLP $82.55 < hwm $86.695 (-4.78%). All four trailing GTC stops **unchanged** at $682.5105 / $47.493 / $159.948 / $78.0255.
+
+**STEP 5 (thesis):** Intact across all four legs. Midday tape signature is **cyclical fade from morning peaks + defensive flat** — XLB/XLI gave back ~30-65 bp from intraday #1 highs while XLP holds the broad-defensive Day-green print and SPY digests the open-entry. Consistent with the pre-market "post-ADP cyclical-led risk-on with afternoon fade into 10:00 ET ISM Services / 12:30 ET Hammack" pattern. No idiosyncratic news on any top holding (WMT/COST/PG/KO/PM, LIN/NEM, CAT/GE/GEV/BA) at scan tick; SPY broad-index entry not a single-name binary. Stop-proximity gates: XLP closest at **5.48% price cushion** ($82.55 → $78.0255), still outside the 3% proximity gate; SPY 9.61%, XLB 8.24%, XLI 8.49% — all four outside trigger. No thesis breaks.
+
+**STEP 5.5 (conditionals):** No conditionals to evaluate. Today's RESEARCH-LOG "Conditional Entries (midday-eligible)" section explicitly authored ZERO conditionals — the at-open Rule 12 SPY fire was the day's sole sizing action and is not midday-eligible.
+
+**STEP 6 (notification):** SILENT (no action taken).
+
+**Disposition into EOD:** HOLD continues unchanged across the 4-leg basket. Intraday-check addendum #2 (~14:30 ET / 11:30 PT) re-checks all four legs against -7% cut / +15% tighten / 3% stop-proximity gates through the 12:30 ET Hammack speech and into the 15:30 ET Goolsbee speech. Daly 20:30 ET is the after-hours rate-rhetoric variable (modest market impact). EOD daily-summary captures Phase 6 day 3 final marks + first full-day SPY trail-GTC behavior + the 4-leg basket's new ~74.6% deployment baseline.
+
+### Env-check note (midday)
+Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $100,188.57 — proceeded per saved feedback memory.
