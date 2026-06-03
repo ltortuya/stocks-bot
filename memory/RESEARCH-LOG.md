@@ -1944,3 +1944,24 @@ Env-var loop check again printed MISSING for all five vars (ALPACA_API_KEY, ALPA
 4. **Conditionals deliberately zero** — XLK reset cleared Tue (re-authoring same gates = chasing); XLU gates remain hostile (10Y direction wrong); SPY is at-the-open not midday; XLF/XLE/XLV ruled out. Today's only sizing action is the at-open SPY Rule 12 fire.
 
 **One at-the-open buy (SPY 26 sh, ~$19,686, 10% trail GTC) + HOLD XLP/XLB/XLI.** Daily cap 3/3 fresh → 1 trade after open (2 remaining); weekly cap 6/6 → 1 trade after open (5 remaining). Today's market-open routine executes the SPY add + trail GTC attach; midday scan re-checks the 4-leg basket against -7% cut / +15% tighten / 3% stop-proximity gates after ADP+ISM digestion; intraday-check addenda monitor for any leg-level binary; EOD daily-summary captures final marks + the new 4-leg basket deployment math (~75% target post-fire vs ~55% pre-fire). Tomorrow (Thu): pre-market reassesses the 4-leg basket with ADP/ISM digested + AVGO/CRWD/DOCU AMC prints + the Fri 6/5 NFP setup; the structural deployment-stagnation pattern that's defined Phases 4-6 ends today at session 28.
+
+### Intraday Check Addendum #1 (08:00 PDT / 11:00 ET, ~90 min post-open, pre-midday-scan, post-ADP)
+**NO ACTION.** Risk-management-only routine; new entries reserved for market-open (already past — SPY Rule 12 fire executed 09:31 ET). Live 4-leg snapshot:
+- SPY 26 sh @ $758.54 → $756.22, unrealized **-$60.32 (-0.31%)**, Day **-0.44%** (vs $759.57 lastday) — fresh entry digesting open ADP-print tape; stop $682.5105 (10% trail, hwm $758.345, 9.75% price cushion)
+- XLB 390 sh @ $51.062 → $51.93, unrealized **+$338.35 (+1.70%)**, Day **+0.80%** vs $51.52 Tue close — cyclical bid continuation, approaching hwm $52.77 (~1.59% gap); stop $47.493 (10% trail, 8.54% price cushion)
+- XLI 87 sh @ $172.466 → $175.91, unrealized **+$299.66 (+2.00%)**, Day **+0.99%** vs $174.19 Tue close — best leg, also approaching hwm $177.72 (~1.02% gap, closest of the basket); stop $159.948 (10% trail, 9.08% price cushion)
+- XLP 239 sh @ $83.357 → $82.495, unrealized **-$206.05 (-1.03%)**, Day **+0.81%** vs $81.83 Tue close — 4-session red streak pauses (premkt was +0.02%); broad defensive bid post-ADP; stop $78.0255 (10% trail, hwm $86.695, 5.42% price cushion)
+- Equity **$100,391.71** (Phase 6 P&L vs $100,000 baseline: **+$391.71 / +0.39%**, Day P&L vs Tue close $99,963.49: **+$428.22 / +0.43%**). Cash $25,436.75, daytrade_count 1, Long MV $74,954.96 (~**74.66% deployed**) — Rule 12 SPY fire lifted basket from 27-session ~55% gap to within ~35 bp of 75-85% target band floor on the first mechanical fire.
+
+**STEP 3 (cuts):** None. Worst leg **SPY -0.31% unrealized, ~6.69 pp cushion to -7% trigger**; next-worst XLP -1.03%, ~5.97 pp cushion. Zero cut candidates.
+
+**STEP 4 (tightens):** None. Best leg **XLI +2.00% / XLB +1.70% unrealized, both ~13.0-13.3 pp below +15% threshold**. Zero tighten candidates. No new hwms yet — XLI closest at $175.91 vs hwm $177.72 (-1.02%), XLB $51.93 vs $52.77 (-1.59%), SPY $756.22 vs $758.345 (-0.28%), XLP $82.495 vs $86.695 (-4.85%). All four trailing GTC stops **unchanged** at $682.5105 / $47.493 / $159.948 / $78.0255.
+
+**STEP 5 (thesis):** Intact across all four legs. Morning tape signature is **cyclical-led risk-on with defensive participation** (XLB +0.80%, XLI +0.99%, XLP +0.81%, SPY -0.44% digesting fresh entry) — consistent with the constructive post-ADP backdrop modeled in pre-market. No idiosyncratic news on any top holding (WMT/COST/PG/KO/PM, LIN/NEM, CAT/GE/GEV/BA) at scan tick. SPY Rule 12 fire executed cleanly into the open ($758.54 fill ≈ $758.53 premkt ask); 10% trail GTC live and ratcheting. Stop-proximity gates: XLP closest at price cushion **5.42%** ($82.495 → $78.0255), still outside the 3% proximity gate. No thesis breaks.
+
+**STEP 6 (notification):** SILENT (no action taken).
+
+**Disposition into midday:** HOLD continues unchanged across the 4-leg basket. Midday scan (12:01 CT) re-checks all four legs against -7% cut / +15% tighten / 3% stop-proximity gates after the 10:00 ET ISM Services print and through the 12:30 ET Hammack speech. If XLI or XLB break to new hwms intraday, the trailing GTCs auto-ratchet — no manual action required. If SPY extends red on hot ISM Services, the entry-day giveback is structurally absorbed by the 10% trail (current cushion 9.75% price). Goolsbee 15:30 ET / Daly 20:30 ET are the late-tape Fed-speaker variables but no leg-level binary expected.
+
+### Env-check note (intraday #1)
+Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $100,391.71 — proceeded per saved feedback memory.
