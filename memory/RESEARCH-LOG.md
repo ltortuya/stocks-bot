@@ -1988,3 +1988,24 @@ Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPA
 
 ### Env-check note (midday)
 Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $100,188.57 — proceeded per saved feedback memory.
+
+### Intraday Check Addendum #2 (11:30 PDT / 14:30 ET, ~5h post-open, post-ISM Services, post-Hammack 12:30 ET, into Goolsbee 15:30 ET)
+**NO ACTION.** Risk-management-only routine; new entries reserved for market-open. Live 4-leg snapshot:
+- SPY 26 sh @ $758.54 → $755.97, unrealized **-$66.82 (-0.34%)**, Day **-0.47%** vs $759.57 lastday — modest digest of open ADP/ISM tape, ~25 bp deeper red than midday $755.07; stop $682.5105 (10% trail, hwm $758.345, **9.71%** price cushion)
+- XLB 390 sh @ $51.685, unrealized **+$242.80 (+1.22%)**, Day **+0.32%** vs $51.52 Tue close — gave back ~14 bp from midday $51.755 print; stop $47.493 (10% trail, hwm $52.77, **8.11%** price cushion)
+- XLI 87 sh @ $174.865, unrealized **+$208.75 (+1.39%)**, Day **+0.39%** vs $174.19 Tue close — ticked +4 bp above midday $174.795 print; stop $159.948 (10% trail, hwm $177.72, **8.53%** price cushion)
+- XLP 239 sh @ $82.34, unrealized **-$243.09 (-1.22%)**, Day **+0.62%** vs $81.83 Tue close — gave back ~26 bp from midday $82.55 print; 4-session red streak pause holds (Day still green); stop $78.0255 (10% trail, hwm $86.695, **5.24%** price cushion)
+- Equity **$100,126.44** (Phase 6 P&L vs $100,000 baseline: **+$126.44 / +0.13%**, Day P&L vs Tue close $99,963.49: **+$162.95 / +0.16%**). Cash $25,436.75, daytrade_count 1, Long MV $74,689.69 (~**74.59% deployed**) — Rule 12 SPY fire stable within ~40 bp of 75-85% target band floor; ~$62 below midday equity $100,188.57.
+
+**STEP 3 (cuts):** None. Worst leg **XLP -1.22% unrealized, ~5.78 pp cushion to -7% trigger**; next-worst SPY -0.34%, ~6.66 pp cushion. Zero cut candidates.
+
+**STEP 4 (tightens):** None. Best leg **XLI +1.39% / XLB +1.22% unrealized, both ~13.6-13.8 pp below +15% threshold**. Zero tighten candidates. No new hwms: XLI $174.865 < hwm $177.72 (-1.61%), XLB $51.685 < $52.77 (-2.06%), SPY $755.97 < $758.345 (-0.31%), XLP $82.34 < $86.695 (-5.02%). All four trailing GTC stops **unchanged** at $682.5105 / $47.493 / $159.948 / $78.0255.
+
+**STEP 5 (thesis):** Intact across all four legs. Afternoon tape signature is **cyclical hold + defensive Day-green + SPY entry-day digestion** — XLB/XLI cling to +1.2-1.4% unrealized after the morning peak fade, XLP holds the broad-defensive bid (+0.62% Day, 4-session red streak still paused), SPY fades modestly into Hammack 12:30 ET / pre-Goolsbee 15:30 ET. Consistent with the pre-market "mechanical SPY fire executes regardless of macro print" framework; 10% trail cushion (9.71%) absorbs the open-day giveback structurally. No idiosyncratic news on any top holding (WMT/COST/PG/KO/PM, LIN/NEM, CAT/GE/GEV/BA) at scan tick; SPY broad-index entry not a single-name binary. Stop-proximity gates: XLP closest at **5.24% price cushion** ($82.34 → $78.0255), still outside the 3% proximity gate; SPY 9.71%, XLB 8.11%, XLI 8.53% — all four outside trigger. No thesis breaks.
+
+**STEP 6 (notification):** SILENT (no action taken).
+
+**Disposition into EOD:** HOLD continues unchanged across the 4-leg basket. Goolsbee 15:30 ET is the next rate-rhetoric variable (most dovish-leaning of today's three Fed speakers); Daly 20:30 ET is after-hours. EOD daily-summary captures Phase 6 day 3 final marks + first full-day SPY trail-GTC behavior + the 4-leg basket's new ~74.6% deployment baseline. Tomorrow (Thu 6/4) pre-market reassesses with ADP/ISM digested + AVGO/CRWD/DOCU AMC prints + the Fri 6/5 NFP setup.
+
+### Env-check note (intraday #2)
+Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $100,126.44 — proceeded per saved feedback memory.
