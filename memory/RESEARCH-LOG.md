@@ -2081,3 +2081,28 @@ Env-var loop check again printed MISSING for all five vars (ALPACA_API_KEY, ALPA
 6. **Zero conditionals authored** — light macro day, no need to manufacture a forced midday watchlist candidate.
 
 **No trades. HOLD 4-leg basket through Claims + AVGO digest.** Daily cap 0/3 used; weekly cap 1/6 used (Wed SPY). Today's market-open routine confirms no new entries pending; midday scan re-checks the basket against cut/tighten/proximity gates after Claims print and AVGO open absorption; intraday-check addenda monitor for any leg-level binary; EOD daily-summary captures Phase 6 day 4 marks. Tomorrow (Fri 6/5): NFP 8:30 ET is the week's primary macro variable; weekly-review checkpoint owes (a) WTI-$95-96 / XLE reconsider, (b) AVGO post-print read with 1-day digest, (c) 4-leg basket first-full-week deployment review.
+
+### Midday Scan Addendum (12:00 CT / 13:00 ET)
+**NO ACTION.** Live snapshot:
+- SPY 26 sh @ $758.54 → $756.65, unrealized **-$49.14 (-0.25%)**, Day **+0.32%** vs lastday $754.24 — recovered from premkt $750.82 (+0.78%); fresh entry-day-3 digestion clearing
+- XLB 390 sh @ $51.062 → $51.715, unrealized **+$254.50 (+1.28%)**, Day **+0.165%** vs lastday $51.63 — extending Wed close strength
+- XLI 87 sh @ $172.466 → $175.735, unrealized **+$284.44 (+1.90%)**, Day **+0.97%** vs lastday $174.05 — basket leader, fresh +0.97% intraday lift
+- XLP 239 sh @ $82.43, unrealized **-$221.58 (-1.11%)**, Day **+0.33%** vs lastday $82.16 — premkt +1.18% defensive bid faded modestly into the cash open but XLP held green vs Wed close
+- Equity **$100,269.01** (Phase **+$269.01 / +0.27%**, Day P&L vs Wed close $99,961.27: **+$307.74 / +0.31%**). Cash $25,436.74, daytrade_count 0, Long MV $74,832.27 (~74.63% deployed — within 75-85% structural target band lower edge).
+
+**STEP 3 (cuts):** None. Worst leg XLP **-1.11% unrealized, ~5.89 pp cushion** to -7% trigger. Zero cut candidates.
+
+**STEP 4 (tightens):** None. Best leg XLI **+1.90% unrealized, ~13.10 pp below +15% threshold**. Zero tighten candidates. **No new hwms**: SPY $756.65 < hwm $758.345 (-0.22%), XLB $51.715 < hwm $52.77 (-2.00%), XLI $175.735 < hwm $177.72 (-1.12%), XLP $82.43 < hwm $86.695 (-4.92%) — all four trailing GTC stops **unchanged** at $682.5105 / $47.493 / $159.948 / $78.0255. Stop-price cushions: SPY **9.80%**, XLB **8.16%**, XLI **8.98%**, XLP **5.34%** — all outside the 3% proximity gate.
+
+**STEP 5 (thesis):** Intact across all four legs. Claims print (8:30 ET) digested without basket disruption; AVGO open absorbed into XLK without spillover to held basket. Basket pattern is **constructively diversified**: cyclicals (XLB +1.28%, XLI +1.90%) leading, defensive XLP holding green on the day (+0.33%) despite still red vs cost, SPY clearing entry-day-3 digestion (Day +0.32%). No correlated risk-off signature (vs 6/1 ISM-print pattern). No idiosyncratic news on any top holding (SPY index broad, WMT/COST/PG/KO/PM in XLP, LIN/NEM in XLB, CAT/GE/BA/GEV in XLI) at scan tick. Pre-market HOLD framework stands.
+
+**STEP 5.5 (conditionals):** No conditionals to evaluate. Pre-market explicitly authored zero (light-macro Thursday, 4-leg basket one-session post-Rule-12-deployment).
+
+**STEP 6 (research):** None needed — no idiosyncratic sharp move requiring afternoon addendum query. Basket reaction to Claims + AVGO already modeled in pre-market.
+
+**STEP 7 (notification):** SILENT (no cuts, no tightens, no thesis exits, no conditional fires).
+
+**Disposition into EOD:** HOLD continues. Phase 6 day 4 tracking at +0.27% (best phase intraday since Wed open); Day P&L +0.31% confirms post-Rule-12-deployment basket is constructively absorbing the at-open SPY digestion. Daily-summary captures final marks + 4-leg basket day-4 stats. Tomorrow (Fri 6/5): NFP 8:30 ET is the week's primary macro variable; pre-market authors NFP-binary framing, weekly-review checkpoint runs PM with WTI-$95-96 / XLE reconsider, AVGO post-print 1-day digest, and 4-leg basket first-full-week deployment review.
+
+### Env-check note (midday)
+Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $100,269.01 — proceeded per saved feedback memory.
