@@ -2106,3 +2106,24 @@ Env-var loop check again printed MISSING for all five vars (ALPACA_API_KEY, ALPA
 
 ### Env-check note (midday)
 Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $100,269.01 — proceeded per saved feedback memory.
+
+### Intraday Check Addendum (11:30 PDT / 14:30 ET, ~5h post-open, post-Claims digest, ~90 min post-midday)
+**NO ACTION.** Risk-management-only routine; new entries reserved for market-open. Live 4-leg snapshot:
+- SPY 26 sh @ $758.54 → $757.82, unrealized **-$18.72 (-0.10%)**, Day **+0.48%** vs $754.24 lastday — recovered from midday $756.65 (+0.15%); entry-day-2 digestion continues clearing; stop $682.5105 (10% trail, hwm $758.345, **9.94%** price cushion)
+- XLB 390 sh @ $51.062 → $51.465, unrealized **+$157.00 (+0.79%)**, Day **-0.32%** vs $51.63 Wed close — gave back ~48 bp from midday $51.715, first leg to flip red vs Wed close intraday; stop $47.493 (10% trail, hwm $52.77, **7.72%** price cushion)
+- XLI 87 sh @ $172.466 → $175.925, unrealized **+$300.97 (+2.01%)**, Day **+1.08% vs $174.05 Wed close** — basket leader extends, +11 bp above midday $175.735, fresh +2% cost-basis crossover (first +2% leg of phase 6); stop $159.948 (10% trail, hwm $177.72, **9.08%** price cushion)
+- XLP 239 sh @ $83.357 → $81.935, unrealized **-$339.89 (-1.71%)**, Day **-0.27%** vs $82.16 Wed close — extended weakness, gave back ~60 bp from midday $82.43 as premkt +1.18% defensive bid faded through the cash session; stop $78.0255 (10% trail, hwm $86.695, **4.77%** price cushion)
+- Equity **$100,110.05** (Phase 6 P&L vs $100,000 baseline: **+$110.05 / +0.11%**, Day P&L vs Wed close $99,961.27: **+$148.78 / +0.15%**). Cash $25,436.74, daytrade_count 0, Long MV $74,673.31 (~**74.59% deployed**) — ~$159 below midday equity $100,269.01.
+
+**STEP 3 (cuts):** None. Worst leg **XLP -1.71% unrealized, ~5.29 pp cushion to -7% trigger**; next-worst SPY -0.10%, ~6.90 pp cushion. Zero cut candidates.
+
+**STEP 4 (tightens):** None. Best leg **XLI +2.01% unrealized, ~12.99 pp below +15% threshold**; XLB +0.79%, ~14.21 pp gap. Zero tighten candidates. No new hwms: SPY $757.82 < hwm $758.345 (-0.07%), XLB $51.465 < $52.77 (-2.47%), XLI $175.925 < $177.72 (-1.01%), XLP $81.935 < $86.695 (-5.49%). All four trailing GTC stops **unchanged** at $682.5105 / $47.493 / $159.948 / $78.0255.
+
+**STEP 5 (thesis):** Intact across all four legs. Afternoon tape signature is **SPY entry-day-2 recovery + XLI cyclical leadership + XLP defensive giveback + XLB modest fade** — SPY clears from premkt -1.02% → midday -0.25% → intraday -0.10%, structurally absorbing the open-day-2 digestion as modeled in pre-market; XLI extends to +2.01% unrealized on cyclical bid (first +2% crossover of phase 6); XLP -1.71% unrealized extends from midday -1.11% as premkt defensive bid (+1.18%) fades through cash — consistent with pre-market modeled risk that XLP's reopen-bid carries giveback risk into the afternoon (NOT a thesis break; XLP remains in Leading RRG quadrant and held basket structurally diversified). XLB modest -48 bp giveback from midday is plausibly broad materials drift, no idiosyncratic news on LIN/NEM at scan tick. No idiosyncratic news on any top holding (SPY index broad, WMT/COST/PG/KO/PM, LIN/NEM, CAT/GE/GEV/BA) at scan tick. Stop-proximity gates: XLP closest at **4.77% price cushion** ($81.935 → $78.0255), still outside the 3% proximity gate; SPY 9.94%, XLB 7.72%, XLI 9.08% — all four outside trigger. No thesis breaks.
+
+**STEP 6 (notification):** SILENT (no action taken).
+
+**Disposition into EOD:** HOLD continues unchanged across the 4-leg basket. No remaining scheduled macro catalysts today (Claims 8:30 ET digested; no Fed speakers per FOMC blackout begun 6/6 forward); afternoon tape carries the asymmetric NFP-positioning risk into Fri 6/5 (NFP 8:30 ET is the week's primary macro variable). EOD daily-summary captures Phase 6 day 4 final marks + first-full-week SPY trail-GTC behavior + 4-leg basket deployment baseline. Tomorrow (Fri 6/5): pre-market frames NFP-binary scenarios; weekly-review checkpoint PM with WTI-$95-96 / XLE reconsider, AVGO post-print 1-day digest, and 4-leg basket first-full-week deployment review.
+
+### Env-check note (intraday)
+Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $100,110.05 — proceeded per saved feedback memory.
