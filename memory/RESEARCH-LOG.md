@@ -2009,3 +2009,75 @@ Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPA
 
 ### Env-check note (intraday #2)
 Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $100,126.44 — proceeded per saved feedback memory.
+
+## 2026-06-04 — Pre-market Research
+
+(Thursday open. **Phase 6 / week 6 day 4.** First post-Rule-12 reassessment with the 4-leg basket (SPY/XLP/XLB/XLI) intact and SPY's open-day digestion priced in. Wed EOD closed $99,960.50 (Phase -0.04%, essentially baseline) after the at-open SPY ~$19,722 deploy lifted basket to ~74.6% deployed. Today is **quiet-macro Thursday** — 8:30 ET Initial Jobless Claims is the only first-tier scheduled print; **NO Fed speakers** (FOMC blackout begins 6/6 per Chicago Fed); **AVGO Q2 FY26 (Wed AMC) EPS $2.44 vs $2.32 est (+5.2% beat)** is the key overnight reaction variable for SPY/XLK tape. Fri 6/5 NFP is the week's primary macro variable, with today serving as the pre-NFP positioning day.)
+
+### Account
+- Equity: $100,213.48
+- Cash: $25,436.74 (25.38%)
+- Buying power: $251,300.45
+- Daytrade count: 0 (yesterday's SPY buy aged out of intraday-count window; 5-day rolling unchanged)
+- Long market value: $74,776.74 (~74.62% deployed)
+- Positions (pre-open marks):
+  - SPY 26 sh @ $758.54 → $750.82 premkt (-$3.42 vs $754.24 lastday, **-0.45%**), unrealized -$200.72 (**-1.02%**), trail GTC $682.5105 (hwm $758.345)
+  - XLP 239 sh @ $83.357 → $83.13 premkt (+$0.97 vs $82.16 Wed close, **+1.18%**), unrealized -$54.93 (**-0.28%**), trail GTC $78.0255 (hwm $86.695)
+  - XLB 390 sh @ $51.062 → $51.70 premkt (+$0.07 vs $51.63 Wed close, **+0.14%**), unrealized +$248.65 (**+1.25%**), trail GTC $47.493 (hwm $52.77)
+  - XLI 87 sh @ $172.466 → $175.00 premkt (+$0.95 vs $174.05 Wed close, **+0.55%**), unrealized +$220.49 (**+1.47%**), trail GTC $159.948 (hwm $177.72)
+- Open orders: 4 trailing GTCs (one per leg, 10% trail) — confirmed live and unchanged
+- Phase P&L: +$213.48 (+0.21%) vs Wed EOD -$39.50 (-0.04%); Day P&L vs Wed close $99,960.50: **+$252.98 (+0.25%)** — defensive-led premkt bid (XLP +1.18%) more than offsets SPY -0.45% open-day-2 digestion
+
+### Market Context
+- WTI / Brent: **WTI ~$95-96** (Polymarket / news prior clusters; CME front Jul CLN6 spot not pinned in research window but consistent with the $95 range), **Brent ~$103**. This is a **~$5-6 jump from last week's $89-90 range** — meaningful geopolitical-premium return, not yet at the XLE gate-5 sustained ≥$105 trigger, but the directional reversal is notable. **Gate 5 cushion compressed from ~$15 to ~$9-10 below trigger overnight.** XLE retirement decision (5/29) stands but the structural read is now "watching" rather than "structurally dead."
+- S&P 500 futures: **ESM26 ~7,545 (-0.35%)** premkt — mildly defensive tone after Wed's flat close ($99,960.50, Day -0.00%); consistent with AVGO post-print digestion (mild AH -1.13% reaction noted) + claims-print pre-positioning. SPY premkt $750.82 (vs lastday $754.24, -0.45%).
+- VIX: **~16-17** (TradingEconomics May ~16-17 baseline; Cboe spot for today not pinned). Inside the 16-22 normal band; regime-shift watch OFF. No fresh evidence of vol-regime breakout despite the WTI move (oil-driven vol typically lags by 1-2 sessions if it materializes).
+- Today's catalysts: **LIGHT — single first-tier print + AVGO digest.** (1) **8:30 ET Initial Jobless Claims (week ending 5/30)** — prior 215K per DOL, consensus not pinned in research window; the only major scheduled macro print today; (2) **AVGO Q2 FY26 AMC Wed digest** — EPS $2.44 vs $2.32 est (+5.2% beat) per public.com, AH reaction noted as mild -1.13% pre-print scheduling slip but actual post-print AH move not pinned in research window; CRWD/DOCU/LULU AMC reactions also folding into morning tape; (3) **NO scheduled Fed speakers today** (FOMC blackout begins 6/6 per Chicago Fed calendar); (4) **NO held-basket BMO earnings** — June 4 calendar shows 0 confirmed BMO reports per Digrin; (5) **Fri 6/5 NFP is the week's primary macro variable** — today is the pre-NFP positioning day; (6) No top-tier inflation prints this week (next CPI ~6/10).
+- Earnings before open: **NONE confirmed** in research window per Digrin earnings calendar (0 BMO, 31 TBD). No XLP/XLB/XLI/SPY constituent prints expected to move basket materially.
+- Economic calendar this week: Today Claims; **Fri 6/5 NFP** (the week's primary macro variable, consensus not pinned); CPI not first week of June (~6/10); FOMC blackout begins 6/6 through 6/17 (next meeting 6/16-17).
+- Sector momentum YTD 2026: **Leading**: XLE, XLP, XLB, XLI (per Investing.com RRG / sector-rotation map); **Lagging**: XLK, XLF; **Improving**: XLU. Annacoulling/SSGA factsheets prior read: XLK +32-33% > XLE +26-27% > XLB ~+13% > XLI ~+12% > XLP ~+7% > XLU ~+5% > XLV ~-3% > XLF ~-5%. SPY benchmark ~+11-12% YTD. Note source disagreement: Investing.com RRG places XLK in Lagging quadrant despite its YTD leadership (typical for "leading→weakening" momentum signature post-AI-rally cool-off in 2026); SSGA factsheets confirm XLK as #1 YTD. **Held basket (SPY/XLP/XLB/XLI) holds 3-of-4 Leading-quadrant exposure + broad-index core; structurally aligned.**
+- Held-ticker news scan:
+  - **SPY**: No idiosyncratic news on top weights at scan tick; AVGO post-print is the index-level overnight variable (AVGO weight ~2-2.5% of SPY). Sector-rotation backdrop: XLK -1.13% AH on AVGO suggests modest tech-tape headwind into SPY open.
+  - **XLP**: +1.18% premkt is the basket leader — defensive bid resuming after 4-session red streak through Wed (Fri close -0.58%, Mon -1.60%, Tue -1.83%, Wed close -1.44%). No idiosyncratic news on WMT/COST/PG/KO/PM at scan tick. The +1.18% premkt move is broad defensive rotation, consistent with the WTI spike (oil-driven inflation hedging signature) + S&P futures softness.
+  - **XLB**: +0.14% premkt essentially flat. No idiosyncratic news on LIN (14.22%) or NEM (7.23%) at scan tick. WTI spike is materials-tape neutral-to-positive (LIN gases pass-through, NEM gold typically bid on inflation hedge).
+  - **XLI**: +0.55% premkt extends Wed's quiet hold. No idiosyncratic news on CAT (7.53%) / GE (6.37%) / GEV (4.79%) / BA (3.29%). Tickeron flags XLI in established uptrend.
+- 10Y Treasury yield: **~4.46-4.49%** (YCharts 6/3 close 4.49%; FRED 6/2 4.46%; StreetStats real-time 4.46%). Essentially unchanged from Wed pre-market read; ADP/ISM Wed digested without yield-shift. Claims 8:30 ET is today's only yield-mover catalyst — soft claims (>225K) rallies bonds; hot claims (<200K) sells bonds toward 4.50%.
+- Fed cut expectations: Unchanged. **FOMC blackout begins 6/6 per Chicago Fed calendar** — no scheduled Fed speakers today; rate rhetoric quiet through 6/17 meeting.
+- Iran/Hormuz tape: **WTI ~$95-96 is the reversal of last week's $89-90 bleed-out** — geopolitical premium returned over the holiday week into Wed/Thu. No fresh kinetic-escalation headline pulled in research window but the price action is the signal; if WTI sustains $95+ for 2-3 sessions, the XLE retirement decision moves from "structurally confirmed" to "active reconsider."
+
+### Trade Ideas
+1. **HOLD held basket (SPY/XLP/XLB/XLI)** through 8:30 ET Claims + AVGO post-print digestion — no leg-level binary today; no idiosyncratic news on any top holding; all four legs within normal ranges premkt; all four trail GTCs unchanged. SPY -1.02% unrealized (open-day-2 digestion) is well within normal entry-day variance; XLP +1.18% premkt confirms defensive bid resumption.
+2. **No new at-the-open entries authored.** 5-6 position cap leaves 1-2 slots but no compelling fresh setup with both (a) sector-momentum tailwind, (b) specific Thursday catalyst, and (c) ≥2:1 R:R. Rule 12 fired Wed (SPY); Rule 12 is not a daily mechanism.
+3. **XLE reconsider — DEFERRED to weekly review.** WTI $95-96 reversal is meaningful but gate 5 sustained ≥$105 not triggered; one premkt observation is not a "sustained" signal. Re-author decision queued for Fri 6/5 weekly review with NFP digested. No XLE entry today.
+4. **XLK — SKIP.** AVGO post-print AH softness (~-1%) into SPY-already-deployed basket is not a fresh trigger; XLK in Lagging quadrant per Investing.com RRG; no edge today.
+5. **XLU — SKIP.** 10Y at 4.46-4.49% unchanged from Wed; rate-rotation gate not firing. No edge.
+6. **XLF — ruled out (Mon 6/1 State Street primary reconciliation).** No re-author this phase.
+7. **XLV — SKIP.** -3% YTD; Weakening RRG; no edge.
+8. **Single-name earnings binaries** — none on calendar today (0 BMO confirmed); SKIP per strategy regardless.
+
+### Conditional Entries (midday-eligible) — up to 3
+(ZERO conditionals today. Rationale: today's macro calendar is light (single Claims print, no Fed speakers, no held-basket BMO), the 4-leg basket is one session post-Rule-12-deployment with all gates intact, and the only meaningful overnight variable is the WTI spike which is queued for the Fri weekly review rather than today's midday gate. Authoring a forced midday conditional re-introduces the weeks 1-4 "single watch-list candidate to look busy" pattern that the 5/29 weekly review explicitly retired. Today is a HOLD-and-digest day; midday scan re-checks the 4-leg basket against cut/tighten/proximity gates after Claims print without any pre-authored conditional to evaluate.)
+
+### Risk Factors
+- **8:30 ET Initial Jobless Claims is the macro binary** — Soft claims (>225K, deteriorating labor) = bonds rally, 10Y toward 4.40%, defensives bid (XLP relief continuation), risk-off tape; hot claims (<200K, tight labor) = bonds sell, 10Y toward 4.50%+, rate-sensitive de-rate, **SPY entry-day-2 absorbs a second gap-down risk**. In-line print (~210-220K) = quiet absorption into mid-day.
+- **AVGO post-print AH reaction (Wed AMC, EPS $2.44 vs $2.32 +5.2% beat)** is the index-level overnight variable — public.com showed mild -1.13% AH pre-print scheduling slip but actual post-print move not pinned in research window. If AVGO opens red on guidance-driven AH selloff, XLK/SPY both pressure modestly (AVGO ~2-2.5% of SPY, larger weight in XLK); if AVGO opens green on beat-and-raise reaction, XLK reignites and SPY benefits via tech-weight. SPY entry-day-2 digestion through this binary is structurally absorbed by the 10% trail (current cushion 9.10% price).
+- **WTI ~$95-96 spike is the macro wildcard** — Reverses last week's $89-90 bleed-out by ~$5-6 over the holiday window. Implications: (a) inflation hedge resumes — XLP/XLB defensive-and-materials bid logic, today's premkt XLP +1.18% / XLB +0.14% are the early signature; (b) energy stocks bid — XLE not held, but if WTI sustains $95+ for 2-3 sessions the retirement decision needs revisit; (c) growth-tape pressure — semis/AI exposed to higher input costs and consumer demand softening, modest SPY-via-XLK headwind; (d) yield curve — oil-driven inflation read can push 10Y toward 4.50%+ even on a soft claims print, compressing rate-sensitives. Net: today's basket reads constructively (3-of-4 legs green in premkt) but the WTI shift is a regime-watch variable for Fri weekly review.
+- **SPY -1.02% unrealized is the worst leg** — Day 2 of fresh entry; structurally normal open-day digestion (Wed close $754.08 vs $758.54 fill = -0.59%; today premkt $750.82 extends to -1.02%). Cushion to -7% cut = ~5.98 pp; cushion to trail GTC $682.5105 = **9.10% price**, well outside the 3% proximity gate. No action.
+- **XLP defensive bid resumption (+1.18% premkt)** is the inverse signature of last week's drawdown — Fri-Wed -3% cumulative drift gives way to broad defensive bid on the WTI/macro backdrop. Phase-watch: XLP cushion to -7% widens from Wed close -1.44% to premkt -0.28%, ~6.72 pp cushion. Constructive.
+- **Fri 6/5 NFP is the week's primary macro variable** — today's positioning carries the asymmetric risk that Fri's print reverses the rate-sensitivity backdrop. Acceptable given the 10% trails handle single-session reversals and the 4-leg basket structurally diversifies single-sector risk.
+- **No Fed speakers today** — FOMC blackout begins 6/6 per Chicago Fed; quiet rate-rhetoric tape through 6/17 meeting. Removes one prior daily variable (Wed had 3 speakers).
+- **4-leg basket cushion summary (all outside 3% stop-proximity gate)**: SPY 9.10% price, XLB 8.14%, XLI 8.60%, XLP 6.13% — XLP closest but still ~3pp clear; no leg requires pre-emptive action.
+
+### Env-check note (pre-market)
+Env-var loop check again printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $100,213.48 — proceeded per saved feedback memory. Perplexity wrapper succeeded across 7 queries (oil, ES futures, VIX, catalysts, BMO earnings, econ calendar, sector momentum YTD, held-ticker news, AVGO post-print, 10Y yield, Fed speakers).
+
+### Decision
+**HOLD.** Reasoning:
+1. **No -7% cut candidates** — worst leg SPY -1.02% unrealized (entry-day-2 digestion), ~5.98 pp cushion to trigger.
+2. **No +15% tighten candidates** — best leg XLI +1.47%, ~13.53 pp gap to threshold.
+3. **No 3% stop-proximity gate hits** — closest leg XLP at 6.13% price cushion; all four well outside the gate.
+4. **No fresh single-name/sector setup** with sector-momentum tailwind + Thursday-specific catalyst + ≥2:1 R:R; Rule 12 already fired Wed and is not a daily mechanism.
+5. **WTI $95-96 spike is regime-watch only** — gate 5 sustained ≥$105 not triggered; XLE reconsider deferred to Fri 6/5 weekly review with NFP digested.
+6. **Zero conditionals authored** — light macro day, no need to manufacture a forced midday watchlist candidate.
+
+**No trades. HOLD 4-leg basket through Claims + AVGO digest.** Daily cap 0/3 used; weekly cap 1/6 used (Wed SPY). Today's market-open routine confirms no new entries pending; midday scan re-checks the basket against cut/tighten/proximity gates after Claims print and AVGO open absorption; intraday-check addenda monitor for any leg-level binary; EOD daily-summary captures Phase 6 day 4 marks. Tomorrow (Fri 6/5): NFP 8:30 ET is the week's primary macro variable; weekly-review checkpoint owes (a) WTI-$95-96 / XLE reconsider, (b) AVGO post-print read with 1-day digest, (c) 4-leg basket first-full-week deployment review.
