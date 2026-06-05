@@ -2169,3 +2169,24 @@ None. NFP is a binary macro event with first-30-min and 10:00 ET (UMich prelim, 
 
 ### Env-check note
 Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-tests (`alpaca.sh account` returned live JSON with portfolio_value $100,059.74; `perplexity.sh` returned grounded research output across 8 queries) — proceeded per saved feedback memory.
+
+### Intraday Check Addendum (08:00 PDT / 11:00 ET, ~1.5h post-open, ~2.5h post-NFP digest)
+**NO ACTION.** Risk-management-only routine; new entries reserved for market-open. Live 4-leg snapshot:
+- SPY 26 sh @ $758.54 → $749.81, unrealized **-$226.98 (-1.15%)**, Day **-0.96%** vs $757.09 lastday — gives back Thu's +0.37% recovery on post-NFP tape; stop $682.5105 (10% trail, hwm $758.345, **8.98%** price cushion)
+- XLB 390 sh @ $51.062 → $51.33, unrealized **+$104.35 (+0.52%)**, Day **-0.56%** vs $51.62 lastday — modest cyclical fade post-NFP, holds above water; stop $47.493 (10% trail, hwm $52.77, **7.48%** price cushion)
+- XLI 87 sh @ $172.466 → $176.25, unrealized **+$329.24 (+2.19%)**, Day **+0.05%** vs $176.16 lastday — flat, holds basket-leader status (fresh +2% crossover from Thu intact); stop $159.948 (10% trail, hwm $177.72, **9.25%** price cushion)
+- XLP 239 sh @ $83.357 → $83.15, unrealized **-$49.50 (-0.25%)**, Day **+1.35%** vs $82.04 lastday — defensive bid restored post-NFP, recovers from Thu -1.58% unrealized to near-flat; stop $78.0255 (10% trail, hwm $86.695, **6.16%** price cushion)
+- Equity **$100,156.26** (Phase 6 P&L vs $100,000 baseline: **+$156.26 / +0.16%**, Day P&L vs Thu close $100,148.77: **+$7.49 / +0.01%** — essentially flat). Cash $25,436.74, daytrade_count 0, Long MV $74,720.36 (~**74.60% deployed**) — within 0.4 pp of 75–85% floor.
+
+**STEP 3 (cuts):** None. Worst leg **SPY -1.15% unrealized, ~5.85 pp cushion to -7% trigger**; next-worst XLP -0.25%, ~6.75 pp cushion. Zero cut candidates.
+
+**STEP 4 (tightens):** None. Best leg **XLI +2.19% unrealized, ~12.81 pp below +15% threshold**; XLB +0.52%, ~14.48 pp gap. Zero tighten candidates. No new hwms: SPY $749.81 < hwm $758.345 (-1.13%), XLB $51.33 < $52.77 (-2.73%), XLI $176.25 < $177.72 (-0.83%), XLP $83.15 < $86.695 (-4.09%). All four trailing GTC stops **unchanged** at $682.5105 / $47.493 / $159.948 / $78.0255.
+
+**STEP 5 (thesis):** Intact across all four legs. Post-NFP tape signature is **defensive bid (XLP +1.35%) + cyclical/SPY soft (SPY -0.96%, XLB -0.56%, XLI flat)** — consistent with a growth-scare / yields-down read where bond-proxy defensives catch a bid while rate-sensitive mega-cap (SPY) and cyclicals (XLB) digest the print. XLI's +2.19% unrealized lead holds with the cohort flat on the day; XLP's reversal flips it back to near-flat on cost basis after 5 of last 6 red sessions, which validates the basket's defensive-leg diversification (NOT a thesis break — bond-proxy bid is the textbook reaction to soft labor data). SPY's -0.96% Day is well within normal post-print range with cushion to trail still 8.98%; no idiosyncratic news on any top holding (WMT/COST/PG/KO/PM in XLP, LIN/NEM in XLB, CAT/GE/GEV in XLI, broad-index SPY) at scan tick. Stop-proximity gates: XLP closest at **6.16% price cushion** ($83.15 → $78.0255), still well outside the 3% proximity gate; SPY 8.98%, XLB 7.48%, XLI 9.25% — all four outside trigger. No thesis breaks.
+
+**STEP 6 (notification):** SILENT (no action taken).
+
+**Disposition into EOD:** HOLD continues unchanged across the 4-leg basket. NFP-day tape digesting cleanly with defensives rotating in as cyclicals digest — the asymmetric basket positioning is working as designed for this tape signature. No remaining scheduled top-tier macro today (NFP done; Wholesale inventories 10:00 ET lower-tier). EOD daily-summary captures Phase 6 day 5 / Phase 6 week-1 final marks + first-full-week SPY trail-GTC behavior; tonight's Fri weekly-review checkpoint owes Phase 5→6 transition retrospective and 5-session SPY mechanical-fire performance assessment.
+
+### Env-check note (intraday)
+Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $100,156.26 — proceeded per saved feedback memory.
