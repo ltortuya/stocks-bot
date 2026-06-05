@@ -2127,3 +2127,45 @@ Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPA
 
 ### Env-check note (intraday)
 Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $100,110.05 — proceeded per saved feedback memory.
+
+## 2026-06-05 — Pre-market Research
+
+### Account
+- Equity: $100,059.74
+- Cash: $25,436.74 (25.42%)
+- Buying power: $250,992.96
+- Daytrade count: 0
+- Positions (4 legs, ~74.58% deployed): SPY 26 @ $758.54 (mark $754.32, UPL -$109.74 / -0.56%); XLP 239 @ $83.36 (mark $81.99, UPL -$326.74 / -1.64%); XLB 390 @ $51.06 (mark $51.62, UPL +$217.45 / +1.09%); XLI 87 @ $172.47 (mark $175.67, UPL +$278.78 / +1.86%)
+- Open trail GTCs (all 10%, GTC): SPY $682.5105 (hwm $758.345), XLP $78.0255 (hwm $86.695), XLB $47.493 (hwm $52.77), XLI $159.948 (hwm $177.72)
+- Week 6 trade count: 1/6 (Wed SPY Rule 12 fire); daily count 0/3
+
+### Market Context
+- WTI / Brent: WTI ~$93–95, Brent ~$105–107 (early-June approx, Perplexity sources lack tick-level read)
+- S&P 500 futures: ~7,545, -0.35% pre-NFP (cautious bias into the print)
+- VIX: 15.40 (6/4 close; no fresh 6/5 tape yet — Cboe last tick 20:15 ET prior session)
+- Today's catalysts: **08:30 ET May NFP** — consensus ~85k (vs Apr 115k), Cap Eco outlier +150k, ATFX +90k; UR ~4.3%, AHE +0.3% m/m / +3.4% y/y. Soft print (<150k) lifts Sept rate-cut odds >85%; strong (>200k) compresses to ~65% and lifts yields. No FOMC speakers scheduled; FOMC meeting 6/16–17.
+- Earnings before open: MDT (Medtronic, PMO). No held-name overlap.
+- Economic calendar: NFP is the only top-tier print today. Wholesale inventories 10:00 ET (lower tier).
+- Sector momentum YTD (late May reads): Energy leads +21–26%; Staples +10–13%; Industrials +13–23%; XLB +20.82% / XLI +22.93% vs SPY ~+8.7% YTD per totalrealreturns.com (5/29 cut) — current basket-cyclical legs holding sector-leader status into NFP.
+
+### Trade Ideas
+1. **HOLD-the-basket (no new trade).** Pre-NFP entry has no edge — binary print dictates direction across SPY + every sector leg. Basket already 4 legs / ~74.6% deployed (within ~0.4 pp of the 75–85% floor), 2 slots remain vs 5–6 cap. Patience > activity.
+2. **XLE 4th-leg watch — DORMANT.** WTI ~$93–95 vs sustained ≥$105 gate dead by ~$10–12; no fresh OPEC/Iran headline overnight. Continues post-retirement watch only.
+3. **Single-name AI/networking adds (HPE, CRDO, AVGO/CRWD/DOCU print follow-through) — SKIP.** Post-earnings digestion week; no clean post-print continuation read pre-NFP; no idiosyncratic tier-1 catalyst justifies pre-print entry.
+
+### Conditional Entries (midday-eligible) — up to 3
+None. NFP is a binary macro event with first-30-min and 10:00 ET (UMich prelim, if scheduled) tape distortion — midday window doesn't offer cleaner read than EOD assessment. Authoring a conditional pre-print risks gating on noise rather than signal. Re-evaluate Mon 6/8 once NFP-day tape is fully digested.
+
+### Risk Factors
+- **NFP binary**: any print >200k or <50k can drive >0.5% basket-wide move; SPY directly indexed, XLI/XLB cyclicals beta to yields, XLP inverse to yields. Correlated-leg risk on hot print.
+- **Yield sensitivity**: hot NFP → 10Y up → SPY (rate-sensitive mega-cap concentration) and XLP (bond-proxy defensives) most exposed. SPY position basis -0.56% with 9.7% cushion to trail; XLP -1.64% with 5.3% cushion.
+- **XLP weakest leg** at -1.64% (4 of last 6 sessions red on continued rotation OUT of defensives) — cushion to -7% cut = 5.36 pp; cushion to trail $78.03 ≈ 4.84% price; outside 3% gate but compressing on 5-session trend.
+- **Hot-NFP cyclical reversal risk**: XLI/XLB lead the basket on unrealized P&L (+1.86%, +1.09%) but a yields-up shock could flip the cyclical leadership thesis intraday. Pre-NFP cushions XLB 8.0%, XLI 8.9% — comfortable; no thesis-break trigger.
+- **Oil/geopolitical**: WTI ~$93–95 not at deploy-trigger; no fresh Iran/Russia/OPEC headline overnight.
+- **No held-name idiosyncratic catalyst** (WMT/COST/PG/KO/PM in XLP, LIN/NEM/SHW in XLB, CAT/GE/GEV/RTX/BA in XLI, broad-index SPY).
+
+### Decision
+**HOLD**. Pre-NFP with 4-leg basket already inside (within 0.5 pp of) target deployment band and 1/6 weekly trade count consumed by Wed Rule 12 SPY fire. No conditionals authored — NFP-day midday window is noise-dominant. Real action window is EOD 6/5 + Mon 6/8 pre-market once NFP tape fully digested. Zero -7% cut candidates; zero +15% tighten triggers; all four trail GTCs intact and outside 3% proximity gate. Friday weekly-review checkpoint owes the Phase 5→6 transition retrospective and 5-session SPY mechanical-fire performance assessment.
+
+### Env-check note
+Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-tests (`alpaca.sh account` returned live JSON with portfolio_value $100,059.74; `perplexity.sh` returned grounded research output across 8 queries) — proceeded per saved feedback memory.
