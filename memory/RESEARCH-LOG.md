@@ -2190,3 +2190,28 @@ Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SEC
 
 ### Env-check note (intraday)
 Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $100,156.26 — proceeded per saved feedback memory.
+
+### Midday Scan Addendum (10:01 PDT / 13:01 ET / 12:01 CT, ~4h post-open, ~4.5h post-NFP digest)
+**NO ACTION.** Live 4-leg snapshot:
+- SPY 26 sh @ $758.54 → $744.44, unrealized **-$366.60 (-1.86%)**, Day **-1.67%** vs $757.09 lastday — cyclical/mega-cap fade continues post-NFP digest, extends from intraday-check -1.15% → -1.86%; stop $682.5105 (10% trail, hwm $758.345, **8.32%** price cushion)
+- XLB 390 sh @ $51.062 → $50.80, unrealized **-$102.35 (-0.51%)**, Day **-1.59%** vs $51.62 lastday — cyclical fade catches up to SPY (flipped +0.52% → -0.51% on cost basis vs 08:00 mark); stop $47.493 (10% trail, hwm $52.77, **6.51%** price cushion)
+- XLI 87 sh @ $172.466 → $175.10, unrealized **+$229.19 (+1.53%)**, Day **-0.60%** vs $176.16 lastday — gives back morning gain (intraday-check +2.19% → +1.53%) but still holds top-leg status with no thesis break; stop $159.948 (10% trail, hwm $177.72, **8.65%** price cushion)
+- XLP 239 sh @ $83.635 → $83.635, unrealized **+$66.41 (+0.33%)**, Day **+1.94%** vs $82.04 lastday — defensive bid extends (08:00 -0.25% → midday +0.33%), only green leg on the day; stop $78.0255 (10% trail, hwm $86.695, **6.71%** price cushion)
+- Equity **$99,825.39** (Phase 6 P&L vs $100,000 baseline: **-$174.61 / -0.17%**, Day P&L vs Thu close $100,186.36: **-$360.97 / -0.36%**). Cash $25,436.74, daytrade_count 0, Long MV $74,388.65 (~**74.52% deployed**) — within 0.5 pp of 75–85% floor.
+
+**STEP 3 (cuts):** None. Worst leg **SPY -1.86% unrealized, ~5.14 pp cushion to -7% trigger**; next-worst XLB -0.51%, ~6.49 pp cushion. Zero cut candidates.
+
+**STEP 4 (tightens):** None. Best leg **XLI +1.53% unrealized, ~13.47 pp below +15% threshold**; XLP +0.33%, ~14.67 pp gap. Zero tighten candidates. No new hwms: SPY $744.44 < $758.345 (-1.83%), XLB $50.80 < $52.77 (-3.73%), XLI $175.10 < $177.72 (-1.47%), XLP $83.635 < $86.695 (-3.53%). All four trailing GTC stops **unchanged** at $682.5105 / $47.493 / $159.948 / $78.0255.
+
+**STEP 5 (thesis):** Intact across all four legs. Midday tape deepens the **defensive bid (XLP +1.94% day) vs cyclical/SPY soft (SPY -1.67%, XLB -1.59%, XLI -0.60%)** signature already visible at 08:00 PDT — yields-down / growth-scare read post-NFP holds, with XLB now joining SPY in the cyclical roll while XLP extends. This is the textbook reaction to a soft labor print and validates the asymmetric basket's defensive-leg design; NOT a thesis break across any leg. XLI gives back ~0.7 pp of unrealized but remains top-leg with 8.65% trail cushion; XLB's flip from green-on-cost (+0.52% at 08:00) to red-on-cost (-0.51% at midday) is within normal post-NFP digest range and 6.49 pp from the -7% cut trigger. Stop-proximity check: XLB closest at **6.51% price cushion** ($50.80 → $47.493), still well outside the 3% proximity gate; SPY 8.32%, XLI 8.65%, XLP 6.71% — all four outside trigger. No idiosyncratic top-holding news headlines at scan tick. No thesis breaks.
+
+**STEP 5.5 (conditional entries):** No conditionals to evaluate. Today's pre-market Conditional Entries section is "None" by author (NFP-day noise-dominant midday window). Nothing to fire, nothing to skip.
+
+**STEP 6 (intraday research):** Skipped. Basket-wide day moves are -1.67% / -1.59% / -0.60% / +1.94% — modest and fully explained by the post-NFP defensive-bid signature already documented in the intraday-check addendum. No name "moving sharply with no obvious cause" warrants a Perplexity query.
+
+**STEP 7 (notification):** SILENT (no action taken).
+
+**Disposition into EOD:** HOLD continues unchanged. Defensive-bid signature deepening through the day is the **single observable** of note — XLP only green leg, XLB & SPY both joining the cyclical fade, XLI holding leadership but giving back ~0.7 pp from morning peak. This is the asymmetric basket working as designed (defensive leg cushions cyclical/SPY softness on a soft-labor day) and is consistent with the pre-market thesis. No remaining top-tier macro catalysts today. EOD daily-summary captures Phase 6 day 5 / Phase 6 week-1 final marks; tonight's Fri weekly-review checkpoint owes Phase 5→6 transition retrospective and 5-session SPY mechanical-fire performance assessment.
+
+### Env-check note (midday)
+Env-var loop check again printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID, PERPLEXITY_API_KEY); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $99,825.39 — proceeded per saved feedback memory.
