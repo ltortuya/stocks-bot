@@ -2279,3 +2279,24 @@ None. CPI is Wed (not today) but the week's positioning bias is set against pre-
 
 ### Env-check note
 Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-tests (`alpaca.sh account` returned live JSON with portfolio_value $99,480.23; `perplexity.sh` returned grounded research output across 8 queries) — proceeded per saved feedback memory.
+
+### Intraday Check Addendum (08:00 CT / 09:00 ET — pre-open)
+**NO ACTION.** Live snapshot vs Fri close $99,454.56 / pre-market basis:
+- SPY 26 sh @ $758.54 → $744.83, UPL **-$356.46 (-1.81%)**, Day **+0.99%** (premarket bid vs lastday $737.55); cushion **5.19 pp** to -7% cut, **8.36%** to trail $682.5105 (hwm $758.345)
+- XLB 390 sh @ $51.062 → $50.23, UPL **-$323.25 (-1.62%)**, Day **-0.78%** vs lastday $50.63; cushion **5.38 pp** to -7% cut, **5.46%** to trail $47.493 (hwm $52.77)
+- XLI 87 sh @ $172.466 → $174.69, UPL **+$193.52 (+1.29%)**, Day **+0.29%** vs lastday $174.18; **13.71 pp** below +15% tighten threshold; trail $159.948 (hwm $177.72, **8.44%** price cushion)
+- XLP 239 sh @ $83.357 → $83.39, UPL **+$7.86 (+0.04%)**, Day **-0.06%** vs lastday $83.44; **14.96 pp** below +15% tighten threshold; trail $78.0255 (hwm $86.695, **6.43%** price cushion)
+- Equity **$99,539.14** (Phase 6 vs $100k baseline: **-$460.86 / -0.46%**, Day vs Fri last_equity $99,454.56: **+$84.58 / +0.09%**). Cash $25,436.74, daytrade_count 0, Long MV $74,102.40 (~**74.45% deployed** — within 0.55 pp of 75–85% floor).
+
+**STEP 3 (cuts):** None. Worst leg **SPY -1.81% UPL, ~5.19 pp cushion** to -7%; next-worst XLB -1.62%, 5.38 pp. Zero candidates.
+
+**STEP 4 (tightens):** None. Best leg **XLI +1.29% UPL**, ~13.71 pp below +15% threshold. No new hwms in premarket print. All four trail GTCs unchanged at $682.5105 / $47.493 / $159.948 / $78.0255.
+
+**STEP 5 (thesis):** Intact. SPY recovered ~0.6 pp from pre-market mark ($740.19 → $744.83) on modest premarket bid; XLB unchanged; XLI modestly green; XLP flat. Pre-CPI Mon premarket tape consistent with this morning's HOLD disposition — no idiosyncratic break across any leg, no Iran/AI rotation news materially shifting the basket thesis. CPI Wed 6/10 remains the dominant macro variable.
+
+**STEP 6 (notification):** SILENT (no action taken).
+
+**Disposition:** HOLD continues unchanged. SPY remains the single observable to watch as the worst leg; cushion to cut 5.19 pp, cushion to trail 8.36% — both comfortably outside trigger. Midday scan re-runs the cut/tighten/proximity gates against any post-cash-open repricing.
+
+### Env-check note (intraday)
+Env-var loop check printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`alpaca.sh account`) returned live JSON with portfolio_value $99,539.14 — proceeded per saved feedback memory.
