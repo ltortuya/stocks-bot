@@ -2236,3 +2236,46 @@ Env-var loop check again printed MISSING for all five vars (ALPACA_API_KEY, ALPA
 
 ### Env-check note (intraday #2)
 Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account`) returned live JSON with portfolio_value $99,764.81 — proceeded per saved feedback memory.
+
+## 2026-06-08 — Pre-market Research
+
+### Account
+- Equity: $99,480.23
+- Cash: $25,436.74 (25.57%)
+- Buying power: $309,068.73 (regt $124,916.97)
+- Daytrade count: 0
+- Positions (4 legs, ~74.43% deployed — ~0.6 pp under 75–85% floor): SPY 26 @ $758.54 (mark $740.19, UPL **-$477.05 / -2.42%**); XLB 390 @ $51.062 (mark $50.63, UPL **-$168.65 / -0.85%**); XLI 87 @ $172.466 (mark $174.18, UPL **+$149.15 / +0.99%**); XLP 239 @ $83.357 (mark $83.26, UPL **-$23.21 / -0.12%**)
+- Open trail GTCs (all 10%, GTC): SPY $682.5105 (hwm $758.345), XLP $78.0255 (hwm $86.695), XLB $47.493 (hwm $52.77), XLI $159.948 (hwm $177.72)
+- Day P&L vs Fri close $99,454.56 (pre-market mark): **+$25.67 / +0.03%** — essentially flat; Phase 6 vs $100,000 baseline: **-$519.77 / -0.52%**
+- Week 7 trade count: 0/6; daily count 0/3 (new week resets)
+
+### Market Context
+- WTI / Brent: WTI indeterminate this morning — Perplexity sources span ~$60s historical, "prediction" >$88, and prior pre-market basis ~$93–95; no clean live tick. Brent last clean read ~$104 (early-May print). Treat oil as a non-driver today absent fresh OPEC/Iran headline.
+- S&P 500 futures: ES ~7,411–7,416, **+0.21% premarket** (modest constructive bid into the cash open; consistent with Friday post-NFP digest finding equilibrium overnight)
+- VIX: **21.51 (Fri 6/5 close)** — sharp jump from $15.40 (6/4) on hot-NFP repricing; elevated fear signature carries into CPI week
+- Today's catalysts: **NONE top-tier US**. Geopolitical: Iran–Israel headline noise (per weekend Perplexity scan); equity-market noise on AI/mega-cap rotation (XLK still YTD leader +32–33% but described as lagging on relative momentum)
+- Earnings before open: None notable (per Perplexity earnings-calendar scan). This week's notable AMC names: ORCL, ADBE, PANW, AVGO, CRWD, GME — none overlap held basket
+- Economic calendar this week: **CPI Wed 6/10 8:30 ET**, **PPI Thu 6/11 8:30 ET**; no FOMC (next meeting 6/16–17). Wed CPI is the week's dominant macro variable
+- Sector momentum YTD (per 6/8 Perplexity cut): XLK +32–33%, XLE +26–27%, XLB ~+13%, XLI ~+12%, XLP ~+7%; SPY +7.86% YTD (6/5 close). All held legs except XLP outperforming SPY YTD on this read (note: prior 5/29 cut had XLB ~+20.8% / XLI ~+22.9% — source/date divergence, current basket-cyclical relative strength still intact directionally)
+
+### Trade Ideas
+1. **HOLD-the-basket (no new trade).** Pre-CPI Mon with VIX 21.51 and 4-leg basket already 74.4% deployed (within 0.6 pp of 75–85% floor) offers no edge to add. CPI Wed is binary on yields / mega-cap (SPY) / defensives (XLP) — adding into the print blindfolds the basket on a known macro variable.
+2. **XLE 4th-leg watch — DORMANT.** WTI indeterminate-to-soft, sustained ≥$105 gate dead by ~$10–12; no fresh OPEC/Iran tier-1 headline. Continues post-retirement watch only.
+3. **AI/networking single-name adds (AVGO/CRWD/ORCL/ADBE post-print) — DEFER.** Earnings cluster Tue–Thu (ORCL Tue AMC per Perplexity; AVGO/CRWD AMC midweek); no clean pre-print entry justified. Reassess post-print Fri 6/12 pre-market on clean continuation reads.
+
+### Conditional Entries (midday-eligible) — up to 3
+None. CPI is Wed (not today) but the week's positioning bias is set against pre-print entries, and Mon midday tape has no idiosyncratic catalyst that benefits from intraday confirmation over at-the-open execution. Authoring a Mon conditional risks gating on Iran-headline / AI-rotation noise rather than signal. Re-evaluate Tue pre-market after a full Mon close.
+
+### Risk Factors
+- **CPI Wed 6/10 binary**: hot print → yields up → SPY (rate-sensitive mega-cap concentration) + XLP (bond-proxy defensives) both exposed; cool print → opposite. SPY currently worst leg -2.42% on cost basis; XLP near flat -0.12%. Asymmetric basket positioning works in either direction if no leg breaks.
+- **VIX 21.51 (elevated)**: ~40% premium to last Wed's 15.40; pre-CPI fear bid is real. Expected SPY 1-day move ±~$7.82 (1.06%) per options-implied (Perplexity).
+- **SPY worst leg risk**: -2.42% unrealized, 4.58 pp cushion to -7% cut, 7.79% cushion to trail $682.5105. Another ~4.5% slide closes the cut gap; another ~7.7% closes the trail. Largest single-leg variable into CPI.
+- **Iran–Israel headline risk**: weekend reports flag escalation, with energy/safe-haven beta. Held basket has no direct defense/oil exposure; spillover would hit via VIX expansion + SPY mega-cap derate (already pricing some of this).
+- **XLB / XLI cyclical fade risk on hot CPI**: yields-up shock could flip cyclical leadership intraday. Pre-CPI cushions: XLB 6.20% (closest of cyclicals), XLI 8.17%; both outside 3% gate.
+- **No held-name idiosyncratic catalyst**: weekend Perplexity scans on WMT/COST/PG/KO/PM (XLP), LIN/NEM/SHW (XLB), CAT/GE/BA (XLI), broad-index SPY surfaced no thesis-breaking news. Sector-level XLP characterized as still in constructive defensive-bid uptrend post-Thu giveback; XLB pulled back below 50DMA into Fri; XLI off March highs ~-9.6%.
+
+### Decision
+**HOLD.** Pre-CPI Mon with 4-leg basket already inside (within 0.6 pp of) target deployment band, weekly trade count fresh at 0/6, VIX 21.51 elevated, and CPI Wed as the dominant macro variable. No conditionals authored — Mon midday window is noise-dominant ahead of Wed binary. Real action window is post-CPI Wed PM / pre-market Thu. Zero -7% cut candidates; zero +15% tighten triggers; all four trail GTCs intact and outside 3% proximity gate. SPY -2.42% leg is the single observable to monitor into CPI; daily-summary and midday scans will track stop-cushion compression.
+
+### Env-check note
+Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-tests (`alpaca.sh account` returned live JSON with portfolio_value $99,480.23; `perplexity.sh` returned grounded research output across 8 queries) — proceeded per saved feedback memory.
