@@ -2300,3 +2300,28 @@ Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SEC
 
 ### Env-check note (intraday)
 Env-var loop check printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`alpaca.sh account`) returned live JSON with portfolio_value $99,539.14 — proceeded per saved feedback memory.
+
+### Midday Scan Addendum (12:01 CT)
+**NO ACTION.** Live snapshot vs Fri close $99,454.56 / pre-market basis:
+- SPY 26 sh @ $758.54 → $741.69, UPL **-$438.10 (-2.22%)**, Day **+0.56%** (lastday $737.55); cushion **4.78 pp** to -7% cut, **8.67%** to trail $682.5105 (hwm $758.345)
+- XLB 390 sh @ $51.062 → $50.04, UPL **-$398.75 (-2.00%)**, Day **-1.17%** vs lastday $50.63; cushion **5.00 pp** to -7% cut, **5.36%** to trail $47.493 (hwm $52.77)
+- XLI 87 sh @ $172.466 → $173.96, UPL **+$130.01 (+0.87%)**, Day **-0.13%** vs lastday $174.18; **14.13 pp** below +15% tighten threshold; trail $159.948 (hwm $177.72, **8.76%** price cushion)
+- XLP 239 sh @ $83.357 → $83.135, UPL **-$53.09 (-0.27%)**, Day **-0.37%** vs lastday $83.44; trail $78.0255 (hwm $86.695, **6.55%** price cushion)
+- Equity **$99,204.14** (Phase 6 vs $100k baseline: **-$795.86 / -0.80%**, Day vs Fri last_equity $99,454.56: **-$250.42 / -0.25%**). Cash $25,436.74, daytrade_count 0, Long MV $73,767.40 (~**74.36% deployed** — within 0.64 pp of 75–85% floor).
+
+**STEP 3 (cuts):** None. Worst leg **SPY -2.22% UPL, ~4.78 pp cushion** to -7%; next-worst XLB -2.00%, 5.00 pp. Zero candidates.
+
+**STEP 4 (tightens):** None. Best leg **XLI +0.87% UPL**, ~14.13 pp below +15% threshold. No new hwms vs pre-market — all four trail GTCs unchanged at $682.5105 / $47.493 / $159.948 / $78.0255.
+
+**STEP 5 (thesis):** Intact. SPY drifted from premarket $744.83 → $741.69 (-0.42%) on early-session fade but holds well above pre-market basis $740.19; XLB extended to -1.17% Day as cyclical/materials gives back morning support (closest stop cushion in the basket at 5.36%, still outside 3% gate); XLI flipped marginally red intraday (-0.13% Day from premarket +0.29%); XLP modest defensive bid eroded (~-0.37% Day vs premarket flat). No idiosyncratic news on any held name; basket drift consistent with broad-tape pre-CPI positioning fade. CPI Wed 6/10 remains the dominant macro variable.
+
+**STEP 5.5 (conditionals):** No conditionals to evaluate (today's pre-market authored none — pre-CPI Mon noise-dominant).
+
+**STEP 6 (research):** No sharp/idiosyncratic moves requiring intraday research; basket drift is broad-tape pre-CPI digestion.
+
+**STEP 7 (notification):** SILENT (no action taken).
+
+**Disposition:** HOLD continues unchanged. SPY remains the worst-UPL leg (-2.22%, 4.78 pp cushion to -7%, 8.67% to trail); XLB now the tightest stop-cushion leg at 5.36% (still well outside 3% gate). Real action window remains post-CPI Wed PM / pre-market Thu. Daily-summary captures EOD marks.
+
+### Env-check note (midday)
+Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`alpaca.sh positions` / `alpaca.sh account`) returned live JSON with portfolio_value $99,204.14 — proceeded per saved feedback memory.
