@@ -2390,3 +2390,28 @@ None. Pre-CPI Tue same logic as Mon — no idiosyncratic catalyst justifies auth
 
 ### Env-check note
 Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-tests (`alpaca.sh account` returned live JSON with portfolio_value $99,308.97; `perplexity.sh` returned grounded research output across 8 queries) — proceeded per saved feedback memory.
+
+### Midday Scan Addendum (12:01 CT)
+**NO ACTION.** Live snapshot vs pre-market basis:
+- SPY 26 sh @ $758.54 → $726.89, UPL **-$822.90 (-4.17%)**, Day **-1.67%** vs lastday $739.22; cushion **2.83 pp** to -7% cut, **6.11%** to trail $682.5105 (hwm $758.345)
+- XLB 390 sh @ $51.062 → $50.055, UPL **-$392.90 (-1.97%)**, Day **+0.19%** vs lastday $49.96; cushion **5.03 pp** to -7% cut, **5.12%** to trail $47.493 (hwm $52.77)
+- XLI 87 sh @ $172.466 → $172.53, UPL **+$5.60 (+0.04%)**, Day **-0.63%** vs lastday $173.63; **14.96 pp** below +15% tighten threshold; trail $159.948 (hwm $177.72, **7.29%** price cushion)
+- XLP 239 sh @ $83.357 → $84.31, UPL **+$227.74 (+1.14%)**, Day **+1.49%** vs lastday $83.07; **13.86 pp** below +15% tighten threshold; trail $78.0255 (hwm $86.695, **7.45%** price cushion)
+- Equity **$99,023.69** (Phase 6 vs $100k baseline: **-$976.31 / -0.98%**, Day vs last_equity $99,100.40: **-$76.71 / -0.08%**). Cash $25,436.74, daytrade_count 0, Long MV $73,580.79 (~**74.31% deployed** — within 0.69 pp of 75–85% floor).
+
+**STEP 3 (cuts):** None. Worst leg **SPY -4.17% UPL, ~2.83 pp cushion** to -7% (compressed materially from pre-market's 4.96 pp on intraday SPY -1.67% pre-CPI fade); next-worst XLB -1.97%, 5.03 pp cushion. Zero candidates.
+
+**STEP 4 (tightens):** None. Best leg **XLP +1.14% UPL**, ~13.86 pp below +15% threshold. No new hwms vs pre-market — all four trail GTCs unchanged at $682.5105 / $47.493 / $159.948 / $78.0255.
+
+**STEP 5 (thesis):** Intact. SPY $743.10 → $726.89 intraday (-2.18%) is the dominant single-leg observable, but the move is broad-tape pre-CPI digestion + VIX-decompression-into-binary signature — exactly the asymmetric downside risk pre-market explicitly framed. SPY's thesis is Rule 12 mechanical broad-index structural deployment, not catalyst-driven swing — drift within the trail-stop envelope (cushion 6.11%, well outside 3% gate) is structurally tolerable. XLB +0.19% Day modest stabilization off Mon -1.32%; XLP +1.49% Day clean defensive bid (best leg today, flips to +1.14% UPL); XLI -0.63% Day modest fade. No idiosyncratic news on any held name. CPI Wed 6/10 8:30 ET remains the dominant macro variable — real action window is post-print Wed PM / pre-market Thu.
+
+**STEP 5.5 (conditionals):** No conditionals to evaluate (today's pre-market authored none — pre-CPI Tue digest day same logic as Mon, midday window noise-dominant ahead of Wed binary).
+
+**STEP 6 (research):** No idiosyncratic move requiring intraday research. SPY -1.67% Day fade has the obvious cause (pre-CPI positioning + VIX decompression into binary, Iran/Mideast oil bid tape) — exactly the risk frame pre-market modeled. Skip optional addendum.
+
+**STEP 7 (notification):** SILENT (no action taken).
+
+**Disposition:** HOLD continues unchanged. **SPY now the dominant cushion-compression observable** — UPL -4.17% with 2.83 pp cushion to -7% cut (down from 4.96 pp pre-market) is the single material delta of the session; one more ~2-3% SPY down-day would put the leg at the manual-cut gate. Stop-cushion remains 6.11% (vs Mon close 8.32%), still structurally outside the 3% proximity gate. XLB tightest stop-cushion in basket at 5.12%, also outside gate. EOD daily-summary captures the close marks; intraday-check #2 (11:30 PDT) is the next routine.
+
+### Env-check note (midday)
+Env-var loop check printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`alpaca.sh account` / `alpaca.sh positions` / `alpaca.sh orders`) returned live JSON with portfolio_value $99,023.69 — proceeded per saved feedback memory.
