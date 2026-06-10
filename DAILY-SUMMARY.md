@@ -74,3 +74,7 @@ pre-market 2026-06-05 ABORT — env vars missing: ALPACA_API_KEY, ALPACA_SECRET_
 ---
 ## 2026-06-08 11:07 UTC (fallback — Telegram not configured)
 pre-market 2026-06-08 ABORT (re-invocation): ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID all unset; alpaca.sh smoke-test confirmed truly missing (not false-MISSING). Today's entry c905d8c already committed/pushed 04:03 PDT, no duplicate work performed.
+
+---
+## 2026-06-10 11:04 UTC (fallback — Telegram not configured)
+pre-market 2026-06-10 ABORTED: missing env vars — ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID. No wrapper calls made. No commit.
