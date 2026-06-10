@@ -2505,3 +2505,24 @@ Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SEC
 
 ### Env-check note (midday)
 Env-var loop check printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`alpaca.sh account` / `alpaca.sh positions` / `alpaca.sh orders`) returned live JSON with portfolio_value $99,280.29 — proceeded per saved feedback memory.
+
+### Intraday Check Addendum (11:30 PDT / 14:30 ET, ~5h post-open, ~1.5h post-midday scan)
+**NO ACTION.** Risk-management-only routine; new entries reserved for market-open. Live 4-leg snapshot:
+- SPY 26 sh @ $758.54 → $729.23, unrealized **-$762.06 (-3.86%)**, Day **-1.06%** vs $737.05 lastday — extends midday fade (-3.70% → -3.86%, -16 bp UPL); stop $682.5105 (10% trail, hwm $758.345, **6.41%** price cushion)
+- XLB 390 sh @ $51.062 → $49.945, unrealized **-$435.80 (-2.19%)**, Day **-1.63%** vs $50.77 lastday — extends post-CPI cyclical fade (midday -1.87% → -2.19%, -32 bp UPL); stop $47.493 (10% trail, hwm $52.77, **4.91%** price cushion — tightest in basket)
+- XLI 87 sh @ $172.466 → $170.63, unrealized **-$159.70 (-1.06%)**, Day **-2.83%** vs $175.60 lastday — flips UPL red intraday (midday -0.75% → -1.06%, -31 bp UPL; biggest single-leg Day-mover of the basket); stop $159.948 (10% trail, hwm $177.72, **6.26%** price cushion)
+- XLP 239 sh @ $83.357 → $85.285, unrealized **+$460.76 (+2.31%)**, Day **+1.41%** vs $84.10 lastday — modest fade of midday defensive bid (+2.38% → +2.31%, -7 bp UPL) but holds best leg; stop $78.0255 (10% trail, hwm $86.695, **8.51%** price cushion)
+- Equity **$99,105.74** (Phase 6 vs $100k baseline: **-$894.26 / -0.89%**, Day vs last_equity $99,777.44: **-$671.70 / -0.67%**). Cash $25,436.74, daytrade_count 0, Long MV $73,666.46 (~**74.33% deployed** — within 0.67 pp of 75–85% floor).
+
+**STEP 3 (cuts):** None. Worst leg **SPY -3.86% UPL, ~3.14 pp cushion to -7% trigger** (compressed from midday's 3.30 pp on continued post-CPI cyclical drift); next-worst XLB -2.19%, ~4.81 pp cushion. Zero cut candidates.
+
+**STEP 4 (tightens):** None. Best leg **XLP +2.31% UPL, ~12.69 pp below +15% threshold**. No new hwms: SPY $729.23 < $758.345 (-3.84%), XLB $49.945 < $52.77 (-5.35%), XLI $170.63 < $177.72 (-3.99%), XLP $85.285 < $86.695 (-1.63%). All four trail GTCs **unchanged** at $682.5105 / $47.493 / $159.948 / $78.0255.
+
+**STEP 5 (thesis):** Intact across all four legs. Post-CPI cyclical drift continues — SPY/XLB/XLI all extend Day-side red into the afternoon (Day -1.06% / -1.63% / -2.83% respectively), XLP holds asymmetric defensive bid +1.41% Day. Pattern is the textbook hot/in-line CPI digest signature pre-market explicitly modeled (rates up → cyclicals fade, bond-proxy defensives bid). XLI -2.83% Day is the dominant single-leg observable but UPL only -1.06% (the leg entered the day with +1.82% cushion); no idiosyncratic news on top holdings (CAT/GE/BA in XLI, LIN/NEM in XLB, broad-index SPY, WMT/COST/PG/KO/PM in XLP) at any scan. Stop-proximity gates: **XLB closest at 4.91% price cushion** ($49.945 → $47.493) — the leg's tightest gap of Phase 6, still structurally outside the 3% proximity gate; SPY 6.41%, XLI 6.26%, XLP 8.51% — all four outside trigger. No thesis breaks.
+
+**STEP 6 (notification):** SILENT (no action taken).
+
+**Disposition into EOD:** HOLD continues unchanged. **SPY cushion to -7% compresses further to 3.14 pp** (from midday 3.30 pp, pre-market 3.55 pp) — dominant cut-gate observable into the close; one more ~3% SPY down-day puts the leg at manual-cut trigger. **XLB stop-cushion 4.91% is the basket's tightest** (down from midday 5.22%) but remains structurally outside 3% gate. Asymmetric basket design continues to absorb cyclical fade via XLP defensive bid (UPL +2.31% offsets SPY -3.86% on cost-basis sum). Last ~30 min into close is the final pre-PPI setup observation window; EOD daily-summary captures Phase 6 day-8 marks + 4-leg basket positioning into PPI Thu 6/11 8:30 ET (the next binary).
+
+### Env-check note (intraday)
+Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account` returned live JSON with portfolio_value $99,105.74; positions/orders also returned live data) — proceeded per saved feedback memory.
