@@ -2592,3 +2592,26 @@ Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SEC
 
 ### Env-check note (intraday)
 Env-var loop check printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-tests (`alpaca.sh positions` / `alpaca.sh orders` / `alpaca.sh account` returned live JSON with portfolio_value $99,300.75) — proceeded per saved feedback memory.
+
+### Midday Scan (12:01 CT / 17:01 UTC, ~2.5h post-open, ~3.5h post-PPI print)
+**NO ACTION.** Risk-management routine; no new entries (no conditionals authored). Live 4-leg snapshot:
+- SPY 26 sh @ $758.54 → $726.77, unrealized **-$826.02 (-4.19%)**, Day **+0.19%** vs $725.43 lastday — SPY now participating modestly in the post-PPI cyclical bid (vs intraday-check 08:01 PDT flat $725.36 / -0.01% Day; broad-index leg has begun to re-couple with the relief move at the 2.5h mark); stop $682.5105 (10% trail, hwm $758.345, **6.09%** price cushion)
+- XLB 390 sh @ $51.062 → $50.265, unrealized **-$311.00 (-1.56%)**, Day **+1.34%** vs $49.60 lastday — cyclical bid persists post-PPI (premkt UPL -2.86% → intraday-check -1.75% → midday -1.56%, +130 bp cumulative recovery, +19 bp vs intraday-check); stop $47.493 (10% trail, hwm $52.77, **5.51%** price cushion — expanded modestly from intraday-check 5.34%)
+- XLI 87 sh @ $172.466 → $172.015, unrealized **-$39.20 (-0.26%)**, Day **+1.39%** vs $169.66 lastday — strongest Day-mover on cyclical bid (premkt UPL -1.02% → intraday-check -0.31% → midday -0.26%, +76 bp cumulative recovery); stop $159.948 (10% trail, hwm $177.72, **7.01%** price cushion)
+- XLP 239 sh @ $83.357 → $85.53, unrealized **+$519.32 (+2.61%)**, Day **+0.05%** vs $85.49 lastday — defensive bid holds through midday (premkt UPL +2.27% → intraday-check +2.82% → midday +2.61%, modest -21 bp vs intraday-check as cyclicals lead on relief rotation); stop $78.0255 (10% trail, hwm $86.695, **8.77%** price cushion)
+- Equity **$99,355.87** (Phase 6 vs $100k baseline: **-$644.13 / -0.64%**, Day vs last_equity $98,834.45: **+$521.42 / +0.53%**). Cash $25,436.74, daytrade_count 0, Long MV $73,919.13 (~**74.40% deployed** — within 0.60 pp of 75–85% floor).
+
+**STEP 3 (cuts):** None. Worst leg **SPY -4.19% UPL, ~2.81 pp cushion** to -7% trigger (expanded from intraday-check's 2.63 pp on SPY's late-morning bid recoupling); next-worst XLB -1.56%, ~5.44 pp cushion. Zero candidates.
+
+**STEP 4 (tightens):** None. Best leg **XLP +2.61% UPL, ~12.39 pp below +15% threshold**. No new hwms: SPY $726.77 < $758.345 (-4.34%), XLB $50.265 < $52.77 (-4.74%), XLI $172.015 < $177.72 (-3.21%), XLP $85.53 < $86.695 (-1.34%). All four trail GTCs **unchanged** at $682.5105 / $47.493 / $159.948 / $78.0255.
+
+**STEP 5 (thesis):** Intact across all four legs. Post-PPI midday tape continues the relief-rotation signature from the 08:01 PDT intraday-check: cyclicals (XLB +1.34% / XLI +1.39% Day) hold leadership through midday, **SPY +0.19% Day re-couples with the cyclical bid** (vs intraday-check $725.36 flat — broad-index leg now participates, the day's evolution since the 08:01 PDT non-participation observable), XLP defensives held +0.05% Day (essentially flat — neither faded by yield channel nor displaced by cyclical rip, asymmetric basket continues to absorb on both sides). **All 4 legs green Day** at midday (vs intraday-check 3 of 4 green Day with SPY flat) — first full-basket-green-Day intraday print since the back-to-back CPI/PPI window opened Wed. No idiosyncratic news on top holdings (CAT/GE/BA in XLI, LIN/NEM in XLB, WMT/COST/PG/KO/PM in XLP, broad-index SPY) at the midday tape. No thesis breaks.
+
+**STEP 5.5 (conditionals):** No conditionals to evaluate. Today's RESEARCH-LOG explicitly authored zero conditionals (PPI-day midday window noise-dominant, same NFP-day / CPI-day default).
+
+**STEP 6 (notification):** SILENT (no action taken).
+
+**Disposition into close:** HOLD continues unchanged. **SPY cushion to -7% expands to 2.81 pp** (from intraday-check's 2.63 pp on SPY's late-morning re-coupling with cyclical bid; still tightest cut-gate observable in basket and dominant carry-forward into Fri 6/12 pre-market). **XLB stop-cushion 5.51% expanded further** (premkt 4.44% → intraday-check 5.34% → midday 5.51%, +107 bp cumulative recovery, second cushion improvement of Phase 6 for the tightest-stop leg). Asymmetric basket design absorbing the in-line PPI digest cleanly: cyclical relief bid (XLB/XLI) + SPY re-coupling + XLP defensive flat-hold. Real action window remains Fri 6/12 pre-market — clean post-PPI/CPI digest read into U-Mich consumer sentiment prelim + SpaceX IPO risk-sentiment overlay. Intraday-check #2 11:30 PDT and EOD daily-summary capture remaining Phase 6 day-9 marks.
+
+### Env-check note (midday)
+Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID, PERPLEXITY_API_KEY); wrapper smoke-test (`alpaca.sh account` returned live JSON with portfolio_value $99,355.87) — proceeded per saved feedback memory.
