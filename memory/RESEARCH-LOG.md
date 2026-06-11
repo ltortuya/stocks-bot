@@ -2526,3 +2526,48 @@ Env-var loop check printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SEC
 
 ### Env-check note (intraday)
 Env-var loop check again printed MISSING for all four vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-test (`bash scripts/alpaca.sh account` returned live JSON with portfolio_value $99,105.74; positions/orders also returned live data) — proceeded per saved feedback memory.
+
+## 2026-06-11 — Pre-market Research
+
+### Account
+- Equity: $99,007.71
+- Cash: $25,436.74 (25.69%)
+- Buying power: $307,745.68 (regt $124,444.45)
+- Daytrade count: 0
+- Positions (4 legs, ~74.31% deployed — ~0.69 pp under 75–85% floor): SPY 26 @ $758.54 (premkt mark $730.71, UPL **-$723.58 / -3.67%**); XLB 390 @ $51.062 (mark $49.60, UPL **-$570.35 / -2.86%**); XLI 87 @ $172.466 (mark $170.70, UPL **-$153.61 / -1.02%**); XLP 239 @ $83.357 (mark $85.25, UPL **+$452.40 / +2.27%**)
+- Open trail GTCs (all 10%, GTC): SPY $682.5105 (hwm $758.345), XLP $78.0255 (hwm $86.695), XLB $47.493 (hwm $52.77), XLI $159.948 (hwm $177.72)
+- Day P&L vs last_equity $98,834.45: **+$173.26 / +0.18%** (premkt bounce off Wed CPI-digest low); Phase 6 vs $100,000 baseline: **-$992.29 / -0.99%** (modest improvement vs Wed close -1.18%)
+- Week 7 trade count: 0/6; daily count 0/3
+
+### Market Context
+- WTI / Brent: WTI front-month (CLN26) **~$90.27** per CME Globex tape (early-US trading 6/11); Brent **~$94.27** per Fortune 6/10 quote — both cooled modestly vs Wed's mid-$90s commentary as the Iran/strikes-ending headline whipsaw eased the geopolitical premium. Still ~$15 below the structural $105 XLE gate-5 trigger.
+- S&P 500 futures: ES tape readings mixed across sources — Barchart quote ~**7,247** (current session), CME commentary cites mid-week stabilization ~7,415; net read is **constructive bid premarket post-CPI digest** as in-line headline pared yesterday's losses (Schwab market update). SPY cash bounced overnight to $730.71 from Wed close $725.43 (+0.73% premkt).
+- VIX: **~19.87 (Cboe close 6/10)** with intraday print of ~22.22 (gurufocus data point) during the CPI-day spike — pulled back from CPI-day stress level but still elevated vs Wed 6/4 baseline ~15.40 and the pre-print Wed open 20.09; fear premium intact into PPI.
+- Today's catalysts: **PPI May 8:30 ET — the day's only top-tier macro variable.** Consensus tape (Substack/X/BLS): **Headline MoM +0.7%, Core MoM +0.4%** — both prints sequentially hotter than the CPI MoM signature (headline +0.5% / core +0.3% consensus that printed Wed). **Initial Jobless Claims 8:30 ET concurrent** — consensus **219K vs prior 225K** (modest labor-market cooling read). Iran/Mideast tape softer (strikes-ending headline) — geopolitical premium bleeding off. SPY commentary cites Wed's selloff as fear-driven ("S&P 500 sinks on fear of war") with PPI as the dominant pre-bell variable.
+- Earnings before open: **None notable US large-cap.** eToro/Nasdaq earnings calendar surfaces only ACB (Aurora Cannabis), HOFT (Hooker Furnishings), and potentially MH (McGraw Hill) BMO — zero basket-overlap names; no idiosyncratic earnings risk for any held leg.
+- Economic calendar this week: **PPI today 8:30 ET** + **Initial Claims today 8:30 ET**, **U-Mich prelim Fri 6/12** (consumer sentiment). **FOMC June 16–17 next week** — pre-meeting positioning intensifies post-PPI digest. SpaceX IPO 6/12 noted as week-wide risk-sentiment event (not basket-relevant).
+- Sector momentum (6/11 Perplexity cut, AnnaCoulling/investing.com RRG): **YTD leaders** XLE +26–27%, XLB +13%, XLI +12%, XLP +7% — **all four held legs (XLP/XLB/XLI) plus XLE remain in Leading quadrant vs SPY per RRG**; XLE described as "dominant leader 2026 (+22%)" breaking long-term consolidation; XLP "surprising top performer YTD, flight-to-safety play as volatility intensifies"; XLB/XLI explicit Leading. Held basket alignment with sector leadership intact. XLK/XLC/XLY/XLF still Lagging; XLRE/XLU Improving; XLV Weakening.
+
+### Trade Ideas
+1. **HOLD-the-basket (no new trade).** Back-to-back inflation binary: Wed CPI digested as in-line/mildly hot → today's PPI sequentially hotter on consensus tape (headline +0.7% MoM vs Wed CPI +0.5%); 4-leg basket already ~74.31% deployed (within 0.69 pp of floor), VIX still ~19.87 elevated, ES tape mixed-bid premarket. Adding pre-PPI blindfolds the basket on the dominant macro variable — exactly the same NFP-day / CPI-day pattern logic that executed cleanly Fri 6/5 and Wed 6/10. Real action window is post-PPI Thu PM / pre-market Fri 6/12.
+2. **XLE 4th-leg watch — DORMANT.** WTI ~$90.27 still ~$15 below the sustained ≥$105 gate-5 trigger; Iran/strikes-ending headline softened the geopolitical premium that previously kept the watch active. Post-retirement watch only; gate structurally dead.
+3. **AI/networking single-name post-ORCL — DEFER.** Wed open AI-tape read was contaminated by the CPI overlap; today's PPI overlay extends the contamination window. Reassess Fri 6/12 pre-market on clean post-PPI / post-ORCL continuation reads.
+
+### Conditional Entries (midday-eligible) — up to 3
+None. PPI-day midday window is noise-dominant — same default as NFP day 6/5 and CPI day 6/10 (both validated the design: zero conditional fires, zero whipsaws, clean HOLD execution). Authoring a conditional on a back-to-back inflation-binary day risks gating on post-print yields-shock rotation rather than signal. Re-evaluate Fri 6/12 pre-market on the digested CPI+PPI tape into the U-Mich print.
+
+### Risk Factors
+- **PPI 8:30 ET binary** (asymmetric setup): consensus structurally hotter than Wed CPI (+0.7% MoM headline vs Wed's +0.5%); hot-or-in-line tilts yields up → SPY (worst leg -3.67% cost basis) + XLP (bond-proxy defensives, +2.27%) both exposed via rate channel; cool surprise inverts — XLP defensives fade, SPY/cyclicals rip. Asymmetric basket positioning continues to work in either direction if no leg breaks the trail-stop envelope.
+- **SPY cushion remains tightest cut-gate observable**: UPL -3.67% premkt (improved from Wed close -4.42% on overnight +0.73% bounce), **~3.33 pp cushion to -7% cut** (vs Wed close 2.58 pp — modest expansion), ~7.05% cushion to trail $682.5105. A PPI-shock ~50 bp yield move could re-compress the cushion to Wed's compressed level; one more ~3% SPY down-day still puts the leg at manual-cut trigger.
+- **XLB tightest stop-cushion leg**: ~4.44% price cushion to trail $47.493 (vs SPY 7.05%, XLI 6.73%, XLP 9.26%) — outside 3% proximity gate but **the closest of the four and the tightest of Phase 6**; cyclical fade on hot PPI is the leg's primary downside, would bring it into striking range of the 3% proximity gate.
+- **XLI swung-low cushion**: UPL -1.02% vs Wed close -1.66% (premkt +0.61% Day bounce); cushion to -7% improved from Wed's ~5.34 pp to ~5.98 pp, but the leg has decisively flipped from best-leg status (Tue close +1.82%) to second-worst in 2 sessions on the post-CPI cyclical fade — momentum-direction observable, not cut-risk.
+- **VIX 19.87 holds elevated**: ~6% premium intact vs Wed close (~20.10), did not decompress overnight despite the SPY bounce — market is pricing PPI as a continuation risk, not a relief catalyst. Headroom for further expansion on hot PPI ≥0.8% MoM headline.
+- **Iran/Mideast tape easing**: WTI $90 vs Wed's mid-$90s spike, "strikes ending" headline softens the energy/safe-haven beta; held basket has no direct defense/oil exposure; spillover risk via VIX expansion + SPY mega-cap derate remains the indirect channel but has cooled.
+- **No held-name idiosyncratic catalyst**: Perplexity scan on SPY/XLP/XLB/XLI top holdings (WMT/COST/PG/KO/PM in XLP, LIN/NEM in XLB, CAT/GE in XLI, broad-index SPY) surfaced no thesis-breaking news — ETF-level commentary on XLB ("positioned to capture 2026 earnings growth tailwinds amid geopolitical noise") and XLI (CAT/GE aerospace + capex narrative intact) reinforces leadership alignment.
+- **Back-to-back CPI/PPI inflation reads**: Wed CPI + Thu PPI = two-session inflation-binary window; no edge to add capital between the two prints. Window resolves at 8:30 ET today; first clean read on the digested tape is Fri 6/12 pre-market.
+
+### Decision
+**HOLD.** PPI-day binary with consensus structurally hotter than Wed CPI (+0.7% MoM headline vs +0.5% Wed consensus); 4-leg basket already inside (within 0.69 pp of) target deployment band, weekly trade count fresh at 0/6, VIX holding elevated 19.87 into print, ES premkt bid mixed but constructive (SPY +0.73% overnight bounce). No conditionals authored — PPI-day midday window noise-dominant, same NFP-day / CPI-day pattern logic (both executed cleanly with zero conditional fires). Real action window is post-PPI Thu PM / pre-market Fri 6/12. Zero -7% cut candidates (SPY worst at -3.67% UPL, 3.33 pp cushion improved from Wed's 2.58 pp); zero +15% tighten triggers; all four trail GTCs intact and outside 3% proximity gate. SPY (-3.67%) remains the dominant cushion-compression observable; XLB's 4.44% stop cushion is the basket's tightest leg-vs-trail gap (vs Wed's 4.23% close — modest expansion on stable XLB tape overnight). Wed CPI-day intraday SPY swing precedent (-3.45% → -4.42% intraday low → -4.42% close, 97 bp range) frames the expected PPI-day vol envelope.
+
+### Env-check note
+Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-tests (`alpaca.sh account` returned live JSON with portfolio_value $99,007.71; `perplexity.sh` returned grounded research output across 8 queries) — proceeded per saved feedback memory.
