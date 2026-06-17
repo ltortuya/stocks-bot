@@ -2935,3 +2935,19 @@ None. **FOMC Day-of decision (statement/dots/Warsh presser 14:00-14:30 ET) is st
 
 ### Env-check note
 Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); wrapper smoke-tests (`alpaca.sh account` returned live JSON with portfolio_value $101,434.48; `perplexity.sh` returned grounded research output across 8 queries) — proceeded per saved feedback memory (smoke-test workaround remains the operative bypass, multi-day pattern fully load-bearing across Phase 6).
+
+### Midday Scan — 12:01 CT (10:01 PDT) — FOMC-Day-2 pre-decision
+
+- **Equity $101,671.34** (+$236.86 / +0.23% vs premkt $101,434.48; Phase P&L +$1,671.34 / +1.67% — new Phase-6 mid-session high crosses Tue close +1.61%). Cash $25,436.74 (25.02%). Long MV $76,234.60 (**74.98% deployed**, basket at the 75% floor, 12th consecutive session within 0.10 pp).
+- **Positions intraday vs premkt:**
+  - SPY 26 @ $758.54 → cur **$749.79** (UPL **-1.15%** vs premkt -1.03%, -12 bp give-back; deepest hole of basket, modest pre-FOMC drift)
+  - XLB 390 @ $51.06 → cur **$53.155** (UPL **+4.10%** vs premkt +3.25%, **+85 bp single-leg expansion**; new intraday hwm $53.31 confirmed)
+  - XLI 87 @ $172.47 → cur **$182.06** (UPL **+5.56%** vs premkt +4.28%, **+128 bp single-leg expansion, new basket-leader by UPL**; new intraday hwm $182.33 confirmed)
+  - XLP 239 @ $83.36 → cur **$84.38** (UPL **+1.23%** vs premkt +1.74%, -51 bp; rotation give-back continues into cyclical bid)
+- **Two fresh intraday hwm ratchets confirmed via orders API** — XLB stop $47.8755 → **$47.979** (hwm $52.195 → $53.31), XLI stop $162.99 → **$164.097** (hwm $181.10 → $182.33); SPY hwm $758.345 / XLP hwm $86.695 unchanged. Cushions: SPY 9.85% / XLB 10.79% / XLI 10.95% / XLP 8.15% — **all four ≥8.1%, XLI/XLB push above 10%** on the hwm ratchets, dispersion 280 bp; all outside 3% proximity gate.
+- **Cut candidates: zero** (worst SPY -1.15%, ~5.85 pp cushion to -7% trigger).
+- **Tighten triggers: zero** (best XLI +5.56%, ~9.44 pp to +15% ladder).
+- **Thesis check:** Cyclical-led pre-FOMC bid extends (XLB/XLI both new hwms, +85/+128 bp UPL expansion); XLP rotation give-back fits hedge-flow defensive-trim pre-decision; SPY modest red drift fits flat-to-slightly-green ES tape. No thesis breaks — basket structurally pre-positioned for both FOMC outcomes per premkt frame (cyclicals XLB/XLI for dovish dot-plot, XLP defensive offset for hawkish, SPY tape-correlated).
+- **Conditional Entries: No conditionals to evaluate** (premkt authored none — FOMC-Day-of decision midday is noise-dominant binary, 7th consecutive macro-binary/setup day with zero-conditional default fully load-bearing).
+- **Action: NO ACTION** — no cuts, no tightens, no thesis exits, no fires. Silent (no Telegram per routine).
+- **Env-check:** Loop printed MISSING for all five vars again; `alpaca.sh account` returned live JSON (portfolio_value $101,671.34) — proceeded per saved feedback memory.
