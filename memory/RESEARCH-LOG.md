@@ -3130,3 +3130,20 @@ Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SEC
 - **Action: NO ACTION** — no cuts, no tightens, no thesis exits, no fires. Silent (no Telegram per routine; routine only fires Telegram on action). Disposition: HOLD intact through the holiday freeze. Real action variable shifts entirely to Mon 6/22 pre-market read of the digested 3-session FOMC tape + ~72-hour holiday-weekend headline accumulation; weekly-review slot folds into Mon 6/22 routine cycle per pre-market note.
 - **Env-check:** Loop printed MISSING for all four vars again; wrapper smoke-test `alpaca.sh account` returned live JSON (portfolio_value $100,705.75, balance_asof 2026-06-18 frozen at Thu close, 4 positions, 4 trail-stop GTCs intact) — proceeded per saved feedback memory.
 
+### Intraday Check — 11:30 PDT (14:30 ET) — Juneteenth Holiday Closure, NO EXECUTION VENUE
+
+- **U.S. EQUITY AND BOND MARKETS CLOSED ALL DAY** (Juneteenth federal holiday). Alpaca returns frozen Thu 6/18 16:00 ET close quotes; balance_asof 2026-06-18, all positions show qty_available=0 / change_today=0 / unrealized_intraday_pl=0 — confirming no cash session at all. No order activity possible, no intraday price discovery, no GTC modifications possible.
+- **Equity $100,705.75** (identical to pre-market and midday — quote-frozen at Thu close; **Phase 6 P&L +$705.75 / +0.71%**, holds above $100K phase-baseline for 5th consecutive session). Cash $25,436.74 (25.26%). Long MV $75,269.01 (**74.74% deployed**, **16th consecutive session within 0.26 pp of the 75% floor** — longest sustained-deployment streak of Phase 6).
+- **Positions (frozen at Thu 6/18 close, identical to pre-market / midday):**
+  - SPY 26 @ $758.54 → cur **$746.74** (UPL **-1.556%**)
+  - XLB 390 @ $51.062 → cur **$51.81** (UPL **+1.464%**)
+  - XLI 87 @ $172.466 → cur **$180.91** (UPL **+4.896%**, basket-leader by UPL)
+  - XLP 239 @ $83.357 → cur **$83.30** (UPL **-0.069%**)
+- **No hwm ratchets possible today** (no live tape). All four trail GTCs intact at SPY $682.5105 (hwm $758.345) / XLB $47.979 (hwm $53.31) / XLI $164.628 (hwm $182.92, Thu 09:35 ET auto-ratchet) / XLP $78.0255 (hwm $86.695). Cushions identical to Thu close / midday: SPY 8.60% / XLB 7.40% / XLI 9.00% / XLP 6.33%, 267 bp dispersion, all outside 3% proximity gate.
+- **Cuts: zero** (worst SPY -1.556%, **5.444 pp cushion to -7% rule**; structurally well outside cut-gate, and **no execution venue today regardless**).
+- **Tightens: zero** (best XLI +4.896%, **10.104 pp below +15% threshold**; **no GTC modifications possible today regardless**).
+- **Thesis check:** **Holiday freeze persists into the afternoon mark** — no intraday price action to evaluate, no Fed speakers (post-blackout calendar restarts Mon 6/22), no scheduled data releases. Globex carry held bid into the holiday weekend per pre-market frame (ES +0.84-0.98% premkt; not actionable in cash). No thesis breaks possible to evaluate without live tape; all carry forward into Mon 6/22 reopen window. YTD-leadership quadrant alignment (XLB/XLP/XLI ranks #2/#3/#4 per refreshed Perplexity 6/19 cut) continues to do structural work.
+- **Conditional Entries: No conditionals to evaluate** (pre-market authored none — **9th consecutive macro-binary/holiday/setup day with zero-fire default holding cleanly**, and the holiday closure structurally prevents any conditional execution today even if authored).
+- **Action: NO ACTION** — no cuts, no tightens, no thesis exits, no fires. Silent (no Telegram per routine; STEP 6 fires only on action). Disposition: HOLD intact through the holiday freeze. Real action variable shifts entirely to Mon 6/22 pre-market read of the digested 3-session FOMC tape + ~72-hour holiday-weekend headline accumulation; weekly-review slot folds into Mon 6/22 routine cycle per pre-market note.
+- **Env-check:** Loop printed MISSING for all four vars again; wrapper smoke-test `alpaca.sh account` returned live JSON (portfolio_value $100,705.75, balance_asof 2026-06-18 frozen at Thu close, 4 positions, 4 trail-stop GTCs intact) — proceeded per saved feedback memory.
+
