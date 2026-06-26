@@ -122,3 +122,7 @@ pre-market 2026-06-24 ABORT: env vars missing — ALPACA_API_KEY, ALPACA_SECRET_
 ---
 ## 2026-06-25 11:04 UTC (fallback — Telegram not configured)
 pre-market 2026-06-25 ABORTED — missing env vars: ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID
+
+---
+## 2026-06-26 11:05 UTC (fallback — Telegram not configured)
+pre-market 2026-06-26 ABORTED: missing env vars ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID
