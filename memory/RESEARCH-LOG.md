@@ -3147,3 +3147,14 @@ Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SEC
 - **Action: NO ACTION** — no cuts, no tightens, no thesis exits, no fires. Silent (no Telegram per routine; STEP 6 fires only on action). Disposition: HOLD intact through the holiday freeze. Real action variable shifts entirely to Mon 6/22 pre-market read of the digested 3-session FOMC tape + ~72-hour holiday-weekend headline accumulation; weekly-review slot folds into Mon 6/22 routine cycle per pre-market note.
 - **Env-check:** Loop printed MISSING for all four vars again; wrapper smoke-test `alpaca.sh account` returned live JSON (portfolio_value $100,705.75, balance_asof 2026-06-18 frozen at Thu close, 4 positions, 4 trail-stop GTCs intact) — proceeded per saved feedback memory.
 
+
+## 2026-08-14 — Pre-market Research
+
+### ABORTED — Env vars missing in cloud routine
+
+- **Env-check:** All 5 required vars MISSING (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID). Unlike prior "MISSING-but-wrapper-works" false alarms in Phase 6, this time `alpaca.sh account` returned hard failure: `ALPACA_API_KEY: ALPACA_API_KEY not set in environment`. No live account snapshot obtainable; no Perplexity research possible.
+- **Telegram alert:** attempted — `telegram.sh` fell back to local file (`[telegram fallback] appended to DAILY-SUMMARY.md`) since TELEGRAM_TOKEN also missing. Push-notification sent to user via routine channel as backup.
+- **Action:** No account snapshot, no market-context research, no trade ideas, no conditional entries. Positions/stops presumed unchanged from last known state — cannot verify.
+- **Fix required:** Re-provision the five env vars on the pre-market routine's env config in the cloud dashboard before the next scheduled fire. All 5 routines (pre-market, market-open, midday, daily-summary, weekly-review) share the same env config and will fail identically until fixed.
+
+### Decision: NO TRADE — routine could not run.
