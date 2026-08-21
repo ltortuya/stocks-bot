@@ -3158,3 +3158,14 @@ Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SEC
 - **Fix required:** Re-provision the five env vars on the pre-market routine's env config in the cloud dashboard before the next scheduled fire. All 5 routines (pre-market, market-open, midday, daily-summary, weekly-review) share the same env config and will fail identically until fixed.
 
 ### Decision: NO TRADE — routine could not run.
+
+## 2026-08-21 — Pre-market Research
+
+### ABORTED — Env vars STILL missing in cloud routine (7 calendar days after 8/14 abort)
+
+- **Env-check:** All 5 required vars MISSING (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID). Wrapper smoke-test `alpaca.sh account` returned hard failure: `ALPACA_API_KEY: ALPACA_API_KEY not set in environment` — identical to the 8/14 abort. This is NOT the Phase-6 "MISSING-but-wrapper-works" false-alarm pattern; env vars are genuinely absent.
+- **Telegram alert:** attempted — `telegram.sh` fell back to local file (`[telegram fallback] appended to DAILY-SUMMARY.md`) since TELEGRAM_TOKEN also missing. Push-notification sent to user via routine channel as backup.
+- **Action:** No account snapshot, no market-context research, no trade ideas, no conditional entries. Positions/stops presumed unchanged from last known state — cannot verify. Between 8/14 and 8/21 the routine has been dark; any -7% cut, +15%/+20% trail tighten, or stop-hit event during this window has been unmanaged.
+- **Fix required (urgent, 7-day-old blocker):** Re-provision the five env vars on the cloud routine env config. All 5 routines (pre-market, market-open, midday, daily-summary, weekly-review) share the same env config and continue to fail identically until fixed. Consider running local `/pre-market` slash command as manual bridge until cloud env is restored.
+
+### Decision: NO TRADE — routine could not run.
