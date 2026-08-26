@@ -3180,3 +3180,14 @@ Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SEC
 - **Fix required (urgent, 10-day-old blocker on this abort pattern, 66-day dark window overall):** Re-provision the five env vars on the cloud routine env config. All 5 routines (pre-market, market-open, midday, daily-summary, weekly-review) share the same env config and continue to fail identically until fixed. Consider running local `/pre-market` slash command as manual bridge until cloud env is restored.
 
 ### Decision: NO TRADE — routine could not run.
+
+## 2026-08-26 — Pre-market Research
+
+### ABORTED — Env vars STILL missing in cloud routine (12 calendar days after 8/14 abort, 6th consecutive routine-run abort per git log; 4th entry logged in RESEARCH-LOG)
+
+- **Env-check:** All 5 required vars MISSING (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID). Wrapper smoke-test `alpaca.sh account` returned hard failure: `ALPACA_API_KEY: ALPACA_API_KEY not set in environment` — identical signature to 8/14, 8/19, 8/20, 8/21, 8/24, and 8/25 abort commits. Confirms genuine env-var absence, NOT the Phase-6 "MISSING-but-wrapper-works" false-alarm pattern. Prior aborts on 8/19, 8/20, 8/25 committed telegram-fallback to DAILY-SUMMARY.md only, not RESEARCH-LOG — this entry consolidates that this is the 6th consecutive dark routine.
+- **Telegram alert:** attempted — `telegram.sh` fell back to local file (`[telegram fallback] appended to DAILY-SUMMARY.md`) since TELEGRAM_TOKEN also missing. Push-notification sent to user via routine channel as backup.
+- **Action:** No account snapshot, no market-context research, no trade ideas, no conditional entries. Positions/stops presumed unchanged from last known state (Jun 19 close: SPY 26 / XLB 390 / XLI 87 / XLP 239, all four trailing GTCs intact, Phase 6 P&L +$705.75 / +0.71%) — cannot verify. Between 6/19 and 8/26 the cloud routine has been dark for 68 calendar days; any -7% cut, +15%/+20% trail tighten, stop-hit event, or dividend/distribution during this window remains unmanaged from this session's vantage. Given the 68-day dark window, positions may already have been stopped out or drifted materially — first task after env restore must be a full account/positions/orders reconciliation before any new trade decisions.
+- **Fix required (urgent, 12-day-old blocker on this abort pattern, 68-day dark window overall):** Re-provision the five env vars on the cloud routine env config. All 5 routines (pre-market, market-open, midday, daily-summary, weekly-review) share the same env config and continue to fail identically until fixed. Consider running local `/pre-market` slash command as manual bridge until cloud env is restored.
+
+### Decision: NO TRADE — routine could not run.
