@@ -294,3 +294,7 @@ PRE-MARKET ROUTINE ABORT 2026-08-25: env vars MISSING — ALPACA_API_KEY, ALPACA
 ---
 ## 2026-08-26 11:37 UTC (fallback — Telegram not configured)
 Pre-market 2026-08-26 ABORT — 4th consecutive abort. Cloud env vars MISSING: ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID. Wrapper hard-failed. 69-day dark window since 6/19. Re-provision env config in cloud dashboard.
+
+---
+## 2026-08-27 11:29 UTC (fallback — Telegram not configured)
+pre-market 2026-08-27 ABORTED: missing env vars - ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID
