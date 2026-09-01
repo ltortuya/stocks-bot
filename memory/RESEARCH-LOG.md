@@ -3214,3 +3214,51 @@ Env-var loop check printed MISSING for all five vars (ALPACA_API_KEY, ALPACA_SEC
 - **Fix required (urgent, 18-day-old blocker on this abort pattern, 74-day dark window overall):** Re-provision the five env vars on the cloud routine env config. All 5 routines share the same env config and continue to fail identically until fixed. Consider running local `/pre-market` slash command as manual bridge until cloud env is restored.
 
 ### Decision: NO TRADE — routine could not run.
+
+## 2026-09-01 — CORRECTION (manual session, market hours)
+
+Supersedes the 2026-09-01 abort entry above. That entry was written by the cloud
+routine without account access; three of its claims were wrong.
+
+- **"Labor Day" — FALSE.** 2026-09-01 is a **Tuesday**. Labor Day 2026 is Mon **2026-09-07**.
+  Alpaca `clock` returned `is_open: true`; `calendar` lists 9/1–9/4 and 9/8, skipping 9/7.
+  The market was open and a full session was available. `scripts/alpaca.sh` had no way to
+  check — `clock` and `calendar` subcommands added this session.
+- **"All four trailing GTCs intact" — FALSE, and had been since 2026-07-31.** Alpaca expires
+  GTC orders at ~90 days. The XLP/XLB/XLI trailing stops placed 2026-05-04 were auto-cancelled
+  `2026-07-31T20:05:30Z`. Those three positions were **unprotected for 32 days**. SPY's stop
+  (placed 06-03) carried `expires_at 2026-09-01T20:00:00Z` — it would have lapsed at today's close.
+- **"All 5 routines share the same env config" — FALSE.** Only **one** routine exists:
+  `Stocks bot — pre-market` (`trig_01WAvRr2jq1Tak15zRhLuUmQ`). market-open, intraday-check,
+  midday, daily-summary and weekly-review do not exist as routines. This is why only pre-market
+  has committed since 2026-06-19: the execution and risk-management half of the system is gone.
+
+### Action taken — stop coverage restored (all four verified live)
+
+Trails sized as `min(10%, distance to prior stop)` so no stop moved down. Each prior level was
+already the correctly-ratcheted 10% trail from that position's high-water mark; a fresh 10% trail
+from today's lower price would have reset the ratchet.
+
+| Sym | Qty | Price | New stop | Cushion | Prior stop | Expires |
+| — | — | — | — | — | — | — |
+| SPY | 26 | $762.79 | $701.57 | 8.03% | $701.41 | 2026-11-30 |
+| XLB | 390 | $52.27 | $48.00 | 8.17% | $47.98 | 2026-11-30 |
+| XLI | 87 | $173.61 | $167.81 | 3.34% | $167.80 | 2026-11-30 |
+| XLP | 239 | $85.75 | $79.83 | 6.89% | $79.90 | 2026-11-30 |
+
+XLI's 3.34% cushion is tight because XLI sits 6.9% below its $186.44 hwm — that is the ratchet
+working, not a tightening decision.
+
+### Open defects (not yet fixed)
+
+1. **No stop-coverage check anywhere.** Nothing in `routines/`, `.claude/commands/` or
+   TRADING-STRATEGY.md verifies a position still has a live stop, or re-places one that expired.
+   This defect will recur on **2026-11-30** unless a guard is added.
+2. **Env vars absent on the one live routine.** Verified in-sandbox: all 5 MISSING. Fix is in the
+   cloud routine UI; not settable from the API.
+3. **This file is 619 KB and the routine cannot read it** — "exceeds maximum allowed size (256KB)".
+   Runs only ever see the tail, which is currently 8 consecutive abort entries. Needs rotation.
+4. **Live Telegram bot token in plaintext** in the "Conditional entries audit" routine prompt
+   (`trig_012e41W2NnZZdMhsWP5ASxJo`). Matches the token in `.env`. Should be rotated.
+
+### Decision: NO NEW POSITIONS — risk restored only. Reconciliation before any new entry.

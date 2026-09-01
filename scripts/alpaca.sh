@@ -26,6 +26,14 @@ cmd="${1:-}"
 shift || true
 
 case "$cmd" in
+  clock)
+    curl -fsS --ssl-no-revoke -H "$H_KEY" -H "$H_SEC" "$API/clock"
+    ;;
+  calendar)
+    start="${1:?usage: calendar START_YYYY-MM-DD [END_YYYY-MM-DD]}"
+    end="${2:-$start}"
+    curl -fsS --ssl-no-revoke -H "$H_KEY" -H "$H_SEC" "$API/calendar?start=$start&end=$end"
+    ;;
   account)
     curl -fsS --ssl-no-revoke -H "$H_KEY" -H "$H_SEC" "$API/account"
     ;;
@@ -78,7 +86,7 @@ case "$cmd" in
     curl -fsS --ssl-no-revoke -H "$H_KEY" -H "$H_SEC" -X DELETE "$API/positions"
     ;;
   *)
-    echo "Usage: bash scripts/alpaca.sh <account|positions|position|quote|snapshot|bars|orders|order|cancel|cancel-all|close|close-all> [args]" >&2
+    echo "Usage: bash scripts/alpaca.sh <clock|calendar|account|positions|position|quote|snapshot|bars|orders|order|cancel|cancel-all|close|close-all> [args]" >&2
     exit 1
     ;;
 esac
