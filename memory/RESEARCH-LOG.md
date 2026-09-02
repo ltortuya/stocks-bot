@@ -3262,3 +3262,15 @@ working, not a tightening decision.
    (`trig_012e41W2NnZZdMhsWP5ASxJo`). Matches the token in `.env`. Should be rotated.
 
 ### Decision: NO NEW POSITIONS — risk restored only. Reconciliation before any new entry.
+
+## 2026-09-02 — Pre-market Research
+
+### ABORTED — Env vars STILL missing in cloud routine (19 calendar days after 8/14; 1st routine run since 9/1 manual CORRECTION)
+
+- **Env-check:** All 5 required vars MISSING (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID). Wrapper smoke-test `alpaca.sh account` returned hard failure: `ALPACA_API_KEY: ALPACA_API_KEY not set in environment` — identical signature to all Aug abort commits.
+- **Scheduled-prompt claim mismatch:** The scheduler prompt for this run asserts "Env vars ... are pre-set on this routine." Sandbox verification proves otherwise. The routine's env config in the cloud UI has not actually been provisioned; the prompt's assurance is false as delivered to the run.
+- **Telegram alert:** attempted — `telegram.sh` fell back to local file (`[telegram fallback] appended to DAILY-SUMMARY.md`) since TELEGRAM_TOKEN also missing. Push notification sent to user via routine channel.
+- **Action:** No account snapshot, no market-context research, no trade ideas, no conditional entries. Positions/stops are the freshly-restored 9/1 state (SPY 26 @ stop $701.57 / XLB 390 @ $48.00 / XLI 87 @ $167.81 / XLP 239 @ $79.83, all four GTC trails expire 2026-11-30) — cannot verify from this routine.
+- **Fix required (blocker now 19 days old, ~75-day cumulative dark window since 6/19):** Re-provision the five env vars on the `Stocks bot — pre-market` routine (`trig_01WAvRr2jq1Tak15zRhLuUmQ`) env config in the cloud dashboard. This is the ONLY live routine per the 9/1 CORRECTION — market-open, midday, daily-summary, weekly-review, intraday-check are not scheduled, so execution and risk-management remain manual until either (a) env is fixed AND those routines are created, or (b) the manual `/pre-market` bridge is used.
+
+### Decision: NO TRADE — routine could not run.
