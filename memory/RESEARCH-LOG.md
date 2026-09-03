@@ -3274,3 +3274,15 @@ working, not a tightening decision.
 - **Fix required (blocker now 19 days old, ~75-day cumulative dark window since 6/19):** Re-provision the five env vars on the `Stocks bot — pre-market` routine (`trig_01WAvRr2jq1Tak15zRhLuUmQ`) env config in the cloud dashboard. This is the ONLY live routine per the 9/1 CORRECTION — market-open, midday, daily-summary, weekly-review, intraday-check are not scheduled, so execution and risk-management remain manual until either (a) env is fixed AND those routines are created, or (b) the manual `/pre-market` bridge is used.
 
 ### Decision: NO TRADE — routine could not run.
+
+## 2026-09-03 — Pre-market Research
+
+### ABORTED — Env vars STILL missing in cloud routine (20 calendar days after 8/14; 2nd routine run since 9/1 manual CORRECTION)
+
+- **Env-check:** All 5 required vars MISSING (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID). Wrapper smoke-test `alpaca.sh account` returned hard failure: `ALPACA_API_KEY: ALPACA_API_KEY not set in environment` — identical signature to every Aug and 9/2 abort. NOT the Phase-6 "MISSING-but-wrapper-works" false-alarm pattern; genuine env-var absence, confirmed by wrapper hard-fail.
+- **Scheduled-prompt claim mismatch (2nd consecutive routine):** Scheduler prompt again asserts "Env vars ... are pre-set on this routine." Sandbox verification proves otherwise. The routine's env config in the cloud UI has still not been provisioned since the 9/1 CORRECTION flagged it; the prompt's assurance remains false as delivered.
+- **Telegram alert:** attempted — `telegram.sh` fell back to local file (`[telegram fallback] appended to DAILY-SUMMARY.md`) since TELEGRAM_TOKEN also missing. Push notification sent to user via routine channel.
+- **Action:** No account snapshot, no market-context research, no trade ideas, no conditional entries. Positions/stops are the freshly-restored 9/1 state (SPY 26 @ stop $701.57 / XLB 390 @ $48.00 / XLI 87 @ $167.81 / XLP 239 @ $79.83, all four GTC trails expire 2026-11-30) — cannot verify from this routine.
+- **Fix required (blocker now 20 days old on the abort pattern, ~76-day cumulative dark window since 6/19):** Re-provision the five env vars on the `Stocks bot — pre-market` routine (`trig_01WAvRr2jq1Tak15zRhLuUmQ`) env config in the cloud dashboard. Per 9/1 CORRECTION this is the ONLY live routine — execution and risk-management remain manual until env is fixed AND market-open/midday/daily-summary/weekly-review/intraday-check are re-created, or the local `/pre-market` bridge is used.
+
+### Decision: NO TRADE — routine could not run.
