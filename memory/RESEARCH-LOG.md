@@ -3286,3 +3286,16 @@ working, not a tightening decision.
 - **Fix required (blocker now 20 days old on the abort pattern, ~76-day cumulative dark window since 6/19):** Re-provision the five env vars on the `Stocks bot — pre-market` routine (`trig_01WAvRr2jq1Tak15zRhLuUmQ`) env config in the cloud dashboard. Per 9/1 CORRECTION this is the ONLY live routine — execution and risk-management remain manual until env is fixed AND market-open/midday/daily-summary/weekly-review/intraday-check are re-created, or the local `/pre-market` bridge is used.
 
 ### Decision: NO TRADE — routine could not run.
+
+## 2026-09-07 — Pre-market Research
+
+### ABORTED — Env vars STILL missing in cloud routine (Labor Day; 24 calendar days after 8/14; 3rd routine run since 9/1 manual CORRECTION)
+
+- **Env-check:** All 5 required vars MISSING (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID). Wrapper smoke-test `alpaca.sh account` returned hard failure: `ALPACA_API_KEY: ALPACA_API_KEY not set in environment` — identical signature to every Aug and 9/2, 9/3 abort. NOT the Phase-6 "MISSING-but-wrapper-works" false-alarm pattern; genuine env-var absence, confirmed by wrapper hard-fail.
+- **Note on today's date:** 2026-09-07 is **Labor Day** (U.S. federal holiday) — cash equity + bond markets closed. The 9/1 CORRECTION explicitly flagged "Labor Day 2026 is Mon 2026-09-07" after the 9/1 cloud entry mislabeled that date. Even with env vars restored today, no cash-session action would have been possible. Real action window opens Tue 2026-09-08 pre-market.
+- **Scheduled-prompt claim mismatch (3rd consecutive routine):** Scheduler prompt again asserts "Env vars ... are pre-set on this routine." Sandbox verification proves otherwise. The routine's env config in the cloud UI has still not been provisioned since the 9/1 CORRECTION flagged it 6 days ago; the prompt's assurance remains false as delivered.
+- **Telegram alert:** attempted — `telegram.sh` fell back to local file (`[telegram fallback] appended to DAILY-SUMMARY.md`) since TELEGRAM_TOKEN also missing. Push notification sent to user via routine channel as backup.
+- **Action:** No account snapshot, no market-context research, no trade ideas, no conditional entries. Positions/stops are the 9/1 restored state (SPY 26 @ stop $701.57 / XLB 390 @ $48.00 / XLI 87 @ $167.81 / XLP 239 @ $79.83, all four GTC trails expire 2026-11-30) — cannot verify from this routine.
+- **Fix required (blocker now 24 days old on the abort pattern, ~80-day cumulative dark window since 6/19):** Re-provision the five env vars on the `Stocks bot — pre-market` routine (`trig_01WAvRr2jq1Tak15zRhLuUmQ`) env config in the cloud dashboard. Per 9/1 CORRECTION this is the ONLY live routine — execution and risk-management remain manual until env is fixed AND market-open/midday/daily-summary/weekly-review/intraday-check are re-created, or the local `/pre-market` bridge is used. Note: the 9/1 CORRECTION also flagged a live Telegram bot token in plaintext in a separate routine prompt — token rotation still pending.
+
+### Decision: NO TRADE — routine could not run (market closed for Labor Day regardless).
