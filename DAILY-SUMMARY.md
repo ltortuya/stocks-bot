@@ -338,3 +338,7 @@ pre-market 2026-09-09 ABORT: ALPACA_API_KEY/ALPACA_SECRET_KEY/PERPLEXITY_API_KEY
 ---
 ## 2026-09-10 11:17 UTC (fallback — Telegram not configured)
 pre-market ABORT 2026-09-10: ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID all MISSING on cloud routine (27d blocker; 5th run since 9/1 CORRECTION). Positions unverified. Fix: re-provision env on trig_01WAvRr2jq1Tak15zRhLuUmQ.
+
+---
+## 2026-09-11 11:15 UTC (fallback — Telegram not configured)
+pre-market  ABORT: env vars missing (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID). No .env allowed in cloud. Fix routine env config.
