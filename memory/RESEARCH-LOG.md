@@ -3323,3 +3323,15 @@ working, not a tightening decision.
 - **Fix required:** Re-provision env vars on `Stocks bot — pre-market` routine (`trig_01WAvRr2jq1Tak15zRhLuUmQ`). Only live routine; execution/risk mgmt remain manual until env fixed AND market-open/midday/daily-summary/weekly-review re-created. Live-token rotation from 9/1 CORRECTION still pending.
 
 ### Decision: NO TRADE — routine could not run.
+
+## 2026-09-16 — Pre-market Research
+
+### ABORTED — Env vars STILL missing (33d blocker; 6th routine since 9/1 CORRECTION; first run since 9/10)
+
+- **Env-check:** All 5 required vars MISSING. Wrapper hard-fail: `ALPACA_API_KEY: ALPACA_API_KEY not set in environment`.
+- **Scheduler-prompt mismatch (6th consecutive):** Prompt asserts env pre-set; sandbox proves otherwise. Cloud env config unchanged since 9/1 CORRECTION flagged it 15 days ago. No 9/11, 9/14, 9/15 entries logged — either scheduler skipped those days or those runs failed pre-commit.
+- **Telegram:** fell back to local file (TELEGRAM_TOKEN missing). Push notification also sent via routine channel.
+- **Positions (unverified, 9/1 restored state):** SPY 26 @ stop $701.57 / XLB 390 @ $48.00 / XLI 87 @ $167.81 / XLP 239 @ $79.83, all four GTC trails expire 2026-11-30.
+- **Fix required:** Re-provision env vars on `Stocks bot — pre-market` routine (`trig_01WAvRr2jq1Tak15zRhLuUmQ`). Only live routine; execution/risk mgmt remain manual until env fixed AND market-open/midday/daily-summary/weekly-review re-created. Live-token rotation from 9/1 CORRECTION still pending. File-size rotation (619KB → tail-only visibility) also still pending.
+
+### Decision: NO TRADE — routine could not run.
