@@ -3384,3 +3384,15 @@ working, not a tightening decision.
 ### Decision: NO TRADE — routine could not run.
 
 ### Decision: NO TRADE — routine could not run.
+
+## 2026-09-24 — Pre-market Research
+
+### ABORTED — Env vars STILL missing (40d blocker; 11th routine since 9/1 CORRECTION; consecutive with 9/16, 9/17, 9/18, 9/21, 9/22)
+
+- **Env-check:** All 5 required vars MISSING (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID). Wrapper hard-fail confirmed: `scripts/alpaca.sh account` returned `ALPACA_API_KEY: ALPACA_API_KEY not set in environment` at line 16 — matches the loop-check MISSING signal (real abort, not the Phase-6 false-MISSING pattern).
+- **Scheduler-prompt mismatch (11th consecutive):** Prompt again asserts "Env vars ... are pre-set on this routine." Sandbox proves otherwise. Cloud env config unchanged since 9/1 CORRECTION flagged it 23 days ago.
+- **Telegram:** fell back to local file (`[telegram fallback] appended to DAILY-SUMMARY.md`) since TELEGRAM_TOKEN missing. Push notification also sent via routine channel.
+- **Positions (unverified, 9/1 restored state, now 23d stale):** SPY 26 @ stop $701.57 / XLB 390 @ $48.00 / XLI 87 @ $167.81 / XLP 239 @ $79.83, all four GTC trails expire 2026-11-30. Cannot verify fills/stops without Alpaca creds. GTC-expiry countdown: 67 days.
+- **Fix required:** Re-provision env vars on `Stocks bot — pre-market` routine (`trig_01WAvRr2jq1Tak15zRhLuUmQ`). Only live routine; execution/risk mgmt remain manual until env fixed AND market-open/midday/daily-summary/weekly-review re-created. Live-token rotation from 9/1 CORRECTION still pending. File-size rotation (RESEARCH-LOG now >634KB → tail-only visibility) also still pending.
+
+### Decision: NO TRADE — routine could not run.
