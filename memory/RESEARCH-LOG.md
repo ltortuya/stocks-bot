@@ -3422,3 +3422,50 @@ working, not a tightening decision.
 ### Decision: NO TRADE — routine could not run.
 
 ### Decision: NO TRADE — routine could not run.
+
+## 2026-10-05 — Pre-market Research
+
+### Account
+- Equity: $98,397.18 (prior close $98,419.80 → Fri day P&L -$22.62, -0.02%)
+- Cash: $78,409.16
+- Buying power: $369,600.18 (reg-T BP $176,805.30; non-marg BP $88,402.65)
+- Daytrade count: not exposed in /v2/account; assume 0 (no trades on this routine since 9/01)
+- Long market value: $19,986.98 → **deployment 20.3%** (floor-rule minimum; well below 75–85% target)
+
+### Position state — MATERIAL CHANGE vs 13 prior abort entries
+- **Currently holding: SPY 26 only** (avg $758.54, mark $768.67, +1.34%, +$263.38 unrealized)
+- **XLB 390 / XLI 87 / XLP 239 all CLOSED** — not present in `positions`. Last restored-state assumption (SPY+XLB+XLI+XLP, stops $701.57/$48.00/$167.81/$79.83, GTCs expiring 2026-11-30) is now stale. Three sector-ETF legs exited at some point between 2026-09-02 and today; `alpaca.sh` has no `activities` subcommand so exit price/date cannot be recovered from this routine.
+- Open order: 1 trailing-stop sell on SPY, stop $713.83, hwm $775.14, trail_price $61.31, GTC expires 2026-11-30 — cushion from current price = 7.14% (above the 3% proximity gate; stop has ratcheted up from the 9/01 restored $701.57).
+
+### Env-check — false-MISSING pattern, Phase-6 (saved feedback applied)
+- Loop check reported all 7 vars MISSING. Smoke-test `alpaca.sh account` returned a full account JSON → **env is actually set in subshell context**. Per saved `feedback_env_var_check.md`, this is the known Phase-6 pattern and is NOT an abort trigger. Routine executed normally.
+- 50-day false-abort window since 2026-08-14 was likely driven by this same shell-check unreliability on at least part of those runs (as flagged on 9/01 CORRECTION open-defect #2 and 10/02 entry). Env vars have in fact been reachable to the wrapper for an undetermined portion of that window.
+
+### Market Context
+- WTI ~$90.46/bbl (-0.71%); Brent not cleanly quoted
+- S&P 500 futures ~7,764–7,772 (-0.07% to -0.15%); Nasdaq futures +0.3–1.0%; Dow flat
+- VIX ~16.3 (mid-teens, choppy 15.3–16.4 last week)
+- Today's catalysts: **ISM Services PMI 10:00 ET** (key), S&P Global Services PMI final, Fed Goolsbee speaks
+- Earnings before open: none major (TORO, CBAT, MWC, ELBM — small/micro)
+- Economic calendar this week: Wed 10/07 FOMC minutes; Thu 10/08 initial claims; Fri 10/09 Mich sentiment prelim. CPI 10/14, PPI 10/15, FOMC decision 10/28. Payrolls already released 10/02 (soft, repriced Oct hike odds lower)
+- Sector momentum YTD: Energy +40.5% leader, Tech +28–38%, Industrials +9.6%, Health Care +10%, Consumer Discretionary -7.8% worst
+
+### Trade Ideas
+1. **SPY — HOLD existing position.** +1.34% unrealized, stop $713.83 (7.14% cushion), GTC-expiry 2026-11-30 (56 days). No action.
+2. **XLE (Energy ETF) — WATCH ONLY.** Energy is YTD sector leader; WTI pulling back today on no idiosyncratic catalyst. No entry today — no clean trigger, ISM Services + Fed-speak = headline risk.
+3. **Broader deployment** — current 20.3% is at the deployment-floor minimum. Three sector-ETF stop-outs since 2026-09 have collapsed the book to a single broad-index core. Rebuilding should wait until (a) ISM Services prints and (b) a sector-specific catalyst appears; blind-redeploying into the open on Monday after 50 days of dark window has no edge.
+
+### Conditional Entries (midday-eligible) — ZERO
+None. Default per strategy; no setup today genuinely benefits from intraday confirmation over at-the-open execution, and no scanner-grade candidate was identified in the research round.
+
+### Risk Factors
+- **ISM Services PMI at 10:00 ET** — print will drive services/rates narrative and sector rotation
+- **Fed Goolsbee speech** — rate-path repricing continues post-soft payrolls
+- **Rising-yields / rising-oil regime** flagged by multiple weekly outlooks as the two macro pressures on equities
+- **Portfolio concentration risk** — down from 4 positions to 1 (SPY); no sector diversification currently; cannot verify the three stop-outs without an `activities` endpoint wrapper
+- **Trailing GTC half-life** — SPY stop expires 2026-11-30; the 9/01 CORRECTION open-defect #1 (no stop-coverage check anywhere) remains unaddressed
+- **File-size debt** — RESEARCH-LOG now 655 KB (3,424 lines); still >256 KB "max readable" threshold the routine previously flagged. Needs rotation.
+
+### Decision: HOLD
+- No new positions today. SPY runs with its ratcheted stop. Patience > activity.
+- Follow-up for the user (not actionable in this routine): (a) reconcile XLB/XLI/XLP exits manually via dashboard or by adding `activities` to `alpaca.sh`; (b) address stop-coverage-check defect before 2026-11-30 GTC expiry; (c) rotate RESEARCH-LOG; (d) update "9/01 restored state" boilerplate carried in abort entries — it is no longer accurate.
