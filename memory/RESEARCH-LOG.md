@@ -3529,3 +3529,13 @@ None. Default per strategy. No single setup today has a thesis that genuinely be
 ### Decision: HOLD
 - No new positions today. SPY runs with its ratcheted stop. Patience > activity — 2nd straight pre-market HOLD on the broad-index-only posture, consistent with the deliberate "wait for a specific catalyst" stance set 10/05.
 - Follow-up for the user (not actionable in this routine): (a) reconcile the XLB/XLI/XLP exits via Alpaca dashboard or add `activities` to `alpaca.sh`; (b) address the stop-coverage-check defect before the 2026-11-30 GTC expiry (55 days); (c) rotate RESEARCH-LOG (660 KB); (d) the "9/01 restored state" boilerplate carried in earlier abort entries is no longer accurate — book is SPY-only.
+
+### Intraday-check addendum (08:00 ET)
+- Env-check: shell loop reported all 4 vars MISSING; `alpaca.sh account` smoke-test returned live JSON (portfolio_value $98,699.56, long MV $20,290.40) → false-MISSING per `feedback_env_var_check.md`. Proceeded.
+- Positions: SPY 26 @ avg $758.54, mark **$780.54**, **+2.90% unrealized (+$572.00)**, day change +0.74% (lastday $774.83). Single-position book unchanged.
+- Open orders: 1 GTC trailing-stop sell on SPY — trail_price $61.31, **stop $719.36**, **hwm $780.67**, GTC expires 2026-11-30 (55 days). hwm ratcheted premarket $776.66 → $780.67 (+$4.01); stop auto-ratcheted $715.295 → $719.36 (+$4.07). Cushion from mark **7.84%** (well outside 3% proximity gate).
+- STEP 3 (cut ≤ -7%): no action — SPY +2.90%, 9.9 pp of cushion to the trigger.
+- STEP 4 (tighten at +15%/+20%): no action — SPY +2.90%, 12+ pp below the first tighten threshold.
+- STEP 5 (thesis): intact. SPY is the deployment-floor broad-index core; no intraday news materially shifts the "wait for a specific sector/single-name catalyst before rebuilding" stance. Trail ratcheting on-track.
+- STEP 6 (notification): silent per routine — no cut, no tighten, no thesis exit, no new entries (new entries are disallowed in this routine regardless).
+- Decision: NO ACTION. Trades today 0/3, week 0/6.
