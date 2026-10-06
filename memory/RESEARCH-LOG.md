@@ -3481,3 +3481,51 @@ None. Default per strategy; no setup today genuinely benefits from intraday conf
 - STEP 6: no sharp unexplained moves in the single-position book; no intraday research pulled.
 - STEP 7 (notification): silent per routine — no cut, no tighten, no thesis exit, no conditional fire.
 - Decision: NO ACTION.
+
+## 2026-10-06 — Pre-market Research
+
+### Env-check — false-MISSING pattern (saved feedback applied)
+- Loop check: all 5 required vars reported MISSING. Smoke-test `alpaca.sh account` returned a live JSON payload (portfolio_value $98,605.70, balance_asof 2026-10-05) → env IS reachable to the wrapper. Per `feedback_env_var_check.md` this is the Phase-6 shell-check unreliability pattern (now ~50-session cumulative). NOT an abort trigger. Routine executed normally.
+
+### Account
+- Equity: $98,605.70 (prior close $98,554.74 → yesterday day P&L +$50.96, +0.05%)
+- Cash: $78,409.16 (79.5% cash)
+- Buying power: $370,186.95 (reg-T BP $177,014.86; non-marg BP $88,507.43)
+- Daytrade count: not exposed in /v2/account; assume 0 (no trades on this routine since 9/01)
+- Long market value: $20,196.54 → **deployment 20.5%** (floor minimum; well below 75–85% target band)
+
+### Position state
+- **SPY 26** @ avg $758.54, mark $776.66, **+2.39% unrealized (+$471.12)**, day change +0.24% (lastday $774.83)
+- Open order: 1 trailing-stop sell on SPY, stop **$715.295**, hwm $776.605, trail_price $61.31, GTC expires **2026-11-30 (55 days)** — cushion from current price **7.90%** (above 3% proximity gate). Stop ratcheted up from Mon close $715.295 (hwm unchanged — current price $776.66 is $0.055 above prior hwm $776.605, next quote should ratchet). Single-position book (XLB/XLI/XLP all closed between 2026-09-02 and 2026-10-05; exits unreconstructable without `activities` wrapper).
+
+### Market Context
+- **WTI ~$89.48/bbl**, Brent ~$89.00/bbl — both down ~0.5–0.7% intraday; multi-day fade continues (WTI $90.46 → $89.48 since Mon)
+- **ES futures** ~7,834–7,842, **+0.09% to +0.20%**; Nasdaq futures +0.05%; Dow futures +0.12% — modestly higher, constructive overnight
+- **VIX ~15.48–15.50** — fresh multi-week low, benign vol regime
+- Today's catalysts: **ISM Services PMI** (per Perplexity top-sources Tuesday), **US trade balance**, **3-year Treasury note auction**, **Fed Williams + Bowman** speakers. Note: ISM Services actual-release-date for the week is contested across sources (one weekly calendar excludes it); treat as medium-conviction catalyst rather than certain.
+- Earnings before open: **APOG** (Apogee), **LW** (Lamb Weston), **RPM** (RPM International) — mid-caps, no index-mover
+- Economic calendar this week: Thu initial claims; no CPI, PPI, FOMC, or NFP this week. CPI 10/14, PPI 10/15, FOMC 10/27–28, next NFP 11/06
+- Sector momentum YTD: **Energy +~42%** (clear leader), **Industrials** top-tier, **Tech** strong (Nasdaq near records, SOX bid), **Consumer Discretionary ~-7.5%** (worst). SPY sits as broad-index core.
+
+### Trade Ideas
+1. **SPY — HOLD existing position.** +2.39% unrealized, stop $715.295 (7.90% cushion), GTC-expiry 2026-11-30 (55 days). New hwm likely to tick to ~$776.66 today if cash-session confirms the pre-market mark; GTC auto-ratchets accordingly. No action.
+2. **XLE (Energy ETF) — WATCH ONLY.** Energy YTD leader (+42%) but oil fading intraday; no clean trigger before ISM Services + Fed speakers. Not actionable at the open.
+3. **Rebuild path remains deferred.** 20.5% deployment is at the floor-rule minimum. Three sector-leg stop-outs reduced the book to broad-index-only; blind-redeploying into Tue after a single Mon of visibility and ahead of ISM Services + Fed speakers has no edge. Wait for a specific sector/single-name catalyst that passes the Buy-side Gate.
+
+### Conditional Entries (midday-eligible) — ZERO
+None. Default per strategy. No single setup today has a thesis that genuinely benefits from intraday confirmation over at-the-open execution, and no scanner-grade candidate was flagged in the research round.
+
+### Risk Factors
+- **Fed Williams + Bowman** speak today — rate-path repricing continues; VIX 15.5 leaves little vol cushion if a hawkish surprise lands
+- **3-year Treasury note auction** — weak demand could push yields and pressure growth cohorts
+- **ISM Services PMI (if printed today)** — services/rates narrative + sector rotation trigger
+- **Oil fade continues** — WTI $90.46 → $89.48 (~1 pp over 1 session); watch energy complex / XLE pullback if slide extends
+- **Fed blackout approaches** — 10/28 FOMC means ~10 days of blackout from ~10/18; Williams/Bowman today are among the last pre-blackout speakers
+- **Concentration risk** — single-position book (SPY only); no sector diversification currently
+- **Trailing GTC half-life** — SPY stop expires 2026-11-30 (55 days); 9/01 open-defect #1 (no stop-coverage check) still unaddressed
+- **File-size debt** — RESEARCH-LOG now 660 KB / 3,483 lines; needs rotation (carried from 10/05)
+- **Three-leg exit reconciliation** — XLB/XLI/XLP exits between 2026-09-02 and 2026-10-05 unreconstructable without an `activities` wrapper (carried from 10/05)
+
+### Decision: HOLD
+- No new positions today. SPY runs with its ratcheted stop. Patience > activity — 2nd straight pre-market HOLD on the broad-index-only posture, consistent with the deliberate "wait for a specific catalyst" stance set 10/05.
+- Follow-up for the user (not actionable in this routine): (a) reconcile the XLB/XLI/XLP exits via Alpaca dashboard or add `activities` to `alpaca.sh`; (b) address the stop-coverage-check defect before the 2026-11-30 GTC expiry (55 days); (c) rotate RESEARCH-LOG (660 KB); (d) the "9/01 restored state" boilerplate carried in earlier abort entries is no longer accurate — book is SPY-only.
