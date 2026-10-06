@@ -3539,3 +3539,16 @@ None. Default per strategy. No single setup today has a thesis that genuinely be
 - STEP 5 (thesis): intact. SPY is the deployment-floor broad-index core; no intraday news materially shifts the "wait for a specific sector/single-name catalyst before rebuilding" stance. Trail ratcheting on-track.
 - STEP 6 (notification): silent per routine — no cut, no tighten, no thesis exit, no new entries (new entries are disallowed in this routine regardless).
 - Decision: NO ACTION. Trades today 0/3, week 0/6.
+
+### Midday Scan Addendum (12:01 CT)
+- Env-check: shell loop reported 5/5 vars MISSING; `alpaca.sh account` smoke-test returned live JSON (equity $98,689.55, cash $78,409.16, long MV $20,280.39) → false-MISSING per `feedback_env_var_check.md`. Proceeded.
+- Account: equity **$98,689.55**, cash **$78,409.16** (79.4%), long MV **$20,280.39** → **deployment 20.5%** (floor minimum, unchanged from pre-market). Day P&L vs. last_equity $98,554.74: **+$134.81 (+0.14%)**.
+- Positions: **SPY 26** @ avg $758.54, mark **$780.085** (quote mid ~$779.94), **+2.84% unrealized (+$560.17)**, day change +0.68% (lastday $774.83). Single-position book unchanged.
+- Open orders: 1 GTC trailing-stop sell on SPY — trail_price $61.31, **stop $720.31**, **hwm $781.62**, GTC expires 2026-11-30 (55 days). hwm ratcheted since 08:00 intraday-check $780.67 → $781.62 (+$0.95); stop auto-ratcheted $719.36 → $720.31 (+$0.95). Cushion from mark **7.66%** (well outside 3% proximity gate).
+- STEP 3 (cut ≤ -7%): no action — SPY +2.84%, 9.8 pp cushion to trigger.
+- STEP 4 (tighten at +15%/+20%): no action — SPY +2.84%, 12+ pp below the first tighten threshold.
+- STEP 5 (thesis): intact. SPY broad-index-core deployment-floor leg; no intraday news materially shifts the "wait for a specific sector/single-name catalyst before rebuilding" stance. Trail ratcheting on-track (hwm +$0.95 since 08:00).
+- STEP 5.5 (conditional entries): pre-market section listed ZERO conditionals → "No conditionals to evaluate."
+- STEP 6: no sharp unexplained moves in the single-position book; no intraday research pulled.
+- STEP 7 (notification): silent per routine — no cut, no tighten, no thesis exit, no conditional fire.
+- Decision: NO ACTION. Trades today 0/3, week 0/6.
