@@ -3552,3 +3552,13 @@ None. Default per strategy. No single setup today has a thesis that genuinely be
 - STEP 6: no sharp unexplained moves in the single-position book; no intraday research pulled.
 - STEP 7 (notification): silent per routine — no cut, no tighten, no thesis exit, no conditional fire.
 - Decision: NO ACTION. Trades today 0/3, week 0/6.
+
+### Intraday-check Addendum (11:30 PDT)
+- Env-check: shell loop reported 4/4 vars MISSING; `alpaca.sh account` smoke-test returned live JSON (portfolio_value $98,683.12, long MV $20,273.96, cash $78,409.16) → false-MISSING per `feedback_env_var_check.md`. Proceeded.
+- Positions: **SPY 26** @ avg $758.54, mark **$779.76**, **+2.80% unrealized (+$551.72)**, day change +0.64% (lastday $774.83). Single-position book unchanged.
+- Open orders: 1 GTC trailing-stop sell on SPY — trail_price $61.31, **stop $720.31**, **hwm $781.62** (unchanged from midday), GTC expires 2026-11-30 (55 days). Mark faded $780.085 → $779.76 (-$0.325) off the midday high, hwm/stop unchanged. Cushion from mark **7.63%** (well outside 3% proximity gate).
+- STEP 3 (cut ≤ -7%): no action — SPY +2.80%, 9.8 pp cushion to trigger.
+- STEP 4 (tighten at +15%/+20%): no action — SPY +2.80%, 12+ pp below the first tighten threshold.
+- STEP 5 (thesis): intact. SPY broad-index-core deployment-floor leg; no intraday news materially shifts the "wait for a specific sector/single-name catalyst before rebuilding" stance. Mild afternoon fade from midday high but trend intact; no new entries authored (routine disallows regardless).
+- STEP 6 (notification): silent per routine — no cut, no tighten, no thesis exit, no new entries.
+- Decision: NO ACTION. Trades today 0/3, week 0/6.
