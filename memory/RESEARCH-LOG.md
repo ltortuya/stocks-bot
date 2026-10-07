@@ -3562,3 +3562,50 @@ None. Default per strategy. No single setup today has a thesis that genuinely be
 - STEP 5 (thesis): intact. SPY broad-index-core deployment-floor leg; no intraday news materially shifts the "wait for a specific sector/single-name catalyst before rebuilding" stance. Mild afternoon fade from midday high but trend intact; no new entries authored (routine disallows regardless).
 - STEP 6 (notification): silent per routine — no cut, no tighten, no thesis exit, no new entries.
 - Decision: NO ACTION. Trades today 0/3, week 0/6.
+
+## 2026-10-07 — Pre-market Research
+
+### Env-check — false-MISSING pattern (saved feedback applied)
+- Loop check: all 5 required vars reported MISSING. Smoke-test `alpaca.sh account` returned live JSON (portfolio_value $98,616.07, balance_asof 2026-10-06) → env IS reachable to the wrapper. Per `feedback_env_var_check.md` this is the Phase-6 shell-check unreliability pattern (now multi-week cumulative). NOT an abort trigger. Routine executed normally.
+
+### Account
+- Equity: $98,616.07 (prior close $98,665.50 → yesterday day P&L -$49.43 marked post-close; TRADE-LOG EOD closed at $98,667.58)
+- Cash: $78,409.16 (79.5% cash)
+- Buying power: $370,215.99 (reg-T BP $177,025.23; non-marg BP $88,512.61)
+- Daytrade count: not exposed in /v2/account; assume 0 (no trades since 9/01)
+- Long market value: $20,206.91 → **deployment 20.5%** (floor minimum; well below 75–85% target band)
+
+### Position state
+- **SPY 26** @ avg $758.54, mark **$777.18**, **+2.46% unrealized (+$484.64)**, day change -0.24% (lastday $779.09 — pre-market mild fade)
+- Open order: 1 trailing-stop sell on SPY, **stop $720.31**, **hwm $781.62**, trail_price $61.31, GTC expires **2026-11-30 (54 days)** — cushion from current mark **7.31%** (above 3% proximity gate). hwm and stop unchanged since Tue's midday ratchet. Single-position book since 2026-09-02–2026-10-05 three-leg stop-outs (unreconstructable without `activities` wrapper).
+
+### Market Context
+- **WTI ~$89.11–$89.77/bbl** (Newsquawk settle $91.11 x6 contract; FT $89.70; Investing.com $89.77); **Brent ~$101.63–$102.25/bbl** per World Oil Monitor / Newsquawk. Brent print notably higher than Tue's quoted ~$89 — possible geopolitical risk-premium or data-source divergence (benchmark/contract-month mismatch); treat Brent level with caveat and watch energy complex at the open.
+- **ES futures** ~7,873–7,882, **-0.00% to +0.72%**; range tightened near Tue close ~7,881, modestly higher premarket on light-prints. Flat-to-up tone.
+- **VIX ~15.01–15.27** — benign vol regime, essentially flat vs Tue's 15.48; near fresh multi-week low
+- Today's catalysts: **FOMC minutes 14:00 ET** (dominant macro variable of the day; last window into dot-plot dispersion and the hawkish/dovish faction map ahead of the 10/28 decision), AI/semi tape leadership, softer-inflation-easing-hike-fears narrative, oil relief, Tesla teased product event (10/07), Boeing Pentagon fighter-jet selection headline
+- Earnings before open: **STZ (Constellation Brands)** 8:00 ET, **WS (Worthington Steel)** 8:30 ET — mid/large-caps, no index-mover. SAR at 10:00 ET (not pre-open)
+- Economic calendar this week: **FOMC minutes 14:00 ET today**; Thu 10/08 initial claims 8:30 ET; Fri 10/09 Michigan sentiment prelim. CPI 10/14, PPI 10/15, FOMC decision 10/28, next NFP 11/06
+- Sector momentum YTD: **Energy (XLE) +40–45%** clear leader, **Tech (XLK) +29–41%** second, **Industrials (XLI) +9–12%**, **Health Care (XLV) +10%**, **Financials (XLF) -2%**, **Comm Svcs (XLC) -4%**, **Consumer Disc (XLY) -6%**, **Utilities (XLU) -1.6 to -7%**. SPY sits as broad-index-only core
+
+### Trade Ideas
+1. **SPY — HOLD existing position.** +2.46% unrealized, stop $720.31 (7.31% cushion), GTC-expiry 2026-11-30 (54 days). hwm $781.62 ~0.57% above current mark — any session re-approach ratchets stop higher. No action.
+2. **XLE (Energy ETF) — WATCH ONLY.** Energy YTD leader (+40–45%); WTI drifts in the $89–$91 band and Brent spiked oddly to $101+ (watch for data confirmation / geopolitical catalyst at the open). No clean trigger before FOMC minutes.
+3. **Rebuild path remains deferred.** 20.5% deployment is at the floor-rule minimum. FOMC-minutes-day with the dominant macro variable at 14:00 ET is a weak backdrop to blind-redeploy into the open; wait for a specific sector/single-name catalyst that passes the Buy-side Gate. 3rd consecutive pre-market HOLD on the broad-index-only posture consistent with the "wait for a specific catalyst" stance set 10/05.
+
+### Conditional Entries (midday-eligible) — ZERO
+None. Default per strategy. **FOMC minutes 14:00 ET** is the day's dominant binary; a midday conditional authored this morning would fire inside the pre-minutes window with no edge from intraday confirmation, so there is no setup today that genuinely benefits from intraday confirmation over at-the-open execution. No scanner-grade candidate flagged in the research round.
+
+### Risk Factors
+- **FOMC minutes 14:00 ET** — rate-path binary; the first full read into the dot-plot dispersion and faction map since 2026-09-17; hawkish surprise could compress VIX 15 cushion quickly
+- **Initial claims Thu 10/08** — follow-on labor read; soft payrolls 10/02 already repriced Oct hike odds lower
+- **Brent price data divergence** — $89 → $101–$102 jump across sources needs reconciliation at the open; could reflect geopolitical risk-premium (unseen in Perplexity catalyst pass) or benchmark/contract-month data mismatch
+- **Fed-speaker calendar restarts** post-Williams/Bowman Tue; last ~10 days before 10/18 blackout
+- **Concentration risk** — single-position book (SPY only); no sector diversification
+- **Trailing GTC half-life** — SPY stop expires 2026-11-30 (54 days); 9/01 open-defect #1 (no stop-coverage check) still unaddressed
+- **File-size debt** — RESEARCH-LOG now 660+ KB / 3,560+ lines; needs rotation (carried from 10/05)
+- **Three-leg exit reconciliation** — XLB/XLI/XLP exits 2026-09-02 to 2026-10-05 unreconstructable without an `activities` wrapper (carried from 10/05)
+
+### Decision: HOLD
+- No new positions today. SPY runs with its ratcheted stop. Patience > activity — 3rd straight pre-market HOLD on broad-index-only posture; FOMC-minutes-day is explicitly not a sector/single-name redeployment trigger.
+- Follow-up for the user (not actionable in this routine): (a) reconcile XLB/XLI/XLP exits via Alpaca dashboard or add `activities` to `alpaca.sh`; (b) address stop-coverage-check defect before 2026-11-30 GTC expiry (54 days); (c) rotate RESEARCH-LOG (660+ KB); (d) the "9/01 restored state" boilerplate carried in earlier abort entries is no longer accurate — book is SPY-only.
