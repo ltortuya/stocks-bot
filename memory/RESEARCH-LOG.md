@@ -3622,3 +3622,13 @@ None. Default per strategy. **FOMC minutes 14:00 ET** is the day's dominant bina
 - STEP 6: no sharp unexplained moves in the single-position book (SPY -0.35% is well inside normal pre-minutes drift); no intraday research pulled.
 - STEP 7 (notification): silent per routine — no cut, no tighten, no thesis exit, no conditional fire.
 - Decision: NO ACTION. Trades today 0/3, week 0/6.
+
+### Intraday-check Addendum (11:30 PDT)
+- Env-check: shell loop reported 4/4 vars MISSING; `alpaca.sh positions` + `orders` smoke-tests returned live JSON (SPY 26 @ mark $777.45, order id e790c8b3 stop $720.31) → false-MISSING per `feedback_env_var_check.md`. Proceeded.
+- Positions: **SPY 26** @ avg $758.54, mark **$777.45**, **+2.49% unrealized (+$491.66)**, day change -0.21% (lastday $779.09 — pre-FOMC-minutes fade persists; mark firmed $776.36 → $777.45 off the midday low). Single-position book unchanged.
+- Open orders: 1 GTC trailing-stop sell on SPY — trail_price $61.31, **stop $720.31**, **hwm $781.62** (unchanged from Tue midday ratchet), GTC expires 2026-11-30 (54 days). Mark $4.17 / 0.53% below hwm — no new ratchet this session. Cushion from mark **7.35%** (well outside 3% proximity gate).
+- STEP 3 (cut ≤ -7%): no action — SPY +2.49%, 9.5 pp cushion to trigger.
+- STEP 4 (tighten at +15%/+20%): no action — SPY +2.49%, 12.5 pp below the first tighten threshold.
+- STEP 5 (thesis): intact. SPY broad-index-core deployment-floor leg; mild intraday fade is pre-FOMC-minutes (14:00 ET) positioning noise, not a thesis break. "Wait for a specific sector/single-name catalyst before rebuilding" stance held.
+- STEP 6 (notification): silent per routine — no cut, no tighten, no thesis exit, no new entries (routine disallows regardless).
+- Decision: NO ACTION. Trades today 0/3, week 0/6.
