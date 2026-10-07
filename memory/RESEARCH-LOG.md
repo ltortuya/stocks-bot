@@ -3609,3 +3609,16 @@ None. Default per strategy. **FOMC minutes 14:00 ET** is the day's dominant bina
 ### Decision: HOLD
 - No new positions today. SPY runs with its ratcheted stop. Patience > activity — 3rd straight pre-market HOLD on broad-index-only posture; FOMC-minutes-day is explicitly not a sector/single-name redeployment trigger.
 - Follow-up for the user (not actionable in this routine): (a) reconcile XLB/XLI/XLP exits via Alpaca dashboard or add `activities` to `alpaca.sh`; (b) address stop-coverage-check defect before 2026-11-30 GTC expiry (54 days); (c) rotate RESEARCH-LOG (660+ KB); (d) the "9/01 restored state" boilerplate carried in earlier abort entries is no longer accurate — book is SPY-only.
+
+### Midday Scan Addendum (10:00 CT)
+- Env-check: shell loop reported 4/4 vars MISSING; `alpaca.sh account` smoke-test returned live JSON (equity $98,593.74, cash $78,409.16, long MV $20,184.58) → false-MISSING per `feedback_env_var_check.md`. Proceeded.
+- Account: equity **$98,593.74**, cash **$78,409.16** (79.5%), long MV **$20,184.58** → **deployment 20.5%** (floor minimum, unchanged from pre-market). Day P&L vs. last_equity $98,665.50: **-$71.76 (-0.07%)**.
+- Positions: **SPY 26** @ avg $758.54, mark **$776.36**, **+2.35% unrealized (+$463.32)**, day change -0.35% (lastday $779.09 — mild pre-FOMC-minutes fade carried from the overnight tape). Single-position book unchanged.
+- Open orders: 1 GTC trailing-stop sell on SPY — trail_price $61.31, **stop $720.31**, **hwm $781.62** (unchanged from Tue midday ratchet), GTC expires 2026-11-30 (54 days). Cushion from mark **7.22%** (above 3% proximity gate; mark $5.26 / 0.67% below hwm — no new ratchet this session).
+- STEP 3 (cut ≤ -7%): no action — SPY +2.35%, 9.4 pp cushion to trigger.
+- STEP 4 (tighten at +15%/+20%): no action — SPY +2.35%, 12.6 pp below the first tighten threshold.
+- STEP 5 (thesis): intact. SPY broad-index-core deployment-floor leg; mild intraday fade is pre-FOMC-minutes positioning noise, not a thesis break. "Wait for a specific sector/single-name catalyst before rebuilding" stance held.
+- STEP 5.5 (conditional entries): pre-market section listed ZERO conditionals → "No conditionals to evaluate."
+- STEP 6: no sharp unexplained moves in the single-position book (SPY -0.35% is well inside normal pre-minutes drift); no intraday research pulled.
+- STEP 7 (notification): silent per routine — no cut, no tighten, no thesis exit, no conditional fire.
+- Decision: NO ACTION. Trades today 0/3, week 0/6.
