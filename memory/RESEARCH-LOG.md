@@ -3684,3 +3684,13 @@ None. Default per strategy. **FOMC minutes digest + 30-year auction 13:00 ET + M
 ### Decision: HOLD
 - No new positions today. SPY runs with its ratcheted stop. Patience > activity — 4th straight pre-market HOLD on broad-index-only posture; post-FOMC-minutes-digest day with 30-year-auction + Musalem speaker in the afternoon is explicitly not a sector/single-name redeployment trigger.
 - Follow-up for the user (not actionable in this routine): (a) reconcile XLB/XLI/XLP exits via Alpaca dashboard or add `activities` to `alpaca.sh`; (b) address stop-coverage-check defect before 2026-11-30 GTC expiry (53 days); (c) rotate RESEARCH-LOG (660+ KB); (d) propagate the env-var smoke-test bypass into pre-market.md so the shell-check false-MISSING no longer aborts the pre-market execute routine.
+
+### Intraday-check Addendum (08:00 PDT / 11:00 ET, ~90 min post-open, post-initial-claims digest, pre-30yr-auction)
+- Env-check: shell loop reported 4/4 vars MISSING; `alpaca.sh positions` + `orders` smoke-tests returned live JSON (SPY 26 @ mark $775.32, order id e790c8b3 stop $720.31) → false-MISSING per `feedback_env_var_check.md`. Proceeded.
+- Positions: **SPY 26** @ avg $758.54, mark **$775.32**, **+2.21% unrealized (+$436.28)**, day change -0.24% (lastday $777.22 — pre-market fade persisting into cash session; mark firmed $773.00 pre-market → $775.32 at the 90min mark, +0.30% off premarket). Single-position book unchanged.
+- Open orders: 1 GTC trailing-stop sell on SPY — trail_price $61.31, **stop $720.31**, **hwm $781.62** (unchanged from Tue 10/06 midday ratchet), GTC expires 2026-11-30 (53 days). Mark $6.30 / 0.81% below hwm — no new ratchet this session. Cushion from mark **7.09%** (well outside 3% proximity gate).
+- STEP 3 (cut ≤ -7%): no action — SPY +2.21%, 9.21 pp cushion to trigger.
+- STEP 4 (tighten at +15%/+20%): no action — SPY +2.21%, 12.79 pp below the first tighten threshold.
+- STEP 5 (thesis): intact. SPY broad-index-core deployment-floor leg; mild intraday fade is initial-claims-digest / rising-yields positioning noise ahead of 13:00 ET 30-year auction + 13:40 ET Musalem speaker, not a thesis break. "Wait for a specific sector/single-name catalyst before rebuilding" stance held.
+- STEP 6 (notification): silent per routine — no cut, no tighten, no thesis exit, no new entries (routine disallows regardless).
+- Decision: NO ACTION. Trades today 0/3, week 0/6.
