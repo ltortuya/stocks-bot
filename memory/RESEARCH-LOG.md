@@ -3632,3 +3632,55 @@ None. Default per strategy. **FOMC minutes 14:00 ET** is the day's dominant bina
 - STEP 5 (thesis): intact. SPY broad-index-core deployment-floor leg; mild intraday fade is pre-FOMC-minutes (14:00 ET) positioning noise, not a thesis break. "Wait for a specific sector/single-name catalyst before rebuilding" stance held.
 - STEP 6 (notification): silent per routine — no cut, no tighten, no thesis exit, no new entries (routine disallows regardless).
 - Decision: NO ACTION. Trades today 0/3, week 0/6.
+
+## 2026-10-08 — Pre-market Research
+
+### Env-check — false-MISSING pattern (saved feedback applied)
+- Loop check: all 5 required vars reported MISSING. Smoke-test `alpaca.sh account` returned live JSON (portfolio_value $98,507.16, balance_asof 2026-10-07) → env IS reachable to the wrapper. Per `feedback_env_var_check.md` this is the Phase-6 shell-check unreliability pattern (now multi-week cumulative). NOT an abort trigger. Routine executed normally.
+
+### Account
+- Equity: $98,507.16 (prior close last_equity $98,616.88 → ~$110 mark-down on pre-market SPY fade; TRADE-LOG Oct 07 EOD closed at $98,618.18)
+- Cash: $78,409.16 (79.6% cash)
+- Buying power: $369,911.04 (reg-T BP $176,916.32; non-marg BP $88,458.16)
+- Daytrade count: not exposed in /v2/account; assume 0 (no trades since 9/01)
+- Long market value: $20,098 → **deployment 20.4%** (floor minimum; well below 75–85% target band)
+
+### Position state
+- **SPY 26** @ avg $758.54, mark **$773.00**, **+1.91% unrealized (+$375.96)**, day change -0.54% (lastday $777.22 — pre-market fade on post-FOMC-minutes digest / rising-yields tape)
+- Open order: 1 trailing-stop sell on SPY, **stop $720.31**, **hwm $781.62**, trail_price $61.31, GTC expires **2026-11-30 (53 days)** — cushion from current mark **6.82%** (above 3% proximity gate). hwm and stop unchanged since Tue 10/06 midday ratchet (updated_at 2026-10-06T15:26:23Z). Single-position book since 2026-09-02–2026-10-05 three-leg stop-outs (unreconstructable without `activities` wrapper).
+
+### Market Context
+- **WTI ~$88.44–$89.87/bbl** (Investing $88.44, Markets Insider $89.87, TMGM >$88.50 on unexpected EIA draw + Middle East conflicts in focus); **Brent ~$102.28/bbl** (persisting divergence from WTI — now ~$13-14 Brent-WTI spread vs normal $3-5, flagged yesterday and confirmed today across sources: real geopolitical risk-premium, not a data glitch). Watch energy complex at the open.
+- **ES futures** ~7,832–7,852, **-0.26% to -0.31%** per Investing/regardsofwallstreet feeds; modestly lower premarket on post-FOMC-minutes digest + rising-yields tape. Range tight, no gap.
+- **VIX ~15.57** (Cboe spot 8:20 ET) — essentially flat vs Wed, benign vol regime holds; near fresh multi-week lows
+- Today's catalysts: **FOMC minutes reaction** (released Wed 10/07 14:00 ET, markets digesting the dot-plot dispersion read into today's tape), **Initial jobless claims 8:30 ET** (consensus ~200K, prior 197K — small Thursday-labor read), **30-year Treasury bond auction 13:00 ET** ($22B — weak demand could push long-end yields and pressure growth cohorts), **PepsiCo (PEP) Q3 earnings** released 6:00 ET pre-open (net rev +5.6%, organic rev +3.1%, EPS +17% YoY — consumer-staples read-through; Techtimes/Tipranks flagged pre-release concern about Frito-Lay stall into 12-month-low $126.72 base), **Fed speakers Waller 04:30 ET** (pre-open) and **Musalem 13:40 ET** (post-minutes-digest window)
+- Earnings before open: **PEP** (reported — see above). No other index-mover earnings pre-open
+- Economic calendar this week: FOMC minutes 10/07 ✓, initial claims 10/08 (today), Michigan sentiment prelim 10/09. CPI 10/14, PPI 10/15, FOMC decision 10/28, next NFP 11/06
+- Sector momentum YTD: **Energy (XLE) +44.5%** clear leader (strengthening WoW from +40-45% range Tue), **Tech (XLK) +29-41%** second (AI/semi tape leadership intact per overnight news; Apple/Amazon/Alphabet/Microsoft support), **Industrials (XLI) +8.7%** positive but trailing, **Financials (XLF)** lagging/negative YTD, **Health Care (XLV)** no clean YTD figure in refresh. SPY sits as broad-index-only core
+- GuruFocus flags SPY ~14.8-15.1% above GF Value estimate $675.12 (valuation flag — carry-forward concern, not actionable alone)
+
+### Trade Ideas
+1. **SPY — HOLD existing position.** +1.91% unrealized, stop $720.31 (6.82% cushion), GTC-expiry 2026-11-30 (53 days). hwm $781.62 ~1.11% above current mark — any session re-approach ratchets stop higher. Pre-market mark compressed from Wed close $777.41 → $773.00 (~-0.57%) on post-FOMC-minutes digest + rising-yields tape; cushion narrowed from 7.34% → 6.82% but still well outside the 3% proximity gate. No action.
+2. **XLE (Energy ETF) — WATCH ONLY.** Energy YTD leader (+44.5%, up ~2-4 pp WoW); WTI $88-90 band holds, Brent $102 (persistent spread divergence confirmed = real geopolitical risk-premium: Mideast/Hormuz tape per Oct-5 ETIG LiveBlog carry; unexpected EIA draw yesterday per TMGM Oct-7 PM). No clean trigger at the open — post-FOMC-minutes-digest day is a weak backdrop to blind-redeploy into a sector trade; wait for either a cleaner oil-complex catalyst or an energy-equity-specific setup that passes the Buy-side Gate.
+3. **Rebuild path remains deferred.** 20.4% deployment is at the floor-rule minimum. 4th consecutive pre-market HOLD on the broad-index-only posture consistent with the "wait for a specific catalyst" stance set 10/05. Post-FOMC-minutes digest tape + initial-claims-day + 30-year-auction-day is not a sector/single-name redeployment trigger absent a clean specific catalyst crystallizing intraday.
+
+### Conditional Entries (midday-eligible) — ZERO
+None. Default per strategy. **FOMC minutes digest + 30-year auction 13:00 ET + Musalem speaker 13:40 ET** are the day's dominant rate-path binaries; a midday conditional authored this morning would fire inside the pre-auction / pre-Musalem window with no edge from intraday confirmation, so there is no setup today that genuinely benefits from intraday confirmation over at-the-open execution. No scanner-grade candidate flagged in the research round.
+
+### Risk Factors
+- **30-year Treasury auction 13:00 ET** ($22B) — weak demand can push long-end yields and pressure growth cohorts; equities tape has been sensitive to this channel per week outlooks
+- **Fed speaker Musalem 13:40 ET** — immediate rate-path repricing risk right after the auction window; last clean post-minutes window before Fed blackout (~10/18)
+- **Fed speaker Waller 04:30 ET** — pre-open; could set the tone for the ES futures open-print
+- **Initial jobless claims 8:30 ET** (consensus 200K, prior 197K) — small read but can shift the growth/soft-landing narrative at the open
+- **PEP earnings post-open reaction** — consumer-staples sentiment proxy; not an index-mover but could affect XLP cohort tape if Frito-Lay stall narrative confirms
+- **Brent-WTI spread persists at ~$13-14** — multi-session geopolitical risk-premium (Mideast/Hormuz / Saudi attack / China fuel-export suspension headlines flagged across sources); watch energy complex at the open
+- **Rising-yields + oil-prices macro backdrop** persists as the two macro pressures on equities per capitalstreetfx weekly outlook
+- **Concentration risk** — single-position book (SPY only); no sector diversification
+- **Trailing GTC half-life** — SPY stop expires 2026-11-30 (53 days); 9/01 open-defect #1 (no stop-coverage check) still unaddressed
+- **File-size debt** — RESEARCH-LOG now 660+ KB / 3,630+ lines; needs rotation (carried from 10/05)
+- **Three-leg exit reconciliation** — XLB/XLI/XLP exits 2026-09-02 to 2026-10-05 unreconstructable without an `activities` wrapper (carried from 10/05)
+- **Pre-market env-var abort pattern** — Oct 07 pre-market execute routine aborted on stale `${!v:-}` shell check and did not use the smoke-test bypass (carried-forward defect per 10/07 EOD takeaway; midday / intraday-check / daily-summary all pass the smoke-test, pre-market itself does not)
+
+### Decision: HOLD
+- No new positions today. SPY runs with its ratcheted stop. Patience > activity — 4th straight pre-market HOLD on broad-index-only posture; post-FOMC-minutes-digest day with 30-year-auction + Musalem speaker in the afternoon is explicitly not a sector/single-name redeployment trigger.
+- Follow-up for the user (not actionable in this routine): (a) reconcile XLB/XLI/XLP exits via Alpaca dashboard or add `activities` to `alpaca.sh`; (b) address stop-coverage-check defect before 2026-11-30 GTC expiry (53 days); (c) rotate RESEARCH-LOG (660+ KB); (d) propagate the env-var smoke-test bypass into pre-market.md so the shell-check false-MISSING no longer aborts the pre-market execute routine.
