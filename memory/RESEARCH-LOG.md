@@ -3694,3 +3694,13 @@ None. Default per strategy. **FOMC minutes digest + 30-year auction 13:00 ET + M
 - STEP 5 (thesis): intact. SPY broad-index-core deployment-floor leg; mild intraday fade is initial-claims-digest / rising-yields positioning noise ahead of 13:00 ET 30-year auction + 13:40 ET Musalem speaker, not a thesis break. "Wait for a specific sector/single-name catalyst before rebuilding" stance held.
 - STEP 6 (notification): silent per routine — no cut, no tighten, no thesis exit, no new entries (routine disallows regardless).
 - Decision: NO ACTION. Trades today 0/3, week 0/6.
+
+### Intraday-check Addendum (11:30 PDT / 14:30 ET, post-30yr-auction + post-Musalem speaker)
+- Env-check: shell loop reported 4/4 vars MISSING; `alpaca.sh positions` + `orders` smoke-tests returned live JSON (SPY 26 @ mark $773.04, order id e790c8b3 stop $720.31) → false-MISSING per `feedback_env_var_check.md`. Proceeded.
+- Positions: **SPY 26** @ avg $758.54, mark **$773.04**, **+1.91% unrealized (+$377.00)**, day change -0.54% (lastday $777.22 — mild fade back toward the pre-market level after the 08:00 PDT $775.32 reading; mark gave back $2.28 / 0.29% across the 3.5-hour window, consistent with pre-auction positioning holding through the post-auction window). Single-position book unchanged.
+- Open orders: 1 GTC trailing-stop sell on SPY — trail_price $61.31, **stop $720.31**, **hwm $781.62** (unchanged from Tue 10/06 midday ratchet), GTC expires 2026-11-30 (53 days). Mark $8.58 / 1.11% below hwm — no new ratchet this session. Cushion from mark **6.82%** (above 3% proximity gate; cushion compressed 7.09% → 6.82% on the mark fade).
+- STEP 3 (cut ≤ -7%): no action — SPY +1.91%, 8.91 pp cushion to trigger.
+- STEP 4 (tighten at +15%/+20%): no action — SPY +1.91%, 13.09 pp below the first tighten threshold.
+- STEP 5 (thesis): intact. SPY broad-index-core deployment-floor leg; afternoon fade is normal post-auction / post-Musalem repricing noise, not a thesis break. 30-year auction + Musalem speaker (the two afternoon rate-path binaries flagged in pre-market) now behind us without a material tape shock. "Wait for a specific sector/single-name catalyst before rebuilding" stance held.
+- STEP 6 (notification): silent per routine — no cut, no tighten, no thesis exit, no new entries (routine disallows regardless).
+- Decision: NO ACTION. Trades today 0/3, week 0/6.
