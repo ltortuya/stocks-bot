@@ -3749,3 +3749,13 @@ None. No sector or single-name setup today genuinely benefits from intraday conf
 - 9th consecutive zero-trade session (Mon 10/05 through today) — matches the longest zero-trade sequence of Phase 6.
 - Weekly review slot folds into today's EOD / Friday weekly-review routine — the formal week-1-of-October bridge scorecard belongs there, not here.
 - Follow-ups for the user (not actionable in this routine): (a) reconcile XLB/XLI/XLP exits via Alpaca dashboard or add `activities` to `alpaca.sh`; (b) address stop-coverage-check defect before 2026-11-30 GTC expiry; (c) rotate RESEARCH-LOG; (d) propagate wrapper-smoke-test bypass into pre-market execute routine; (e) update "9/01 restored state" boilerplate carried in abort entries — no longer accurate.
+
+### Intraday-check Addendum (08:00 PDT / 11:00 ET, ~1.5h post-open, ~1h post-U-Mich prelim)
+- Env-check: shell loop reported 4/4 vars MISSING; `alpaca.sh positions` + `orders` smoke-tests returned live JSON (SPY 26 @ mark $777.35, order id e790c8b3 stop $720.31) → false-MISSING per `feedback_env_var_check.md`. Proceeded.
+- Positions: **SPY 26** @ avg $758.54, mark **$777.35**, **+2.48% unrealized (+$489.06)**, day change +0.44% (lastday $773.93 — constructive cash-session open on the +0.5% ES futures tilt flagged in pre-market; mark firmed premkt $777 → $777.35 through U-Mich-digest window). Single-position book unchanged.
+- Open orders: 1 GTC trailing-stop sell on SPY — trail_price $61.31, **stop $720.31**, **hwm $781.62** (unchanged from Tue 10/06 midday ratchet), GTC expires 2026-11-30 (52 days). Mark $4.27 / 0.55% below hwm — no new ratchet this session. Cushion from mark **7.34%** (well outside 3% proximity gate).
+- STEP 3 (cut ≤ -7%): no action — SPY +2.48%, 9.48 pp cushion to trigger.
+- STEP 4 (tighten at +15%/+20%): no action — SPY +2.48%, 12.52 pp below the first tighten threshold.
+- STEP 5 (thesis): intact. SPY broad-index-core deployment-floor leg per Rule 12; constructive +0.44% day on the premarket risk-on tilt (VIX 15.23, 5th consecutive sub-16 open) is consistent with post-U-Mich-digest tape absent a hot inflation-expectations surprise. "Wait for a specific sector/single-name catalyst before rebuilding" stance held.
+- STEP 6 (notification): silent per routine — no cut, no tighten, no thesis exit, no new entries (routine disallows regardless).
+- Decision: NO ACTION. Trades today 0/3, week 0/6.
