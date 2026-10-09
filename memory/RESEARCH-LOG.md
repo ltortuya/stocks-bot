@@ -3772,3 +3772,13 @@ None. No sector or single-name setup today genuinely benefits from intraday conf
 - STEP 6 (optional intraday research): no sharp unexplained moves in the single-position book (SPY +0.56% is well inside normal post-data drift on a low-vol Friday); no perplexity/WebSearch pulled.
 - STEP 7 (notification): silent per routine — no cut, no tighten, no thesis exit, no conditional fire.
 - Decision: NO ACTION. Trades today 0/3, week 0/6 (9th consecutive zero-trade session Mon 10/05 through midday today — matches the longest zero-trade sequence of Phase 6; weekly review folds into today's EOD slot).
+
+### Intraday-check Addendum (11:30 PDT / 14:30 ET, ~5h post-open, ~4.5h post-U-Mich prelim)
+- Env-check: shell loop reported 4/4 vars MISSING; `alpaca.sh account` + `positions` + `orders` smoke-tests returned live JSON (portfolio_value $98,653.54, SPY 26 @ mark $778.64, order id e790c8b3 stop $720.31) → false-MISSING per `feedback_env_var_check.md`. Proceeded.
+- Positions: **SPY 26** @ avg $758.54, mark **$778.64**, **+2.65% unrealized (+$522.60)**, day change +0.609% (lastday $773.93 — further +5bp firming off the 10:01 midday $778.25 reading; afternoon tape continues the constructive post-U-Mich drift higher on the low-vol Friday). Single-position book unchanged.
+- Open orders: 1 GTC trailing-stop sell on SPY — trail_price $61.31, **stop $720.31**, **hwm $781.62** (unchanged from Tue 10/06 midday ratchet — 4th consecutive session with no new hwm; order updated_at 2026-10-06T15:26:23Z, 3-day stale), GTC expires 2026-11-30 (52 days). Mark $2.98 / 0.38% below hwm — no new ratchet this session. Cushion from mark **7.49%** (well outside 3% proximity gate; +4bp vs 10:01 midday 7.45% on the mark firming).
+- STEP 3 (cut ≤ -7%): no action — SPY +2.65%, 9.65 pp cushion to trigger.
+- STEP 4 (tighten at +15%/+20%): no action — SPY +2.65%, 12.35 pp below the first tighten threshold.
+- STEP 5 (thesis): intact. SPY broad-index-core deployment-floor leg per Rule 12; constructive +0.609% day on the low-vol afternoon tape (post-U-Mich prelim, post-Schmid, post-DAL print) is consistent with the pre-market "constructive risk-on tilt into the U-Mich print" framing. No single-name/sector catalyst crystallized intraday — the "wait for a specific sector/single-name catalyst before rebuilding" stance holds into the Friday weekly-review slot.
+- STEP 6 (notification): silent per routine — no cut, no tighten, no thesis exit, no new entries (routine disallows regardless).
+- Decision: NO ACTION. Trades today 0/3, week 0/6 (9th consecutive zero-trade session Mon 10/05 through 11:30 today — matches the longest zero-trade sequence of Phase 6; weekly review folds into today's EOD slot).
