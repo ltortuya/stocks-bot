@@ -3704,3 +3704,48 @@ None. Default per strategy. **FOMC minutes digest + 30-year auction 13:00 ET + M
 - STEP 5 (thesis): intact. SPY broad-index-core deployment-floor leg; afternoon fade is normal post-auction / post-Musalem repricing noise, not a thesis break. 30-year auction + Musalem speaker (the two afternoon rate-path binaries flagged in pre-market) now behind us without a material tape shock. "Wait for a specific sector/single-name catalyst before rebuilding" stance held.
 - STEP 6 (notification): silent per routine — no cut, no tighten, no thesis exit, no new entries (routine disallows regardless).
 - Decision: NO ACTION. Trades today 0/3, week 0/6.
+
+## 2026-10-09 — Pre-market Research
+
+### Account
+- Equity: $98,618.70 (last_equity $98,531.34; balance_asof 2026-10-08)
+- Cash: $78,409.16 (79.57%)
+- Buying power: $370,223.35
+- Position market value: $20,209.54 (SPY only, 20.49% deployed)
+- Daytrade count: 0 (8 consecutive zero-trade sessions through Thu close; 9th today if HOLD)
+- Env-check: shell loop printed MISSING for all 5 vars; `alpaca.sh account` smoke-test returned live JSON (portfolio_value $98,618.70, balance_asof 2026-10-08) — false-MISSING per `feedback_env_var_check.md`, proceeded.
+
+### Market Context
+- **WTI / Brent:** WTI ~$90.49, Brent ~$103.52 — modest oil relief vs week highs; "oil price relief helping sentiment" (Bloomberg)
+- **S&P 500 futures:** ES +0.4-0.5% (~7,827.75), Nasdaq-100 +0.8-0.9% premkt — constructive risk-on tilt into the U-Mich print
+- **VIX:** 15.23 (-1.17% / -0.18 vs prior close 15.41) — low-vol regime holds, 5th consecutive sub-16 open; sits well below the 20-year median
+- **Today's catalysts:** (1) **U-Mich prelim October consumer sentiment at 10:00 AM ET** — the dominant data event; (2) **Kansas City Fed Schmid at 9:30 AM ET**; (3) **DAL earnings before open** (Delta — airline/consumer-cyclical bellwether); (4) oil tape + Treasury yields as cross-asset drivers
+- **Earnings before open:** **DAL** (consensus ~$1.92-1.99 EPS, revenue ~$17.6-17.8B — airline sector read-through), HOVR, MTY, AMBK, CIBH, GLDG — DAL is the only index-weight / sector-signal name
+- **Economic calendar:** U-Mich prelim 10:00 ET (consensus 47.6 vs 48.1 September final; 1yr inflation exp 4.6%, 5yr 3.4%) is the week's final macro data point; no CPI/PPI/FOMC/jobs data today
+- **Sector momentum YTD 2026:** Energy **+48.8%** (dominant leader), Technology **+37.9%**, Materials **+10.0%**; Consumer Discretionary **-5.9%** (laggard); the two YTD leaders (XLE/XLK) carry the index while the three XLB/XLI/XLP legs that were in the Jun basket are no longer in the top-tier leadership (XLB #3 at +10%, XLI/XLP mid-pack, no longer the >+14-17% that drove the Phase 6 Jun thesis)
+- **SPY-specific:** Oct 8 close $773.93, premkt ~$777 (futures +0.5%); analyst commentary cites "strong earnings expectations + AI enthusiasm" vs "higher yields + inflation concerns"; October seasonality favorable (avg +2.27% since 2010); Q3 S&P 500 EPS growth expected ~27-34% YoY
+
+### Trade Ideas
+1. **SPY — HOLD existing position only.** No add. Avg $758.54, 26 shares, +$487.50 UPL (+2.47%), stop $720.31 (hwm $781.62, trail $61.31, 7.38% cushion vs premkt $777.29). GTC expires 2026-11-30 (52 days). The broad-index-core deployment-floor leg per Rule 12 — holds unchanged until a specific sector/single-name catalyst justifies rebuilding above 20%.
+2. **XLE / Energy sector add — SKIP.** Energy at +48.8% YTD is the clean 2026 leader and would be the correctness-of-strategy sector to add; but entering the YTD leader on a Friday with no specific intraday catalyst and after a 48-point run risks chasing. No edge today — reassess if a sector-specific catalyst (OPEC, inventory, pipeline, geopolitical) crystallizes next week.
+3. **DAL earnings reaction — SKIP.** Binary pre-print; strategy forbids earnings-day entries, and consumer-cyclical sector is a laggard (Cons Disc -5.9% YTD). Watch only for a potential post-print read-through to broader airline/consumer tape.
+
+### Conditional Entries (midday-eligible) — ZERO
+None. No sector or single-name setup today genuinely benefits from intraday confirmation over at-the-open execution — Friday with a single 10:00 ET data catalyst (U-Mich) plus a scheduled Fed-speaker and one airline earnings print is a classic "no edge" day, and the deployment-floor SPY leg already satisfies the Rule-12 minimum. Default per strategy: ZERO conditionals.
+
+### Risk Factors
+- **U-Mich prelim at 10:00 ET** — single scheduled macro binary; a miss below 47.6 or hot inflation-expectations print could flip the tape fade-into-weekend
+- **Fed Schmid at 9:30 AM ET** — unscheduled rate-path repricing risk if hawkish
+- **DAL print** — airline/consumer read-through risk, could ripple to XLY and travel-exposed names
+- **Treasury yields** — "rising-yields" flagged repeatedly as the top near-term headwind; week continues to carry rate-channel pressure
+- **Portfolio concentration risk** — SPY-only, no sector diversification; 20.49% deployment is 55 pp below the 75-85% target floor for the 9th consecutive session
+- **Trailing GTC half-life** — SPY GTC expires 2026-11-30 (52 days); 9/01 CORRECTION open-defect #1 (no stop-coverage auto-check) remains unaddressed
+- **Carried-forward routine defect** — pre-market execute routine's stale `${!v:-}` env-var abort re-fired silently Thu (no commit between research and 08:00 intraday-check); the wrapper-smoke-test bypass has been propagated into midday / intraday-check / daily-summary but NOT into pre-market execute
+- **Three-leg exit reconciliation** — XLB/XLI/XLP exit prices/dates still not reconstructable without an `activities` endpoint wrapper
+- **File-size debt** — RESEARCH-LOG now 655+ KB / 3,700+ lines (>256 KB rotate threshold), the only structural health concern that can be addressed by the user offline
+
+### Decision: HOLD
+- No new positions today. SPY runs with its unchanged $720.31 trailing GTC stop (hwm $781.62, trail $61.31, 7.38% cushion vs premkt $777.29). Patience > activity.
+- 9th consecutive zero-trade session (Mon 10/05 through today) — matches the longest zero-trade sequence of Phase 6.
+- Weekly review slot folds into today's EOD / Friday weekly-review routine — the formal week-1-of-October bridge scorecard belongs there, not here.
+- Follow-ups for the user (not actionable in this routine): (a) reconcile XLB/XLI/XLP exits via Alpaca dashboard or add `activities` to `alpaca.sh`; (b) address stop-coverage-check defect before 2026-11-30 GTC expiry; (c) rotate RESEARCH-LOG; (d) propagate wrapper-smoke-test bypass into pre-market execute routine; (e) update "9/01 restored state" boilerplate carried in abort entries — no longer accurate.
