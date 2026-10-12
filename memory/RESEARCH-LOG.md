@@ -3854,3 +3854,13 @@ None. **Rationale:** Conditional entries per the template are "midday-eligible �
 - STEP 6 (optional intraday research): no sharp unexplained moves in the single-position book (SPY -0.12% is well inside normal thin-tape drift); no perplexity/WebSearch pulled.
 - STEP 7 (notification): silent per routine — no cut, no tighten, no thesis exit, no conditional fire.
 - Decision: NO ACTION. Trades today 0/3, week 0/6 (10th consecutive zero-trade session Mon 10/05 through midday today — now surpasses prior Phase 6 longest zero-trade sequence by 1).
+
+### Intraday-check Addendum (11:30 PDT / 14:30 ET, ~5h post-open, Columbus Day thin tape / bond market closed)
+- Env-check: shell loop reported 4/4 vars MISSING; `alpaca.sh positions` + `orders` smoke-tests returned live JSON (SPY 26 @ mark $777.41, order id e790c8b3 stop $720.31, hwm $781.62) → false-MISSING per `feedback_env_var_check.md`. Proceeded.
+- Positions: **SPY 26** @ avg $758.54, mark **$777.41**, **+2.49% unrealized (+$490.62)**, day change **-0.149%** (lastday $778.57 — -$1.16 fade off Fri's close, continued Columbus-Day-thin / bond-market-closed drift; mark walked $778.09 (08:00 PDT) → $777.67 (10:01 PDT midday) → $777.41 now, cumulative -$0.68 / -9bp across the session with no catalyst). Single-position book unchanged. Market value **$20,212.66**, cost basis $19,722.04.
+- Open orders: 1 GTC trailing-stop sell on SPY — trail_price $61.31, **stop $720.31**, **hwm $781.62** (unchanged from Tue 10/06 midday ratchet — 5th consecutive session with no new hwm; order updated_at 2026-10-06T15:26:23Z, 6-day stale), GTC expires 2026-11-30 (49 days). Mark **$4.21 / 0.54% below hwm** — no new hwm, no auto-ratchet this session. Cushion from mark **7.35%** (well outside 3% proximity gate; -3bp vs 10:01 PDT midday 7.38% on the mark fade from $777.67 → $777.41).
+- STEP 3 (cut ≤ -7%): no action — SPY +2.49%, 9.49 pp cushion to trigger.
+- STEP 4 (tighten at +15%/+20%): no action — SPY +2.49%, 12.51 pp below the first tighten threshold.
+- STEP 5 (thesis): intact. SPY broad-index-core deployment-floor leg per Rule 12; Columbus-Day-thin -0.15% drift (bond market closed, no US macro, pre-CPI positioning) is noise-level and does not invalidate the pre-market "constructive but light-volume setup" framing. The redeployment decision window remains Wed-Fri post-CPI per the pre-market 20%-floor carry decision. No single-name/sector catalyst crystallized intraday.
+- STEP 6 (notification): silent per routine — no cut, no tighten, no thesis exit, no new entries (routine disallows regardless).
+- Decision: NO ACTION. Trades today 0/3, week 0/6 (10th consecutive zero-trade session Mon 10/05 through 11:30 PDT today — now surpasses prior Phase 6 longest zero-trade sequence by 1).
