@@ -3937,3 +3937,57 @@ None. **Rationale:** Today's live tape is bank-earnings-dominated through the op
 - STEP 6 (intraday research): skipped — SPY -0.12% intraday is well within noise; no mystery move requiring Perplexity grounding.
 - STEP 7 (notification): silent per routine — no cut, no tighten, no thesis exit, no conditional fire.
 - Decision: NO ACTION. Trades today 0/3, week 0/6 (11th consecutive zero-trade session Mon 10/05 → today).
+
+## 2026-10-14 — Pre-market Research
+
+(Wednesday — Phase 6 / Oct bridge week 2 day 3 / **CPI DAY** (Sep print 8:30 ET — the week's binary) / Fed Beige Book 2:00 PM ET / BAC+MS+ASML earnings pre-open / 12th consecutive zero-trade session if HOLD.)
+
+### Account
+- Equity: **$98,667.52** (last_equity $98,637.42; balance_asof 2026-10-13; +$30.10 intraday unrealized P&L already on mark firming to $779.17)
+- Cash: **$78,409.16** (79.47%)
+- Buying power: $370,360.05
+- Position market value: **$20,258.36** (SPY only, **20.53% deployed**)
+- Daytrade count: 0 (11 consecutive zero-trade sessions through Tue close; **12th today if HOLD** — extends Phase 6 longest zero-trade streak by one again)
+- Env-check: shell loop printed MISSING for all 5 vars; `alpaca.sh account` smoke-test returned live JSON (portfolio_value $98,667.52) — false-MISSING per `feedback_env_var_check.md`, proceeded. Pre-market execute routine's stale `${!v:-}` abort is now a **6-session carried defect** (Tue 10/13 aborted again at `b1031b4`); propagation of wrapper-smoke-test bypass into `routines/pre-market.md` remains the single highest-leverage operational fix per Fri 10/09 weekly review.
+
+### Market Context
+- **WTI / Brent:** WTI **~$95.38/bbl (+1.32%)**, Brent **~$107.35/bbl (+1.35%)** — both +~$1.25-1.40 vs Tue's pullback; **re-bid on Houthi attacks on Saudi Arabia** (geopolitical premium re-entering tape). Brent-WTI spread **~$12** holds. Energy complex firm into CPI.
+- **S&P 500 futures:** ES Dec **~7,869-7,871 (+0.17 to +0.21%)** vs Tue 7,855.75 settle — modest gap higher; **Dow futures outperforming, Nasdaq near flat** on Asia semi weakness carryover. Cautiously positive pre-CPI tone.
+- **VIX:** **15.19 (-0.52%)** vs prior close 15.27 — **8th consecutive sub-16 open**, low-vol regime holds into the week's binary. Intraday range 15.17-15.61 so far.
+- **Today's catalysts:** (1) **US September CPI 8:30 ET — THE event**: consensus **headline +0.6% MoM / +3.6% YoY** (vs Aug +0.4% / +3.4%), **core +0.2% MoM / +2.5% YoY** (vs +0.3% / +2.4%); (2) **Fed Beige Book 2:00 PM ET**; (3) **BAC + MS + ASML earnings pre-open** (continued bank cluster); (4) **China CPI/PPI overnight** (secondary); (5) **Houthi/Saudi Arabia headline risk** reactivated.
+- **Earnings before open:** **ASML** ~1:00 ET (EPS $10.84 / Rev $11.74B — bellwether semi-cap-eq print); **BAC** ~6:45 ET (EPS $1.10 / Rev $30.58B); **MS** ~7:30 ET (EPS $2.94 / Rev $19.96B). Yesterday's bank-earnings reaction: **GS big beat (+4%)**, **JPM miss (small +1% on trading beat)**, **Citi beat (flat)**, **WFC NII miss (-3%)** — mixed overall, trading desks strong but traditional lending softer, provisions/outlook flagged by execs.
+- **Economic calendar remainder of week:** **Wed 10/14 CPI 8:30 ET + Beige Book 2:00 PM ET**; **Thu 10/15 PPI + retail sales + jobless claims + Philly Fed 8:30 ET** (second-order inflation read); Fri 10/16 import/export prices 8:30 ET + industrial production + capacity utilization 9:15 ET + weekly review. No FOMC this week; **Oct 27-28 FOMC** is the policy binary the CPI/PPI feed into.
+- **Sector momentum YTD 2026:** **Energy ~+40.4%** (leader, re-firming today on Houthi/Saudi), **Tech ~+30.2%** (second), S&P 500 **+12.8%** — narrowest leadership of the year with only 2 sectors beating the index (lowest count since 1990). Materials ~+15.9%, Industrials solid mid-pack. 8 of 11 sectors positive. XLB/XLI/XLP (Jun basket) no longer in top-tier leadership — Phase 6 Jun thesis long-decayed.
+- **SPY-specific:** Tue close $778.01, premkt **~$779.17-779.60** (Alpaca mark $779.17 at account pull — modest +$1.16 vs close, +0.149% intraday read); **$2.45 / 0.31% below Tue 10/06 hwm $781.62** (7th consecutive session with no new hwm). A new hwm print today would auto-ratchet the trailing GTC $720.31 → ~$720.31+Δ for the first time in 7 sessions. Michigan 1-yr inflation expectations rose to **4.7%** (elevated — raises SPY/Nasdaq sensitivity to any upside CPI core surprise).
+
+### Trade Ideas
+1. **SPY — HOLD existing position only.** No add. 26 shares @ avg $758.54, mark **$779.17** (+$536.32 UPL / **+2.72%**), stop $720.31 (hwm $781.62, trail $61.31, cushion **7.56%** vs mark). GTC expires 2026-11-30 (47 days). The broad-index-core deployment-floor leg per Rule 12 — holds unchanged through the CPI binary. If today's post-CPI tape prints a new hwm, the GTC auto-ratchets per the Alpaca dollar-trail formula.
+2. **BAC / MS / ASML earnings reactions — SKIP all day.** Strategy forbids earnings-day entries; today's prints extend yesterday's bank-earnings cluster (mixed GS/JPM/C/WFC → mixed BAC/MS likely). ASML is the index-weight semi-cap-eq read-through for XLK leadership. Watch only — tape sets the post-CPI backdrop.
+3. **XLE / XLK redeploy — DEFER to post-CPI reaction (Wed PM / Thu AM).** Entering either pre-CPI on a binary 8:30 ET event has no edge. Pre-market plan on CPI direction:
+   - **Cool CPI** (core ≤+0.2% MoM / headline ≤+3.6% YoY): dollar fades, yields fall, growth outperforms → bias **XLK add** (Tech +30.2% YTD #2 leader).
+   - **Hot CPI** (core ≥+0.3% MoM / headline ≥+3.7% YoY): dollar firms, yields rise, growth pressured, Energy benefits from inflation signal → bias **XLE add** (Energy +40.4% YTD leader + Houthi/Saudi geo premium re-firming).
+   - **In-line / mixed CPI** (core +0.2% + headline +0.6% to consensus): no clear edge → **continue 20%-floor carry** into Thu PPI/retail sales as the second-order confirmation.
+   - Decision made at Thu 10/15 pre-market after the CPI/Beige Book digest has one trading session to settle.
+
+### Conditional Entries (midday-eligible) — ZERO
+None. **Rationale:** The CPI binary at 8:30 ET is a **pre-market event**, not an intraday one — the entire day's tape is the post-CPI reaction. A sector-add decision based on CPI direction is properly structured as a **Thu 10/15 pre-market plan** (after one full trading session of post-CPI digest + Beige Book), not a Wed-afternoon midday conditional on the same session as the print. Entering mid-session on the raw CPI reaction tape adds reaction-noise without the Beige Book + Thu PPI/retail sales confirmation signal. The conditional-pipeline terminal verdict remains deferred to Fri 10/16 weekly review (strategy-text amendment authority); today's zero-conditional posture is on-pattern. Default per strategy: ZERO conditionals.
+
+### Risk Factors
+- **CPI print 8:30 ET — THE binary.** Upside core surprise (≥+0.3% MoM) lifts long-end yields, revives Oct 27-28 FOMC hike pricing, pressures Tech / Software / long-duration growth, and compresses SPY. Downside surprise (≤+0.1% MoM core) reverses — risk-on bid, Nasdaq-led. Michigan 1-yr expectations at 4.7% amplifies the asymmetry on any upside core print
+- **Energy / geopolitical re-escalation** — Houthi attacks on Saudi Arabia today pushed WTI +1.32% / Brent +1.35%; a sustained strike campaign would re-bid Energy sharply (XLE +40.4% YTD leader) but also lift headline CPI inputs. Oil-price channel is bidirectional risk
+- **BAC / MS / ASML earnings-day volatility** — ASML is the semi-cap-eq bellwether; a miss or soft outlook would carry through NVDA/AMD/MU and weaken XLK's post-CPI participation. BAC/MS complete the yesterday's bank cluster — a WFC-style NII miss adds to the "trading strong / lending softer" narrative yesterday's tape set up
+- **Mixed bank-earnings read-through from Tue** — GS +4% / JPM +1% / Citi flat / WFC -3%: trading-desk strength + lending softness + exec warnings on inflation/yields/geo = ambivalent sector signal into today's banks + semi-cap-eq cluster
+- **Fed Beige Book 2:00 PM ET** — qualitative read on regional economic conditions; typically a secondary driver, but on CPI day the combined-release risk compounds. Can swing the dot-plot narrative framing into Oct 27-28 FOMC
+- **Portfolio concentration risk** — SPY-only, no sector diversification; **20.53% deployment, 55 pp below the 75-85% target band floor for the 12th consecutive session**. Rule 12 operating at its floor-spec, continuing to invert the rule's intent per Fri 10/09 weekly review's Key Lesson 3 — redeployment window today-Fri
+- **Trailing GTC half-life** — SPY GTC expires 2026-11-30 (**47 days**); stop-coverage auto-check defect still unaddressed, Fri 10/09 weekly review flagged it as this-week deliverable (now T+3 since weekly review)
+- **Carried-forward routine defect** — pre-market execute routine's stale `${!v:-}` env-var abort is now **6-session carried defect** (Mon 10/05 `d7d0541`, Wed 10/07 `0219ae9`, Thu 10/08 silent, Fri 10/09 silent, Mon 10/12 silent, **Tue 10/13 `b1031b4` fired again**). Fri weekly review flagged "PROPAGATE THE WRAPPER-SMOKE-TEST BYPASS INTO `routines/pre-market.md` THIS WEEK" as the single highest-leverage operational fix — now T+3 unshipped
+- **Three-leg exit reconciliation** — XLB/XLI/XLP exit prices/dates still not reconstructable without an `activities` endpoint wrapper; Fri 10/09 weekly review flagged this as this-week deliverable
+- **File-size debt** — RESEARCH-LOG now ~660 KB / 3,940+ lines; Fri weekly review flagged rotation as this-week deliverable; carried for ~2+ weeks
+
+### Decision: HOLD
+- No new positions today. **12th consecutive zero-trade session** (Mon 10/05 → today) — extends new Phase 6 longest zero-trade sequence by one again.
+- SPY runs with its unchanged $720.31 trailing GTC stop (hwm $781.62, trail $61.31, 7.56% cushion vs mark $779.17). **CPI-day posture: passive carry through the 8:30 ET binary**; let any new SPY hwm auto-ratchet the GTC per the dollar-trail formula; otherwise no modifications.
+- **Explicit 20%-floor carry decision through CPI print** per Fri 10/09 weekly review's "redeployment catalyst OR explicit 20%-floor carry" requirement: carrying the 20% SPY-only floor through Wed 10/14 CPI on the pre-event-binary rationale (no non-earnings sector/single-name catalyst, CPI binary 1 hour before open). **The redeployment decision window is Thu-Fri post-CPI** — Thu 10/15 pre-market will author the XLE-vs-XLK-vs-floor-carry decision based on actual CPI direction + Beige Book digest + Thu's PPI/retail sales print.
+- **Conditional-pipeline terminal verdict remains deferred to Fri 10/16 weekly review** (strategy-text amendment authority). Today's zero-conditional posture is on-pattern — a CPI-day sector-add decision is a next-day pre-market plan, not a same-day midday conditional.
+- Patience > activity. Trades today 0/3, week 0/6 (week 2 of October day 3; max 6 weekly / 3 daily unused).
+- Follow-ups for the user (not actionable in this routine, carried from Fri 10/09 weekly review): (a) propagate wrapper-smoke-test bypass into `routines/pre-market.md` (single-file edit, now ~17 weeks + 2 sessions overdue, pre-market execute re-aborted Tue 10/13 at `b1031b4`); (b) add `activities` subcommand to `scripts/alpaca.sh` to close the 3-leg exit reconciliation gap; (c) ship stop-coverage auto-check before SPY GTC 2026-11-30 expiry (47 days); (d) rotate RESEARCH-LOG.md to a `-archive-2026-H1.md` file; (e) reconcile the XLB/XLI/XLP exit via Alpaca dashboard or the new `activities` wrapper once shipped.
