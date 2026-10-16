@@ -414,3 +414,7 @@ Pre-market 2026-10-13: ABORTED. Missing env vars on routine: ALPACA_API_KEY, ALP
 ---
 ## 2026-10-15 11:19 UTC (fallback — Telegram not configured)
 pre-market 2026-10-15 THIS INSTANCE ABORTED — all 5 env vars MISSING in this routine fire's shell (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID); the wrapper (not just the stale ${!v:-} shell check) confirmed MISSING. Earlier session at 11:03 UTC had working env and already committed today's full research entry locally (4cec80e) + Oct 14 EOD (2462e05); both were unpushed, this session pushes them. Push notification sent to the user. Needs secrets re-attached to the routine config so later fires (midday / daily-summary) don't abort too.
+
+---
+## 2026-10-16 11:13 UTC (fallback — Telegram not configured)
+pre-market 2026-10-16 ABORT: ALPACA_API_KEY not set in environment (also ALPACA_SECRET_KEY/PERPLEXITY_API_KEY/TELEGRAM_TOKEN/TELEGRAM_CHAT_ID). Routine exited at STEP 2 per routines/pre-market.md:13-14.
