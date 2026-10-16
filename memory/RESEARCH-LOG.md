@@ -4123,3 +4123,57 @@ None. **Rationale:** The CPI binary at 8:30 ET is a **pre-market event**, not an
 - STEP 6 (notification): silent per routine — no cut, no tighten, no thesis exit, no new entries.
 - Decision: **NO ACTION**. Book unchanged (SPY 26 @ $758.54, stop $720.31). Trades today 0/3, week 0/6. **13th consecutive zero-trade session** (Mon 10/05 → today) will extend Phase 6 longest zero-trade streak at close — new record on each incremental day. **16:00 ET close EOD snapshot via daily-summary routine** is the next event; **Fri 10/16 pre-market** is the next decision authority (lighter catalyst stack: import/export 8:30 ET + IP/CU 9:15 ET + weekly review).
 - Follow-ups (carried, unchanged): (a) wrapper-smoke-test bypass into `routines/pre-market.md` (7-session carried, T+4 unshipped); (b) `activities` subcommand on `scripts/alpaca.sh`; (c) stop-coverage auto-check before SPY GTC 2026-11-30 expiry (46 days); (d) RESEARCH-LOG rotation; (e) XLB/XLI/XLP exit reconciliation.
+
+## 2026-10-16 — Pre-market Research
+
+### Account
+- Equity: $98,506.38
+- Cash: $78,409.16
+- Buying power: $369,908.86 (4x day; non-marginable $88,457.77)
+- Daytrade count: 0 (field not exposed by Alpaca `/v2/account`; 0 by convention — no day trades placed in Phase 6)
+- Positions: **SPY 26 @ $758.54** avg (mark $772.97, +1.90% UPL, +$375.18); long market value $20,097.22 → **20.40% deployed** (floor-only, well below 75–85% target per Rule 2; Rule 12 20%-floor satisfied via SPY)
+- Open orders: 1 — SPY 26-share trailing-stop sell GTC, stop $720.31, hwm $781.62, trail $61.31 ($/pct 6.86%; 7.49% cushion vs mark $772.97), expires 2026-11-30 (**45 days to GTC expiry**)
+- Env-var shell check reported MISSING for all 5 keys; **smoke-tested `alpaca.sh account` → returned live JSON** → wrappers have creds, proceeded (per `feedback_env_var_check.md`).
+
+### Market Context
+- WTI / Brent: **WTI $97.27 (-0.71%) / Brent $105.27 (-0.61%)** — elevated levels on 11.1M-bbl crude inventory draw + Mideast risk premium; +5.2% MoM Energy input into Sep CPI; **supportive for XLE thesis** carried from 10/15.
+- S&P 500 futures: **ES ~7,803, +0.07% to +0.17%** premarket — modestly green, bias slightly positive into the open; **October monthly opex Friday** adds pin-trade / gamma-unwind dynamics (notable OI at 770 and 780 strikes).
+- VIX: **16.19 (-1.64%, 10:07 ET quote)** vs 10/15 close 16.46 — benign; 2nd session comfortably below the 20 risk-off threshold.
+- Today's catalysts:
+  - **Fed Chair Kevin Warsh commentary** (hawkish/dovish read on hot-CPI digest) — rate-channel mover
+  - **AI/semi debt-concentration narrative** — CoreWeave + data-center capex overhang continues (medium-term risk, not actionable today)
+  - **October monthly opex** — pin dynamics around 770/780 SPY strikes; expect range-bound chop into 4pm settle
+  - Oil +5.2% MoM Sep is reinforcing both the inflation-stall and energy-leadership narratives simultaneously
+- Earnings before open: **Bank Friday** — MTB, TFC, CFG, TRV, SLB, RF (plus insurer TRV). SLB is only energy name; MTB/TFC/CFG/RF are the regional/super-regional cohort. **No earnings in current book (SPY only); no action required.**
+- Economic calendar: **light** — Import/Export Price Indexes 8:30 ET; Industrial Production + Capacity Utilization 9:15 ET; TIC flows 4:00 ET. **No tier-1 release** (CPI shipped Wed 10/14, PPI Thu 10/15 → both digested).
+- Sector momentum YTD (per web research):
+  - **Leaders:** Energy +40–54%, Tech +30–33% (only two sectors clearly above the index)
+  - **Mid:** Health Care ~+14%, Industrials/Materials high single digits, Staples/RE/Utilities low-mid positive
+  - **Laggards:** Cons Disc low-single-digit, Comm Svcs flat-to-slightly-neg, **Financials ~flat-to-slightly-negative** (watch bank earnings today as read-through)
+  - S&P 500 itself ~+13% YTD → sector dispersion is wide; Energy/Tech are carrying the index.
+- SPY technicals (sole position; 10/15 close $771.79, 10-DMA $774.30, 50-DMA $768.57, hwm $781.62):
+  - Immediate support **$769–770** (opex strike zone + 50-DMA); loss opens **$758 → $753 → $750**
+  - Immediate resistance **$779–782** (prior hwm + 780 opex strike); break opens ~$790
+  - Short-term bias **neutral-to-bullish while $769 holds**; opex pin keeps the range tight today.
+
+### Trade Ideas
+1. **XLE** — Energy sector leader (+40–54% YTD, #1 sector); WTI holding $95+ with 11.1M-bbl crude draw supporting; Sep energy CPI print +5.2% MoM reinforces leadership. SKIP today for execution — defer sizing decision to **Fri 10/16 weekly review** (strategy-text amendment authority) rather than force a last-day-of-redeployment-window add on an opex Friday against post-hot-CPI tape.
+2. **XLK** — Tech +30–33% YTD; semis + AI-capex narrative under pressure (CoreWeave, data-center debt concerns); risk of a growth-scare pullback into opex settle. SKIP on an opex Friday with active AI-debt headline risk.
+3. **SLB** — Reports pre-mkt; energy-earnings binary, no 2:1 R:R edge pre-print. SKIP (earnings-binary rule).
+4. **Bank earnings day (MTB/TFC/CFG/RF)** — Financials is a laggard sector (~flat YTD); earnings-day entries violate "specific catalyst documented + confirmed sector momentum" gate pre-print. SKIP.
+
+### Conditional Entries (midday-eligible) — up to 3
+(ZERO — default per routine. Rationale: redeployment-window last day falls on **opex Friday + Fed Warsh commentary risk**; XLE is the only genuine candidate but it merits strategy-text-level treatment in the Fri weekly review rather than a last-session conditional insert. Deliberate deferral, not an oversight.)
+
+### Risk Factors
+- **October monthly opex** — pin dynamics may suppress or amplify any directional move; afternoon gamma unwind can produce late-session dislocations. Floor-carry posture is designed to absorb this without action.
+- **Fed Chair Warsh commentary** — hawkish surprise could re-sell rate-sensitives (tech/growth) and bid USD; dovish surprise could extend Thu's rebound. SPY floor stop at $720.31 (6.86% below mark) is well outside any plausible single-session move.
+- **Hot-CPI digest ambiguity** — Sep headline CPI +0.6% MoM (hot) vs core YoY 2.6% (within <3.0% threshold from prior plan); market reaction has been mixed (Wed -1.08%, Thu +0.28%); not a clean "cool" or "hot" read for the Fri 10/09 weekly-review redeployment trigger — **argues for weekly-review treatment rather than a Friday-of-opex forced trade.**
+- **AI/semi debt-concentration narrative** continues to brew (CoreWeave, data-center capex) — if it accelerates into index-weight pressure, SPY floor trailing stop $720.31 is the backstop. Not actionable pre-market.
+- **Bank earnings day** — any read-through to Financials sector momentum (currently flat) is read-only input to the Fri weekly review; no position to defend.
+- **SPY GTC stop expires 2026-11-30 (45 days)** — carried follow-up #(c); within shipment window but auto-check not yet built; manual re-attach contingency documented.
+
+### Decision
+**HOLD.** No new positions today. **11th consecutive zero-trade session** (Mon 10/05 → today) — extends Phase 6 longest zero-trade streak. SPY floor carries unchanged with its $720.31 trailing GTC (hwm $781.62, trail $61.31, 7.49% cushion vs mark $772.97). Any new SPY hwm print during the session will auto-ratchet the GTC per Alpaca dollar-trail formula. **Fri 10/16 weekly review (strategy-text amendment authority) is today's governance event** — it owns the XLE/XLK sector-add decision and any Rule 12 reinterpretation, not this pre-market entry. Explicit framing: this is a deliberate deferral, not a conviction-less pass-through. Trades today 0/3, week 0/6 (week 2 of October). Patience > activity.
+
+- Follow-ups (carried, unchanged from 10/15 intraday-check): (a) wrapper-smoke-test bypass into `routines/pre-market.md` (8-session carried, T+5 unshipped); (b) `activities` subcommand on `scripts/alpaca.sh`; (c) **stop-coverage auto-check before SPY GTC 2026-11-30 expiry (45 days)**; (d) RESEARCH-LOG.md rotation to a `-archive-2026-H1.md` file (file is now 4125 lines); (e) XLB/XLI/XLP exit reconciliation.
