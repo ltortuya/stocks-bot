@@ -21,7 +21,7 @@ Beat the S&P 500 over the challenge window. Stocks only — no options, ever.
 9. Follow sector momentum
 10. Exit a sector after 2 consecutive failed trades
 11. Patience > activity
-12. **Deployment floor**: if 0 single-name/sector setups pass the conditional-entry gates by EOD Tuesday of any week, deploy ≥20% of equity to a broad-index core (SPY first choice; RSP backup) with the standard 10% trail GTC at Wednesday open. Replace if a higher-conviction single-name/sector triggers later in the week. (Codified 2026-05-29 weekly review after 5 weeks at ~55% deployment vs the 75–85% target.)
+12. **Deployment floor**: if 0 single-name/sector setups pass the conditional-entry gates by EOD Tuesday of any week, deploy ≥20% of equity to a broad-index core (SPY first choice; RSP backup) with the standard 10% trail GTC at Wednesday open. (Codified 2026-05-29 weekly review after 5 weeks at ~55% deployment vs the 75–85% target. Replacement-trigger clause dropped 2026-10-23 weekly review after 20+ Phase-6 weeks of zero fires on the "replace if a higher-conviction single-name/sector triggers later in the week" leg — the floor leg is the Phase-6 steady-state posture until an explicit Rule 13 or sector-trigger mechanism is authored. XLE sector-add was the sole authored candidate across the Oct bridge and gate-B-failed on both Thu 10/15 and Mon 10/19 midday scans.)
 
 ## Buy-side Gate (every check must pass)
 - Total positions after this fill ≤ 6
