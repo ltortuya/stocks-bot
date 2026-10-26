@@ -4640,3 +4640,45 @@ None. **Rationale:** The CPI binary at 8:30 ET is a **pre-market event**, not an
 - STEP 6 (notification): silent per routine — no cut, no tighten, no thesis exit, no new entries.
 - Decision: **NO ACTION**. Book unchanged (SPY 26 @ $758.54, stop $720.31). Trades today 0/3, week 0/6. **23rd consecutive zero-trade session on-track** (Mon 10/05 → today) extends Phase-6 longest zero-trade streak by one again. **Daily-summary at close** closes the session + Phase-6 Oct bridge week 3; **weekly-review** owns Rule-12 floor-posture re-examination + XLE retirement + replacement-trigger rewrite per follow-up (f).
 - Follow-ups (carried, unchanged from pre-market/midday): (a) wrapper-smoke-test bypass propagation into `routines/pre-market.md` (today EOD — 17-session carried defect); (b) `activities` subcommand on `scripts/alpaca.sh` (today EOD); (c) stop-coverage auto-check (today EOD — 38 days to GTC expiry); (d) 3-leg XLB/XLI/XLP exit reconciliation (depends on b); (e) RESEARCH-LOG rotation to `-archive-2026-H1.md` (today EOD — now 4,660+ lines); (f) XLE sector-add retirement + Rule-12 replacement-trigger rewrite with 2 gate-B-fail data points (today's weekly review).
+
+## 2026-10-26 — Pre-market Research
+
+### Account
+- Equity: **$98,179.30** (vs Alpaca `last_equity` $98,168.38 → **+$10.92 / +0.011%** pre-market drift); vs $100K baseline **-$1,820.70 / -1.821%**
+- Cash: **$78,409.16** (79.86% of equity)
+- Buying power: $368,993.03 (regt $176,588.46)
+- Daytrade count: **0**
+- Position mv $19,770.14 → **deployment 20.137%** (Rule-12 floor satisfied; still ~55 pp under 75-85% band)
+- Open orders: 1 GTC trailing-stop sell SPY 26, trail $61.31, **stop $720.31**, hwm $781.62 (unchanged since 10/06), expires 2026-11-30 (**35 days**)
+- Env-check: shell loop printed MISSING for all 5 vars; `alpaca.sh account/positions/orders` returned live JSON → false-MISSING per `feedback_env_var_check.md`. Proceeded. Perplexity worked (no WebSearch fallback).
+
+### Market Context
+- WTI / Brent: **WTI ~$101.0**; Brent **~$109.8-114.5** (sources disagree; one source has Brent easing Mon after hitting highest since April on US-Israel/Iran action reports). WTI >$98 for 12th session
+- S&P 500 futures: **ES ~7,675-7,687, +0.2% to +0.35%**; Dow fut +0.5%, NQ +0.2% — dip-buying ahead of the event week. SPY Fri close $759.97 (-0.52%), premarket ~$760.39
+- VIX: Fri close **19.45**; early quotes ~19.2-19.8. 3rd session >19
+- Today's catalysts: light macro day (Dallas Fed mfg only). Positioning for **"super catalyst" week**: FOMC Wed, GOOGL + MSFT Wed AMC, AMZN Thu, INTC + SNDK this week, ECB Thu, BoJ Fri. META ~$825B capex commitment keeps AI-financing skepticism live
+- Earnings before open: **VZ** ($1.27e, rev $34.77Be), CX, MMYT, DORM, MED, KOF, ARLP. No index-mover
+- Economic calendar (week): Tue durable goods / consumer confidence / new-home sales; **Wed FOMC 2:00 PM ET** (presser 2:30); Thu Q3 GDP + Sep PCE + claims (196Ke); Fri ECI + Chicago PMI. No CPI/PPI/NFP this week (NFP 11/06, CPI 11/10, PPI 11/13)
+- Sector momentum: **Energy** YTD ~+56%, wk +1.5% — clear leader. Health Care wk +1.5%. Tech YTD +22%. **Comm Services wk -6.2%** (AI-capex hit), Industrials wk -1.9%. S&P -0.5% last week. Momentum composite: Energy / HC / Financials positive; Utilities / Staples / Discretionary / Comm Svcs negative
+- SPY news: nothing ticker-specific; pressure theme = oil + yields + tech weakness. YTD +12.3% through 10/23; 52-wk high $779.14 (10/06)
+
+### Trade Ideas
+1. **SPY — HOLD floor leg, no add.** 26 @ $758.54, mark $760.39, UPL **+0.244% (+$48.10)**, cushion to stop **5.27%** (outside 3% gate). An add on Monday walks straight into FOMC + hyperscaler earnings Wed-Thu.
+2. **XLE (Energy) — watch, not actionable.** Leader YTD and on the week, WTI ~$101. But the Iran-headline premium cuts both ways (Brent already easing Mon), the event week brings gap risk, and no replacement-trigger mechanism is authored (Rule 12 note, 10/23 review). Re-evaluate after the FOMC.
+3. **Post-earnings mega-cap (MSFT / GOOGL / AMZN) — Thu/Fri pre-market candidates only.** Need print + guidance to validate AI-capex ROI; Comm Svcs -6.2% wk shows the skepticism is priced in, but direction is binary. Not today.
+
+### Conditional Entries (midday-eligible) — up to 3
+**Zero.** FOMC is 2 trading days out and hyperscaler prints follow; any midday entry carries full event gap-risk. No setup today needs intraday confirmation more than it needs post-event clarity.
+
+### Risk Factors
+- **FOMC Wed 10/28** — hold base case; hawkish tone given oil ~$100+ and recent yield spike is the tail
+- **GOOGL/MSFT Wed AMC, AMZN Thu** — AI-capex ROI binary; SPY mega-cap concentration
+- **Oil / Iran** — reported US-Israel action risk; spike or de-escalation both move tape
+- **Yields** — 10Y round-tripped near 5% last week; Thu GDP/PCE is the next inflation input
+- **VIX ~19.5, 3rd session >19** — expansion regime persists
+- **SPY hwm stale since 10/06**; cushion 5.27% — a ~2.3% SPY drop brings stop within the 3% proximity zone
+- **Deployment ~20%** vs 75-85% target — structural under-deployment unresolved
+- GTC stop expires 2026-11-30 (35 days) — needs re-placement before expiry
+
+### Decision
+**HOLD.** Patience > activity. Modest green futures are dip-buying into the week's events, not a catalyst. No new entries, zero conditionals. Trades today 0/3, week 0/6.
