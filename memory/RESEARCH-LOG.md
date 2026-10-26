@@ -4682,3 +4682,15 @@ None. **Rationale:** The CPI binary at 8:30 ET is a **pre-market event**, not an
 
 ### Decision
 **HOLD.** Patience > activity. Modest green futures are dip-buying into the week's events, not a catalyst. No new entries, zero conditionals. Trades today 0/3, week 0/6.
+
+### Midday Scan Addendum (12:00 CT / 13:00 ET, Mon FOMC-week day 1 — SPY-only floor-carry, zero conditionals in queue)
+- Env-check: shell loop printed MISSING for all 4 vars; `alpaca.sh positions/orders/account` returned live JSON → false-MISSING per `feedback_env_var_check.md`. Proceeded.
+- Account: equity **$98,311.16** (vs Alpaca `last_equity` $98,168.38 → **+$142.78 / +0.145%** day); vs $100K baseline **-$1,688.84 / -1.689%**. Cash $78,409.16 (79.76%); deployment **20.24%**; daytrade count 0.
+- Positions: **SPY 26** @ $758.54, mark **$765.46**, UPL **+0.912% (+$179.92)**, day **+0.722%** (lastday $759.97).
+- Open orders: SPY GTC trailing stop, trail $61.31, **stop $720.31**, hwm $781.62 (unchanged since 10/06), expires 2026-11-30 (35 days). Cushion **5.90%** — outside 3% gate.
+- STEP 3 (cut ≤ -7%): no action. STEP 4 (tighten): no action — +0.91% vs +15% threshold.
+- STEP 5 (thesis): intact — Rule-12 floor leg; green dip-buying into FOMC/hyperscaler week matches pre-market framing.
+- STEP 5.5 (conditionals): **No conditionals to evaluate.** Pre-market authored zero.
+- STEP 6: no sharp unexplained move; no query.
+- STEP 7: silent — no action.
+- Decision: **NO ACTION**. Trades today 0/3, week 0/6.
