@@ -642,3 +642,13 @@ stop-coverage guard is added. Trades today 0/3, week 0/6.
 | SPY | 26 | $758.54 | $765.23 | +0.692% | +$173.94 (+0.882%) | $720.31 (trail $61.31, hwm $781.62, 5.870% cushion) |
 
 **Notes:** SPY-only book held through FOMC-week Monday, no action. Routine chain: pre-market research `ddac357`, pre-market execute `8e593f7` aborted (env vars missing), midday scan `1aa8c0b` no action. SPY +0.692% (lastday $759.97 → $765.23), snapping the Thu-Fri two-day bleed. hwm unchanged $781.62 (16th session no ratchet); GTC trailing stop unchanged $720.31 (updated_at 2026-10-06); cushion 5.232% → 5.870% (+64 bp), well outside 3% gate; GTC expires 2026-11-30 (35 days). Phase P&L narrows +13.4 bp to -$1,695.64. Week-4 WTD +$133.64. Deployment 20.24% ($19,895.98 MV) — still far below 75-85% target. Trades today 0/3, week 0/6 (21st consecutive zero-trade session). Env-var shell check printed MISSING for all 4 vars; wrapper smoke-test returned live JSON (bypass pattern holds). Alpaca `last_equity` $98,168.38 vs TRADE-LOG Fri EOD $98,170.72 (~$2.34 settlement delta — Day P&L off TRADE-LOG). **Tomorrow Tue 10/27: FOMC day 1; passive SPY-only posture into Wed decision unless pre-market surfaces a specific catalyst.**
+
+### Oct 27 — EOD Snapshot (Day 130, Tuesday — Phase 6 / Oct bridge week 4 day 2 / FOMC day 1 (decision Wed 10/28))
+
+**Portfolio:** $98,418.50 | **Cash:** $78,409.16 (79.67%) | **Day P&L:** +$114.14 (+0.116%) | **Phase P&L:** -$1,581.50 (-1.582%)
+
+| Ticker | Shares | Entry | Close | Day Chg | Unrealized P&L | Stop |
+| — | — | — | — | — | — | — |
+| SPY | 26 | $758.54 | $769.54 | +0.545% | +$286.00 (+1.45%) | $720.31 (trail $61.31, hwm $781.62, 6.397% cushion) |
+
+**Notes:** SPY-only book held through FOMC day 1, no action. Routine chain: pre-market research `4b9e461`, pre-market execute `7f44b41` aborted (env vars missing), midday scan `19494c0` no action. SPY +0.545% (lastday $765.37 → $769.54), second straight green day. hwm unchanged $781.62 (17th session no ratchet); GTC trailing stop unchanged $720.31 (updated_at 2026-10-06); cushion 5.870% → 6.397% (+53 bp), well outside 3% gate; GTC expires 2026-11-30 (34 days). Phase P&L narrows +11.4 bp to -$1,581.50. Week-4 WTD +$247.78 (Mon +$133.64, Tue +$114.14). Deployment 20.33% ($20,009.34 MV) — still far below 75-85% target. Trades today 0/3, week 0/6 (22nd consecutive zero-trade session). Env-var shell check printed MISSING for all 4 vars; wrapper smoke-test returned live JSON (bypass pattern holds). Alpaca `last_equity` $98,308.78 vs TRADE-LOG Mon EOD $98,304.36 (~$4.42 settlement delta — Day P&L off TRADE-LOG). **Tomorrow Wed 10/28: FOMC decision 2:00 PM ET; passive SPY-only posture through the decision unless pre-market surfaces a specific catalyst.**
