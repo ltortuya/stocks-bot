@@ -4694,3 +4694,45 @@ None. **Rationale:** The CPI binary at 8:30 ET is a **pre-market event**, not an
 - STEP 6: no sharp unexplained move; no query.
 - STEP 7: silent — no action.
 - Decision: **NO ACTION**. Trades today 0/3, week 0/6.
+
+## 2026-10-27 — Pre-market Research
+
+### Account
+- Equity: **$98,356.23** (vs Alpaca `last_equity` $98,308.78 → **+$47.45 / +0.048%** pre-market drift); vs $100K baseline **-$1,643.77 / -1.644%**
+- Cash: **$78,409.16** (79.72% of equity)
+- Buying power: $369,488.44 (regt $176,765.39)
+- Daytrade count: **0**
+- Position mv $19,947.07 → **deployment 20.28%** (Rule-12 floor satisfied; ~55 pp under 75-85% band)
+- Open orders: 1 GTC trailing-stop sell SPY 26, trail $61.31, **stop $720.31**, hwm $781.62 (unchanged since 10/06), expires 2026-11-30 (**34 days**)
+- Env-check: shell loop printed MISSING for all 5 vars; `alpaca.sh account/positions/orders` returned live JSON → false-MISSING per `feedback_env_var_check.md`. Proceeded. Perplexity worked (no WebSearch fallback).
+
+### Market Context
+- WTI / Brent: **WTI ~$102.1**, **Brent ~$111.1**. Holding near April highs; Iran diplomacy headlines cut both ways (one source cites easing tension)
+- S&P 500 futures: **ES ~7,720, +0.07%** — muted ahead of Fed + hyperscaler prints. SPY premarket ~$765.9-767.3 (range $761.6-767.7), Mon close $765.37
+- VIX: **~18.40** (Mon close 18.39, -5.45%). Back below 19 after 3 sessions above
+- Today's catalysts: **FOMC day 1** (decision Wed 2:00 PM ET); **Anthropic S-1 filing** reviving AI/semi trade (H1 rev ~$16.3B reported); Korea GDP beat on chip exports, KOSPI/Asia semis rallied; META ~$35B AI raise + SpaceX ~$40B compute lease keep AI-financing skepticism live
+- Earnings before open: **KO, BA, UPS, PYPL, FCX, JCI, SHW, RCL, GLW, ECL, SCCO, ITW, SPGI, HLT, AMT, CNP**. No mega-cap index-mover; HOOD AMC. MSFT + GOOGL Wed AMC, AMZN Thu
+- Economic calendar: 8:30 durable goods (Sep, +1.2%e / ex-trans +0.3%e); 9:00 Case-Shiller; 10:00 **Conf Board consumer confidence** (81.2e / 81.9 prior), new-home sales, Richmond Fed. No CPI/PPI/NFP. Thu GDP + PCE; Fri ECI
+- Sector momentum: **Energy** YTD ~+64%, still the clear leader; Financials YTD +19%; Industrials best last week (+2.2%). **Comm Svcs** weakest (wk -6 to -8%, YTD -5%); **Materials** wk -8.5%. SSGA momentum ranks Energy / Tech / HC top
+- SPY news: nothing fund-specific; ~$4B weekly outflows; still below 52-wk high $781.62. CTA level cited ~7,532; >7,700 post-Fed seen as bullish confirmation
+
+### Trade Ideas
+1. **SPY — HOLD floor leg, no add.** 26 @ $758.54, mark $767.25, UPL **+1.148% (+$226.46)**, cushion to stop **6.12%** (outside 3% gate). Adding the day before FOMC + MSFT/GOOGL prints is pure event gap-risk.
+2. **XLE (Energy) — watch, not actionable.** Leader YTD, WTI ~$102, but Iran-diplomacy headlines can unwind the premium overnight and no replacement-trigger mechanism is authored (Rule 12, 10/23 review). Re-evaluate post-FOMC.
+3. **Semis / post-earnings mega-cap — Thu/Fri candidates only.** Anthropic S-1 + Korea chip data support the AI-capex bid, but MSFT/GOOGL/AMZN guidance decides direction. Not today.
+
+### Conditional Entries (midday-eligible) — up to 3
+**Zero.** FOMC decision is tomorrow and hyperscaler prints follow; intraday confirmation today can't clear event risk.
+
+### Risk Factors
+- **FOMC Wed 10/28** — hold expected; hawkish lean (rate-hike signal) is the tail given oil >$100 and recent yield spike
+- **MSFT/GOOGL Wed AMC, AMZN Thu** — AI-capex ROI binary; SPY mega-cap concentration
+- **Oil / Iran** — spike or de-escalation both move tape
+- **Yields** — near 5% 10Y; Thu GDP/PCE next inflation input
+- **AI-financing fatigue** — META raise, SpaceX lease; Anthropic IPO supply
+- **SPY hwm stale since 10/06**; cushion 6.12%
+- **Deployment ~20%** vs 75-85% target — structural under-deployment unresolved
+- GTC stop expires 2026-11-30 (34 days) — needs re-placement before expiry
+
+### Decision
+**HOLD.** Patience > activity. Flat futures into FOMC day 1; no catalyst justifies new risk ahead of Wed. No new entries, zero conditionals. Trades today 0/3, week 0/6.
