@@ -4741,3 +4741,45 @@ None. **Rationale:** The CPI binary at 8:30 ET is a **pre-market event**, not an
 - SPY 26 @ $769.30, UPL **+1.419% (+$279.76)**, day +0.513%. Stop $720.31 (GTC trail $61.31, hwm $781.62), cushion **6.37%**. No cut (> -7%), no tighten (< +15%). Thesis intact (index floor leg into FOMC).
 - No conditionals to evaluate.
 - No action. Env shell check MISSING; wrapper smoke-test live (bypass holds).
+
+## 2026-10-28 — Pre-market Research
+
+### Account
+- Equity: **$98,449.57** (vs Alpaca `last_equity` $98,420.32 → **+$29.25 / +0.030%** pre-market drift); vs $100K baseline **-$1,550.43 / -1.550%**
+- Cash: **$78,409.16** (79.64% of equity)
+- Buying power: $369,749.79 (regt $176,858.73)
+- Daytrade count: **0**
+- Position mv $20,040.41 → **deployment 20.36%** (Rule-12 floor satisfied; ~55 pp under 75-85% band)
+- Open orders: 1 GTC trailing-stop sell SPY 26, trail $61.31, **stop $720.31**, hwm $781.62 (unchanged since 10/06), expires 2026-11-30 (**33 days**)
+- Env-check: shell loop printed MISSING for all 5 vars; `alpaca.sh account/positions/orders` returned live JSON → false-MISSING per `feedback_env_var_check.md`. Proceeded. Perplexity worked (no WebSearch fallback).
+
+### Market Context
+- WTI / Brent: **WTI ~$101.3**, **Brent ~$115.9** (one feed; Brent spread looks wide vs yesterday's ~$111 — treat as noisy). Iran/Israel headline-sensitive
+- S&P 500 futures: **ES ~7,757, flat (-0.02%)** at 3:56 ET (earlier 7,770 +0.15%). SPY premarket ~$770.5-770.8, Tue close $769.66; Nasdaq futures firmer on SK hynix
+- VIX: **~17.55** (down from ~18.4 Tue) — calm into the Fed
+- Today's catalysts: **FOMC decision 2:00 PM ET, presser 2:30** (hold expected); **MSFT, GOOGL, NOW, TMUS, FTNT, CMG AMC**; SK hynix sharp profit jump (chip bid); Anthropic S-1 (ANT) keeps AI trade bid; META ~$95-97B equity raise + NVDA $3B stake = AI-financing debate; Tue data firm (conf board 91.7, durable goods +1.8%) — supports growth, complicates Fed
+- Earnings before open: **GEV, APH, BSX, BIIB, PSX, OTIS, TEL, BAX, NI, DINO, UBS, SAN**. No index-mover pre-open; MSFT/GOOGL after close, AMZN Thu
+- Economic calendar: FOMC only. No CPI (11/10), PPI (11/13), NFP (11/6). Thu GDP + PCE; Fri ECI
+- Sector momentum: Tech YTD ~+23% (3-mo +6.6%) per one source; **Energy** cited as October momentum leader (prior source YTD ~+64% — sources disagree on Energy YTD, direction consistent). **Comm Svcs** weakest (1-mo -9.8%, YTD -5%); Cons Disc, Utilities lagging. S&P YTD ~+12-13%
+- SPY news: modestly bullish, Fed-sensitive; still 1.4% below 52-wk high $781.62
+
+### Trade Ideas
+1. **SPY — HOLD floor leg, no add.** 26 @ $758.54, mark $770.79, UPL **+1.614% (+$318.37)**, cushion to stop **6.55%** (outside 3% gate). Adding hours before FOMC + MSFT/GOOGL prints = event gap-risk with no edge.
+2. **Semis (SMH/SOXX) — Thu/Fri candidate only.** SK hynix print + Korea chip exports + Anthropic S-1 support the AI-capex bid; MSFT/GOOGL capex guidance tonight decides. Re-evaluate Thu pre-market: entry only on post-print gap-and-hold, 10% trail, target +20%, R:R 2:1.
+3. **XLE (Energy) — watch, not actionable.** Momentum leader but oil premium is Iran-headline binary; no authored sector-add trigger (Rule 12, 10/23 review).
+
+### Conditional Entries (midday-eligible) — up to 3
+**Zero.** FOMC lands 2:00 PM ET, after midday; hyperscaler prints after close. Intraday confirmation cannot clear event risk.
+
+### Risk Factors
+- **FOMC 2:00 PM ET** — hold expected; hawkish dot/presser tone is the tail with oil >$100 and firm data
+- **MSFT/GOOGL AMC tonight, AMZN Thu** — AI-capex ROI binary; SPY mega-cap concentration
+- **Oil / Iran** — spike or de-escalation both move tape
+- **AI-financing fatigue** — META ~$95B raise, Anthropic IPO supply
+- **Thu GDP + PCE** — next inflation input
+- **SPY hwm stale since 10/06**; cushion 6.55%
+- **Deployment ~20%** vs 75-85% target — structural under-deployment unresolved
+- GTC stop expires 2026-11-30 (33 days) — needs re-placement before expiry
+
+### Decision
+**HOLD.** Patience > activity. Flat futures into FOMC decision day with mega-cap prints after close; no catalyst justifies new risk. No new entries, zero conditionals. Trades today 0/3, week 0/6.
