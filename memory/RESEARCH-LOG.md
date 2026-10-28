@@ -4783,3 +4783,8 @@ None. **Rationale:** The CPI binary at 8:30 ET is a **pre-market event**, not an
 
 ### Decision
 **HOLD.** Patience > activity. Flat futures into FOMC decision day with mega-cap prints after close; no catalyst justifies new risk. No new entries, zero conditionals. Trades today 0/3, week 0/6.
+
+### Midday Scan (12:00 CT)
+- SPY 26 @ $771.65, UPL **+1.728% (+$340.86)**, day +0.259%. Stop $720.31 (GTC trail $61.31, hwm $781.62), cushion **6.65%**. No cut (> -7%), no tighten (< +15%). Thesis intact (index floor leg into 2:00 PM ET FOMC).
+- No conditionals to evaluate.
+- No action. Env shell check MISSING; wrapper smoke-test live (bypass holds).
