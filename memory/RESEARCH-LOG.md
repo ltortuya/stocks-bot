@@ -4788,3 +4788,45 @@ None. **Rationale:** The CPI binary at 8:30 ET is a **pre-market event**, not an
 - SPY 26 @ $771.65, UPL **+1.728% (+$340.86)**, day +0.259%. Stop $720.31 (GTC trail $61.31, hwm $781.62), cushion **6.65%**. No cut (> -7%), no tighten (< +15%). Thesis intact (index floor leg into 2:00 PM ET FOMC).
 - No conditionals to evaluate.
 - No action. Env shell check MISSING; wrapper smoke-test live (bypass holds).
+
+## 2026-10-29 — Pre-market Research
+
+### Account
+- Equity: **$98,454.64** (vs Alpaca `last_equity` $98,489.22 → **-$34.58 / -0.035%** pre-market drift); vs $100K baseline **-$1,545.36 / -1.545%**
+- Cash: **$78,409.16** (79.64% of equity)
+- Buying power: $369,763.98 (regt $176,863.80)
+- Daytrade count: **0**
+- Position mv $20,045.48 → **deployment 20.36%** (Rule-12 floor satisfied; ~55 pp under 75-85% band)
+- Open orders: 1 GTC trailing-stop sell SPY 26, trail $61.31, **stop $720.31**, hwm $781.62 (unchanged since 10/06), expires 2026-11-30 (**32 days**)
+- Env-check: shell loop printed MISSING for all 5 vars; `alpaca.sh account/positions/orders` returned live JSON → false-MISSING per `feedback_env_var_check.md`. Proceeded. Perplexity worked (no WebSearch fallback).
+- Note: Alpaca `last_equity` $98,489.22 vs TRADE-LOG Wed EOD $98,519.38 (~$30 delta — Alpaca lastday SPY $772.31 vs logged $773.43)
+
+### Market Context
+- WTI / Brent: **WTI ~$101.7 (-1.1%)**, **Brent ~$114.6 (-0.6%)**. Hormuz/Middle East diplomacy headlines driving
+- S&P 500 futures: **ES ~7,748, -0.46%**; **NQ ~-1.3%** (Alphabet drag). SPY premarket mark ~$770.98 vs Wed close $772.31
+- VIX: **~17.24 (+2%)** from 16.91 — still calm
+- Today's catalysts: **FOMC held 3.75-4.00%, 10-2 vote, two dissents FOR A HIKE** (hawkish tail); Warsh light on Dec guidance. **GOOGL -10% AH** (revenue miss, ~-$9.1B FCF, AI-capex ROI fear); **MSFT +3% AH** (Azure +48%); ORCL up on FY29 ~$30B FCF outlook; SK hynix +328% rev, memory tight through 2030; ECB decision today; BSX cut outlook (cyberattack)
+- Earnings before open: **LLY, MA, MRK, CAT, PWR, HWM, ICE, EPD, ATI, ALGM, BBVA, Samsung**. **AMZN, INTC AMC** (Apple also this week)
+- Economic calendar: **8:30 ET — Q3 GDP adv (cons 3.2%), Sept PCE (cons 3.6% y/y, 0.5% m/m), core PCE (cons 3.1% y/y, 0.3% m/m), jobless claims (~198K)**. No CPI/PPI/NFP. Fri ECI
+- Sector momentum: Tech YTD **+23.1%**, Industrials +7.6%, Real Estate +7.0%, Financials +2.2%; Comm Svcs **-5.0%** (worst, now with GOOGL hit), Cons Disc -2.5%. SSGA multi-horizon momentum: **Energy #1**, Tech, Health Care; Utilities weakest
+- SPY news: mixed-to-negative open; GOOGL reaction outweighs Fed; MSFT partial cushion
+
+### Trade Ideas
+1. **SPY — HOLD floor leg, no add.** 26 @ $758.54, mark $770.98, UPL **+1.640% (+$323.44)**, cushion to stop **6.57%** (outside 3% gate). Adding into a -0.5% gap with PCE at 8:30 and AMZN tonight = no edge.
+2. **Semis (SMH/SOXX) — candidate deferred.** SK hynix/Samsung memory strength supports the bid, but GOOGL's FCF miss reopens the AI-capex-ROI debate and NQ -1.3% is the opposite of yesterday's "gap-and-hold" trigger. Re-evaluate Fri pre-market after AMZN capex guidance; entry only on post-print gap-and-hold, 10% trail, target +20%, R:R 2:1.
+3. **XLE (Energy) — watch, not actionable.** Momentum #1 but oil fading on diplomacy headlines; no authored sector-add trigger (Rule 12, 10/23 review).
+
+### Conditional Entries (midday-eligible) — up to 3
+**Zero.** PCE at 8:30 sets tone before open; AMZN/INTC after close. No setup needs intraday confirmation today that clears event risk.
+
+### Risk Factors
+- **8:30 PCE/GDP** — hot core PCE + two hike dissents = rate-hike repricing tail
+- **AI-capex ROI** — GOOGL -10% on FCF; AMZN AMC tonight is the next binary; SPY mega-cap concentration
+- **Oil / Iran / Hormuz** — de-escalation fading oil; spike risk persists
+- **ECB decision** today; Fri ECI
+- **SPY hwm stale since 10/06**; cushion 6.57%
+- **Deployment ~20%** vs 75-85% target — structural under-deployment unresolved
+- GTC stop expires 2026-11-30 (32 days) — needs re-placement before expiry
+
+### Decision
+**HOLD.** Patience > activity. Lower open on GOOGL + PCE and AMZN tonight; no catalyst justifies new risk. No new entries, zero conditionals. Trades today 0/3, week 0/6.
