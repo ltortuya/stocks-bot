@@ -4835,3 +4835,48 @@ None. **Rationale:** The CPI binary at 8:30 ET is a **pre-market event**, not an
 - SPY 26 @ $769.39, UPL **+1.43% (+$282.10)**, day -0.378%. Stop $720.31 (GTC trail $61.31, hwm $781.62), cushion **6.38%**. No cut (> -7%), no tighten (< +15%). Thesis intact (index floor leg; post-FOMC/GOOGL/PCE digest, AMZN AMC).
 - No conditionals to evaluate.
 - No action. Env shell check MISSING; wrapper smoke-test live (bypass holds).
+
+## 2026-10-30 — Pre-market Research
+
+### Account
+- Equity: **$98,216.97** (vs Alpaca `last_equity` $98,412.52 → **-$195.55 / -0.199%** pre-market drift); vs $100K baseline **-$1,783.03 / -1.783%**
+- Cash: **$78,409.16** (79.83% of equity)
+- Buying power: $369,098.52 (regt $176,626.13)
+- Daytrade count: **0 (inferred)** — `account` JSON returned no `daytrade_count` field; 24 consecutive zero-trade sessions per TRADE-LOG
+- Position mv $19,807.81 → **deployment 20.17%** (Rule-12 floor satisfied; ~55 pp under 75-85% band)
+- Open orders: 1 GTC trailing-stop sell SPY 26, trail $61.31, **stop $720.31**, hwm $781.62 (unchanged since 10/06), expires 2026-11-30 (**31 days**)
+- Env-check: shell loop printed MISSING for all 5 vars; `alpaca.sh account/positions/orders` returned live JSON → false-MISSING per `feedback_env_var_check.md`. Proceeded. Perplexity worked (no WebSearch fallback; 2 queries failed first pass, succeeded on rerun).
+- Note: Alpaca `last_equity` $98,412.52 vs TRADE-LOG Thu EOD $98,417.20 (~$4.68 delta — Alpaca lastday SPY $769.36 vs logged $769.45)
+
+### Market Context
+- WTI / Brent: **WTI ~$103.85**, **Brent ~$116.70** — up vs ~$101.7 / ~$114.6 logged Thu; crude bid in the risk-off
+- S&P 500 futures: **ES ~7,672, -1.06%**; **NQ ~-2.1% to -2.3%**. Alpaca SPY mark $761.84 vs lastday $769.36 (-0.98%)
+- VIX: **~18.47 (+7.4%)** from 17.20. ⚠ Source stamped this 10:42 ET; run time was 07:00 ET, so timestamp is wrong — treat level as approximate
+- Today's catalysts: **AMZN ~-6% to -7%** (EPS $1.89 vs ~$1.96; rev ~$201.9B, slight miss; TTM FCF -$42.4B; $220B 2026 capex). **INTC ~-17% to -26%** (Q4 guide rev $15-16B vs ~$17B). **XOM adj EPS $4.23 vs ~$3.98, CVX $5.28 vs ~$4.85 — both beat.** BoJ decision. AI-capex ROI debate is now GOOGL + AMZN. Thu data: Q3 GDP 3.4% (cons 3.1%), core PCE 0.3% m/m / 3.1% y/y in line; 10Y ~4.98% (Treasury curve, Thu close)
+- Earnings before open: **XOM, CVX, ABBV, AZN, BP, SNY, GD, REGN, CNI, NWG**
+- Economic calendar: **8:30 ET Q3 Employment Cost Index (cons +0.8% q/q)**. No CPI/PPI/FOMC/NFP. ⚠ Calendar source also listed claims + GDP price index today; those look like Thu's releases, discounted. Next: JOLTS 11/3, NFP 11/6, CPI 11/10, PPI 11/13, FOMC 12/8-9
+- Sector momentum: YTD thru 10/29 **Energy +53.68%**, Tech +24.41%, Health Care +18.83%, Materials +14.50%, Industrials +9.61%, Financials +3.87%, Cons Disc -1.18%, Comm Svcs -4.90%. SSGA momentum: Energy #1, Tech, Health Care
+- SPY news: gap-down is mega-cap/AI-driven (AMZN, INTC) plus oil and yields; not a macro break. No SPY-specific thesis change
+
+### Trade Ideas
+1. **SPY — HOLD floor leg, no add.** 26 @ $758.54, mark $761.84, UPL **+0.435% (+$85.77)**, cushion to stop **5.45%** (outside 3% gate). Stop $720.31, no target (index floor). Adding into a -1% tech-led gap = no edge.
+2. **XLE — conditional only (below).** Catalyst: XOM + CVX beats, crude up, #1 sector. Ref close $68.72 (Alpaca 10/29), trigger ≥$69.06, stop 10% trail (~$62.15), target $82.87, R:R 2:1. Source flags XLE near record levels, so sell-the-news risk is real; no open execution.
+3. **AMZN / semis — SKIP.** AMZN ~$228.6 (AH) dip-buy has no entry edge with FCF outflow and capex debate unresolved; INTC guide hits the semis bid. No entry/stop/target authored. Re-evaluate next week after digest.
+
+### Conditional Entries (midday-eligible) — up to 3
+1. **XLE** — allocation $15,000, stop 10% trail, target $82.87 (+20% from $69.06 trigger), R:R 2:1
+   Condition: At midday, XLE ≥$69.06 (≥+0.5% vs $68.72 prior close) and trading above today's open. WTI still ≥$102. No news of XOM/CVX guidance cuts or a Hormuz/Iran de-escalation headline knocking crude. Skip if any leg fails; retire for the session, do not chase.
+   Catalyst: XOM and CVX Q3 EPS beats plus crude bid on a tech-led risk-off day, in the #1 YTD momentum sector; gap-and-hold confirmation needed because XLE is near record levels.
+
+### Risk Factors
+- **AI-capex ROI** — GOOGL then AMZN; SPY mega-cap concentration; NQ -2%+ could extend through the session
+- **8:30 ECI** — hot wage print + two hike dissents at FOMC = rate-repricing tail
+- **Oil / Iran / Hormuz** — crude ~$104/$117 feeds inflation; headline reversal would hit the XLE conditional
+- **BoJ** — yen / JGB spillover
+- **Friday de-risking** into weekend; NFP 11/6 next week
+- **SPY hwm stale since 10/06**; cushion 5.45%, narrowest since 10/22 read of ~5.46-5.72%
+- **Deployment ~20%** vs 75-85% target — structural under-deployment unresolved
+- GTC stop expires 2026-11-30 (31 days) — needs re-placement before expiry
+
+### Decision
+**HOLD** at open. Tech-led gap-down with ECI at 8:30; no at-open entry. One XLE conditional queued for midday confirmation. Trades today 0/3, week 0/6.
