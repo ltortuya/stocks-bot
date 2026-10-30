@@ -672,3 +672,11 @@ stop-coverage guard is added. Trades today 0/3, week 0/6.
 | SPY | 26 | $758.54 | $769.45 | -0.370% | +$283.66 (+1.438%) | $720.31 (trail $61.31, hwm $781.62, 6.386% cushion) |
 
 **Notes:** SPY-only book held through post-FOMC digest, no action. Routine chain: pre-market research `9aa5b31`, pre-market execute `1762dcf` aborted (env vars missing), midday scan `f5abb40` no action. SPY -0.370% (lastday $772.31 → $769.45), first red day after three straight greens. hwm unchanged $781.62 (19th session no ratchet); GTC trailing stop unchanged $720.31 (updated_at 2026-10-06); cushion 6.868% → 6.386% (-48 bp), well outside 3% gate; GTC expires 2026-11-30 (32 days). Phase P&L widens -10.3 bp to -$1,582.80. Week-4 WTD +$246.48 (Mon +$133.64, Tue +$114.14, Wed +$100.88, Thu -$102.18). Deployment 20.33% ($20,008.04 MV) — still far below 75-85% target. Trades today 0/3, week 0/6 (24th consecutive zero-trade session). Env-var shell check printed MISSING for all 4 vars; wrapper smoke-test returned live JSON (bypass pattern holds). Alpaca `last_equity` $98,489.22 vs TRADE-LOG Wed EOD $98,519.38 (~$30.16 settlement delta — Day P&L off TRADE-LOG). **Tomorrow Fri 10/30: weekly-review day; passive SPY-only posture unless pre-market surfaces a specific redeployment catalyst.**
+
+### Oct 30 — Midday Conditional Fill (12:01 CT)
+
+| Ticker | Shares | Entry | Stop | Thesis | Target | R:R | Tag |
+| — | — | — | — | — | — | — | — |
+| XLE | 214 | $69.80 | $62.82 (10% trail GTC) | XOM + CVX Q3 EPS beats; crude bid on tech-led risk-off; #1 YTD momentum sector | $82.87 | 1.87:1 at fill (2:1 authored off $69.06 trigger; below checklist minimum) | [conditional] |
+
+**Notes:** Pre-market conditional fired at midday. Trades today 1/3, week 1/6. Positions 2 (SPY, XLE). Cost $14,937.20; cash $63,471.96; deployment 35.3%. Ends 24-session zero-trade streak.

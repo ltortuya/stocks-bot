@@ -4867,6 +4867,7 @@ None. **Rationale:** The CPI binary at 8:30 ET is a **pre-market event**, not an
 1. **XLE** — allocation $15,000, stop 10% trail, target $82.87 (+20% from $69.06 trigger), R:R 2:1
    Condition: At midday, XLE ≥$69.06 (≥+0.5% vs $68.72 prior close) and trading above today's open. WTI still ≥$102. No news of XOM/CVX guidance cuts or a Hormuz/Iran de-escalation headline knocking crude. Skip if any leg fails; retire for the session, do not chase.
    Catalyst: XOM and CVX Q3 EPS beats plus crude bid on a tech-led risk-off day, in the #1 YTD momentum sector; gap-and-hold confirmation needed because XLE is near record levels.
+   → Fired (12:01 CT) @ $69.80, stop placed.
 
 ### Risk Factors
 - **AI-capex ROI** — GOOGL then AMZN; SPY mega-cap concentration; NQ -2%+ could extend through the session
@@ -4880,3 +4881,10 @@ None. **Rationale:** The CPI binary at 8:30 ET is a **pre-market event**, not an
 
 ### Decision
 **HOLD** at open. Tech-led gap-down with ECI at 8:30; no at-open entry. One XLE conditional queued for midday confirmation. Trades today 0/3, week 0/6.
+
+### Midday Scan (12:00 CT)
+- SPY 26 @ $755.82, UPL **-0.36% (-$70.72)**, day -1.76%. Stop $720.31 (GTC trail $61.31, hwm $781.62), cushion **4.70%**. No cut (> -7%), no tighten (< +15%). Thesis intact (index floor leg; tech/AI-capex-led selloff, no SPY-specific change).
+- **XLE conditional FIRED:** 214 @ $69.80 ($14,937.20). Legs: XLE $69.79 ≥ $69.06 and above $69.425 open; WTI ~$103.4-104.2 ≥ $102 (timestamped quotes are pre-US-session; USO at session high $171.78 vs $169.79 open confirms crude firm); no XOM/CVX guidance cut found; no Hormuz/Iran de-escalation (IRGC tanker/mine reports, mediation unconfirmed). Gate: trades 1/3 day, 1/6 week; positions 2/6; 15.2% of equity; cash OK.
+- Stop: GTC trail 10%, stop $62.82, hwm $69.80, order f59522bb, expires 2027-01-28.
+- ⚠ R:R at fill **1.87:1** ($13.07 reward to $82.87 / $6.98 risk), below the 2:1 checklist minimum; authored 2:1 was off the $69.06 trigger. 2:1 from fill needs $83.76. Target left as authored.
+- Deployment 35.3% (cash $63,471.96). Env shell check MISSING; wrapper smoke-test live (bypass holds).
