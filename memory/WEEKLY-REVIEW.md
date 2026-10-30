@@ -726,3 +726,61 @@ Template for each entry:
 - C, not C-: The Rule 12 amendment is a material ship (first codified strategy-text change in 21 Phase-6 weeks; ships the authored pre-commitment from Oct 16 Adjustments; resolves the 2-gate-B-fail XLE candidate cleanly). The 3-day Warsh-relief rally Mon-Wed was executed exactly as pre-market framed (+$266.24 / +27.1 bp WTD at Wed close); the Thu-Fri reversal was pre-identified in the Thu + Fri pre-market plans before the opens and HOLD-at-each-slot was correct per plan; the floor-only book carried through a VIX 16.68 → 19.17-19.32 regime shift without stop hit, cushion breach, or thesis invalidation. Absolute week outcome -$76.18 / -0.078% is near-scratch; relative-beat +0.395% is the 3rd consecutive since the Oct bridge sequence began; 15 of 15 EOD snapshots captured across the Oct bridge; env-var bypass pattern load-bearing for 17 consecutive routines with zero operational incidents. The Oct 16 pre-commitment mechanism worked end-to-end: the clause-retention default was overridden by a pre-authored ship directive, and TRADING-STRATEGY.md changed.
 - Not C+ or B-: 5 of 6 structural debts owned by this review did not ship. The wrapper-smoke-test bypass directive hit the Oct 16 pre-commitment reclassification threshold (3rd consecutive weekly-review deferral) and was formally retired-as-known-tolerated this review — a disciplined write-down, but a write-down nonetheless. The `activities` subcommand + 3-leg reconciliation were also retired-as-non-recoverable, a similar write-down pattern. Phase 6 is now at a new closing low (-$1,829.28 / -1.829%, 37+ consecutive sub-baseline sessions, 128/128 Phase-6 days net-negative); the structural $100K ceiling has held for ~120 of 128 sessions. Cushion compressed to 5.232% week-end — tightest Phase-6 week-end print and inside 2.23 pp of the 3% proximity gate. The relative-beat is 3-week cumulative +0.433% but mechanistically cash-as-hedge; a flat-to-up SPX regime over the next 4-6 weeks (base case given US equity drift) reverses the relative-print sign. C is earned by the Rule 12 amendment ship + clean execution of the Mon-Wed rally + Thu-Fri reversal + VIX regime-shift resilience; downgrade from C+ via 5 un-shipped debts, 2 formal retirements-as-tolerated, and the new Phase-6 closing low.
 
+## Week ending 2026-10-30 (Phase 6 Oct-bridge week 4 — FOMC hold + mega-cap prints; Mon-Wed gain erased by Fri AMZN/INTC risk-off; XLE conditional fired, first new trade in 24 sessions)
+
+### Stats
+| Metric | Value |
+|--------|-------|
+| Starting portfolio | $98,170.72 (Mon 10/26 AM = Fri 10/23 close per TRADE-LOG) |
+| Ending portfolio | $98,114.06 (Fri 10/30 EOD per TRADE-LOG, read 16:00:32 ET; live `account` at 17:00 ET $98,101.60, -$12.46 post-bell mark delta) |
+| Week return | -$56.66 (-0.06%) |
+| S&P 500 week | -0.57% (Oct 23 close 7,623.68 → Oct 30 close 7,580.07, -43.61 pts; Fri -1.8%. Perplexity/AP via Yahoo; SPY proxy -0.53%) |
+| Bot vs S&P | +0.51% |
+| Trades | 1 (W:0 / L:0 / open:1) — XLE; SPY floor leg carried from 6/3 |
+| Win rate | N/A (no closed trades) |
+| Best trade | XLE +0.32% (unrealized) |
+| Worst trade | SPY -0.33% (unrealized) |
+| Profit factor | N/A (no closed trades) |
+
+### Closed Trades
+| Ticker | Entry | Exit | P&L | Notes |
+| — | — | — | — | None — no position closed this week |
+
+### Open Positions at Week End
+| Ticker | Entry | Close | Unrealized | Stop |
+| SPY | $758.54 (26 sh) | $756.04 | -$65.00 (-0.33%) | $720.31 (trail $61.31, hwm $781.62 unchanged since 10/06, cushion 4.73%, GTC expires 2026-11-30) |
+| XLE | $69.80 (214 sh) | $70.02 | +$47.08 (+0.32%) | $63.10 (10% trail, hwm $70.115, cushion 9.88%, GTC expires 2027-01-28) |
+
+### What Worked
+- XLE conditional ran end to end: authored pre-market with a documented catalyst (XOM + CVX beats, crude bid, #1 YTD sector), all legs checked at midday, filled, stop attached the same session.
+- XLE added a different return driver: +1.9% on a day SPY fell 1.7%.
+- Zero pre-FOMC conditionals Mon-Thu held up: the hold came with two hike dissents and GOOGL fell ~10% after hours, and nothing was exposed beyond the floor leg.
+- Five of five EOD snapshots captured, no stop hits, no -7% cuts, no stop moved down.
+
+### What Didn't Work
+- New Phase 6 closing low: -$1,885.94 (-1.886%), below last week's -1.829%. SPX is +5.79% since the 4/24 baseline (7,165.08), so the phase gap is -7.68%.
+- +0.51% relative beat is still mostly cash: 64.7% cash at the close, and XLE was held for under half of one session. It is not evidence of edge.
+- Mon-Wed +$348.66 was fully erased, Thu -$102.18 and Fri -$303.14. Same floor-only shape as last week, with no lever to act on a move research had flagged.
+- XLE filled at 1.87:1 R:R, below the 2:1 entry-checklist minimum. A 10% stop with a +20% target is exactly 2:1 only at the trigger price, so any fill above $69.06 was guaranteed to miss. The conditional's design caused it, not the execution.
+- Both ship-by-10/30 debts missed: no commit touched `routines/` or `scripts/` this week. Stop-coverage auto-check and RESEARCH-LOG rotation both fall to the write-downs pre-committed on 10/23 (see Adjustments).
+- Deployment 35.3% vs the 75-85% target: better than 20%, still 40 pp short.
+
+### Key Lessons
+- Check R:R at the worst acceptable fill, not at the trigger. A conditional needs a max entry price or a target set wide enough to leave room above the trigger.
+- The pre-market "abort" commits are not a local false alarm. All five this week carry +0000 timestamps while every other routine commit carries -0700, and `scripts/alpaca.sh` sources a gitignored `.env` that exists only on the local machine. Likely reading: a separate cloud trigger runs with no keys and aborts correctly, while the local run does the real work. Inferred from commit timestamps and the wrapper source; the trigger config was not inspected. The env defect stays off the Adjustments board per 10/23; this only corrects the diagnosis.
+- RESEARCH-LOG has crossed from slow to blocking: this session's full read of the log was refused for size, and this week's entries had to be pulled in trimmed form. The 10/23 write-down priced this as latency only.
+- Authoring one conditional on a day with a specific catalyst was enough to end a 24-session streak. The gates were not the constraint; the authoring rate was.
+
+### Adjustments for Next Week
+- **Hold SPY + XLE into JOLTS 11/3, NFP 11/6, CPI 11/10.** XLE exit is thesis-driven: reassess on a Hormuz/Iran de-escalation headline or crude losing the bid. XLE -7% manual cut at $64.91 sits above its stop, so it fires first.
+- **SPY proximity watch:** the 3% gate is reached at ~$742.59, -1.8% from the close. The -7% cut level ($705.44) sits below the $720.31 stop, so the stop fires first.
+- **SPY stop re-placement is now a hand-managed deadline: do it by Mon 11/23, ahead of the 11/30 expiry.** Per the 10/23 pre-commitment, the auto-check is written off and the recurrence risk accepted. A new trailing order resets hwm, so the same $61.31 trail at today's price would put the stop near $695, a stop move down (Rule 7). Re-place so the stop stays ≥$720.31 and not within 3% of price.
+- **RESEARCH-LOG rotation written off as a weekly-review item** per the 10/23 pre-commitment; off the board. Routines should read the log by date section, not whole-file. It needs a maintenance run or a direct owner request to happen.
+- **Pre-market working rule (not codified):** every conditional states a max entry price at which R:R is still ≥2:1. Also, author conditionals on post-event days with a specific catalyst, one or two where the setup exists; do not force them.
+- **Hold the line on existing rules.** SPY is 20.03% of equity by market value, over the 20% cap only because the book shrank; the cap is a buy-side gate, no trim.
+- **TRADING-STRATEGY.md unchanged.** One XLE fill is not two weeks of evidence for any rule change.
+
+### Overall Grade: C
+- C, not higher: new Phase 6 closing low, -7.68% phase gap, 35% deployment, a checklist miss on the only trade, and both 10/30 deadlines missed.
+- C, not lower: near-flat week through FOMC and a -1.8% Friday, process held, and the first new trade in 24 sessions was documented before execution with its stop attached. The relative beat earns little credit since cash produced most of it.
+
