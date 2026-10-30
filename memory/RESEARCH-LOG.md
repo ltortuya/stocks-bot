@@ -4874,7 +4874,7 @@ None. **Rationale:** The CPI binary at 8:30 ET is a **pre-market event**, not an
 - **Oil / Iran / Hormuz** — crude ~$104/$117 feeds inflation; headline reversal would hit the XLE conditional
 - **BoJ** — yen / JGB spillover
 - **Friday de-risking** into weekend; NFP 11/6 next week
-- **SPY hwm stale since 10/06**; cushion 5.45%, narrowest since 10/22 read of ~5.46-5.72%
+- **SPY hwm stale since 10/06**; cushion 5.45%
 - **Deployment ~20%** vs 75-85% target — structural under-deployment unresolved
 - GTC stop expires 2026-11-30 (31 days) — needs re-placement before expiry
 
