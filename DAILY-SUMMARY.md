@@ -450,3 +450,7 @@ pre-market 2026-10-28: ABORT — missing env vars ALPACA_API_KEY, ALPACA_SECRET_
 ---
 ## 2026-10-29 11:19 UTC (fallback — Telegram not configured)
 pre-market 2026-10-29 11:17 UTC ABORT (duplicate trigger): env vars MISSING — ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID. Research for today already completed at 11:01 UTC (commit 9aa5b31). This is the 3rd consecutive day the trigger config has been missing env vars.
+
+---
+## 2026-10-30 11:18 UTC (fallback — Telegram not configured)
+pre-market 2026-10-30 ABORTED — missing env vars: ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID. No research run, no trades planned.
