@@ -680,3 +680,14 @@ stop-coverage guard is added. Trades today 0/3, week 0/6.
 | XLE | 214 | $69.80 | $62.82 (10% trail GTC) | XOM + CVX Q3 EPS beats; crude bid on tech-led risk-off; #1 YTD momentum sector | $82.87 | 1.87:1 at fill (2:1 authored off $69.06 trigger; below checklist minimum) | [conditional] |
 
 **Notes:** Pre-market conditional fired at midday. Trades today 1/3, week 1/6. Positions 2 (SPY, XLE). Cost $14,937.20; cash $63,471.96; deployment 35.3%. Ends 24-session zero-trade streak.
+
+### Oct 30 — EOD Snapshot (Day 133, Friday — Phase 6 / Oct bridge week 4 day 5 / AMZN-INTC AI-capex risk-off + XLE conditional fill)
+
+**Portfolio:** $98,114.06 | **Cash:** $63,471.96 (64.69%) | **Day P&L:** -$303.14 (-0.308%) | **Phase P&L:** -$1,885.94 (-1.886%)
+
+| Ticker | Shares | Entry | Close | Day Chg | Unrealized P&L | Stop |
+| — | — | — | — | — | — | — |
+| SPY | 26 | $758.54 | $756.04 | -1.731% | -$65.00 (-0.330%) | $720.31 (trail $61.31, hwm $781.62, 4.726% cushion) |
+| XLE | 214 | $69.80 | $70.02 | +1.907% | +$47.08 (+0.315%) | $63.10 (trail 10%, hwm $70.115, 9.878% cushion) |
+
+**Notes:** Tech-led risk-off (AMZN and INTC post-earnings) took SPY -1.731% and back below entry; no SPY action. One trade: XLE conditional fired at midday, 214 @ $69.80, ending the 24-session zero-trade streak, and it closed +0.315% with its trail already ratcheted from $62.82 to $63.10. Routine chain: pre-market research `344b0e6`, pre-market execute `b9daa0d` aborted (env vars missing, 4th straight day), midday scan + fill `c76fc4f`. SPY hwm unchanged $781.62 (20th session no ratchet); GTC stop unchanged $720.31 (updated_at 2026-10-06); cushion 6.386% → 4.726% (-166 bp), outside 3% gate; GTC expires 2026-11-30 (31 days), re-place before then. Week-4 WTD -$56.66 (Mon +$133.64, Tue +$114.14, Wed +$100.88, Thu -$102.18, Fri -$303.14). Deployment 35.31% ($34,642.10 MV), still far below 75-85% target. SPY is 20.04% of equity, marginally over the 20% cap on the size of the book, no trim made. Trades today 1/3, week 1/6. Env-var shell check printed MISSING for all 4 vars; wrapper calls returned live JSON (bypass pattern holds). Alpaca `last_equity` $98,412.52 vs TRADE-LOG Thu EOD $98,417.20 ($4.68 settlement delta — Day P&L off TRADE-LOG). Equity read 16:00:32 ET, seconds after the bell. **Next session Mon 11/2: hold SPY + XLE; XLE thesis depends on crude holding; JOLTS 11/3, NFP 11/6.**
