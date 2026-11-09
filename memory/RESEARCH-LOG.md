@@ -4928,3 +4928,17 @@ None. **Rationale:** The CPI binary at 8:30 ET is a **pre-market event**, not an
 
 ### Decision
 **ABORT.** No action possible. Env plumbing needs user fix before any routine can execute. 9th consecutive routine aborted; 6+ trading days with no API touch.
+
+## 2026-11-09 — Pre-market Research — ABORT
+
+**ABORT:** env vars not set in routine process. `alpaca.sh account` exited with "ALPACA_API_KEY not set in environment" (real wrapper refusal, not false-MISSING). Shell loop confirmed all 5 vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID) MISSING. 10th consecutive routine aborted on this pattern (10/30 was last successful run; 11/02, 11/03, 11/04, 11/05 (DAILY-SUMMARY touch only), 11/06 pre-markets, and now 11/09 pre-market all aborted — see commits 9c02de8, 84fdd7a, a39bd2a, 4c69d06, a9f1820). Weekend 11/07-11/08 bridged by no routine fires.
+
+- Alpaca state: UNREAD today. Last known (10/30 EOD): equity ~$98,114 (-1.89% vs $100K), 2 positions (SPY 26 @ $758.54, XLE 214 @ $69.80), deployment ~35.3%, cash $63,471.96, 0 daytrades, 2 open GTC trails (SPY stop $720.31 exp 11-30, XLE stop $63.10 exp 2027-01-28).
+- Perplexity: not callable; no market context pulled.
+- Telegram: fallback (local file) — creds missing; alert written to DAILY-SUMMARY.md.
+- No trades, no stop changes, no conditionals authored. Risk unchanged from last read; both stops are GTC on Alpaca's side so they persist regardless of this routine's state.
+- **SPY GTC stop expires 2026-11-30 (21 days) — time-critical**; re-placement must happen in a routine that has API access.
+- Macro backdrop unread without API/research access: JOLTS 11/3, NFP 11/6 missed; **CPI 11/10 (tomorrow), PPI 11/13** ahead this week.
+
+### Decision
+**ABORT.** No action possible. Env plumbing needs user fix before any routine can execute. 10th consecutive routine aborted; 7+ trading days with no API touch. SPY stop-expiry runway inside 3 weeks.
