@@ -4942,3 +4942,17 @@ None. **Rationale:** The CPI binary at 8:30 ET is a **pre-market event**, not an
 
 ### Decision
 **ABORT.** No action possible. Env plumbing needs user fix before any routine can execute. 10th consecutive routine aborted; 7+ trading days with no API touch. SPY stop-expiry runway inside 3 weeks.
+
+## 2026-11-19 — Pre-market Research — ABORT
+
+**ABORT:** env vars not set in routine process. `alpaca.sh account` exited with "ALPACA_API_KEY not set in environment" (real wrapper refusal, not false-MISSING). Shell loop confirmed all 5 vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID) MISSING. 18th consecutive routine aborted on this pattern (10/30 was last successful run; 11/02-11/18 pre-markets all aborted — most recent commits: 6ceb08d 11/10 "11th", f41c336 11/11 "12th", 8e8bdb4 11/12 "13th", 11be51c 11/13 "14th", 857afa8 11/16 "15th", bbdbb0a 11/17 "16th", 4c45791 11/18 abort note). RESEARCH-LOG entries for 11/10 through 11/18 landed in DAILY-SUMMARY.md only, not here; this 11/19 entry is the first new RESEARCH-LOG write since 11/09.
+
+- Alpaca state: UNREAD today. Last known (10/30 EOD): equity ~$98,114 (-1.89% vs $100K), 2 positions (SPY 26 @ $758.54, XLE 214 @ $69.80), deployment ~35.3%, cash $63,471.96, 0 daytrades, 2 open GTC trails (SPY stop $720.31 exp 2026-11-30, XLE stop $63.10 exp 2027-01-28).
+- Perplexity: not callable; no market context pulled.
+- Telegram: fallback (local file) — creds missing; alert appended to DAILY-SUMMARY.md naming all 5 missing vars.
+- No trades, no stop changes, no conditionals authored. Risk unchanged from last read; both stops are GTC on Alpaca's side so they persist regardless of this routine's state.
+- **SPY GTC stop expires 2026-11-30 (11 days) — time-critical**; re-placement must happen in a routine that has API access.
+- Macro backdrop unread without API/research access: CPI 11/10, PPI 11/13 missed; FOMC 12/8-9 ahead.
+
+### Decision
+**ABORT.** No action possible. Env plumbing needs user fix before any routine can execute. 18th consecutive routine aborted; 13+ trading days with no API touch. SPY stop-expiry runway inside 2 weeks — becoming critical.
