@@ -514,3 +514,7 @@ pre-market 2026-11-19 ABORT: ALPACA_API_KEY / ALPACA_SECRET_KEY / PERPLEXITY_API
 ---
 ## 2026-11-20 11:12 UTC (fallback — Telegram not configured)
 pre-market 2026-11-20 ABORT: ALPACA_API_KEY / ALPACA_SECRET_KEY / PERPLEXITY_API_KEY / TELEGRAM_TOKEN / TELEGRAM_CHAT_ID not set in routine env (12th consecutive abort since 10/30; SPY GTC stop $720.31 expires 2026-11-30, 10 days)
+
+---
+## 2026-11-23 11:13 UTC (fallback — Telegram not configured)
+[pre-market 2026-11-23] ABORT — missing env vars: ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID. 13th consecutive since 10/30.
