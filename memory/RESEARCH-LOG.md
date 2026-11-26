@@ -4984,3 +4984,17 @@ None. **Rationale:** The CPI binary at 8:30 ET is a **pre-market event**, not an
 
 ### Decision
 **ABORT.** No action possible. Env plumbing needs user fix before any routine can execute. 18+ trading days with no API touch. **SPY stop-expiry inside 5 days — escalate hard.**
+
+## 2026-11-26 — Pre-market Research — ABORT (Thanksgiving, US markets closed)
+
+**ABORT:** env vars not set in routine process. `alpaca.sh account` exited with "ALPACA_API_KEY not set in environment" (real wrapper refusal). Shell loop confirmed all 5 vars (ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID) MISSING. 16th consecutive pre-market abort since 10/30 (commit-count numbering). Thanksgiving holiday — US cash equities closed today; Friday 11/27 is a NYSE half-day (1pm ET close). Most recent commits: 220c365 11/20 "12th since 10/30", 6c51276 11/23 "13th", 0bf8647 11/24 "14th", 5a340a2 11/25 "15th".
+
+- Alpaca state: UNREAD today. Last known (10/30 EOD): equity ~$98,114 (-1.89% vs $100K), 2 positions (SPY 26 @ $758.54, XLE 214 @ $69.80), deployment ~35.3%, cash $63,471.96, 0 daytrades, 2 open GTC trails (SPY stop $720.31 exp 2026-11-30, XLE stop $63.10 exp 2027-01-28).
+- Perplexity: not callable; no market context pulled.
+- Telegram: fallback (local file) — creds missing; alert appended to DAILY-SUMMARY.md naming all 5 missing vars.
+- No trades, no stop changes, no conditionals authored. Both GTC stops persist on Alpaca's side regardless of routine state.
+- **SPY GTC stop expires Mon 2026-11-30 (4 calendar days, 2 trading sessions) — critical runway.** Remaining pre-market routines before expiry: Fri 11/27 (half-day) and Mon 11/30 only. If env plumbing stays broken through Mon open, SPY stop drops and the 26-share SPY position (~$19.7K at entry) runs naked into FOMC 12/8-9. XLE stop is clear until 2027-01-28.
+- Macro backdrop unread: CPI 11/10, PPI 11/13 missed; FOMC 12/8-9 ahead (12 days).
+
+### Decision
+**ABORT.** No action possible. Env plumbing needs user fix before any routine can execute. 19+ trading days with no API touch. **SPY stop-expiry in 2 trading sessions — last chance Mon 11/30 pre-market.**
