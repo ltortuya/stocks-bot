@@ -530,3 +530,7 @@ pre-market 2026-11-25 ABORT: env vars missing (ALPACA_API_KEY, ALPACA_SECRET_KEY
 ---
 ## 2026-11-26 11:12 UTC (fallback — Telegram not configured)
 pre-market 2026-11-26 ABORT (Thanksgiving) — env vars MISSING: ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID. 16th consecutive abort. SPY GTC stop expires Mon 11/30 — last chance to re-place is Mon pre-market.
+
+---
+## 2026-11-27 11:10 UTC (fallback — Telegram not configured)
+pre-market 2026-11-27 ABORTED: missing env vars ALPACA_API_KEY, ALPACA_SECRET_KEY, PERPLEXITY_API_KEY, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID. No .env created (cloud routine). Check environment config.
